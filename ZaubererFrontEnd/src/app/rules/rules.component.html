@@ -1,0 +1,36 @@
+<div class="container">
+  <h1 class="header">Rules for the Fight</h1>
+  <ol>
+    <li>
+      The Attackers decide where to attack and therefore, the environment is choosen randomly
+    </li>
+    <li>
+      All participating wizards have to fight, except when the defender is
+      defeated early
+    </li>
+    <li>The fight can end neither prematurely nor in a tie</li>
+    <li>
+      The two opposing factions of defenders and attackers do not change during
+      the fight
+    </li>
+    <li>The defender has to defeat all attackers to win the fight</li>
+    <li>An attacker will receive a victory even if he did not fight</li>
+    <li>The attackers fight the defender in the order they are select</li>
+    <li>
+      The Max Damage of an Attack or Potion is always factored with the factor
+      of the attacking wizard and a random factor between 0 and 1
+    </li>
+    <li>
+      The effects stunned, confunded and protego have a 50 percent chance of
+      working
+    </li>
+    <li>
+      The effect anti Paralysis and anti Confunded have a 50 percent chance of
+      working
+    </li>
+  </ol>
+  <p class="gotoFight" *ngIf="show">
+    <a>Please confirm the rules to start the Fight </a>
+    <button (click)="gotoFight()">Confirm</button>
+  </p>
+</div>

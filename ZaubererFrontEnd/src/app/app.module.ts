@@ -1,0 +1,58 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from '@angular/common/http';
+
+import { AppComponent } from './app.component';
+import { HarrypotterComponent } from './overview/harrypotter.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { DetailsComponent } from './details/details.component';
+import { DeleteWizardComponent } from './delete-wizard/delete-wizard.component';
+import { UpdateWizardComponent } from './update-wizard/update-wizard.component';
+import { CreateWizardComponent } from './create-wizard/create-wizard.component';
+import { FightComponent } from './fight/fight.component';
+import { CreditsComponent } from './credits/credits.component';
+import { HomeComponent } from './home/home.component';
+import { SearchComponent } from './search/search.component';
+import { SearchConnectionComponent } from './search-connection/search-connection.component';
+import { BattleComponent } from './battle/battle.component';
+import { SpellsComponent } from './spells/spells.component';
+import { PotionsComponent } from './potions/potions.component';
+import { DetailsPotionComponent } from './details-potion/details-potion.component';
+import { DetailsSpellComponent } from './details-spell/details-spell.component';
+import { RulesComponent } from './rules/rules.component';
+import { RanksComponent } from './ranks/ranks.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HarrypotterComponent,
+    DetailsComponent,
+    DeleteWizardComponent,
+    UpdateWizardComponent,
+    CreateWizardComponent,
+    FightComponent,
+    CreditsComponent,
+    HomeComponent,
+    SearchComponent,
+    SearchConnectionComponent,
+    BattleComponent,
+    SpellsComponent,
+    PotionsComponent,
+    DetailsPotionComponent,
+    DetailsSpellComponent,
+    RulesComponent,
+    RanksComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    AppRoutingModule,
+
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

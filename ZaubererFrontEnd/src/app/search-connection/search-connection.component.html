@@ -1,0 +1,10 @@
+<label for="search-box">
+    <input
+      #searchBox
+      id="search-box"
+      size="7%"
+      placeholder="Search"
+      (keyup.enter)="search($event)"
+      [formControl]="content"
+    />
+  </label>

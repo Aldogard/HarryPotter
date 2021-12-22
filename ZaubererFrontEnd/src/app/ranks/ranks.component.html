@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Potions</h1>
+    <table>
+      <tr>
+        <th>Rank</th>
+        <th>Required Victories</th>
+      </tr>
+      <tr *ngFor="let rank of counter()">
+        <td>{{ ranks[rank] }}</td>
+        <td>{{ round(rank) }}</td>
+      </tr>
+    </table>
+</div>

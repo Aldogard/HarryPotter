@@ -1,0 +1,54 @@
+<div class="container">
+  <h1>Spells</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Energy Usage</th>
+      <th>Max Damage</th>
+      <th>Stunned</th>
+      <th>Confunded</th>
+      <th>Imperio</th>
+      <th>Protego</th>
+    </tr>
+    <tr *ngFor="let spell of spells">
+      <td>{{ spell.name }}</td>
+      <td>{{ spell.energyUsage }}</td>
+      <td>{{ spell.maxDamage }}</td>
+      <td>{{ spell.stunned }}</td>
+      <td>{{ spell.confunded }}</td>
+      <td>{{ spell.imperio }}</td>
+      <td>{{ spell.protego }}</td>
+    </tr>
+  </table>
+  <div class="hints">
+    <h3>Explanations</h3>
+    <ul>
+      <li>
+        Energy Usage indicates the required energy to perform the spell. A spell
+        can only be performed if the wizard has enough energy remaining.
+      </li>
+      <li>
+        Most Spells are able to inflict damage on the opposing Wizard. Max
+        Damage indicates the maximum amount of damage that can be inflicted.
+        Caution, some Spells have some special features, which make them
+        especially useful or especially dangerous!
+      </li>
+      <li>
+        Stunned indicates whether the Spell can stun the opposing wizard or not.
+        The use of some Potions can protect against the stun effect.
+      </li>
+      <li>
+        Confunded indicates whether the Spell can confound the opposing wizard
+        or not. The use of some Potions can protect against the confound effect.
+      </li>
+    </ul>
+  </div>
+  <div class="goto">
+    <p>
+      For a detailed view of all Potions or a return to Overview, please click
+      the respective Button
+    </p>
+    <button (click)="gotoPotions()">Go to Potions</button>
+    <button (click)="gotoOverview()">Go to Overview</button>
+  </div>
+</div>

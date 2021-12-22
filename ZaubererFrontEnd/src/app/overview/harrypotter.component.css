@@ -1,0 +1,46 @@
+.container {
+  display: grid;
+  grid-template-columns: 30% 69%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header"
+    "filter tablewizards"
+    "goto goto"
+    ;
+}
+
+
+.header {
+  margin: 10px;
+  border: 5px solid rgb(19, 80, 29);
+  padding: 10px;
+  list-style-type: none;
+  text-align: center;
+  grid-area: header;
+}
+
+.header {
+  text-decoration: none;
+  color: black;
+}
+
+.filter {
+  grid-area: filter;
+}
+
+.tablewizards {
+  grid-area: tablewizards;
+}
+
+.goto{
+  grid-area: goto;
+  text-align: center;
+  justify-content: space-around;
+}
+
+
+
+
+
+
+

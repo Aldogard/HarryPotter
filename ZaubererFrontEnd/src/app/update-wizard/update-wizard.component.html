@@ -1,0 +1,62 @@
+<div class="container">
+  <div>
+    <h3>Update a Wizard</h3>
+
+    <label required for="wizardUpdate2">Choose a wizard:</label>
+    <select id="wizardUpdate" (change)="getWizardByName()">
+      <option value="{{ z.id }}" *ngFor="let z of wizards">
+        {{ z.name }}
+      </option>
+    </select>
+
+    <form #hpForm="ngForm" (ngSubmit)="update(hpForm)">
+      <div *ngIf="wizardChoice !== undefined">
+        <label for="name"></label>
+        <input
+          id="name"
+          type="text"
+          [(ngModel)]="wizardChoice.name"
+          placeholder="Name"
+          name="name"
+          required
+        />
+      </div>
+      <div *ngIf="wizardChoice !== undefined">
+        <label for="hp"></label>
+        <input
+          id="hp"
+          type="number"
+          [(ngModel)]="wizardChoice.healthPoints"
+          placeholder="Healthpoints"
+          name="healthPoints"
+          required
+        />
+      </div>
+      <div *ngIf="wizardChoice !== undefined">
+        <label for="hp"></label>
+        <input
+          id="hp"
+          type="text"
+          [(ngModel)]="wizardChoice.description"
+          placeholder="Description"
+          name="description"
+          required
+        />
+      </div>
+      <button type="submit" [disabled]="!hpForm.valid">Submit</button>
+    </form>
+    <p *ngIf="show">The wizard has been updated</p>
+  </div>
+  <div>
+    <h4>Rules for the Update of a wizard:</h4>
+    <ol>
+      <li>Every name can be used only once</li>
+      <li>The name has to be at least 3 characters long</li>
+      <li>Healthpoints cannot be smaller than 1</li>
+      <li>Healthpoints cannot be larger than 100</li>
+      <li>
+        A description must be written, but it cannot extend 100 characters
+      </li>
+    </ol>
+  </div>
+</div>

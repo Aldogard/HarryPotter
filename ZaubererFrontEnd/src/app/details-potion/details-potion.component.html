@@ -1,0 +1,95 @@
+<div class="container">
+  <ng-container *ngIf="potion !== undefined">
+    <h1>Detail View for {{ potion.name }}</h1>
+    <table>
+      <tr>
+        <td>Healing</td>
+        <td>{{ potion.healing }}</td>
+      </tr>
+      <tr>
+        <td>Energy Restorage</td>
+        <td>{{ potion.energyRestorage }}</td>
+      </tr>
+      <tr>
+        <td>Anti Paralysis</td>
+        <td>{{ potion.antiParalysis }}</td>
+      </tr>
+      <tr>
+        <td>Anti Confunded</td>
+        <td>{{ potion.antiConfunded }}</td>
+      </tr>
+      <tr>
+        <td>Max Damage</td>
+        <td>{{ potion.maxDamage }}</td>
+      </tr>
+      <tr>
+        <td>Additional Factor</td>
+        <td>{{ potion.additionalFactor }}</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>{{ potion.descriptionOption }}</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th class="fi">Further Information</th>
+      </tr>
+      <tr *ngIf="potion.additionalFactor >= 1.5">
+        <td>
+          This Potion protects against the effects of Imperio in the following
+          round.
+        </td>
+      </tr>
+      <tr *ngIf="potion.additionalFactor > 1">
+        <td>
+          The addtional Factor increases by the factor
+          {{ potion.additionalFactor }} in the wizard's next turn.
+        </td>
+      </tr>
+      <tr *ngIf="potion.healing > 0">
+        <td>
+          This Potion increases the Healthpoints of the Wizard by
+          {{ potion.healing * 100 }} percent of the initial Healtpoints.
+        </td>
+      </tr>
+      <tr *ngIf="potion.energyRestorage > 0">
+        <td>
+          This Potion increases the Energy of the Wizard by
+          {{ potion.energyRestorage * 100 }} percent of the initial Energy.
+        </td>
+      </tr>
+      <tr *ngIf="potion.antiParalysis">
+        <td>
+          This Potion protects the Wizard against being stunned for the next 3
+          upcoming turns.
+        </td>
+      </tr>
+      <tr *ngIf="potion.antiConfunded">
+        <td>
+          This Potion protects the Wizard against being confounded for the next
+          3 upcoming turns.
+        </td>
+      </tr>
+      <tr *ngIf="potion.unicornBlood">
+        <td>
+          Allows the drinker to stay alive until he or she has fewer than -100
+          healthpoints. However, the usage costs a lot of healthpoints and
+          afterwards, healthpoints and additional factor fluctuate. This potion
+          can only be used by Voldemort and only when the healthpoints are lower
+          then ten.
+        </td>
+      </tr>
+      <tr *ngIf="potion.regeneration">
+        <td>
+          This Potion is full of dark magic and can only be used by Deatheaters.
+          If Voldemort is an attacker and has already fought and died, this potion will
+          resseruct him and he rejoins the fight. Yet, he will have no Potions
+          available and his healtpoints are chosen randomly. Furthermore, the
+          Deatheater will use a lot of healthpoints due to the required
+          sacrifice.
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+</div>

@@ -1,0 +1,253 @@
+<div class="container">
+  <h1 class="header">Compare two wizards</h1>
+  <table class="wizard1">
+    <tr>
+      <th>Please select</th>
+      <th>
+        <div class="buttonA">
+          <select id="wizardUpdateA" (change)="getWizardAByName()">
+            <option value="{{ z.id }}" *ngFor="let z of wizards">
+              {{ z.name }}
+            </option>
+          </select>
+          <button (click)="showHide1(true)">Show</button>
+          <button (click)="showHide1(false)">Hide</button>
+        </div>
+      </th>
+      <th>
+        <div class="buttonB">
+          <select id="wizardUpdateB" (change)="getWizardBByName()">
+            <option value="{{ z.id }}" *ngFor="let z of wizards">
+              {{ z.name }}
+            </option>
+          </select>
+          <button (click)="showHide2(true)">Show</button>
+          <button (click)="showHide2(false)">Hide</button>
+        </div>
+      </th>
+    </tr>
+    <tr>
+      <td>Healthpoints</td>
+      <td>
+        <div *ngIf="wizardChoiceA !== undefined && show1.value">
+          {{ wizardChoiceA.healthPoints }}
+        </div>
+      </td>
+      <td>
+        <div *ngIf="wizardChoiceB !== undefined && show2.value">
+          {{ wizardChoiceB.healthPoints }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Faktor</td>
+      <td>
+        <div *ngIf="wizardChoiceA !== undefined && show1.value">
+          {{ wizardChoiceA.faktor }}
+        </div>
+      </td>
+      <td>
+        <div *ngIf="wizardChoiceB !== undefined && show2.value">
+          {{ wizardChoiceB.faktor }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Energy</td>
+      <td>
+        <div *ngIf="wizardChoiceA !== undefined && show1.value">
+          {{ wizardChoiceA.energy }}
+        </div>
+      </td>
+      <td>
+        <div *ngIf="wizardChoiceB !== undefined && show2.value">
+          {{ wizardChoiceB.energy }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Victories</td>
+      <td>
+        <div *ngIf="wizardChoiceA !== undefined && show1.value">
+          {{ wizardChoiceA.victories }}
+        </div>
+      </td>
+      <td>
+        <div *ngIf="wizardChoiceB !== undefined && show2.value">
+          {{ wizardChoiceB.victories }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Rank</td>
+      <td>
+        <div *ngIf="wizardChoiceA !== undefined && show1.value">
+          {{ wizardChoiceA.rank }}
+        </div>
+      </td>
+      <td>
+        <div *ngIf="wizardChoiceB !== undefined && show2.value">
+          {{ wizardChoiceB.rank }}
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Class</td>
+      <td>
+        <div *ngIf="wizardChoiceA !== undefined && show1.value">
+          {{ wizardChoiceA.klasse }}
+        </div>
+      </td>
+      <td>
+        <div *ngIf="wizardChoiceB !== undefined && show2.value">
+          {{ wizardChoiceB.klasse }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Rating</td>
+      <td>
+        <div *ngIf="wizardChoiceA !== undefined && show1.value">
+          {{ wizardChoiceA.rating }} ({{wizardChoiceA.amount}} Ratings)
+        </div>
+      </td>
+      <td>
+        <div *ngIf="wizardChoiceB !== undefined && show2.value">
+          {{ wizardChoiceB.rating }}  ({{wizardChoiceB.amount}} Ratings)
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div class="wizard1potion">
+    <ng-container *ngIf="wizardChoiceA !== undefined && show1.value">
+      <h3 class="subheader">Potions</h3>
+      <table *ngFor="let potion of wizardChoiceA.potions">
+        <tr>
+          <th>Name</th>
+          <th>{{ potion.name }}</th>
+          <th>
+            <button (click)="gotoPotionDetail(potion.id)">Details</button>
+          </th>
+        </tr>
+        <tr>
+          <td>Storage</td>
+          <td>{{ potion.storage }}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{ potion.descriptionOption }}</td>
+        </tr>
+      </table>
+    </ng-container>
+  </div>
+  <div class="wizard2potion">
+    <ng-container *ngIf="wizardChoiceB !== undefined && show2.value">
+      <h3 class="subheader">Potions</h3>
+      <table *ngFor="let potion of wizardChoiceB.potions">
+        <tr>
+          <th>Name</th>
+          <th>{{ potion.name }}</th>
+          <th>
+            <button (click)="gotoPotionDetail(potion.id)">Details</button>
+          </th>
+        </tr>
+        <tr>
+          <td>Storage</td>
+          <td>{{ potion.storage }}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{ potion.descriptionOption }}</td>
+        </tr>
+      </table>
+    </ng-container>
+  </div>
+  <div class="wizard1attack">
+    <ng-container *ngIf="wizardChoiceA !== undefined && show1.value">
+      <h3 class="subheader">Spells</h3>
+      <table *ngFor="let spell of wizardChoiceA.spells">
+        <tr>
+          <th>Name</th>
+          <th>{{ spell.name }}</th>
+          <th>
+            <button (click)="gotoSpellDetail(spell.id)">Details</button>
+          </th>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{ spell.descriptionOption }}</td>
+        </tr>
+      </table>
+    </ng-container>
+  </div>
+  <div class="wizard2attack">
+    <ng-container *ngIf="wizardChoiceB !== undefined && show2.value">
+      <h3 class="subheader">Spells</h3>
+      <table *ngFor="let attack of wizardChoiceB.spells">
+        <tr>
+          <th>Name</th>
+          <th>{{ attack.name }}</th>
+          <th>
+            <button (click)="gotoSpellDetail(attack.id)">Details</button>
+          </th>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{ attack.descriptionOption }}</td>
+        </tr>
+      </table>
+    </ng-container>
+  </div>
+
+  <div class="comment">
+    <h4>Write a comment:</h4>
+    <label required for="wizardComment2">Choose a wizard:</label>
+    <select id="wizardComment" (change)="getWizardByNameComment()">
+      <option value="{{ z.id }}" *ngFor="let z of wizards">
+        {{ z.name }}
+      </option>
+    </select>
+
+    <form [formGroup]="commentForm" (ngSubmit)="post()">
+      <div>
+        <label for="name">Comment: </label>
+        <input
+          id="name"
+          type="text"
+          formControlName="content"
+          placeholder="Up to 100 Characters"
+        />
+      </div>
+      <button type="submit" [disabled]="!commentForm.valid">Submit</button>
+    </form>
+  </div>
+
+  <div class="rating">
+    <h4>Rate:</h4>
+    <label required for="wizardRating2">Choose a wizard:</label>
+    <select id="wizardIdRating" (change)="getWizardByNameRating()">
+      <option value="{{ z.id }}" *ngFor="let z of wizards">
+        {{ z.name }}
+      </option>
+    </select>
+
+    <form [formGroup]="ratingForm" (ngSubmit)="passOnRating()">
+      <div>
+        <label for="rate">Rating: </label>
+        <a *ngFor="let star of availableStars">
+          <input
+            id="rate_{{ star }}"
+            class="radio"
+            value="{{ star }}"
+            type="radio"
+            name="rate"
+            [formControl]="stars"
+            (change)="getRating()"
+          />{{ star }}
+        </a>
+      </div>
+      <button type="submit" [disabled]="!stars.valid">Submit</button>
+    </form>
+  </div>
+</div>

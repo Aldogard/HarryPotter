@@ -1,0 +1,95 @@
+<div class="container">
+  <ng-container *ngIf="spell !== undefined">
+    <h1>Detail View for {{ spell.name }}</h1>
+    <table>
+      <tr>
+        <td>Energy</td>
+        <td>{{ spell.energyUsage }}</td>
+      </tr>
+      <tr>
+        <td>Max Damage</td>
+        <td>{{ spell.maxDamage }}</td>
+      </tr>
+      <tr>
+        <td>Paralysis</td>
+        <td>{{ spell.stunned }}</td>
+      </tr>
+      <tr>
+        <td>Confunded</td>
+        <td>{{ spell.confunded }}</td>
+      </tr>
+      <tr>
+        <td>Imperio</td>
+        <td>{{ spell.imperio }}</td>
+      </tr>
+      <tr>
+        <td>Protego</td>
+        <td>{{ spell.protego }}</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>{{ spell.descriptionOption }}</td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <th class="fi">Further Information</th>
+      </tr>
+      <tr
+        *ngIf="
+          spell.imperio || spell.crucio || spell.name === 'Avada Kedavra'
+        "
+      >
+        <td>
+          Being one of the Unforgivable Curses, without explicit autharization
+          by the magic authorities, the use of this curse on another human
+          results in capital punishment or life sentence in Azkaban.
+        </td>
+      </tr>
+      <tr *ngIf="spell.imperio">
+        <td>
+          This Attack controls the opposing wizard. If this wizard has any
+          fellow figthers, he or she will attack one of them.
+        </td>
+      </tr>
+      <tr *ngIf="spell.name === 'Avada Kedavra'">
+        <td>
+          This Attack is extremly powerful and can kill an opponent with just on
+          strike. However, it requires a lot of energy and reduces the wizard's
+          options in the following turns.
+        </td>
+      </tr>
+      <tr *ngIf="spell.stunned">
+        <td>This Attack can stun the opposing wizard for one turn.</td>
+      </tr>
+      <tr *ngIf="spell.confunded">
+        <td>This Attack can confound the opposing wizard for one turn.</td>
+      </tr>
+      <tr *ngIf="spell.protego">
+        <td>
+          This Attack seems very lackluster at first. Yet, it is one of the most
+          powerful ones. Protego can reverse mosts spell cast by the opponent
+          during the next turn, resulting in an opponent's loss of healtpoints.
+          Exceptions are the Fiendfyre and Avada Kedavra! 
+          <!-- Muss noch implementiert werden --> 
+        </td>
+      </tr>
+      <tr *ngIf="spell.fiendfyre">
+        <td>
+          This is an extremly powerful Attack full of dark magic. It can kill
+          the opponent at once. In spite of that, this Attack is very dangerous
+          for the casting wizard as well. The Anti Fiendfyre spell must be used
+          the following round. If the wizards fails to do so, he or she will be
+          killed by the out of controll Fiendfyre. So stay vigilant and keep
+          your remaining energy in mind.
+        </td>
+      </tr>
+      <tr *ngIf="spell.name === 'Anti Fiendfyre'">
+        <td>
+          This Attack has no use, but to end Fiendfyre. If not stopped
+          immediately, the casting wizard will die the following round.
+        </td>
+      </tr>
+    </table>
+  </ng-container>
+</div>

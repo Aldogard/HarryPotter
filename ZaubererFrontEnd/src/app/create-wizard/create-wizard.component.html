@@ -1,0 +1,62 @@
+<div>
+  <h3>Create a new Wizard</h3>
+  <label required for="zauberer">Choose a wizard type:</label>
+  <select [formControl]="createWizardNr">
+    <option *ngFor="let zauberer of wizardType">{{ zauberer }}</option>
+  </select>
+  <form [formGroup]="wizardForm" (ngSubmit)="submit()">
+    <div>
+      <label for="name">
+        <input
+          id="name"
+          type="text"
+          formControlName="name"
+          placeholder="Name"
+        />
+      </label>
+    </div>
+    <div>
+      <label for="hp">
+        <input
+          id="hp"
+          type="number"
+          formControlName="healthPoints"
+          placeholder="Healthpoints"
+        />
+      </label>
+    </div>
+    <div>
+      <label for="hp">
+        <input
+          id="hp"
+          type="text"
+          formControlName="description"
+          placeholder="Description"
+        />
+      </label>
+    </div>
+    <button
+      type="submit"
+      [disabled]="!wizardForm.valid || !createWizardNr.valid"
+    >
+      Submit
+    </button>
+    <p *ngIf="show">A wizard was created</p>
+  </form>
+
+  <div>
+    <h4>Rules for the Creation of a wizard:</h4>
+    <ol>
+      <li>There can be only one Voldemort</li>
+      <li>There can be only one Dumbledore</li>
+      <li>Every name can be used only once</li>
+      <li>A wizard type must be chosen</li>
+      <li>The name has to be at least 3 characters long</li>
+      <li>Healthpoints cannot be smaller than 1</li>
+      <li>Healthpoints cannot be larger than 100</li>
+      <li>
+        A description must be written, but it cannot extend 100 characters
+      </li>
+    </ol>
+  </div>
+</div>

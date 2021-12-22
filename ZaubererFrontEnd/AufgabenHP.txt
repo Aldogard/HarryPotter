@@ -1,0 +1,57 @@
+Backend --> Erledigt
+	Automatische Erstellung im Backend --> Kampf im Frontend
+	Update von Attributen --> Nicht notwendig, da Kampf im Frontend
+	Rating --> bleibt so wie es ist
+	Weitere Häuser --> Erledigt
+	Weitere Attacks und Potion --> Erledigt
+	Voldemort updaten --> Erledigt
+
+
+Frontend --> Erledigt
+	Vergleich (Yikes) --> Erstmal wieder auf zwei Tabellen umgestellt
+	Automatische Erstellung im Frontend? -->  Ja
+	ngmodel für update --> Erledigt
+	Kampf im Backend oder Frontend --> Frontend --> Erledigt
+
+Weitere Ideen: --> Erledigt
+	Einhornblut lässt negatives Leben zu --> Erledigt
+	Voldemort kann mit dem Regeneration Potion wiederbelebt werden --> Erledigt
+	Weitere Zauber und Tränke --> siehe intellij
+	Verschiedene Umgebungen
+	Erfahrung? --> Erledigt --> Siege werden gespeichert
+	Delete Verstecken --> Erledigt
+	Tests!
+	Weitere Filter --> Erledigt --> Filter für jedes Haus
+	Beschreibung für Zaubertränke und Zauber --> Erledigt
+	Beschreibung für Zauberer --> Erledigt --> Müssen beim Erstellen geschrieben werden
+	Zusätzlich Attribute anzeigen
+	Zusätzliche Effekte als Attribut oder über TS mittels Namen aufrufen? Eindeutige Lösung --> Erledigt
+
+Weitere Aufgaben:
+	Tests! --> ab 27.12
+	Design! --> ab 03.01.
+	Weitere Zauber implementieren --> Siehe intellij
+	Weitere Attribute anzeigen --> Erledigt
+	Spell anstatt Attack im FE und BE --> Erledigt
+	Umgebungen --> Erledigt
+	Effekte für Umgebungen
+	Verlinkungen sichtbar(er) machen
+	HP Wiki erwähnen
+	Erfahrung für Spells
+	
+	
+
+
+Zu einem späteren Zeitpunkt erledigen:
+	Zauberer kann nach eigenem Angriff verlieren --> Erledigt
+	Attack und Potion Details im gleiche Tab --> Vorherige Daten speichern --> Potenziell  sehr schwer!
+	Weitere Zauber und Tränke
+	Weitere Aktionen bspw. Tiere agieren lassen. Basilisk, Phoenix etc.
+	Anzahl von Verteidigern und Angreifern variabel halten --> Potenziell sehr aufwendig
+
+
+
+
+
+
+	

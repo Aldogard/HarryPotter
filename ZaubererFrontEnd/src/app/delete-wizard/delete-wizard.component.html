@@ -1,0 +1,47 @@
+<div>
+  <h3>Delete</h3>
+</div>
+<div>
+  <p>
+    It is only possible to delete a wizard if there are still more than 5
+    wizards!
+  </p>
+  <p>
+    Currently there are {{ wizards.length }} wizards.
+    <a *ngIf="wizards.length <= 5"> Deleting is not available.</a>
+  </p>
+  <div>
+    <label required for="wizardUpdate2">Choose a wizard:</label>
+    <select id="wizardUpdate" (change)="getWizardByName()">
+      <option value="{{ w.id }}" *ngFor="let w of wizards">
+        {{ w.name }}
+      </option>
+    </select>
+
+    <!-- <label required for="zaubererDetail">Choose a wizard:</label>
+  <select id="zaubererDetail" [formControl]="choice2">
+    <option *ngFor="let z of zauberer">{{ z.id }}</option>
+  </select> -->
+
+    <button (click)="deleteZaubererById()" [disabled]="wizards.length < 6">
+      Confirm
+    </button>
+    <div *ngIf="!show">
+      <p>Caution: A deleted wizard cannot be restored!</p>
+    </div>
+    <p *ngIf="show">Der Zauberer wurde gelöscht</p>
+  </div>
+</div>
+<div>
+  <h3>Delete all wizards</h3>
+  <label required for="pin"></label>
+  <input
+    id="pin"
+    type="number"
+    [formControl]="accessNumber"
+    placeholder="Please type in Access Nr"
+  />
+  <button (click)="deleteAll()" [disabled]="!accessNumber.valid">
+    Confirm
+  </button>
+</div>
