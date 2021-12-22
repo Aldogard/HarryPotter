@@ -62,10 +62,11 @@ public class Spell extends Options {
             Boolean protego,
             Boolean fiendfyre,
             Boolean antiFiendfyre,
+            Integer requiredExperience,
             Wizard wizard,
             String description) {
 
-        super(name, maxDamage, description);
+        super(name, maxDamage, description, requiredExperience);
         this.energyUsage = BigDecimal.valueOf(energyUsage);
         this.stunned = stunned;
         this.confunded = confunded;

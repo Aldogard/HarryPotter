@@ -1,7 +1,7 @@
 package com.example.harrypotter.entity.wizards;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 

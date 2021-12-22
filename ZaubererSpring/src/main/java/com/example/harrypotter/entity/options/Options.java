@@ -27,14 +27,18 @@ public abstract class Options {
     @Column(name = "description_option")
     private String descriptionOption;
 
+    @Column(name = "required_experience")
+    private Integer requiredExperience;
+
     @Column(name = "options_list")
     private static List<OptionEnum> optionsList = new ArrayList<>();
 
 
-    public Options(String name,  Double maxDamage, String description) {
+    public Options(String name,  Double maxDamage, String description, Integer requiredExperience) {
         this.name = name;
         this.maxDamage = BigDecimal.valueOf(maxDamage);
         this.descriptionOption = description;
+        this.requiredExperience = requiredExperience;
 
     }
 

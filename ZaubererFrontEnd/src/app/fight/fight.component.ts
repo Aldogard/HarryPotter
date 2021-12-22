@@ -216,4 +216,14 @@ export class FightComponent implements OnInit {
     this.extraService.redirectTo('rules');
   }
 
+  gotoDetails(){
+    window.open('detail');
+  }
+
+  gotoWiki(){
+    window.open('https://harrypotter.fandom.com/wiki/Main_Page');
+  }
+
+
+
 }

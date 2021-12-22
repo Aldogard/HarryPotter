@@ -9,6 +9,9 @@
       <tr *ngFor="let z of wizardsResults">
         <td>{{ z.name }}</td>
       </tr>
+      <tr *ngFor="let z of wizardsResults">
+        {{ z | json}}
+      </tr>
     </table>
   </div>
   <p class="noResults" *ngIf="wizardsResults.length === 0">

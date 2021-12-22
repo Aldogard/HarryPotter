@@ -3,3 +3,11 @@
     text-decoration: none;
     color: black;
   }
+
+  .link:hover{
+    /* margin: 1px;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 1px 10%;
+    list-style-type: none; */
+    cursor: pointer;
+  }

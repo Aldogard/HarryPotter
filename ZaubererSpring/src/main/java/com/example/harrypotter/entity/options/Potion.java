@@ -56,10 +56,11 @@ public class Potion extends Options{
             Boolean unicornBlood,
             Double maxDamage,
             Double additionalFactor,
+            Integer requiredExperience,
             Wizard wizard,
             String description) {
 
-        super(name, maxDamage, description);
+        super(name, maxDamage, description, requiredExperience);
         this.storage = storage;
         this.healing = BigDecimal.valueOf(healing);
         this.energyRestorage = BigDecimal.valueOf(er);

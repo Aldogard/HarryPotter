@@ -10,7 +10,8 @@ export interface HpPotion {
     regeneration: boolean,
     unicornBlood: boolean,
     maxDamage: number,
-    additionalFactor: number
+    additionalFactor: number,
+    requiredExperience: number,
 
     
 }

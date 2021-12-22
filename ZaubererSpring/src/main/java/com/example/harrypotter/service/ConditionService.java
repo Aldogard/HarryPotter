@@ -13,7 +13,7 @@ public class ConditionService {
 
     public void addConditions(Wizard zauberer){
         Condition confunded = new Condition(zauberer, "Confunded");
-        Condition stunned = new Condition(zauberer, "Confunded");
+        Condition stunned = new Condition(zauberer, "Stunned");
 
         conditionRepo.save(confunded);
         conditionRepo.save(stunned);

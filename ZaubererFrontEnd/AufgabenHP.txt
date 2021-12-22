@@ -25,7 +25,8 @@ Weitere Ideen: --> Erledigt
 	Beschreibung für Zaubertränke und Zauber --> Erledigt
 	Beschreibung für Zauberer --> Erledigt --> Müssen beim Erstellen geschrieben werden
 	Zusätzlich Attribute anzeigen
-	Zusätzliche Effekte als Attribut oder über TS mittels Namen aufrufen? Eindeutige Lösung --> Erledigt
+	Zusätzliche Effekte als Attribut oder über TS mittels Namen aufrufen? Eindeutige Lösung 
+	--> Erledigt
 
 Weitere Aufgaben:
 	Tests! --> ab 27.12
@@ -35,19 +36,24 @@ Weitere Aufgaben:
 	Spell anstatt Attack im FE und BE --> Erledigt
 	Umgebungen --> Erledigt
 	Effekte für Umgebungen
-	Verlinkungen sichtbar(er) machen
-	HP Wiki erwähnen
+	Verlinkungen sichtbar(er) machen --> Pointer Curser erscheint
+	HP Wiki erwähnen bei Spells und Attacks
 	Erfahrung für Spells
+	Was passiert mit den Suchergebnissen --> Detailansicht? 
+	--> Detail View und Overview sinnvoll kombinieren
 	
 	
 
 
 Zu einem späteren Zeitpunkt erledigen:
 	Zauberer kann nach eigenem Angriff verlieren --> Erledigt
-	Attack und Potion Details im gleiche Tab --> Vorherige Daten speichern --> Potenziell  sehr schwer!
+	Attack und Potion Details im gleiche Tab --> Vorherige Daten speichern 
+	--> Potenziell  sehr schwer! --> Eventuell mit Array in ExtraService und zurück Button
 	Weitere Zauber und Tränke
 	Weitere Aktionen bspw. Tiere agieren lassen. Basilisk, Phoenix etc.
 	Anzahl von Verteidigern und Angreifern variabel halten --> Potenziell sehr aufwendig
+	Lösung für Ranks
+
 
 
 

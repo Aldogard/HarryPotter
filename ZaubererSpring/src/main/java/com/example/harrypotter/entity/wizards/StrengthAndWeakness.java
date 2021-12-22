@@ -10,8 +10,8 @@ import javax.persistence.*;
 @Entity(name = "sw")
 public class StrengthAndWeakness {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "house")

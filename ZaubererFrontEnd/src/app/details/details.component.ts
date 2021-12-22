@@ -175,4 +175,11 @@ export class DetailsComponent implements OnInit {
     window.open(url);
     //this.zusatzService.redirectTo('attackdetail');
   }
+
+  gotoRanks() {
+    window.open('ranks');
+    //this.zusatzService.redirectTo('attackdetail');
+  }
+
+
 }

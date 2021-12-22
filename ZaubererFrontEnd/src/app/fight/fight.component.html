@@ -39,7 +39,7 @@
     "
   >
     <div class="buttonA choose1">
-      <br/>
+      <br />
       <label required for="wizardUpdate">Choose the Defender: </label>
       <select id="wizardUpdateA" (change)="getWizardAByName()">
         <option value="{{ z.id }}" *ngFor="let z of zauberer">
@@ -48,7 +48,7 @@
       </select>
     </div>
     <div class="buttonB choose2">
-      <br/>
+      <br />
       <label required for="wizardUpdate">Choose an Attacker:</label>
       <select id="wizardUpdateB" (change)="getWizardBByName()">
         <option value="{{ z.id }}" *ngFor="let z of zauberer">
@@ -83,14 +83,16 @@
     <br />
     Note: Each wizard can compete only once!
     <a
-      ><br />If you unsure which wizard to choose, you can examine all the
-      wizards in the
-      <a href="detail" class="link">Detail View</a>
-      <br />Furthermore, the
-      <a href="https://harrypotter.fandom.com/wiki/Main_Page" class="link"
-        >Harry Potter Wiki</a
+      ><br />
+      <a (click)="gotoDetails()" class="link"
+        >If you unsure which wizard to choose, you can examine all the wizards
+        in the Detail View.</a
       >
-      is an excellent source for even more information.
+      <br />
+      <a (click)="gotoWiki()" class="link"
+        >Furthermore, theHarry Potter Wiki is an excellent source for even more
+        information.</a
+      >
     </a>
   </div>
 

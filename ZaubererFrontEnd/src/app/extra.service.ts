@@ -19,7 +19,7 @@ export class ExtraService {
     'Potionsmaster',
   ];
 
-  options: string[] = ['Spell', 'Potion'];
+  options: string[] = ['Spell', 'Potion', 'Animal'];
 
   environment: string[] = [
     'Main Gate',
@@ -40,13 +40,13 @@ export class ExtraService {
     'Gilderoy Lockhart',
     'Triwizard Champion',
     'More OWLs than Hermione',
+    'Exocitic Symbol Analyst',
     'Junior Assisstent to the Minister of Magic',
     'British Youth Representative to the Wizengamot',
-    'Exocitic Symbol Analyst',
     'Wandmaker',
     'Auror',
-    'Professor',
-    'Headmaster',
+    'Professor', // Eventuell nochmal ändern, um Verwirrung mit der Klasse zu vermeiden
+    'Headmaster', // Eventuell nochmal ändern, um Verwirrung mit der Klasse zu vermeiden
     'Chief Warlock',
     'Most Dangerous Dark Wizard of All Time',
     'Master of Death',
@@ -67,6 +67,6 @@ export class ExtraService {
       this.router
         .navigateByUrl('/', { skipLocationChange: true })
         .then(() => this.router.navigate([url]));
-    }, 2000);
+    }, 500);
   }
 }

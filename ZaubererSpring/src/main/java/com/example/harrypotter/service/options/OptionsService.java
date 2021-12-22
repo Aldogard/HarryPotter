@@ -29,6 +29,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                0,
                 wizard,
                 "Forces whatever an opponent is holding to fly out of their hand. " +
                         "It was considered to be Harry Potter's signature spell."));
@@ -46,6 +47,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                5,
                 wizard,
                 "Stuns the target, rendering them unconscious."
         ));
@@ -63,6 +65,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                0,
                 wizard,
                 "Hoists people up into the air by their ankle. Created by Severus Snape."));
     }
@@ -79,6 +82,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                0,
                 wizard,
                 "Removes the victim's hair."));
     }
@@ -95,6 +99,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                0,
                 wizard,
                 "Immobilises and stops the actions of the target. " +
                         "It works both on living and inanimate things."));
@@ -112,6 +117,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                10,
                 wizard,
                 "Lacerates the target, as if they have been \"slashed by a sword.\" " +
                         "Subsequently, the target can easily bleed to death from the wounds. " +
@@ -130,6 +136,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                3,
                 wizard,
                 "Causes the victim to become confused and befuddled."));
     }
@@ -146,6 +153,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                25,
                 wizard,
                 "Causes instantaneous death. It is accompanied by a flash of green light and a rushing noise. " +
                         "There is no known Counter-curse that can protect the victim from dying, " +
@@ -164,6 +172,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                15,
                 wizard,
                 "Places the victim completely under the caster's control and it " +
                         "becomes very suggestible to the commands of the caster. " +
@@ -183,6 +192,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                20,
                 wizard,
                 "Inflicts intense pain on the recipient of the curse. " +
                         "It cannot be cast successfully by a person who is doing so out of pure spite or anger; " +
@@ -201,6 +211,7 @@ public class OptionsService {
                 true,
                 false,
                 false,
+                5,
                 wizard,
                 "Invisible shield that reflects spells and blocks physical entities."));
     }
@@ -217,6 +228,7 @@ public class OptionsService {
                 false,
                 true,
                 false,
+                20,
                 wizard,
                 "Unleashes cursed fire that actively seek out " +
                         "living targets and burn anything in its path. " +
@@ -236,6 +248,7 @@ public class OptionsService {
                 false,
                 false,
                 true,
+                25,
                 wizard,
                 "Only possibility to end the Fiendfyre. " +
                         "If not used immediately after casting the Fiendfyre, the casting wizard will be killed by it."));
@@ -253,6 +266,7 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                15,
                 wizard,
                 "Produces a ring of fire from the wand."
         ));
@@ -270,15 +284,11 @@ public class OptionsService {
                 false,
                 false,
                 false,
+                15,
                 wizard,
                 "Brings animates inanimate targets"
         ));
     }
-
-
-
-
-
 
 
     // Refilling Charm --> Kann einen Trank wiederherstellen
@@ -299,6 +309,7 @@ public class OptionsService {
                 false,
                 0.0,
                 1.0,
+                0,
                 wizard,
                 "A potion that heals paralysis."));
     }
@@ -316,6 +327,7 @@ public class OptionsService {
                 false,
                 0.0,
                 1.5,
+                5,
                 wizard,
                 "A potion that apparently increases the taker's brain power."));
     }
@@ -332,6 +344,7 @@ public class OptionsService {
                 false,
                 10.0,
                 1.0,
+                5,
                 wizard,
                 "A very volatile potion, and when completed, can be used to create explosions."));
     }
@@ -348,6 +361,7 @@ public class OptionsService {
                 false,
                 0.0,
                 1.0,
+                0,
                 wizard,
                 "This potion was extremely useful when duelling Dark Wizards or dark creatures " +
                         "in Fortresses, making it an essential supply for all Aurors."));
@@ -365,6 +379,7 @@ public class OptionsService {
                 false,
                 0.0,
                 1.0,
+                0,
                 wizard,
                 "A potion that is presumed to give the taker an energy boost."));
     }
@@ -381,6 +396,7 @@ public class OptionsService {
                 true,
                 0.0,
                 1.0,
+                10,
                 wizard,
                 "The blood of a unicorn could be drunk in order to keep a person alive. " +
                         "However, the act of slaying a unicorn would cause the drinker to suffer a cursed life."
@@ -400,6 +416,7 @@ public class OptionsService {
                 false,
                 0.0,
                 1.0,
+                15,
                 wizard,
                 "Helps restore non-corporeal wizards to their bodies. " +
                         "Can only be used by Deatheaters to bring Voldemort back to life."
@@ -418,6 +435,7 @@ public class OptionsService {
                 false,
                 0.0,
                 1.0,
+                3,
                 wizard,
                 "Presumably enhances the clarity of thought of the drinker."
         ));
@@ -435,6 +453,7 @@ public class OptionsService {
                 false,
                 0.0,
                 1.25,
+                0,
                 wizard,
                 "Boosts the spell power of the drinker."));
     }

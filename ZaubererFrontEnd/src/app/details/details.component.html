@@ -82,12 +82,12 @@
       <td>Rank</td>
       <td>
         <div *ngIf="wizardChoiceA !== undefined && show1.value">
-          {{ wizardChoiceA.rank }}
+          <a (click)="gotoRanks()" class="link"> {{ wizardChoiceA.rank }}</a>
         </div>
       </td>
       <td>
         <div *ngIf="wizardChoiceB !== undefined && show2.value">
-          {{ wizardChoiceB.rank }}
+          <a (click)="gotoRanks()" class="link"> {{ wizardChoiceB.rank }}</a>
         </div>
       </td>
     </tr>

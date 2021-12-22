@@ -25,6 +25,6 @@ export class RanksComponent implements OnInit {
   }
 
   round(rank: number){
-    return Math.floor(Math.pow(rank, 2));
+    return Math.floor(rank * 5);
   }
 }

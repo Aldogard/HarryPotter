@@ -11,4 +11,5 @@ export interface HpSpell {
     protego: boolean,
     fiendfyre: boolean,
     antiFiendfyre: boolean,
+    requiredExperience: number,
 }
