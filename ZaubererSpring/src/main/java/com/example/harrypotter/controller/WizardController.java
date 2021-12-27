@@ -5,7 +5,7 @@ import com.example.harrypotter.repo.options.OptionsRepo;
 import com.example.harrypotter.repo.wizards.ConditionRepo;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.example.harrypotter.service.options.OptionsService;
-import com.example.harrypotter.service.zauberer.*;
+import com.example.harrypotter.service.wizards.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;

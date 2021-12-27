@@ -41,6 +41,7 @@ Weitere Aufgaben:
 	Erfahrung für Spells
 	Was passiert mit den Suchergebnissen --> Detailansicht? 
 	--> Detail View und Overview sinnvoll kombinieren
+	Kombination von Fiendfyre und stunned lösen
 	
 	
 

@@ -75,6 +75,7 @@ export class BattleComponent implements OnInit {
   executeAttack(attackWizard: Hptype, defendWizard: Hptype, defender: boolean) {
     this.showStart.next(false);
     attackWizard.energy = attackWizard.energy + 3;
+    this.fiendfyreEffects(attackWizard);
     if (!attackWizard.conditions[1].condition) {
       attackWizard.energy = attackWizard.energy - this.spell.value.energyUsage;
       this.spellEffects(defendWizard, attackWizard);
@@ -114,6 +115,7 @@ export class BattleComponent implements OnInit {
     let damage = 0;
     this.showStart.next(false);
     attackWizard.energy = attackWizard.energy + 3;
+    this.fiendfyreEffects(attackWizard);
     if (!attackWizard.conditions[1].condition) {
       this.potionEffects(attackWizard, defender);
 
@@ -308,13 +310,6 @@ export class BattleComponent implements OnInit {
       attackWizard.protego = true;
     }
 
-    if (attackWizard.fiendfyre) {
-      if (this.spell.value.name === 'Anti Fiendfyre') {
-        attackWizard.fiendfyre = false;
-      } else {
-        attackWizard.healthPoints = -100;
-      }
-    }
   }
 
   checkIfDead() {
@@ -425,5 +420,15 @@ export class BattleComponent implements OnInit {
   resetAFandProtego(attackWizard: Hptype, defendWizard: Hptype) {
     attackWizard.additionalFactor = 1;
     defendWizard.protego = false;
+  }
+
+  fiendfyreEffects(attackWizard: Hptype){
+    if (attackWizard.fiendfyre) {
+      if (this.spell.value.name === 'Anti Fiendfyre') {
+        attackWizard.fiendfyre = false;
+      } else {
+        attackWizard.healthPoints = -100;
+      }
+    }
   }
 }

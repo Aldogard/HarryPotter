@@ -1,4 +1,4 @@
-package com.example.harrypotter.service.zauberer;
+package com.example.harrypotter.service.wizards;
 
 import com.example.harrypotter.entity.wizards.PotionsMaster;
 import com.example.harrypotter.entity.wizards.Wizard;
