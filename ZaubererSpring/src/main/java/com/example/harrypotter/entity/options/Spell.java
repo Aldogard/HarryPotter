@@ -39,7 +39,7 @@ public class Spell extends Options {
     private Boolean fiendfyre;
 
     @Column(name = "anti_fiendfyre")
-    private Boolean artiFiendfyre;
+    private Boolean antiFiendfyre;
 
     @JsonBackReference
     @ManyToOne
@@ -74,7 +74,7 @@ public class Spell extends Options {
         this.crucio = crucio;
         this.protego = protego;
         this.fiendfyre = fiendfyre;
-        this.artiFiendfyre = antiFiendfyre;
+        this.antiFiendfyre = antiFiendfyre;
         this.wizard = wizard;
     }
 

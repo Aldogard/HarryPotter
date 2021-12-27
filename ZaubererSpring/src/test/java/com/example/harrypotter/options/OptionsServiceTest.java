@@ -15,9 +15,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@Slf4j
 @SpringBootTest
-@AllArgsConstructor
 public class OptionsServiceTest {
 
 
@@ -25,11 +23,7 @@ public class OptionsServiceTest {
     private OptionsRepo optionsRepo;
 
     @Test
-    @Transactional
     public void testOptionsService(){
-        List<Options> alleOptions = optionsRepo.findAll();
-        assertNotEquals(0, alleOptions.size());
-        assertNotNull(alleOptions);
 
     }
 }

@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Data
 @Entity(name = "gryffindor")
 @DiscriminatorValue("gryffindor")
-public class Gryffindor extends Wizard {
+public class  Gryffindor extends Wizard {
 
     public Gryffindor(String name, BigDecimal healthPoints, String description) {
         super(name, healthPoints, description);

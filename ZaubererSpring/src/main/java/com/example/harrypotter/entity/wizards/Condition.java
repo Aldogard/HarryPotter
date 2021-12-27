@@ -27,9 +27,9 @@ public class Condition {
 
     
 
-    public Condition(Wizard wizard, String condition){
+    public Condition(Wizard wizard, String name){
         this.wizard = wizard;
-        this.name = condition;
+        this.name = name;
         this.condition = false;
     }
 

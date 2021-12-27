@@ -135,10 +135,5 @@ public abstract class Wizard {
 
     }
 
-    public void setHealthPoints(BigDecimal healthPoints){
-        this.healthPoints = healthPoints;
-        this.internHealthPoints = healthPoints;
-    }
-
 }
 
