@@ -4,7 +4,9 @@ import com.example.harrypotter.entity.wizards.Hufflepuff;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.example.harrypotter.service.ConditionService;
-import com.example.harrypotter.service.options.OptionsService;
+import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.PotionService;
+import com.example.harrypotter.service.options.SpellService;
 import com.example.harrypotter.service.strengthAndWeaknessService.StrengthAndWeaknessService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +18,9 @@ import org.springframework.stereotype.Service;
 public class HufflepuffService {
 
     private WizardRepo wizardRepo;
-    private OptionsService optionsService;
+    private PotionService potionService;
+    private SpellService spellService;
+    private AnimalService animalService;
     private ConditionService conditionService;
     private WizardService wizardService;
     private StrengthAndWeaknessService sawService;
@@ -31,17 +35,19 @@ public class HufflepuffService {
         wizardRepo.save(hp);
         conditionService.addConditions(hp);
 
-        optionsService.createExpelliarmus(hp);
-        optionsService.createLevicorpus(hp);
-        optionsService.createCalvorio(hp);
-        optionsService.createImmobilus(hp);
-        optionsService.createConfundo(hp);
-        optionsService.createProtego(hp);
+        spellService.createExpelliarmus(hp);
+        spellService.createLevicorpus(hp);
+        spellService.createCalvorio(hp);
+        spellService.createImmobilus(hp);
+        spellService.createConfundo(hp);
+        spellService.createProtego(hp);
 
-        optionsService.createBrainElixir(hp,1);
-        optionsService.createAntiParalysis(hp, 3);
-        optionsService.createHealingPotion(hp, 1);
-        optionsService.createExtimuloPotion(hp, 3);
+        potionService.createBrainElixir(hp,1);
+        potionService.createAntiParalysis(hp, 3);
+        potionService.createHealingPotion(hp, 1);
+        potionService.createExtimuloPotion(hp, 3);
+
+        animalService.createFlobberworm(hp);
 
         sawService.weaknessDumbledore(hp);
         sawService.weaknessVoldmort(hp);

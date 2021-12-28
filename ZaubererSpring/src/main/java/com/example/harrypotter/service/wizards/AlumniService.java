@@ -4,7 +4,9 @@ import com.example.harrypotter.entity.wizards.Alumni;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.example.harrypotter.service.ConditionService;
-import com.example.harrypotter.service.options.OptionsService;
+import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.PotionService;
+import com.example.harrypotter.service.options.SpellService;
 import com.example.harrypotter.service.strengthAndWeaknessService.StrengthAndWeaknessService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +18,9 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class AlumniService {
     private WizardRepo wizardRepo;
-    private OptionsService optionsService;
+    private PotionService potionService;
+    private SpellService spellService;
+    private AnimalService animalService;
     private ConditionService conditionService;
     private StrengthAndWeaknessService sawService;
     private WizardService wizardService;
@@ -30,21 +34,22 @@ public class AlumniService {
         wizardRepo.save(a);
         conditionService.addConditions(a);
 
-        optionsService.createExpelliarmus(a);
-        optionsService.createLevicorpus(a);
-        optionsService.createCalvorio(a);
-        optionsService.createImmobilus(a);
-        optionsService.createSectumssempra(a);
-        optionsService.createImperio(a);
-        optionsService.createProtego(a);
+        spellService.createExpelliarmus(a);
+        spellService.createLevicorpus(a);
+        spellService.createCalvorio(a);
+        spellService.createImmobilus(a);
+        spellService.createSectumssempra(a);
+        spellService.createImperio(a);
+        spellService.createProtego(a);
 
+        potionService.createAntiParalysis(a, 1);
+        potionService.createExplodingPotion(a, 2);
+        potionService.createRegenerationPotion(a, 1);
+        potionService.createHealingPotion(a, 1);
+        potionService.createWitSharpeningPotion(a, 1);
+        potionService.createExtimuloPotion(a, 3);
 
-        optionsService.createAntiParalysis(a, 1);
-        optionsService.createExplodingPotion(a, 2);
-        optionsService.createRegenerationPotion(a, 1);
-        optionsService.createHealingPotion(a, 1);
-        optionsService.createWitSharpeningPotion(a, 1);
-        optionsService.createExtimuloPotion(a, 3);
+        animalService.createFlobberworm(a);
 
         sawService.weaknessDumbledore(a);
         sawService.weaknessVoldmort(a);

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { HarrypotterService } from '../harrypotter.service';
-import { Hptype } from '../hptype';
+import { HpWizard } from '../hp-wizard';
 import { ExtraService } from '../extra.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { ExtraService } from '../extra.service';
 })
 export class DeleteWizardComponent implements OnInit {
   show: boolean = false;
-  wizards: Hptype[] = [];
+  wizards: HpWizard[] = [];
   choice2: FormControl = new FormControl(0);
 
   pin: number = 0;

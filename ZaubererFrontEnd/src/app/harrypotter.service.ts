@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HpSpell } from './hp-spell';
 import { HpPotion } from './hp-potion';
-import { Hptype } from './hptype';
+import { HpWizard } from './hp-wizard';
 const url: string = 'http://localhost:8080/wizard';
 
 @Injectable({
@@ -12,25 +12,25 @@ const url: string = 'http://localhost:8080/wizard';
 export class HarrypotterService {
   constructor(private http: HttpClient) {}
 
-  getWizards(): Observable<Hptype[]> {
-    return this.http.get<Hptype[]>(url);
+  getWizards(): Observable<HpWizard[]> {
+    return this.http.get<HpWizard[]>(url);
   }
 
-  getWizardById(id: number): Observable<Hptype> {
+  getWizardById(id: number): Observable<HpWizard> {
     const urlId: string = url + '/' + id;
-    return this.http.get<Hptype>(urlId);
+    return this.http.get<HpWizard>(urlId);
   }
 
-  getWizardByName(name: string): Observable<Hptype> {
+  getWizardByName(name: string): Observable<HpWizard> {
     const urlName: string = url + '/name/' + name;
-    return this.http.get<Hptype>(urlName);
+    return this.http.get<HpWizard>(urlName);
   }
 
-  postWizard(body: Hptype, house: string){
+  postWizard(body: HpWizard, house: string){
     const stringLowercase = house.charAt(0).toLowerCase() + house.slice(1);
     const urlWizard = url + '/' + stringLowercase;
     console.log(urlWizard);
-    return this.http.post<Hptype>(urlWizard, body);
+    return this.http.post<HpWizard>(urlWizard, body);
   }
 
   deleteWizard(id: number): Observable<unknown> {
@@ -38,9 +38,9 @@ export class HarrypotterService {
     return this.http.delete(urlId);
   }
 
-  updateWizard(body: Hptype, id: number) {
+  updateWizard(body: HpWizard, id: number) {
     const urlUpdate = url + '/' + id 
-    return this.http.put<Hptype>(urlUpdate, body);
+    return this.http.put<HpWizard>(urlUpdate, body);
   }
 
   deleteAllWizards() {
@@ -63,51 +63,51 @@ export class HarrypotterService {
     return this.http.get(urlQuote, { responseType: 'text' });
   }
 
-  postRating(body: Hptype, id: number) {
+  postRating(body: HpWizard, id: number) {
     const urlRating = url + '/rating/' + id;
-    return this.http.put<Hptype>(urlRating, body);
+    return this.http.put<HpWizard>(urlRating, body);
   }
 
   getWizardSearch(search: string) {
     let urlSearch = url + '/?name=' + search;
-    let answer = this.http.get<Hptype[]>(urlSearch);
+    let answer = this.http.get<HpWizard[]>(urlSearch);
     return answer;
   }
 
   getWizardSearchKlasse(search: string) {
     let urlSearch = url + '/?klasse=' + search;
-    let answer = this.http.get<Hptype[]>(urlSearch);
+    let answer = this.http.get<HpWizard[]>(urlSearch);
     return answer;
   }
 
 
   getHealthpointsMax(max: number) {
     let urlSearch = url + '/hp/?max=' + max;
-    let answer = this.http.get<Hptype[]>(urlSearch);
+    let answer = this.http.get<HpWizard[]>(urlSearch);
     return answer;
   }
 
 
   getHealthpointsMin(min: number) {
     let urlSearch = url + '/hp/?min=' + min;
-    let answer = this.http.get<Hptype[]>(urlSearch);
+    let answer = this.http.get<HpWizard[]>(urlSearch);
     return answer;
   }
 
   getVictoriesMin(min: number){
     let urlSearch = url + '/victory/?victories=' + min;
-    let answer = this.http.get<Hptype[]>(urlSearch);
+    let answer = this.http.get<HpWizard[]>(urlSearch);
     return answer;
   }
 
   getVoldemort(){
     const urlVoldemort = url + '/voldemort';
-    return this.http.get<Hptype>(urlVoldemort);
+    return this.http.get<HpWizard>(urlVoldemort);
   }
 
-  updateVictories(body: Hptype){
+  updateVictories(body: HpWizard){
     const urlVictory = url + '/victory';
-    return this.http.put<Hptype>(urlVictory, body);
+    return this.http.put<HpWizard>(urlVictory, body);
   }
 
   getPotionById(id: number){

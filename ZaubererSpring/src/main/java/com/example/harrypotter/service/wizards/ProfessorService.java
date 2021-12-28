@@ -5,7 +5,9 @@ import com.example.harrypotter.entity.wizards.Professor;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.example.harrypotter.service.ConditionService;
-import com.example.harrypotter.service.options.OptionsService;
+import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.PotionService;
+import com.example.harrypotter.service.options.SpellService;
 import com.example.harrypotter.service.strengthAndWeaknessService.StrengthAndWeaknessService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,7 +18,9 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class ProfessorService {
     private WizardRepo wizardRepo;
-    private OptionsService optionsService;
+    private PotionService potionService;
+    private SpellService spellService;
+    private AnimalService animalService;
     private ConditionService conditionService;
     private StrengthAndWeaknessService sawService;
     private WizardService wizardService;
@@ -30,22 +34,24 @@ public class ProfessorService {
         wizardRepo.save(prof);
         conditionService.addConditions(prof);
 
-        optionsService.createExpelliarmus(prof);
-        optionsService.createStupefy(prof);
-        optionsService.createLevicorpus(prof);
-        optionsService.createCalvorio(prof);
-        optionsService.createImmobilus(prof);
-        optionsService.createSectumssempra(prof);
-        optionsService.createConfundo(prof);
-        optionsService.createImperio(prof);
-        optionsService.createProtego(prof);
-        optionsService.createPiertotumLocomotor(prof);
+        spellService.createExpelliarmus(prof);
+        spellService.createStupefy(prof);
+        spellService.createLevicorpus(prof);
+        spellService.createCalvorio(prof);
+        spellService.createImmobilus(prof);
+        spellService.createSectumssempra(prof);
+        spellService.createConfundo(prof);
+        spellService.createImperio(prof);
+        spellService.createProtego(prof);
+        spellService.createPiertotumLocomotor(prof);
 
-        optionsService.createAntiParalysis(prof, 1);
-        optionsService.createExplodingPotion(prof, 2);
-        optionsService.createHealingPotion(prof,2);
-        optionsService.createInvogiration(prof, 2);
-        optionsService.createExtimuloPotion(prof, 3);
+        potionService.createAntiParalysis(prof, 1);
+        potionService.createExplodingPotion(prof, 2);
+        potionService.createHealingPotion(prof,2);
+        potionService.createInvogiration(prof, 2);
+        potionService.createExtimuloPotion(prof, 3);
+
+        animalService.createFlobberworm(prof);
 
         sawService.weaknessHeadmaster(prof);
         sawService.weaknessVoldmort(prof);

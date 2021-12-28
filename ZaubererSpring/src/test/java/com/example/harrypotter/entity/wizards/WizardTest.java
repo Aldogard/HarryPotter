@@ -17,10 +17,10 @@ public class WizardTest {
     public void testWizard(){
         Dumbledore test = new Dumbledore("TestW", BigDecimal.valueOf(4), "Neutral");
         Condition condition = new Condition(test, "Bad");
-        Spell spell = new Spell("testSpell", 1.0, 1.0, false, false, false, false, false, false, false, 1, test, "Amazing");
+        Spell spell = new Spell("testSpell", 1.0, 1.0, 0.5, false, false, false, false, false, false, false, 1, test, "Amazing");
         Potion potion = new Potion("testPotion", 1, 1.0 , 0.35, false, false, false, false, 1.0, 1.0, 1, test, "Average");
         Comments comments = new Comments("test", test);
-        StrengthAndWeakness saw = new StrengthAndWeakness("ALumni", false, test);
+        StrengthAndWeakness saw = new StrengthAndWeakness("Alumni", false, test);
 
         assertNotNull(test);
         assertEquals("TestW", test.getName());

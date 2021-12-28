@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { HarrypotterService } from '../harrypotter.service';
-import { Hptype } from '../hptype';
+import { HpWizard } from '../hp-wizard';
 import { ExtraService } from '../extra.service';
 
 @Component({
@@ -11,8 +11,8 @@ import { ExtraService } from '../extra.service';
   styleUrls: ['./harrypotter.component.css'],
 })
 export class HarrypotterComponent implements OnInit {
-  wizards: Hptype[] = [];
-  results: Hptype[] = [];
+  wizards: HpWizard[] = [];
+  results: HpWizard[] = [];
   showAll = new BehaviorSubject<boolean>(true);
   showFilter = new BehaviorSubject<boolean>(false);
   max: FormControl = new FormControl();

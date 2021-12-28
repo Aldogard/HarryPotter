@@ -23,7 +23,7 @@ public class PotionTest {
 
         assertEquals(2, potion.getStorage());
         assertEquals(BigDecimal.valueOf(0.5), potion.getHealing());
-        assertEquals(BigDecimal.valueOf(0.3), potion.getEnergyRestorage());
+        assertEquals(BigDecimal.valueOf(0.3), potion.getEnergyRecovery());
         assertFalse(potion.getAntiParalysis());
         assertFalse(potion.getAntiConfunded());
         assertFalse(potion.getRegeneration());

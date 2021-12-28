@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { HarrypotterService } from '../harrypotter.service';
-import { Hptype } from '../hptype';
+import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
 import { ExtraService } from '../extra.service';
 import { HpSpell } from '../hp-spell';
 import { HpPotion } from '../hp-potion';
+import { HpAnimal } from '../hp-animal';
 
 @Component({
   selector: 'app-battle',
@@ -14,15 +15,17 @@ import { HpPotion } from '../hp-potion';
   styleUrls: ['./battle.component.css'],
 })
 export class BattleComponent implements OnInit {
-  wizardsArray: Hptype[] = [];
-  wizard1?: Hptype;
-  wizard2?: Hptype;
+  wizardsArray: HpWizard[] = [];
+  wizard1?: HpWizard;
+  wizard2?: HpWizard;
   options = this.extraService.options;
   chosenOption: string = '';
   validateSpell = new BehaviorSubject<boolean>(false);
   validatePotion = new BehaviorSubject<boolean>(false);
+  validateAnimal = new BehaviorSubject<boolean>(false);
   spell = new FormControl('');
   potion = new FormControl('');
+  animal = new FormControl('');
   attackWizard1 = new BehaviorSubject<boolean>(false);
   attackWizard2 = new BehaviorSubject<boolean>(true);
   showResult = new BehaviorSubject<boolean>(false);
@@ -38,10 +41,7 @@ export class BattleComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.environment =
-      this.extraService.environment[
-        Math.floor(Math.random() * this.extraService.environment.length)
-      ];
+    this.environment = this.ms.environment.value;
     this.ms.zaubererArray.subscribe((za) => {
       this.wizardsArray = za;
       this.wizard1 = za[0];
@@ -72,9 +72,17 @@ export class BattleComponent implements OnInit {
     this.validateSpell.next(true);
   }
 
-  executeAttack(attackWizard: Hptype, defendWizard: Hptype, defender: boolean) {
-    this.showStart.next(false);
-    attackWizard.energy = attackWizard.energy + 3;
+  getAnimal(animal: HpAnimal) {
+    this.animal = new FormControl(animal);
+    this.validateAnimal.next(true);
+  }
+
+  executeAttack(
+    attackWizard: HpWizard,
+    defendWizard: HpWizard,
+    defender: boolean
+  ) {
+    this.preparation(attackWizard);
     this.fiendfyreEffects(attackWizard);
     if (!attackWizard.conditions[1].condition) {
       attackWizard.energy = attackWizard.energy - this.spell.value.energyUsage;
@@ -96,7 +104,7 @@ export class BattleComponent implements OnInit {
       );
     }
 
-    attackWizard.energy = Math.round(attackWizard.energy);
+    attackWizard.energy = Math.round(attackWizard.energy *10)/10;
     this.resetAFandProtego(attackWizard, defendWizard);
     this.reduceProtection(defendWizard);
     this.halfLifeEffects(attackWizard);
@@ -111,15 +119,17 @@ export class BattleComponent implements OnInit {
     this.formattingOfKeyVariables();
   }
 
-  executePotion(attackWizard: Hptype, defendWizard: Hptype, defender: boolean) {
-    let damage = 0;
-    this.showStart.next(false);
-    attackWizard.energy = attackWizard.energy + 3;
+  executePotion(
+    attackWizard: HpWizard,
+    defendWizard: HpWizard,
+    defender: boolean
+  ) {
+    this.preparation(attackWizard);
     this.fiendfyreEffects(attackWizard);
     if (!attackWizard.conditions[1].condition) {
       this.potionEffects(attackWizard, defender);
 
-      damage = this.getDamage(
+      this.getDamage(
         attackWizard,
         defendWizard,
         this.potion.value.maxDamage,
@@ -134,13 +144,41 @@ export class BattleComponent implements OnInit {
       );
     }
 
-    attackWizard.energy = Math.round(attackWizard.energy);
+    attackWizard.energy = Math.round(attackWizard.energy *10)/10;
     this.reduceProtection(defendWizard);
     this.nextRound(defendWizard, defender, attackWizard);
     this.formattingOfKeyVariables();
   }
 
-  nextRound(defendWizard: Hptype, defender: boolean, attackWizard: Hptype) {
+  useAnimal(attackWizard: HpWizard, defendWizard: HpWizard, defender: boolean) {
+    this.preparation(attackWizard);
+    this.fiendfyreEffects(attackWizard);
+    if (!attackWizard.conditions[1].condition) {
+      attackWizard.energy = attackWizard.energy - this.animal.value.energyUsage;
+      this.animalEffects(defendWizard, attackWizard);
+      this.fiendfyreEffects(attackWizard);
+      this.getDamage(
+        attackWizard,
+        defendWizard,
+        this.animal.value.maxDamage,
+        false
+      );
+
+      this.formattingStunnedAndConfunded(defendWizard);
+    } else {
+      alert(
+        attackWizard.name +
+          ' has been stunned and cannot use a Potion this round!'
+      );
+    }
+
+    attackWizard.energy = Math.round(attackWizard.energy *10)/10;
+    this.reduceProtection(defendWizard);
+    this.nextRound(defendWizard, defender, attackWizard);
+    this.formattingOfKeyVariables();
+  }
+
+  nextRound(defendWizard: HpWizard, defender: boolean, attackWizard: HpWizard) {
     this.voldemortIsDead = this.checkIfDead();
 
     if (
@@ -184,14 +222,16 @@ export class BattleComponent implements OnInit {
   formattingOfKeyVariables() {
     this.spell = new FormControl('');
     this.potion = new FormControl('');
+    this.animal = new FormControl('');
     this.validateSpell.next(false);
     this.validatePotion.next(false);
+    this.validateAnimal.next(false);
     this.chosenOption = '';
   }
 
   getDamage(
-    attackWizard: Hptype,
-    defendWizard: Hptype,
+    attackWizard: HpWizard,
+    defendWizard: HpWizard,
     damageFromAction: number,
     spell: boolean
   ) {
@@ -214,7 +254,7 @@ export class BattleComponent implements OnInit {
     if (
       Math.random() > 0.5 &&
       defendWizard.protego &&
-      !attackWizard.fiendfyre 
+      !attackWizard.fiendfyre
     ) {
       attackWizard.healthPoints =
         Math.round((defendWizard.healthPoints - damage) * 100) / 100;
@@ -227,7 +267,7 @@ export class BattleComponent implements OnInit {
     return Math.round(damage * 100) / 100;
   }
 
-  potionEffects(attackWizard: Hptype, defender: boolean) {
+  potionEffects(attackWizard: HpWizard, defender: boolean) {
     if (this.potion.value.storage > 0) {
       this.potion.value.storage = this.potion.value.storage - 1;
     }
@@ -241,7 +281,7 @@ export class BattleComponent implements OnInit {
     attackWizard.energy =
       Math.round(
         (attackWizard.energy +
-          this.potion.value.energyRestorage * attackWizard.internEnergy) *
+          this.potion.value.energyRecovery * attackWizard.internEnergy) *
           100
       ) / 100;
     if (this.potion.value.antiParalysis) {
@@ -271,12 +311,12 @@ export class BattleComponent implements OnInit {
     }
   }
 
-  formattingStunnedAndConfunded(defendWizard: Hptype) {
+  formattingStunnedAndConfunded(defendWizard: HpWizard) {
     defendWizard.conditions[0].condition = false;
     defendWizard.conditions[1].condition = false;
   }
 
-  spellEffects(defendWizard: Hptype, attackWizard: Hptype) {
+  spellEffects(defendWizard: HpWizard, attackWizard: HpWizard) {
     if (this.spell.value.imperio) {
       if (
         attackWizard.id === this.wizardsArray[0].id &&
@@ -304,12 +344,33 @@ export class BattleComponent implements OnInit {
         }
 
       this.confunded(defendWizard);
-    }
+    } else {
+      if (this.spell.value.protego) {
+        attackWizard.protego = true;
+      }
 
-    if (this.spell.value.protego) {
-      attackWizard.protego = true;
+      attackWizard.healthPoints =
+        Math.round(
+          (attackWizard.healthPoints +
+            this.spell.value.healing * attackWizard.internHealthPoints) *
+            100
+        ) / 100;
     }
+  }
 
+  animalEffects(defendWizard: HpWizard, attackWizard: HpWizard) {
+    attackWizard.healthPoints =
+      Math.round(
+        (attackWizard.healthPoints +
+          this.animal.value.healing * attackWizard.internHealthPoints) *
+          100
+      ) / 100;
+    attackWizard.energy =
+      Math.round(
+        (attackWizard.energy +
+          this.animal.value.energyRecovery * attackWizard.internEnergy) *
+          100
+      ) / 100;
   }
 
   checkIfDead() {
@@ -320,7 +381,7 @@ export class BattleComponent implements OnInit {
     );
   }
 
-  reduceProtection(defendWizard: Hptype) {
+  reduceProtection(defendWizard: HpWizard) {
     if (defendWizard.stunnedProtection > 0) {
       defendWizard.stunnedProtection = defendWizard.stunnedProtection - 1;
     }
@@ -329,7 +390,7 @@ export class BattleComponent implements OnInit {
     }
   }
 
-  halfLifeEffects(attackWizard: Hptype) {
+  halfLifeEffects(attackWizard: HpWizard) {
     if (attackWizard.halfLife) {
       attackWizard.additionalFactor =
         Math.round((Math.random() + 0.5) * 10) / 10;
@@ -342,7 +403,7 @@ export class BattleComponent implements OnInit {
     }
   }
 
-  stunned(defendWizard: Hptype) {
+  stunned(defendWizard: HpWizard) {
     if (Math.random() > 0.5 && this.spell.value.stunned) {
       if (defendWizard.stunnedProtection === 0) {
         defendWizard.conditions[1].condition = true;
@@ -353,7 +414,7 @@ export class BattleComponent implements OnInit {
     }
   }
 
-  confunded(defendWizard: Hptype) {
+  confunded(defendWizard: HpWizard) {
     if (Math.random() > 0.5 && this.spell.value.confunded) {
       if (defendWizard.confundedProtection === 0) {
         defendWizard.conditions[0].condition = true;
@@ -376,6 +437,12 @@ export class BattleComponent implements OnInit {
     window.open(url);
   }
 
+  gotoAnimalDetail(animalId: number) {
+    this.ms.sendAnimalId(animalId);
+    const url = 'animaldetail/' + animalId;
+    window.open(url);
+  }
+
   gotoRules() {
     this.ms.sendShow(false);
     window.open('rules');
@@ -383,13 +450,14 @@ export class BattleComponent implements OnInit {
 
   updateVictories() {
     this.wizardsArray.forEach((za) => {
-      let speicher: Hptype;
+      let speicher: HpWizard;
       this.hpService.getWizardById(za.id).subscribe((z) => {
         speicher = z;
         if (za.healthPoints > 0) {
           speicher.victories = speicher.victories + 1;
-          if(speicher.victories<400){
-            speicher.rank = this.extraService.ranking[Math.floor(speicher.victories/5)];
+          if (speicher.victories < 400) {
+            speicher.rank =
+              this.extraService.ranking[Math.floor(speicher.victories / 5)];
             //Math.floor((rank +2)/3 * rank)
           }
         }
@@ -404,7 +472,7 @@ export class BattleComponent implements OnInit {
     this.showResult.next(true);
   }
 
-  gotoNextRound(defendWizard: Hptype) {
+  gotoNextRound(defendWizard: HpWizard) {
     this.attackWizard2.next(false);
     this.attackWizard1.next(true);
     if (this.wizard2 !== undefined) {
@@ -417,12 +485,12 @@ export class BattleComponent implements OnInit {
     }
   }
 
-  resetAFandProtego(attackWizard: Hptype, defendWizard: Hptype) {
+  resetAFandProtego(attackWizard: HpWizard, defendWizard: HpWizard) {
     attackWizard.additionalFactor = 1;
     defendWizard.protego = false;
   }
 
-  fiendfyreEffects(attackWizard: Hptype){
+  fiendfyreEffects(attackWizard: HpWizard) {
     if (attackWizard.fiendfyre) {
       if (this.spell.value.name === 'Anti Fiendfyre') {
         attackWizard.fiendfyre = false;
@@ -430,5 +498,11 @@ export class BattleComponent implements OnInit {
         attackWizard.healthPoints = -100;
       }
     }
+  }
+
+  preparation(attackWizard: HpWizard) {
+    this.showStart.next(false);
+    attackWizard.energy = attackWizard.energy + 3;
+    console.log(attackWizard.energy);
   }
 }

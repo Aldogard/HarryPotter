@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Hptype } from './hptype';
+import { HpWizard } from './hp-wizard';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +8,12 @@ import { Hptype } from './hptype';
 export class MessageService {
 
   word = new BehaviorSubject<string>('');
-  zaubererArray = new BehaviorSubject<Hptype[]>([]);
+  zaubererArray = new BehaviorSubject<HpWizard[]>([]);
   potionId = new BehaviorSubject<number>(0);
   attackId = new BehaviorSubject<number>(0);
+  animalId = new BehaviorSubject<number>(0);
   show = new BehaviorSubject<boolean>(false);
+  environment = new BehaviorSubject<string>('');
 
   constructor() { }
 
@@ -19,7 +21,7 @@ export class MessageService {
     this.word.next(word);
   }
 
-  sendArray(array: Hptype[]){
+  sendArray(array: HpWizard[]){
     this.zaubererArray.next(array);
   }
 
@@ -31,8 +33,16 @@ export class MessageService {
     this.attackId.next(id);
   }
 
+  sendAnimalId(id: number){
+    this.animalId.next(id);
+  }
+
   sendShow(show: boolean){
     this.show.next(show);
+  }
+
+  sendEnvironment(environment: string){
+    this.environment.next(environment);
   }
 
 

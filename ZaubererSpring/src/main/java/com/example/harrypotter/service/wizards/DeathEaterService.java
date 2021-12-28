@@ -4,7 +4,9 @@ import com.example.harrypotter.entity.wizards.DeathEater;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.example.harrypotter.service.ConditionService;
-import com.example.harrypotter.service.options.OptionsService;
+import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.PotionService;
+import com.example.harrypotter.service.options.SpellService;
 import com.example.harrypotter.service.strengthAndWeaknessService.StrengthAndWeaknessService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +17,9 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class DeathEaterService {
     private WizardRepo wizardRepo;
-    private OptionsService optionsService;
+    private PotionService potionService;
+    private SpellService spellService;
+    private AnimalService animalService;
     private ConditionService conditionService;
     private StrengthAndWeaknessService sawService;
     private WizardService wizardService;
@@ -28,22 +32,23 @@ public class DeathEaterService {
         wizardRepo.save(de);
         conditionService.addConditions(de);
 
+        spellService.createExpelliarmus(de);
+        spellService.createStupefy(de);
+        spellService.createCalvorio(de);
+        spellService.createSectumssempra(de);
+        spellService.createAvadaKedavra(de);
+        spellService.createImperio(de);
+        spellService.createCrucio(de);
+        spellService.createFiendfyre(de);
+        spellService.createAntiFiendfyre(de);
 
-        optionsService.createExpelliarmus(de);
-        optionsService.createStupefy(de);
-        optionsService.createCalvorio(de);
-        optionsService.createSectumssempra(de);
-        optionsService.createAvadaKedavra(de);
-        optionsService.createImperio(de);
-        optionsService.createCrucio(de);
-        optionsService.createFiendfyre(de);
-        optionsService.createAntiFiendfyre(de);
+        potionService.createAntiParalysis(de, 1);
+        potionService.createExplodingPotion(de, 2);
+        potionService.createRegenerationPotion(de, 1);
+        potionService.createWitSharpeningPotion(de, 2);
+        potionService.createExtimuloPotion(de, 2);
 
-        optionsService.createAntiParalysis(de, 1);
-        optionsService.createExplodingPotion(de, 2);
-        optionsService.createRegenerationPotion(de, 1);
-        optionsService.createWitSharpeningPotion(de, 2);
-        optionsService.createExtimuloPotion(de, 2);
+        animalService.createFlobberworm(de);
 
         sawService.weaknessDumbledore(de);
         sawService.weaknessVoldmort(de);

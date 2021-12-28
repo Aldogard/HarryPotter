@@ -4,6 +4,7 @@ export interface HpSpell {
     energyUsage: number,
     descriptionOption: string,
     maxDamage: number,
+    healing: number,
     stunned: boolean,
     confunded: boolean,
     imperio: boolean,

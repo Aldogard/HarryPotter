@@ -27,6 +27,7 @@ export class ExtraService {
     'Boat House',
     'Edge of the Forbidden Forest',
     'Seventh Floor',
+    'Great Lake',
   ];
 
   ranking: string[] = [

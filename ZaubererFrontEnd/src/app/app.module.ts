@@ -42,7 +42,7 @@ import { RanksComponent } from './ranks/ranks.component';
     DetailsPotionComponent,
     DetailsSpellComponent,
     RulesComponent,
-    RanksComponent
+    RanksComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,8 +2,9 @@ import { HpSpell } from "./hp-spell";
 import { HpComment } from "./hp-comment";
 import { HpCondition } from "./hp-condition";
 import { HpPotion } from "./hp-potion";
+import { HpAnimal } from "./hp-animal";
 
-export interface Hptype {
+export interface HpWizard {
     id: number,
     name: string,
     healthPoints: number,
@@ -25,6 +26,7 @@ export interface Hptype {
     conditions: HpCondition[],
     spells: HpSpell[],
     potions: HpPotion[],
+    animals: HpAnimal[],
     comments: HpComment[],
     rating: number,
     amount: number,

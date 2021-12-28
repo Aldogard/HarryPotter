@@ -1,18 +1,14 @@
 package com.example.harrypotter.service.options;
 
 import com.example.harrypotter.entity.options.Spell;
-import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.options.OptionsRepo;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-
 @Service
-@Slf4j
 @AllArgsConstructor
-public class OptionsService {
+public class SpellService {
 
     private OptionsRepo optionsRepo;
 
@@ -22,6 +18,7 @@ public class OptionsService {
                 "Expelliarmus",
                 5.0,
                 10.0,
+                0.0,
                 false,
                 false,
                 false,
@@ -38,8 +35,9 @@ public class OptionsService {
     public void createStupefy(Wizard wizard) {
         optionsRepo.save(new Spell(
                 "Stupefy",
-                5.0,
-                1.0,
+                7.0,
+                2.0,
+                0.0,
                 true,
                 false,
                 false,
@@ -58,6 +56,7 @@ public class OptionsService {
                 "Levicorpus",
                 3.5,
                 5.0,
+                0.0,
                 false,
                 true,
                 false,
@@ -75,6 +74,7 @@ public class OptionsService {
                 "Calvorio",
                 1.0,
                 3.0,
+                0.0,
                 false,
                 false,
                 false,
@@ -91,6 +91,7 @@ public class OptionsService {
         optionsRepo.save(new Spell(
                 "Immobilus",
                 3.0,
+                0.0,
                 0.0,
                 true,
                 false,
@@ -110,6 +111,7 @@ public class OptionsService {
                 "Sectumssempra",
                 10.0,
                 17.5,
+                0.0,
                 false,
                 false,
                 false,
@@ -129,6 +131,7 @@ public class OptionsService {
                 "Confundo",
                 2.5,
                 1.0,
+                0.0,
                 false,
                 true,
                 false,
@@ -146,6 +149,7 @@ public class OptionsService {
                 "Avada Kedavra",
                 25.0,
                 40.0,
+                0.0,
                 false,
                 false,
                 false,
@@ -165,6 +169,7 @@ public class OptionsService {
                 "Imperio",
                 15.0,
                 5.0,
+                0.0,
                 false,
                 true,
                 true,
@@ -185,6 +190,7 @@ public class OptionsService {
                 "Crucio",
                 15.0,
                 25.0,
+                0.0,
                 false,
                 true,
                 false,
@@ -204,6 +210,7 @@ public class OptionsService {
                 "Protego",
                 10.0,
                 0.0,
+                0.0,
                 false,
                 false,
                 false,
@@ -221,6 +228,7 @@ public class OptionsService {
                 "Fiendfyre",
                 20.0,
                 50.0,
+                0.0,
                 false,
                 false,
                 false,
@@ -241,6 +249,7 @@ public class OptionsService {
                 "Anti Fiendfyre",
                 10.0,
                 0.0,
+                0.0,
                 false,
                 false,
                 false,
@@ -259,6 +268,7 @@ public class OptionsService {
                 "Firestorm",
                 15.0,
                 27.5,
+                0.0,
                 false,
                 false,
                 false,
@@ -272,11 +282,12 @@ public class OptionsService {
         ));
     }
 
-    public void createPiertotumLocomotor(Wizard wizard){
+    public void createPiertotumLocomotor(Wizard wizard) {
         optionsRepo.save(new Spell(
                 "Piertotum Locomotor",
                 10.0,
                 20.0,
+                0.0,
                 false,
                 false,
                 false,
@@ -290,172 +301,62 @@ public class OptionsService {
         ));
     }
 
-
-    // Refilling Charm --> Kann einen Trank wiederherstellen
-    // Vulnera Sanentur --> Macht (einen Teil von) Sectrumssempra Effekt rückgängig
-    // Pertrificus Totalus
-
-
-    //Potions
-    public void createAntiParalysis(Wizard wizard, Integer storage) {
-        optionsRepo.save(new Potion(
-                "Anti-Paralysis",
-                storage,
-                0.0,
-                0.0,
-                true,
-                false,
-                false,
-                false,
-                0.0,
-                1.0,
-                0,
-                wizard,
-                "A potion that heals paralysis."));
-    }
-
-
-    public void createBrainElixir(Wizard wizard, Integer storage) {
-        optionsRepo.save(new Potion(
-                "Baruffios Brain Elixir",
-                storage,
-                0.0,
-                0.0,
-                false,
-                false,
-                false,
-                false,
-                0.0,
-                1.5,
-                5,
-                wizard,
-                "A potion that apparently increases the taker's brain power."));
-    }
-
-    public void createExplodingPotion(Wizard wizard, Integer storage) {
-        optionsRepo.save(new Potion(
-                "Exploding Potion",
-                storage,
-                0.0,
-                0.0,
-                false,
-                false,
-                false,
-                false,
-                10.0,
-                1.0,
-                5,
-                wizard,
-                "A very volatile potion, and when completed, can be used to create explosions."));
-    }
-
-    public void createHealingPotion(Wizard wizard, Integer storage) {
-        optionsRepo.save(new Potion(
-                "Healing Potion",
-                storage,
-                0.35,
-                0.1,
-                false,
-                false,
-                false,
-                false,
-                0.0,
-                1.0,
-                0,
-                wizard,
-                "This potion was extremely useful when duelling Dark Wizards or dark creatures " +
-                        "in Fortresses, making it an essential supply for all Aurors."));
-    }
-
-    public void createInvogiration(Wizard wizard, Integer storage) {
-        optionsRepo.save(new Potion(
-                "Invigoration Draught",
-                storage,
+    public void createVulneraSanentur(Wizard wizard) {
+        optionsRepo.save(new Spell(
+                "Vulnera Sanentur",
+                15.0,
                 0.0,
                 0.8,
                 false,
                 false,
                 false,
                 false,
-                0.0,
-                1.0,
-                0,
-                wizard,
-                "A potion that is presumed to give the taker an energy boost."));
-    }
-
-    public void createUnicornBlood(Wizard wizard, Integer storage) {
-        optionsRepo.save(new Potion(
-                "Unicorn Blood",
-                storage,
-                -0.5,
-                0.0,
                 false,
                 false,
                 false,
-                true,
-                0.0,
-                1.0,
-                10,
-                wizard,
-                "The blood of a unicorn could be drunk in order to keep a person alive. " +
-                        "However, the act of slaying a unicorn would cause the drinker to suffer a cursed life."
-
-        ));
-    }
-
-    public void createRegenerationPotion(Wizard wizard, Integer storage) {
-        optionsRepo.save((new Potion(
-                "Regeneration Potion",
-                storage,
-                -0.5,
-                0.0,
-                false,
-                false,
-                true,
-                false,
-                0.0,
-                1.0,
                 15,
                 wizard,
-                "Helps restore non-corporeal wizards to their bodies. " +
-                        "Can only be used by Deatheaters to bring Voldemort back to life."
-        )));
-    }
+                "Healing spell that slows blood flow, clears residue, and knits wounds. It is the counter-curse to Sectumsempra."
 
-    public void createWitSharpeningPotion(Wizard wizard, Integer storage) {
-        optionsRepo.save(new Potion(
-                "Wit-Sharpening Potion",
-                storage,
-                0.0,
-                0.0,
-                false,
-                true,
-                false,
-                false,
-                0.0,
-                1.0,
-                3,
-                wizard,
-                "Presumably enhances the clarity of thought of the drinker."
         ));
     }
 
-    public void createExtimuloPotion(Wizard wizard, Integer storage) {
-        optionsRepo.save(new Potion(
-                "Extimulo Potion",
-                storage,
+    public void createPertrificusTotalus(Wizard wizard) {
+        optionsRepo.save(new Spell(
+                "Pertrificus Totalus",
+                5.0,
+                1.0,
                 0.0,
-                0.0,
+                true,
                 false,
                 false,
                 false,
                 false,
-                0.0,
-                1.25,
-                0,
+                false,
+                false,
+                1,
                 wizard,
-                "Boosts the spell power of the drinker."));
+                "Used to temporarily bind the victim's body in a position much like that of a soldier at attention; the victim will usually fall to the ground."
+        ));
     }
 
+    public void createEpiskey(Wizard wizard) {
+        optionsRepo.save(new Spell(
+                "Episkey",
+                5.0,
+                0.0,
+                0.1,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                1,
+                wizard,
+                "In 1996, Nymphadora Tonks used this spell to fix Harry's broken nose after Draco Malfoy broke it on the Hogwarts Express."
+
+        ));
+    }
 }

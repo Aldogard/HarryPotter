@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, NgForm, Validators } from '@angular/forms';
 import { HarrypotterService } from '../harrypotter.service';
-import { Hptype } from '../hptype';
+import { HpWizard } from '../hp-wizard';
 import { ExtraService } from '../extra.service';
 
 @Component({
@@ -12,8 +12,8 @@ import { ExtraService } from '../extra.service';
 export class UpdateWizardComponent implements OnInit {
   show: boolean = false;
   getWizardId: FormControl = new FormControl(0);
-  wizards: Hptype[] = [];
-  wizardChoice?: Hptype;
+  wizards: HpWizard[] = [];
+  wizardChoice?: HpWizard;
   wizardId: number = 0;
 
   constructor(

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { HarrypotterService } from '../harrypotter.service';
-import { Hptype } from '../hptype';
+import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
 import { ExtraService } from '../extra.service';
 
@@ -12,19 +12,21 @@ import { ExtraService } from '../extra.service';
   styleUrls: ['./fight.component.css'],
 })
 export class FightComponent implements OnInit {
-  zauberer: Hptype[] = [];
+  zauberer: HpWizard[] = [];
 
-  wizardChoiceA?: Hptype;
+  wizardChoiceA?: HpWizard;
   choiceA = new FormControl('');
-  wizardChoiceB?: Hptype;
+  wizardChoiceB?: HpWizard;
   choiceB = new FormControl('');
-  wizardChoiceC?: Hptype;
+  wizardChoiceC?: HpWizard;
   choiceC = new FormControl('');
-  wizardChoiceD?: Hptype;
+  wizardChoiceD?: HpWizard;
   choiceD = new FormControl('');
   show2 = new BehaviorSubject<boolean>(false);
   show3 = new BehaviorSubject<boolean>(false);
   show4 = new BehaviorSubject<boolean>(false);
+  environment: string = '';
+
 
   numberOfParticipants = new FormControl('', [
     Validators.required,
@@ -40,6 +42,11 @@ export class FightComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.environment =
+      this.extraService.environment[
+        Math.floor(Math.random() * this.extraService.environment.length)
+      ];
+    this.ms.sendEnvironment(this.environment);
     this.hpService.getWizards().subscribe((wizards) => {
       this.zauberer = wizards;
       this.choiceA = new FormControl(wizards[0].id);
@@ -210,7 +217,7 @@ export class FightComponent implements OnInit {
     }
   }
 
-  gotoRules(particitpants: Hptype[]){
+  gotoRules(particitpants: HpWizard[]){
     this.ms.sendArray(particitpants);
     this.ms.sendShow(true);
     this.extraService.redirectTo('rules');

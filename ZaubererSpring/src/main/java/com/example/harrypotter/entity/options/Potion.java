@@ -19,11 +19,8 @@ public class Potion extends Options{
     @Column(name = "storage")
     private Integer storage;
 
-    @Column(name = "max_healing")
-    private BigDecimal healing;
-
-    @Column(name = "energy_restorage")
-    private BigDecimal energyRestorage;
+    @Column(name = "energy_recovery")
+    private BigDecimal energyRecovery;
 
     @Column(name = "anti_paralysis")
     private Boolean antiParalysis;
@@ -49,7 +46,7 @@ public class Potion extends Options{
             String name,
             Integer storage,
             Double healing,
-            Double er,
+            Double recovery,
             Boolean antiParalysis,
             Boolean antiConfunded,
             Boolean regeneration,
@@ -60,10 +57,9 @@ public class Potion extends Options{
             Wizard wizard,
             String description) {
 
-        super(name, maxDamage, description, requiredExperience);
+        super(name, maxDamage, description, requiredExperience, healing);
         this.storage = storage;
-        this.healing = BigDecimal.valueOf(healing);
-        this.energyRestorage = BigDecimal.valueOf(er);
+        this.energyRecovery = BigDecimal.valueOf(recovery);
         this.antiParalysis = antiParalysis;
         this.antiConfunded = antiConfunded;
         this.regeneration = regeneration;

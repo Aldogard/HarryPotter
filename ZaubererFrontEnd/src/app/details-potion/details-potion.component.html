@@ -8,7 +8,7 @@
       </tr>
       <tr>
         <td>Energy Restorage</td>
-        <td>{{ potion.energyRestorage }}</td>
+        <td>{{ potion.energyRecovery }}</td>
       </tr>
       <tr>
         <td>Anti Paralysis</td>
@@ -25,6 +25,10 @@
       <tr>
         <td>Additional Factor</td>
         <td>{{ potion.additionalFactor }}</td>
+      </tr>
+      <tr>
+        <td>Experience needed</td>
+        <td>{{ potion.requiredExperience }}</td>
       </tr>
       <tr>
         <td>Description</td>
@@ -53,10 +57,10 @@
           {{ potion.healing * 100 }} percent of the initial Healtpoints.
         </td>
       </tr>
-      <tr *ngIf="potion.energyRestorage > 0">
+      <tr *ngIf="potion.energyRecovery > 0">
         <td>
           This Potion increases the Energy of the Wizard by
-          {{ potion.energyRestorage * 100 }} percent of the initial Energy.
+          {{ potion.energyRecovery * 100 }} percent of the initial Energy.
         </td>
       </tr>
       <tr *ngIf="potion.antiParalysis">
@@ -92,4 +96,7 @@
       </tr>
     </table>
   </ng-container>
+  <br />
+  <a (click)="gotoWiki()" class="link"
+    >The description is taken from the wonderful Harry Potter Wiki!</a>
 </div>

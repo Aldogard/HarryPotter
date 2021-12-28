@@ -13,7 +13,7 @@ public class PotionsMaster extends Wizard {
 
     public PotionsMaster(String name, BigDecimal healthPoints, String description) {
         super(name, healthPoints, description);
-        this.setKlasse("Potions Master");
+        this.setKlasse("Potionsmaster");
         this.setFaktor(BigDecimal.valueOf(1.25));
         setInternHealthPoints(healthPoints);
 

@@ -21,6 +21,9 @@ public abstract class Options {
     @Column(name = "option_name")
     private String name;
 
+    @Column(name = "healing")
+    private BigDecimal healing;
+
     @Column(name = "max_damage")
     private BigDecimal maxDamage;
 
@@ -31,11 +34,12 @@ public abstract class Options {
     private Integer requiredExperience;
 
 
-    public Options(String name,  Double maxDamage, String description, Integer requiredExperience) {
+    public Options(String name,  Double maxDamage, String description, Integer requiredExperience, Double healing) {
         this.name = name;
         this.maxDamage = BigDecimal.valueOf(maxDamage);
         this.descriptionOption = description;
         this.requiredExperience = requiredExperience;
+        this.healing = BigDecimal.valueOf(healing);
 
     }
 

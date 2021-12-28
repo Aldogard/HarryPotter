@@ -12,12 +12,13 @@ public class SpellTest {
     @Test
     public void testSpell(){
         Dumbledore test = new Dumbledore("TestW", BigDecimal.valueOf(4), "Neutral");
-        Spell spell = new Spell("testSpell", 2.0, 2.0, false, false, false, false, false, false, false, 2, test, "Powerful");
+        Spell spell = new Spell("testSpell", 2.0, 2.0, 0.5, false, false, false, false, false, false, false, 2, test, "Powerful");
         assertNotNull(spell);
         assertEquals("testSpell", spell.getName());
         assertEquals(BigDecimal.valueOf(2.0), spell.getMaxDamage());
         assertEquals("Powerful", spell.getDescriptionOption());
         assertEquals(2, spell.getRequiredExperience());
+        assertEquals(0.5, spell.getHealing());
 
         assertEquals(BigDecimal.valueOf(2.0), spell.getEnergyUsage());
         assertFalse(spell.getStunned());

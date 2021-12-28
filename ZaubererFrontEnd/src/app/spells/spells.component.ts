@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HarrypotterService } from '../harrypotter.service';
 import { HpSpell } from '../hp-spell';
-import { Hptype } from '../hptype';
+import { HpWizard } from '../hp-wizard';
 import { ExtraService } from '../extra.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ExtraService } from '../extra.service';
   styleUrls: ['./spells.component.css'],
 })
 export class SpellsComponent implements OnInit {
-  wizards: Hptype[] = [];
+  wizards: HpWizard[] = [];
   spells: HpSpell[] = [];
 
   constructor(

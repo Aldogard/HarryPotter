@@ -48,13 +48,14 @@ public class Spell extends Options {
 
 
     /**
-     * Konstruktur zum erstellen einer Attacke/Zauberspruchs.
+     * Constructor to create a spell
      */
 
     public Spell(
             String name,
             Double energyUsage,
             Double maxDamage,
+            Double healing,
             Boolean stunned,
             Boolean confunded,
             Boolean imperio,
@@ -66,7 +67,7 @@ public class Spell extends Options {
             Wizard wizard,
             String description) {
 
-        super(name, maxDamage, description, requiredExperience);
+        super(name, maxDamage, description, requiredExperience, healing);
         this.energyUsage = BigDecimal.valueOf(energyUsage);
         this.stunned = stunned;
         this.confunded = confunded;

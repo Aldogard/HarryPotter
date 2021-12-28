@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Hptype } from './hptype';
+import { HpWizard } from './hp-wizard';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { Hptype } from './hptype';
 })
 export class AppComponent {
   title = 'ZaubererFrontEnd';
-  zaubererArray: Hptype[] = [];
+  zaubererArray: HpWizard[] = [];
 
 
 }

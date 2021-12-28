@@ -4,7 +4,9 @@ import com.example.harrypotter.entity.wizards.PotionsMaster;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.example.harrypotter.service.ConditionService;
-import com.example.harrypotter.service.options.OptionsService;
+import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.PotionService;
+import com.example.harrypotter.service.options.SpellService;
 import com.example.harrypotter.service.strengthAndWeaknessService.StrengthAndWeaknessService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +17,9 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class PotionsMasterService {
     private WizardRepo wizardRepo;
-    private OptionsService optionsService;
+    private PotionService potionService;
+    private SpellService spellService;
+    private AnimalService animalService;
     private ConditionService conditionService;
     private StrengthAndWeaknessService sawService;
     private WizardService wizardService;
@@ -29,21 +33,21 @@ public class PotionsMasterService {
         wizardRepo.save(pm);
         conditionService.addConditions(pm);
 
-        optionsService.createExpelliarmus(pm);
-        optionsService.createStupefy(pm);
-        optionsService.createCalvorio(pm);
-        optionsService.createSectumssempra(pm);
-        optionsService.createImperio(pm);
+        spellService.createExpelliarmus(pm);
+        spellService.createStupefy(pm);
+        spellService.createCalvorio(pm);
+        spellService.createSectumssempra(pm);
+        spellService.createImperio(pm);
 
-        optionsService.createAntiParalysis(pm, 2);
-        optionsService.createBrainElixir(pm, 2);
-        optionsService.createExplodingPotion(pm, 3);
-        optionsService.createHealingPotion(pm, 3);
-        optionsService.createInvogiration(pm, 2);
-        optionsService.createWitSharpeningPotion(pm, 2);
-        optionsService.createExtimuloPotion(pm, 5);
+        potionService.createAntiParalysis(pm, 2);
+        potionService.createBrainElixir(pm, 2);
+        potionService.createExplodingPotion(pm, 3);
+        potionService.createHealingPotion(pm, 3);
+        potionService.createInvogiration(pm, 2);
+        potionService.createWitSharpeningPotion(pm, 2);
+        potionService.createExtimuloPotion(pm, 5);
 
-
+        animalService.createFlobberworm(pm);
 
         sawService.weaknessHeadmaster(pm);
         sawService.weaknessVoldmort(pm);

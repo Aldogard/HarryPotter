@@ -4,7 +4,9 @@ import com.example.harrypotter.entity.wizards.Dumbledore;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.example.harrypotter.service.ConditionService;
-import com.example.harrypotter.service.options.OptionsService;
+import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.PotionService;
+import com.example.harrypotter.service.options.SpellService;
 import com.example.harrypotter.service.strengthAndWeaknessService.StrengthAndWeaknessService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +17,9 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class DumbledoreService {
     private WizardRepo wizardRepo;
-    private OptionsService optionsService;
+    private PotionService potionService;
+    private SpellService spellService;
+    private AnimalService animalService;
     private ConditionService conditionService;
     private WizardService wizardService;
     private StrengthAndWeaknessService sawService;
@@ -34,27 +38,28 @@ public class DumbledoreService {
 
         conditionService.addConditions(d);
 
-        optionsService.createExpelliarmus(d);
-        optionsService.createStupefy(d);
+        spellService.createExpelliarmus(d);
+        spellService.createStupefy(d);
+        spellService.createLevicorpus(d);
+        spellService.createCalvorio(d);
+        spellService.createImmobilus(d);
+        spellService.createSectumssempra(d);
+        spellService.createConfundo(d);
+        spellService.createImperio(d);
+        spellService.createProtego(d);
+        spellService.createFiendfyre(d);
+        spellService.createAntiFiendfyre(d);
+        spellService.createFirestorm(d);
 
-        optionsService.createLevicorpus(d);
-        optionsService.createCalvorio(d);
-        optionsService.createImmobilus(d);
-        optionsService.createSectumssempra(d);
-        optionsService.createConfundo(d);
-        optionsService.createImperio(d);
-        optionsService.createProtego(d);
-        optionsService.createFiendfyre(d);
-        optionsService.createAntiFiendfyre(d);
-        optionsService.createFirestorm(d);
+        animalService.createFlobberworm(d);
 
-        optionsService.createAntiParalysis(d, 2);
-        optionsService.createBrainElixir(d, 1);
-        optionsService.createExplodingPotion(d, 3);
-        optionsService.createHealingPotion(d, 3);
-        optionsService.createInvogiration(d, 1);
-        optionsService.createWitSharpeningPotion(d, 2);
-        optionsService.createExtimuloPotion(d,3);
+        potionService.createAntiParalysis(d, 2);
+        potionService.createBrainElixir(d, 1);
+        potionService.createExplodingPotion(d, 3);
+        potionService.createHealingPotion(d, 3);
+        potionService.createInvogiration(d, 1);
+        potionService.createWitSharpeningPotion(d, 2);
+        potionService.createExtimuloPotion(d,3);
 
         sawService.weaknessDumbledore(d);
 

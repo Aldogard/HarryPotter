@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HarrypotterService } from '../harrypotter.service';
 import { HpSpell } from '../hp-spell';
 import { HpPotion } from '../hp-potion';
-import { Hptype } from '../hptype';
+import { HpWizard } from '../hp-wizard';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,7 @@ import { Hptype } from '../hptype';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  wizard?: Hptype;
+  wizard?: HpWizard;
   quote: string = '';
 
   constructor(private hpService: HarrypotterService) {}

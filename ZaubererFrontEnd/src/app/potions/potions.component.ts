@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HarrypotterService } from '../harrypotter.service';
 import { HpPotion } from '../hp-potion';
-import { Hptype } from '../hptype';
+import { HpWizard } from '../hp-wizard';
 import { ExtraService } from '../extra.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ExtraService } from '../extra.service';
   styleUrls: ['./potions.component.css'],
 })
 export class PotionsComponent implements OnInit {
-  wizards: Hptype[] = [];
+  wizards: HpWizard[] = [];
   potions: HpPotion[] = [];
 
   constructor(

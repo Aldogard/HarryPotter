@@ -29,4 +29,8 @@ export class DetailsPotionComponent implements OnInit {
       }
     });
   }
+
+  gotoWiki(){
+    window.open('https://harrypotter.fandom.com/wiki/Main_Page');
+  }
 }

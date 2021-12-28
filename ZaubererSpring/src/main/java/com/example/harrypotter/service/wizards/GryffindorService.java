@@ -4,7 +4,9 @@ import com.example.harrypotter.entity.wizards.Gryffindor;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.example.harrypotter.service.ConditionService;
-import com.example.harrypotter.service.options.OptionsService;
+import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.PotionService;
+import com.example.harrypotter.service.options.SpellService;
 import com.example.harrypotter.service.strengthAndWeaknessService.StrengthAndWeaknessService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +17,9 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class GryffindorService {
     private WizardRepo wizardRepo;
-    private OptionsService optionsService;
+    private PotionService potionService;
+    private SpellService spellService;
+    private AnimalService animalService;
     private ConditionService conditionService;
     private WizardService wizardService;
     private StrengthAndWeaknessService sawService;
@@ -29,15 +33,17 @@ public class GryffindorService {
         wizardRepo.save(gd);
         conditionService.addConditions(gd);
 
-        optionsService.createExpelliarmus(gd);
-        optionsService.createLevicorpus(gd);
-        optionsService.createCalvorio(gd);
-        optionsService.createImmobilus(gd);
-        optionsService.createProtego(gd);
+        spellService.createExpelliarmus(gd);
+        spellService.createLevicorpus(gd);
+        spellService.createCalvorio(gd);
+        spellService.createImmobilus(gd);
+        spellService.createProtego(gd);
 
-        optionsService.createAntiParalysis(gd, 1);
-        optionsService.createBrainElixir(gd, 1);
-        optionsService.createExtimuloPotion(gd, 5);
+        potionService.createAntiParalysis(gd, 1);
+        potionService.createBrainElixir(gd, 1);
+        potionService.createExtimuloPotion(gd, 5);
+
+        animalService.createFlobberworm(gd);
 
         sawService.strengthDeathEater(gd);
         sawService.strengthHufflepuff(gd);

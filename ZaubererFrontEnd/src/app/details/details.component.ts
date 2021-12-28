@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { HarrypotterService } from '../harrypotter.service';
-import { Hptype } from '../hptype';
+import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
 import { ExtraService } from '../extra.service';
 
@@ -24,11 +24,11 @@ export class DetailsComponent implements OnInit {
   idForComment: number = 0;
   idForRating: number = 0;
 
-  wizardChoiceA?: Hptype;
-  wizardChoiceB?: Hptype;
+  wizardChoiceA?: HpWizard;
+  wizardChoiceB?: HpWizard;
   availableStars: number[] = [1, 2, 3, 4, 5];
 
-  wizards: Hptype[] = [];
+  wizards: HpWizard[] = [];
   commentForm = this.fb.group({
     content: [
       '',

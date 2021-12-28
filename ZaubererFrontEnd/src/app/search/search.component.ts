@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HarrypotterService } from '../harrypotter.service';
-import { Hptype } from '../hptype';
+import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { MessageService } from '../message.service';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  wizards: Hptype[] = [];
-  wizardsResults: Hptype[] = [];
+  wizards: HpWizard[] = [];
+  wizardsResults: HpWizard[] = [];
   searchTerm: string = '';
 
   constructor(

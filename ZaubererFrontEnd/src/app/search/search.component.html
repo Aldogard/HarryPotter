@@ -7,10 +7,10 @@
         <th></th>
       </tr>
       <tr *ngFor="let z of wizardsResults">
-        <td>{{ z.name }}</td>
+        <td>{{ z | json}}</td>
       </tr>
       <tr *ngFor="let z of wizardsResults">
-        {{ z | json}}
+        <td>{{ z.name }}</td>
       </tr>
     </table>
   </div>

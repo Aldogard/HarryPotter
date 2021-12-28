@@ -17,32 +17,35 @@ Weitere Ideen: --> Erledigt
 	Einhornblut lässt negatives Leben zu --> Erledigt
 	Voldemort kann mit dem Regeneration Potion wiederbelebt werden --> Erledigt
 	Weitere Zauber und Tränke --> siehe intellij
-	Verschiedene Umgebungen
+	Verschiedene Umgebungen --> Erledigt
 	Erfahrung? --> Erledigt --> Siege werden gespeichert
 	Delete Verstecken --> Erledigt
 	Tests!
 	Weitere Filter --> Erledigt --> Filter für jedes Haus
 	Beschreibung für Zaubertränke und Zauber --> Erledigt
 	Beschreibung für Zauberer --> Erledigt --> Müssen beim Erstellen geschrieben werden
-	Zusätzlich Attribute anzeigen
+	Zusätzlich Attribute anzeigen --> Erledigt
 	Zusätzliche Effekte als Attribut oder über TS mittels Namen aufrufen? Eindeutige Lösung 
 	--> Erledigt
 
 Weitere Aufgaben:
-	Tests! --> ab 27.12
-	Design! --> ab 03.01.
 	Weitere Zauber implementieren --> Siehe intellij
 	Weitere Attribute anzeigen --> Erledigt
 	Spell anstatt Attack im FE und BE --> Erledigt
 	Umgebungen --> Erledigt
-	Effekte für Umgebungen
-	Verlinkungen sichtbar(er) machen --> Pointer Curser erscheint
-	HP Wiki erwähnen bei Spells und Attacks
-	Erfahrung für Spells
-	Was passiert mit den Suchergebnissen --> Detailansicht? 
+	Verlinkungen sichtbar(er) machen --> Erledigt --> Pointer Curser erscheint
+	HP Wiki erwähnen bei Spells und Attacks --> Erledigt
+	Erfahrung für Spells --> Erledigt
+	Kombination von Fiendfyre und stunned lösen --> Erledigt
+
+	Tests! --> ab 27.12 --> Udemy Kurs
+	Design! --> ab 03.01.
+	Potionsmaster Problematik
+	Imperio für Potions und Animals?
+
+Noch vor dem Design:
 	--> Detail View und Overview sinnvoll kombinieren
-	Kombination von Fiendfyre und stunned lösen
-	
+	Was passiert mit den Suchergebnissen --> Detailansicht? 
 	
 
 
@@ -54,6 +57,7 @@ Zu einem späteren Zeitpunkt erledigen:
 	Weitere Aktionen bspw. Tiere agieren lassen. Basilisk, Phoenix etc.
 	Anzahl von Verteidigern und Angreifern variabel halten --> Potenziell sehr aufwendig
 	Lösung für Ranks
+	Effekte für Umgebungen
 
 
 

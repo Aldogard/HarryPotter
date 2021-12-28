@@ -4,7 +4,9 @@ import com.example.harrypotter.entity.wizards.Voldemort;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.example.harrypotter.service.ConditionService;
-import com.example.harrypotter.service.options.OptionsService;
+import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.PotionService;
+import com.example.harrypotter.service.options.SpellService;
 import com.example.harrypotter.service.strengthAndWeaknessService.StrengthAndWeaknessService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,7 +17,9 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class VoldemortService {
     private WizardRepo wizardRepo;
-    private OptionsService optionsService;
+    private PotionService potionService;
+    private SpellService spellService;
+    private AnimalService animalService;
     private ConditionService conditionService;
     private WizardService wizardService;
     private StrengthAndWeaknessService sawService;
@@ -32,22 +36,24 @@ public class VoldemortService {
         wizardRepo.save(v);
         conditionService.addConditions(v);
 
-        optionsService.createExpelliarmus(v);
-        optionsService.createStupefy(v);
-        optionsService.createLevicorpus(v);
-        optionsService.createCalvorio(v);
-        optionsService.createImmobilus(v);
-        optionsService.createSectumssempra(v);
-        optionsService.createConfundo(v);
-        optionsService.createAvadaKedavra(v);
-        optionsService.createImperio(v);
-        optionsService.createCrucio(v);
-        optionsService.createFiendfyre(v);
-        optionsService.createAntiFiendfyre(v);
+        spellService.createExpelliarmus(v);
+        spellService.createStupefy(v);
+        spellService.createLevicorpus(v);
+        spellService.createCalvorio(v);
+        spellService.createImmobilus(v);
+        spellService.createSectumssempra(v);
+        spellService.createConfundo(v);
+        spellService.createAvadaKedavra(v);
+        spellService.createImperio(v);
+        spellService.createCrucio(v);
+        spellService.createFiendfyre(v);
+        spellService.createAntiFiendfyre(v);
 
-        optionsService.createAntiParalysis(v, 3);
-        optionsService.createExplodingPotion(v, 1);
-        optionsService.createUnicornBlood(v, 1);
+        potionService.createAntiParalysis(v, 3);
+        potionService.createExplodingPotion(v, 1);
+        potionService.createUnicornBlood(v, 1);
+
+        animalService.createFlobberworm(v);
 
         sawService.weaknessVoldmort(v);
         sawService.weaknessHeadmaster(v);

@@ -4,7 +4,7 @@ export interface HpPotion {
     storage: number,
     descriptionOption: string,
     healing: number,
-    energyRestorage: number,
+    energyRecovery: number,
     antiParalysis: boolean,
     antiConfunded: boolean,
     regeneration: boolean,

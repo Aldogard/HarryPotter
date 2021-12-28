@@ -1,5 +1,6 @@
 package com.example.harrypotter.entity.wizards;
 
+import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Spell;
 import com.example.harrypotter.entity.options.Potion;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -103,6 +104,10 @@ public abstract class Wizard {
     @JsonManagedReference
     @OneToMany(mappedBy = "wizard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<StrengthAndWeakness> strengthAndWeaknesses;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "wizard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Animal> animals;
 
 
 
