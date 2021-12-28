@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { HpSpell } from './hp-spell';
 import { HpPotion } from './hp-potion';
 import { HpWizard } from './hp-wizard';
+import { HpAnimal } from './hp-animal';
 const url: string = 'http://localhost:8080/wizard';
 
 @Injectable({
@@ -118,6 +119,11 @@ export class HarrypotterService {
   getAttackById(id: number){
     const urlAttackId = url + '/attack/' + id;
     return this.http.get<HpSpell>(urlAttackId);
+  }
+
+  getAnimalById(id: number){
+    const urlAnimalId = url + '/animal/' + id;
+    return this.http.get<HpAnimal>(urlAnimalId);
   }
 
 

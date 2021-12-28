@@ -24,9 +24,9 @@
     <br />
     <input
       type="number"
-      [formControl]="attackAmount"
-      placeholder="Attack"
-      (keyup.enter)="getAttackAmount($event)"
+      [formControl]="spellAmount"
+      placeholder="Spell"
+      (keyup.enter)="getSpellAmount($event)"
     />
     <br />
     <input
@@ -36,6 +36,13 @@
       (keyup.enter)="getPotionAmount($event)"
     />
     <br />
+    <input
+    type="number"
+    [formControl]="animalAmount"
+    placeholder="Animal"
+    (keyup.enter)="getAnimalAmount($event)"
+  />
+  <br />
     <input
       type="number"
       [formControl]="minVictories"
@@ -52,8 +59,9 @@
         <th>Healthpoints</th>
         <th>Factor</th>
         <th>Class</th>
-        <th>Attacks</th>
+        <th>Spells</th>
         <th>Potions</th>
+        <th>Animals</th>
         <th>Victories</th>
       </tr>
       <tr *ngFor="let z of wizards">
@@ -63,6 +71,7 @@
         <td>{{ z.klasse }}</td>
         <td>{{ z.spells.length }}</td>
         <td>{{ z.potions.length }}</td>
+        <td>{{ z.animals.length }}</td>
         <td>{{ z.victories }}</td>
       </tr>
     </table>
@@ -73,6 +82,7 @@
       Button
     </p>
     <button (click)="gotoPotions()">Go to Potions</button>
-    <button (click)="gotoAttacks()">Go to Spells</button>
+    <button (click)="gotoSpells()">Go to Spells</button>
+    <button (click)="gotoAnimals()">Go to Animals</button>
   </div>
 </div>

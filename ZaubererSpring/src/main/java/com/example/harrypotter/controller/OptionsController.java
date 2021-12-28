@@ -1,8 +1,11 @@
 package com.example.harrypotter.controller;
 
-
+import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
+import com.example.harrypotter.entity.options.Spell;
+import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
+import com.example.harrypotter.repo.options.SpellRepo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
@@ -16,11 +19,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/wizard")
 @AllArgsConstructor
-public class PotionController {
+public class OptionsController {
     private PotionsRepo potionsRepo;
+    private SpellRepo spellRepo;
+    private AnimalRepo animalRepo;
+
 
     @GetMapping("/potion/{id}")
     public ResponseEntity<Potion> getPotionById(@PathVariable int id){
         return new ResponseEntity<>(potionsRepo.findById(id).orElse(null), HttpStatus.OK);
+    }
+
+    @GetMapping("/attack/{id}")
+    public ResponseEntity<Spell> getAttackById(@PathVariable int id){
+        return new ResponseEntity<>(spellRepo.findById(id).orElse(null), HttpStatus.OK);
+    }
+
+    @GetMapping("/animal/{id}")
+    public ResponseEntity<Animal> getAnimalById(@PathVariable int id){
+        return new ResponseEntity<>(animalRepo.findById(id).orElse(null), HttpStatus.OK);
     }
 }

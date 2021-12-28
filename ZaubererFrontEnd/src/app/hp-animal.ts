@@ -1,7 +1,8 @@
 export interface HpAnimal {
     id: number,
     name: string,
-    description: string,
+    energyUsage: number,
+    descriptionOption: string,
     maxDamage: number,
     requiredExperience: number,
     healing: number,

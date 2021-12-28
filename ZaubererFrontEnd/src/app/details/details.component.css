@@ -5,8 +5,9 @@
   grid-template-areas:
     "header header"
     "wizard1 wizard1"
-    "wizard1potion  wizard2potion"
-    "wizard1attack  wizard2attack"
+    "wizard1potion wizard2potion"
+    "wizard1attack wizard2attack"
+    "wizard1animal wizard2animal"
     "comment rating";
 }
 
@@ -45,6 +46,14 @@
 
 .wizard2attack {
   grid-area: wizard2attack;
+}
+
+.wizard1animal {
+  grid-area: wizard1animal;
+}
+
+.wizard2animal {
+  grid-area: wizard2animal;
 }
 
 .comment {

@@ -16,12 +16,14 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { SearchConnectionComponent } from './search-connection/search-connection.component';
 import { BattleComponent } from './battle/battle.component';
-import { SpellsComponent } from './spells/spells.component';
-import { PotionsComponent } from './potions/potions.component';
+import { OverviewSpellComponent } from './overview-spell/spells.component';
+import { OverviewPotionComponent } from './overview-potion/potions.component';
 import { DetailsPotionComponent } from './details-potion/details-potion.component';
 import { DetailsSpellComponent } from './details-spell/details-spell.component';
 import { RulesComponent } from './rules/rules.component';
 import { RanksComponent } from './ranks/ranks.component';
+import { DetailsAnimalComponent } from './details-animal/details-animal.component';
+import { OverviewAnimalComponent } from './overview-animal/overview-animal.component';
 
 @NgModule({
   declarations: [
@@ -37,12 +39,14 @@ import { RanksComponent } from './ranks/ranks.component';
     SearchComponent,
     SearchConnectionComponent,
     BattleComponent,
-    SpellsComponent,
-    PotionsComponent,
+    OverviewSpellComponent,
+    OverviewPotionComponent,
     DetailsPotionComponent,
     DetailsSpellComponent,
     RulesComponent,
     RanksComponent,
+    DetailsAnimalComponent,
+    OverviewAnimalComponent,
   ],
   imports: [
     BrowserModule,

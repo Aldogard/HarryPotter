@@ -1,0 +1,35 @@
+<div class="container">
+  <ng-container *ngIf="animal !== undefined">
+    <h1>Detail View for {{ animal.name }}</h1>
+    <table>
+      <tr>
+        <td>Energy Usage</td>
+        <td>{{ animal.energyUsage }}</td>
+      </tr>
+      <tr>
+        <td>Healing</td>
+        <td>{{ animal.healing }}</td>
+      </tr>
+      <tr>
+        <td>Energy Recovery</td>
+        <td>{{ animal.energyRecovery }}</td>
+      </tr>
+      <tr>
+        <td>Max Damage</td>
+        <td>{{ animal.maxDamage }}</td>
+      </tr>
+      <tr>
+        <td>Experience needed</td>
+        <td>{{ animal.requiredExperience }}</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>{{ animal.descriptionOption }}</td>
+      </tr>
+    </table>
+  </ng-container>
+  <br />
+  <a (click)="gotoWiki()" class="link"
+    >The description is taken from the wonderful Harry Potter Wiki!</a
+  >
+</div>

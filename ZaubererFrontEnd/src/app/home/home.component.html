@@ -9,15 +9,11 @@
         <li>Healthpoints: {{ wizard.healthPoints }}</li>
         <li>Factor: {{ wizard.faktor }}</li>
         <li>Energy: {{ wizard.energy }}</li>
-        <li *ngIf="wizard.victories === 1">
-          Victory: {{ wizard.victories }}
-        </li>
+        <li *ngIf="wizard.victories === 1">Victory: {{ wizard.victories }}</li>
         <li *ngIf="wizard.victories !== 1">
           Victories: {{ wizard.victories }}
         </li>
-        <li>
-          Rank: {{wizard.rank }}
-        </li>
+        <li>Rank: {{ wizard.rank }}</li>
         <li>Class: {{ wizard.klasse }}</li>
         <li *ngIf="wizard.amount < 2">
           Rating: {{ wizard.rating }} ({{ wizard.amount }} Review)
@@ -26,8 +22,8 @@
           Rating: {{ wizard.rating }} ({{ wizard.amount }} Reviews)
         </li>
         <li>Spells: {{ wizard.spells.length }}</li>
-
         <li>Potions: {{ wizard.potions.length }}</li>
+        <li>Animals: {{ wizard.animals.length }}</li>
       </ul>
     </div>
   </div>

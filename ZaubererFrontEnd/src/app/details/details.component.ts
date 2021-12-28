@@ -176,6 +176,15 @@ export class DetailsComponent implements OnInit {
     //this.zusatzService.redirectTo('attackdetail');
   }
 
+  gotoAnimalDetail(animalId: number) {
+    this.mss.sendAnimalId(animalId);
+    const url = 'animaldetail/' + animalId;
+    window.open(url);
+    //this.zusatzService.redirectTo('attackdetail');
+  }
+
+
+
   gotoRanks() {
     window.open('ranks');
     //this.zusatzService.redirectTo('attackdetail');

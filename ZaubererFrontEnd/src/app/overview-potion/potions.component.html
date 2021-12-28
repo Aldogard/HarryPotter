@@ -4,11 +4,12 @@
     <tr>
       <th>Name</th>
       <th>Healing</th>
-      <th>Energy</th>
+      <th>Recovery</th>
       <th>Anti-Paralysis</th>
       <th>Anti-Confunded</th>
       <th>Max Damage</th>
       <th>AF</th>
+      <th>Experience</th>
     </tr>
     <tr *ngFor="let potion of potions">
       <td>{{ potion.name }}</td>
@@ -18,6 +19,7 @@
       <td>{{ potion.antiConfunded }}</td>
       <td>{{ potion.maxDamage }}</td>
       <td>{{ potion.additionalFactor }}</td>
+      <td>{{ potion.requiredExperience }}</td>
     </tr>
   </table>
   <div class="hints">
@@ -49,6 +51,10 @@
         Additional Factor (AF) increases the Factor of the Wizard times the indicated
         Factor when the Potion is used. 1 indicates that there is no increase.
       </li>
+      <li>
+        Experience indicates the number of victories a wizards needs in order to
+        use the Potion.
+      </li>
     </ul>
   </div>
   <div class="goto">
@@ -58,5 +64,7 @@
     </p>
     <button (click)="gotoOverview()">Go to Overview</button>
     <button (click)="gotoAttacks()">Go to Spells</button>
+    <button (click)="gotoAnimals()">Go to Animals</button>
+
   </div>
 </div>

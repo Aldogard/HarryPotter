@@ -9,7 +9,7 @@ import { ExtraService } from '../extra.service';
   templateUrl: './potions.component.html',
   styleUrls: ['./potions.component.css'],
 })
-export class PotionsComponent implements OnInit {
+export class OverviewPotionComponent implements OnInit {
   wizards: HpWizard[] = [];
   potions: HpPotion[] = [];
 
@@ -38,5 +38,9 @@ export class PotionsComponent implements OnInit {
 
   gotoAttacks() {
     this.extraService.redirectTo('spells');
+  }
+
+  gotoAnimals(){
+    this.extraService.redirectTo('animals')
   }
 }

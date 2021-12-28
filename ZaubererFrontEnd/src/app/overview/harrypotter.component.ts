@@ -17,8 +17,9 @@ export class HarrypotterComponent implements OnInit {
   showFilter = new BehaviorSubject<boolean>(false);
   max: FormControl = new FormControl();
   min: FormControl = new FormControl();
-  attackAmount = new FormControl('');
+  spellAmount = new FormControl('');
   potionAmount = new FormControl('');
+  animalAmount = new FormControl('');
   minVictories = new FormControl('');
   class: string[] = this.extraService.wizardType;
 
@@ -63,14 +64,14 @@ export class HarrypotterComponent implements OnInit {
       });
   }
 
-  getAttackAmount(event: any) {
+  getSpellAmount(event: any) {
     this.hpService.getWizards().subscribe((za) => {
       let platzhalter = za;
       this.wizards = [];
       platzhalter
         .filter(
           (element) =>
-            element.spells.length === Math.round(this.attackAmount.value)
+            element.spells.length === Math.round(this.spellAmount.value)
         )
         .forEach((element) => this.wizards.push(element));
     });
@@ -89,6 +90,19 @@ export class HarrypotterComponent implements OnInit {
     });
   }
 
+  getAnimalAmount(event: any) {
+    this.hpService.getWizards().subscribe((za) => {
+      let platzhalter = za;
+      this.wizards = [];
+      platzhalter
+        .filter(
+          (element) =>
+            element.animals.length === Math.round(this.animalAmount.value)
+        )
+        .forEach((element) => this.wizards.push(element));
+    });
+  }
+
   getMinVictories(event: any) {
     console.log(this.minVictories.value);
     this.hpService
@@ -102,7 +116,11 @@ export class HarrypotterComponent implements OnInit {
     this.extraService.redirectTo('potions');
   }
 
-  gotoAttacks() {
+  gotoSpells() {
     this.extraService.redirectTo('spells');
+  }
+
+  gotoAnimals(){
+    this.extraService.redirectTo('animals')
   }
 }

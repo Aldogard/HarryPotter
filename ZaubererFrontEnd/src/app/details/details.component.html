@@ -199,6 +199,42 @@
       </table>
     </ng-container>
   </div>
+  <div class="wizard1animal">
+    <ng-container *ngIf="wizardChoiceA !== undefined && show1.value">
+      <h3 class="subheader">Animals</h3>
+      <table *ngFor="let animal of wizardChoiceA.animals">
+        <tr>
+          <th>Name</th>
+          <th>{{ animal.name }}</th>
+          <th>
+            <button (click)="gotoAnimalDetail(animal.id)">Details</button>
+          </th>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{ animal.descriptionOption }}</td>
+        </tr>
+      </table>
+    </ng-container>
+  </div>
+  <div class="wizard2animal">
+    <ng-container *ngIf="wizardChoiceB !== undefined && show2.value">
+      <h3 class="subheader">Animals</h3>
+      <table *ngFor="let animal of wizardChoiceB.animals">
+        <tr>
+          <th>Name</th>
+          <th>{{ animal.name }}</th>
+          <th>
+            <button (click)="gotoAnimalDetail(animal.id)">Details</button>
+          </th>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{ animal.descriptionOption }}</td>
+        </tr>
+      </table>
+    </ng-container>
+  </div>
 
   <div class="comment">
     <h4>Write a comment:</h4>
