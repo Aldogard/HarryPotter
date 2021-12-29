@@ -38,10 +38,11 @@ Weitere Aufgaben:
 	Erfahrung für Spells --> Erledigt
 	Kombination von Fiendfyre und stunned lösen --> Erledigt
 
-	Tests! --> ab 27.12 --> Udemy Kurs
+	Tests! --> ab 27.12 --> Udemy Kurs --> ab 03.01.
 	Design! --> ab 03.01.
 	Potionsmaster Problematik
 	Imperio für Potions und Animals?
+	Pointer Curser auch für Buttons?
 
 Noch vor dem Design:
 	--> Detail View und Overview sinnvoll kombinieren

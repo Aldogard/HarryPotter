@@ -3,6 +3,7 @@ import { HpComment } from "./hp-comment";
 import { HpCondition } from "./hp-condition";
 import { HpPotion } from "./hp-potion";
 import { HpAnimal } from "./hp-animal";
+import { HpSaw } from "./hp-saw";
 
 export interface HpWizard {
     id: number,
@@ -28,6 +29,7 @@ export interface HpWizard {
     potions: HpPotion[],
     animals: HpAnimal[],
     comments: HpComment[],
+    strengthAndWeaknesses: HpSaw[],
     rating: number,
     amount: number,
 }

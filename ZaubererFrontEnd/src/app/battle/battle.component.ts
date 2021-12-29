@@ -104,7 +104,7 @@ export class BattleComponent implements OnInit {
       );
     }
 
-    attackWizard.energy = Math.round(attackWizard.energy *10)/10;
+    attackWizard.energy = Math.round(attackWizard.energy * 10) / 10;
     this.resetAFandProtego(attackWizard, defendWizard);
     this.reduceProtection(defendWizard);
     this.halfLifeEffects(attackWizard);
@@ -144,7 +144,7 @@ export class BattleComponent implements OnInit {
       );
     }
 
-    attackWizard.energy = Math.round(attackWizard.energy *10)/10;
+    attackWizard.energy = Math.round(attackWizard.energy * 10) / 10;
     this.reduceProtection(defendWizard);
     this.nextRound(defendWizard, defender, attackWizard);
     this.formattingOfKeyVariables();
@@ -172,7 +172,7 @@ export class BattleComponent implements OnInit {
       );
     }
 
-    attackWizard.energy = Math.round(attackWizard.energy *10)/10;
+    attackWizard.energy = Math.round(attackWizard.energy * 10) / 10;
     this.reduceProtection(defendWizard);
     this.nextRound(defendWizard, defender, attackWizard);
     this.formattingOfKeyVariables();
@@ -219,16 +219,6 @@ export class BattleComponent implements OnInit {
     }
   }
 
-  formattingOfKeyVariables() {
-    this.spell = new FormControl('');
-    this.potion = new FormControl('');
-    this.animal = new FormControl('');
-    this.validateSpell.next(false);
-    this.validatePotion.next(false);
-    this.validateAnimal.next(false);
-    this.chosenOption = '';
-  }
-
   getDamage(
     attackWizard: HpWizard,
     defendWizard: HpWizard,
@@ -236,15 +226,23 @@ export class BattleComponent implements OnInit {
     spell: boolean
   ) {
     let randomFactor = Math.round(Math.random() * 100) / 100;
-    if (
-      attackWizard.conditions[0].condition &&
-      spell &&
-      attackWizard.confundedProtection === 0
-    ) {
-      randomFactor = randomFactor / 2;
-    }
     if (spell) {
       randomFactor = randomFactor * attackWizard.additionalFactor;
+      if (
+        attackWizard.conditions[0].condition &&
+        attackWizard.confundedProtection === 0
+      ) {
+        randomFactor = randomFactor / 2;
+      }
+      attackWizard.strengthAndWeaknesses.forEach((saw) => {
+        if (saw.house === defendWizard.klasse && saw.strength) {
+          console.log('Double');
+          randomFactor = randomFactor * 2;
+        } else if (saw.house === defendWizard.klasse && !saw.strength) {
+          console.log('Half');
+          randomFactor = randomFactor / 2;
+        }
+      });
     }
     const wizardFactor = attackWizard.faktor;
     const maxDamage = damageFromAction;
@@ -309,11 +307,6 @@ export class BattleComponent implements OnInit {
         }
       });
     }
-  }
-
-  formattingStunnedAndConfunded(defendWizard: HpWizard) {
-    defendWizard.conditions[0].condition = false;
-    defendWizard.conditions[1].condition = false;
   }
 
   spellEffects(defendWizard: HpWizard, attackWizard: HpWizard) {
@@ -425,27 +418,14 @@ export class BattleComponent implements OnInit {
     }
   }
 
-  gotoAttackDetail(attackId: number) {
-    this.ms.sendAttackId(attackId);
-    const url = 'spelldetail/' + attackId;
-    window.open(url);
-  }
-
-  gotoPotionDetail(potionId: number) {
-    this.ms.sendPotionId(potionId);
-    const url = 'potiondetail/' + potionId;
-    window.open(url);
-  }
-
-  gotoAnimalDetail(animalId: number) {
-    this.ms.sendAnimalId(animalId);
-    const url = 'animaldetail/' + animalId;
-    window.open(url);
-  }
-
-  gotoRules() {
-    this.ms.sendShow(false);
-    window.open('rules');
+  formattingOfKeyVariables() {
+    this.spell = new FormControl('');
+    this.potion = new FormControl('');
+    this.animal = new FormControl('');
+    this.validateSpell.next(false);
+    this.validatePotion.next(false);
+    this.validateAnimal.next(false);
+    this.chosenOption = '';
   }
 
   updateVictories() {
@@ -485,6 +465,11 @@ export class BattleComponent implements OnInit {
     }
   }
 
+  formattingStunnedAndConfunded(defendWizard: HpWizard) {
+    defendWizard.conditions[0].condition = false;
+    defendWizard.conditions[1].condition = false;
+  }
+
   resetAFandProtego(attackWizard: HpWizard, defendWizard: HpWizard) {
     attackWizard.additionalFactor = 1;
     defendWizard.protego = false;
@@ -503,6 +488,28 @@ export class BattleComponent implements OnInit {
   preparation(attackWizard: HpWizard) {
     this.showStart.next(false);
     attackWizard.energy = attackWizard.energy + 3;
-    console.log(attackWizard.energy);
+  }
+
+  gotoAttackDetail(attackId: number) {
+    this.ms.sendAttackId(attackId);
+    const url = 'spelldetail/' + attackId;
+    window.open(url);
+  }
+
+  gotoPotionDetail(potionId: number) {
+    this.ms.sendPotionId(potionId);
+    const url = 'potiondetail/' + potionId;
+    window.open(url);
+  }
+
+  gotoAnimalDetail(animalId: number) {
+    this.ms.sendAnimalId(animalId);
+    const url = 'animaldetail/' + animalId;
+    window.open(url);
+  }
+
+  gotoRules() {
+    this.ms.sendShow(false);
+    window.open('rules');
   }
 }

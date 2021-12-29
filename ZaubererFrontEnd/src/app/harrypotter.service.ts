@@ -28,6 +28,9 @@ export class HarrypotterService {
   }
 
   postWizard(body: HpWizard, house: string){
+    if(house === 'Potions Master'){
+      house = 'potionsmaster'
+    }
     const stringLowercase = house.charAt(0).toLowerCase() + house.slice(1);
     const urlWizard = url + '/' + stringLowercase;
     console.log(urlWizard);

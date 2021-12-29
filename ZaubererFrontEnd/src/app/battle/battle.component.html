@@ -188,6 +188,7 @@
         <ng-container *ngIf="chosenOption === 'Animal'">
           <ul *ngFor="let animal of wizard2.animals">
             <li>Name: {{ animal.name }}</li>
+            <li>Energy Usage: {{ animal.energyUsage }}</li>
             <li>Healing: {{ animal.healing }}</li>
             <li>Energy Recovery: {{ animal.energyRecovery }}</li>
             <li>Max Damage: {{ animal.maxDamage }}</li>
@@ -293,6 +294,7 @@
         <ng-container *ngIf="chosenOption === 'Animal'">
           <ul *ngFor="let animal of wizard1.animals">
             <li>Name: {{ animal.name }}</li>
+            <li>Energy Usage: {{ animal.energyUsage }}</li>
             <li>Healing: {{ animal.healing }}</li>
             <li>Energy Recovery: {{ animal.energyRecovery }}</li>
             <li>Max Damage: {{ animal.maxDamage }}</li>

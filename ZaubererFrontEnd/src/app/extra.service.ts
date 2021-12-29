@@ -16,7 +16,7 @@ export class ExtraService {
     'Alumni',
     'Professor',
     'Dumbledore',
-    'Potionsmaster',
+    'Potions Master',
   ];
 
   options: string[] = ['Spell', 'Potion', 'Animal'];
