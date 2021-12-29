@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="header">The Prolog</h1>
+  <h1 class="header">The Prologue</h1>
   <div class="intro">
     <p>
       The Wizarding World is in great turmoil once again. Just as in the Great
@@ -8,15 +8,15 @@
       Wizards is on its way to Hogwarts.
     </p>
     <p>
-      The defences are prepared and the remaining wizards spread at the
-      castle. One brave Wizard stands up to defend the {{ environment }}. Can
-      the Wizard hold off the attack?
+      The defences are prepared and the remaining wizards spread at the castle.
+      One brave Wizard stands up to defend the {{ environment }}. Can the Wizard
+      hold off the attack?
     </p>
   </div>
 
   <div class="size">
     <label required for="Size"
-      >How many Wizards are attacking the Main-Gate?</label
+      >How many Wizards are attacking the {{ environment }}?</label
     >
     <br />
     <a class="radio" *ngFor="let star of battleSize">
@@ -40,7 +40,7 @@
   >
     <div class="buttonA choose1">
       <br />
-      <label required for="wizardUpdate">Choose the Defender: </label>
+      <label required for="wizardUpdate">Choose a Defender: </label>
       <select id="wizardUpdateA" (change)="getWizardAByName()">
         <option value="{{ z.id }}" *ngFor="let z of zauberer">
           {{ z.name }}
@@ -49,7 +49,7 @@
     </div>
     <div class="buttonB choose2">
       <br />
-      <label required for="wizardUpdate">Choose an Attacker:</label>
+      <label required for="wizardUpdate">Choose an Attacker: </label>
       <select id="wizardUpdateB" (change)="getWizardBByName()">
         <option value="{{ z.id }}" *ngFor="let z of zauberer">
           {{ z.name }}
@@ -64,7 +64,7 @@
     "
     class="choose3 buttonC"
   >
-    <label required for="wizardUpdate">Choose an Attacker:</label>
+    <label required for="wizardUpdate">Choose an Attacker: </label>
     <select id="wizardUpdateC" (change)="getWizardCByName()">
       <option value="{{ z.id }}" *ngFor="let z of zauberer">
         {{ z.name }}
@@ -72,7 +72,7 @@
     </select>
   </div>
   <div *ngIf="numberOfParticipants.value === '3'" class="choose4 buttonD">
-    <label required for="wizardUpdate">Choose an Attacker:</label>
+    <label required for="wizardUpdate">Choose an Attacker: </label>
     <select id="wizardUpdateD" (change)="getWizardDByName()">
       <option value="{{ z.id }}" *ngFor="let z of zauberer">
         {{ z.name }}

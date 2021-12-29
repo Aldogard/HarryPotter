@@ -51,15 +51,14 @@ public class AlumniService {
 
         animalService.createFlobberworm(a);
 
+        sawService.strengthHogwartsHouse(a);
+
         sawService.weaknessDumbledore(a);
         sawService.weaknessVoldmort(a);
         sawService.weaknessAlumni(a);
         sawService.weaknessProfessor(a);
         sawService.weaknessHeadmaster(a);
         sawService.weaknessPotionsMaster(a);
-
-        sawService.strengthHogwartsHouse(a);
-
 
         return new ResponseEntity<>(a, HttpStatus.OK);
     }

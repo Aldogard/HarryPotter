@@ -131,7 +131,7 @@ public abstract class Wizard {
         this.ptCounter = 0;
         this.victories = 0;
         this.amount = 0;
-        this.rank = "Dursley";
+        this.rank = "Vernon Dursley";
         this.rating = BigDecimal.valueOf(0.0);
 
     }

@@ -2,24 +2,41 @@
   <h1 class="header">Rules for the Fight</h1>
   <ol>
     <li>
-      The Attackers decide where to attack and therefore, the environment was choosen randomly
+      The Attackers decide where to attack and therefore, the environment was
+      choosen randomly
     </li>
     <li>
-      All participating wizards have to fight, except when the defender is
+      All participating Wizards have to fight, except when the Defender is
       defeated early
     </li>
-    <li>The fight can end neither prematurely nor in a tie</li>
+    <li>The fight between to Wizards can end neither prematurely nor in a tie</li>
     <li>
-      The two opposing factions of defenders and attackers do not change during
+      The two opposing factions of Defenders and Attackers do not change during
       the fight
     </li>
-    <li>The defender has to defeat all attackers to win the fight</li>
-    <li>An attacker will receive a victory even if he did not fight</li>
-    <li>The attackers fight the defender in the order they are selected</li>
-    <li>The wizard can only use a Spell or Potion if they have sufficient experience and energy</li>
+    <li>The Defender has to defeat all Attackers to win the fight</li>
+    <li>An Attacker will receive a victory even if he did not fight</li>
+    <li>The Attackers fight the Defender in the order they are selected</li>
     <li>
-      The Max Damage of an Attack or Potion is always factored with the factor
-      of the attacking wizard and a random factor between 0 and 1
+      The Wizard can only use a Spell or activate an Animal if they have
+      sufficient experience and energy
+    </li>
+    <li>
+      Potions do not require energy in order to be used but a Wizard still has
+      to have sufficient experience
+    </li>
+    <li>
+      The maximum Damage of an Attack is always factored with the factor of the
+      attacking Wizard and a random factor between 0 and 1
+    </li>
+    <li>
+      The maximum Damage of a Potion or Animal attack is always factored a
+      random factor between 0 and 1
+    </li>
+    <li>
+      Additionally, there are strengths and weaknesses. If the Wizard's class
+      has especial strength or weakness against the opposing Wizard, the random
+      factor will be doubled or halved respectively.
     </li>
     <li>
       The effects stunned, confunded and protego have a 50 percent chance of
@@ -28,6 +45,13 @@
     <li>
       The effect anti Paralysis and anti Confunded have a 50 percent chance of
       working
+    </li>
+    <li>
+      The Wizards who are currently fighting are alternating turns. The only
+      exception being when one Wizard has been stunned
+    </li>
+    <li>
+      Each turn, a Wizard will receive 3 Energy even if he or she is stunned.
     </li>
   </ol>
   <p class="gotoFight" *ngIf="show">

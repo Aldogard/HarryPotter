@@ -5,9 +5,11 @@
   grid-template-areas:
     "header header"
     "wizard1 wizard1"
+    "wizard1saw wizard2saw"
     "wizard1potion wizard2potion"
     "wizard1attack wizard2attack"
     "wizard1animal wizard2animal"
+    "wizard1comments wizard2comments"
     "comment rating";
 }
 
@@ -32,6 +34,14 @@
   grid-area: wizard1;
 }
 
+.wizard1saw{
+  grid-area: wizard1saw;
+}
+
+.wizard2saw{
+  grid-area: wizard2saw;
+}
+
 .wizard1potion {
   grid-area: wizard1potion;
 }
@@ -54,6 +64,14 @@
 
 .wizard2animal {
   grid-area: wizard2animal;
+}
+
+.wizard1comments{
+  grid-area: wizard1comments;
+}
+
+.wizard2comments{
+  grid-area: wizard2comments;
 }
 
 .comment {

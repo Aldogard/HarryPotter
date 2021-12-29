@@ -51,17 +51,16 @@ public class SlytherinService {
 
         animalService.createFlobberworm(sl);
 
+        sawService.strengthAlumni(sl);
+        sawService.strengthHufflepuff(sl);
+        sawService.strengthGryffindor(sl);
+
+        sawService.weaknessPotionsMaster(sl);
         sawService.weaknessDumbledore(sl);
         sawService.weaknessHeadmaster(sl);
         sawService.weaknessVoldmort(sl);
         sawService.weaknessDeathEater(sl);
         sawService.strengthSlytherin(sl);
-
-        sawService.strengthAlumni(sl);
-        sawService.strengthHufflepuff(sl);
-        sawService.strengthGryffindor(sl);
-        sawService.weaknessPotionsMaster(sl);
-
 
         return new ResponseEntity<>(sl, HttpStatus.OK);
     }

@@ -369,7 +369,7 @@ export class BattleComponent implements OnInit {
   checkIfDead() {
     return (
       this.wizardsArray.filter(
-        (v) => v.klasse === 'Voldemort' && v.healthPoints < 0
+        (v) => v.klasse === 'Voldemort' && v.healthPoints < 0 && this.wizardsArray[0] !== v
       ).length > 0
     );
   }
@@ -511,5 +511,26 @@ export class BattleComponent implements OnInit {
   gotoRules() {
     this.ms.sendShow(false);
     window.open('rules');
+  }
+
+  strengthAndWeakness(wizard1: HpWizard, wizard2: HpWizard){
+    let indicator
+    wizard1.strengthAndWeaknesses.forEach(saw => {
+      if(saw.house === wizard2.klasse && saw.strength){
+        indicator = true;
+        console.log("check true")
+      } else if(saw.house === wizard2.klasse && !saw.strength){
+        indicator = false;
+        console.log("check false")
+      }
+    })
+    if(indicator === true){
+      return 'Strong'
+    } else if (indicator === false){
+      return 'Weak'
+    } else {
+      return 'None';
+    }
+
   }
 }

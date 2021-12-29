@@ -49,6 +49,9 @@ public class HufflepuffService {
 
         animalService.createFlobberworm(hp);
 
+        sawService.strengthSlytherin(hp);
+        sawService.strengthGryffindor(hp);
+
         sawService.weaknessDumbledore(hp);
         sawService.weaknessVoldmort(hp);
         sawService.weaknessProfessor(hp);
@@ -56,9 +59,6 @@ public class HufflepuffService {
         sawService.weaknessDeathEater(hp);
         sawService.weaknessHufflepuff(hp);
         sawService.strengthPotionsMaster(hp);
-
-        sawService.strengthSlytherin(hp);
-        sawService.strengthGryffindor(hp);
 
         return new ResponseEntity<>(hp, HttpStatus.OK);
     }

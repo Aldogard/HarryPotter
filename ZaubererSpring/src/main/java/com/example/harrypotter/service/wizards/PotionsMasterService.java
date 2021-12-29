@@ -49,12 +49,12 @@ public class PotionsMasterService {
 
         animalService.createFlobberworm(pm);
 
+        sawService.strengthHogwartsHouse(pm);
+
         sawService.weaknessHeadmaster(pm);
         sawService.weaknessVoldmort(pm);
         sawService.weaknessPotionsMaster(pm);
         sawService.weaknessProfessor(pm);
-
-        sawService.strengthHogwartsHouse(pm);
         sawService.weaknessDeathEater(pm);
 
         return new ResponseEntity<>(pm, HttpStatus.OK);

@@ -43,6 +43,8 @@ Weitere Aufgaben:
 	Potionsmaster Problematik
 	Imperio für Potions und Animals?
 	Pointer Curser auch für Buttons?
+	Validators im BE
+	Battle und Fight ändern bspw. pre Battle und Battle --> Erledigt
 
 Noch vor dem Design:
 	--> Detail View und Overview sinnvoll kombinieren

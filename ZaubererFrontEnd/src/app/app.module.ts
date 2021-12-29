@@ -10,7 +10,7 @@ import { DetailsComponent } from './details/details.component';
 import { DeleteWizardComponent } from './delete-wizard/delete-wizard.component';
 import { UpdateWizardComponent } from './update-wizard/update-wizard.component';
 import { CreateWizardComponent } from './create-wizard/create-wizard.component';
-import { FightComponent } from './fight/fight.component';
+import { PrologueComponent } from './prologue/prologue.component';
 import { CreditsComponent } from './credits/credits.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
@@ -33,7 +33,7 @@ import { OverviewAnimalComponent } from './overview-animal/overview-animal.compo
     DeleteWizardComponent,
     UpdateWizardComponent,
     CreateWizardComponent,
-    FightComponent,
+    PrologueComponent,
     CreditsComponent,
     HomeComponent,
     SearchComponent,

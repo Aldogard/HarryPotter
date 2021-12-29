@@ -61,12 +61,12 @@ public class DumbledoreService {
         potionService.createWitSharpeningPotion(d, 2);
         potionService.createExtimuloPotion(d,3);
 
-        sawService.weaknessDumbledore(d);
-
         sawService.strengthAlumni(d);
         sawService.strengthDeathEater(d);
         sawService.strengthProfessor(d);
         sawService.strengthHogwartsHouse(d);
+
+        sawService.weaknessDumbledore(d);
         sawService.weaknessPotionsMaster(d);
 
 

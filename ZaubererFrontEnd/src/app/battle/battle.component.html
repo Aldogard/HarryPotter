@@ -11,10 +11,10 @@
       <h4>Status of all participating Wizards</h4>
       <p *ngFor="let part of wizardsArray">
         <a *ngIf="part.id === wizardsArray[0].id">
-          {{ part.name }} the brave Defender:
+          {{ part.name }}, brave Defender:
         </a>
         <a *ngIf="part.id !== wizardsArray[0].id">
-          {{ part.name }} the Attacker:
+          {{ part.name }}, Attacker:
         </a>
         <ng-container *ngIf="part.healthPoints >= 10 && !part.halfLife"
           >Alive</ng-container
@@ -65,6 +65,11 @@
           <td>{{ wizard2.victories }}</td>
         </tr>
         <tr>
+          <td>Abilities vs other wizard</td>
+          <td>{{ strengthAndWeakness(wizard1, wizard2) }}</td>
+          <td>{{ strengthAndWeakness(wizard2, wizard1) }}</td>
+        </tr>
+        <tr>
           <td>Additional Factor</td>
           <td>{{ wizard1.additionalFactor }}</td>
           <td>{{ wizard2.additionalFactor }}</td>
@@ -105,10 +110,10 @@
     <ng-container *ngIf="attackWizard2.value">
       <div class="fs">
         <p *ngIf="showStart.value">
-          The Battle beginns. {{ wizard2.name }} comes up with a surprise Attack
-          and will start the battle!
+          The Battle beginns. {{ wizard2.name }} is already waiting and will
+          start the battle!
         </p>
-        <p *ngIf="!showStart.value">It is {{ wizard2.name }}'s turn</p>
+        <p *ngIf="!showStart.value">Now, {{ wizard2.name }} will attack</p>
         <label required for="options"
           >Please chose an Option for the Attack:</label
         >
@@ -214,11 +219,11 @@
     <ng-container *ngIf="attackWizard1.value">
       <div class="fs">
         <p *ngIf="showStart.value">
-          The Battle beginns. {{ wizard1.name }} hides behind a stone stature
-          and starts a surprise attack!
+          The Battle beginns. {{ wizard1.name }} arrives at the
+          {{ environment }} sooner than expected and starts a surprise attack!
         </p>
         <p *ngIf="!showStart.value">
-          Now {{ wizard1.name }} will counter-attack
+          Now {{ wizard1.name }} will mount an attack
         </p>
         <label required for="options"
           >Please chose an Option for the Attack:</label

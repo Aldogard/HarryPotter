@@ -8,7 +8,7 @@ import { DeleteWizardComponent } from './delete-wizard/delete-wizard.component';
 import { DetailsSpellComponent } from './details-spell/details-spell.component';
 import { DetailsPotionComponent } from './details-potion/details-potion.component';
 import { DetailsComponent } from './details/details.component';
-import { FightComponent } from './fight/fight.component';
+import { PrologueComponent } from './prologue/prologue.component';
 import { HomeComponent } from './home/home.component';
 import { HarrypotterComponent } from './overview/harrypotter.component';
 import { OverviewPotionComponent } from './overview-potion/potions.component';
@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'delete', component: DeleteWizardComponent },
   { path: 'create', component: CreateWizardComponent },
   { path: 'update', component: UpdateWizardComponent },
-  { path: 'fight', component: FightComponent},
+  { path: 'prologue', component: PrologueComponent},
   { path: 'credits', component: CreditsComponent},
   { path: 'home', component: HomeComponent},
   { path: 'result', component: SearchComponent},

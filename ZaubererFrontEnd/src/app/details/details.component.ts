@@ -111,7 +111,16 @@ export class DetailsComponent implements OnInit {
   post() {
     const response = this.hpService.postComment(this.commentForm.value, this.idForComment);
     response.subscribe((x) => {
-      this.zusatzService.redirectTo('detail');
+      this.commentForm = this.fb.group({
+        content: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(10),
+            Validators.maxLength(100),
+          ],
+        ],
+      });
     });
   }
 
@@ -128,7 +137,6 @@ export class DetailsComponent implements OnInit {
   getWizardByNameRating() {
     this.idForRating = (<HTMLInputElement>document.getElementById('wizardIdRating'))
       .value as unknown as number;
-
     if (!this.idForRating) {
       this.idForRating = this.wizards[0].id;
     }

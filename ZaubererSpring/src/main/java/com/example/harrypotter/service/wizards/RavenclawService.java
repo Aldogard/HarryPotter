@@ -52,15 +52,16 @@ public class RavenclawService {
 
         animalService.createFlobberworm(rc);
 
+        sawService.strengthGryffindor(rc);
+        sawService.strengthSlytherin(rc);
+        sawService.strengthHufflepuff(rc);
+
         sawService.weaknessDumbledore(rc);
         sawService.weaknessHeadmaster(rc);
         sawService.weaknessVoldmort(rc);
         sawService.weaknessRavenclaw(rc);
         sawService.weaknessPotionsMaster(rc);
 
-        sawService.strengthGryffindor(rc);
-        sawService.strengthSlytherin(rc);
-        sawService.strengthHufflepuff(rc);
 
         return new ResponseEntity<>(rc, HttpStatus.OK);
     }

@@ -53,13 +53,13 @@ public class HeadmasterService {
 
         animalService.createFlobberworm(hm);
 
-        sawService.weaknessHeadmaster(hm);
-        sawService.weaknessDumbledore(hm);
-
+        sawService.strengthPotionsMaster(hm);
         sawService.strengthHogwartsHouse(hm);
         sawService.strengthDeathEater(hm);
         sawService.strengthAlumni(hm);
-        sawService.strengthPotionsMaster(hm);
+
+        sawService.weaknessHeadmaster(hm);
+        sawService.weaknessDumbledore(hm);
 
         return new ResponseEntity<>(hm, HttpStatus.OK);
     }

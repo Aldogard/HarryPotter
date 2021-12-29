@@ -24,31 +24,31 @@
     <br />
     <input
       type="number"
+      [formControl]="minVictories"
+      placeholder="Min Victories"
+      (keyup.enter)="getMinVictories($event)"
+    />
+    <br />
+    <input
+      type="number"
       [formControl]="spellAmount"
-      placeholder="Spell"
+      placeholder="Spells"
       (keyup.enter)="getSpellAmount($event)"
     />
     <br />
     <input
       type="number"
       [formControl]="potionAmount"
-      placeholder="Potion"
+      placeholder="Potions"
       (keyup.enter)="getPotionAmount($event)"
     />
     <br />
     <input
     type="number"
     [formControl]="animalAmount"
-    placeholder="Animal"
+    placeholder="Animals"
     (keyup.enter)="getAnimalAmount($event)"
   />
-  <br />
-    <input
-      type="number"
-      [formControl]="minVictories"
-      placeholder="Victories"
-      (keyup.enter)="getMinVictories($event)"
-    />
     <br />
     <button (click)="deleteFilter()">Remove Filter</button>
   </div>
@@ -57,7 +57,6 @@
       <tr>
         <th>Name</th>
         <th>Healthpoints</th>
-        <th>Factor</th>
         <th>Class</th>
         <th>Spells</th>
         <th>Potions</th>
@@ -67,7 +66,6 @@
       <tr *ngFor="let z of wizards">
         <td>{{ z.name }}</td>
         <td>{{ z.healthPoints }}</td>
-        <td>{{ z.faktor }}</td>
         <td>{{ z.klasse }}</td>
         <td>{{ z.spells.length }}</td>
         <td>{{ z.potions.length }}</td>

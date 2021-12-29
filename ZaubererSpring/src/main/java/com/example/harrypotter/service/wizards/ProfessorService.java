@@ -53,11 +53,11 @@ public class ProfessorService {
 
         animalService.createFlobberworm(prof);
 
+        sawService.strengthHogwartsHouse(prof);
+
         sawService.weaknessHeadmaster(prof);
         sawService.weaknessVoldmort(prof);
         sawService.weaknessProfessor(prof);
-
-        sawService.strengthHogwartsHouse(prof);
         sawService.weaknessDeathEater(prof);
 
         return new ResponseEntity<>(prof, HttpStatus.OK);

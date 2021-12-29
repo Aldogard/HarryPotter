@@ -109,16 +109,48 @@
       <td>Rating</td>
       <td>
         <div *ngIf="wizardChoiceA !== undefined && show1.value">
-          {{ wizardChoiceA.rating }} ({{wizardChoiceA.amount}} Ratings)
+          {{ wizardChoiceA.rating }} ({{ wizardChoiceA.amount }} Ratings)
         </div>
       </td>
       <td>
         <div *ngIf="wizardChoiceB !== undefined && show2.value">
-          {{ wizardChoiceB.rating }}  ({{wizardChoiceB.amount}} Ratings)
+          {{ wizardChoiceB.rating }} ({{ wizardChoiceB.amount }} Ratings)
         </div>
       </td>
     </tr>
   </table>
+  <div class="wizard1saw">
+    <ng-container *ngIf="wizardChoiceA !== undefined && show1.value">
+      <h3 class="subheader">Strength and Weaknesses</h3>
+      <table>
+        <tr>
+          <th>Class</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let saw of wizardChoiceA.strengthAndWeaknesses">
+          <td>{{ saw.house }}</td>
+          <td *ngIf="saw.strength">Strength</td>
+          <td *ngIf="!saw.strength">Weakness</td>
+        </tr>
+      </table>
+    </ng-container>
+  </div>
+  <div class="wizard2saw">
+    <ng-container *ngIf="wizardChoiceB !== undefined && show2.value">
+      <h3 class="subheader">Strength and Weaknesses</h3>
+      <table>
+        <tr>
+          <th>Class</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let saw of wizardChoiceB.strengthAndWeaknesses">
+          <td>{{ saw.house }}</td>
+          <td *ngIf="saw.strength">Strength</td>
+          <td *ngIf="!saw.strength">Weakness</td>
+        </tr>
+      </table>
+    </ng-container>
+  </div>
   <div class="wizard1potion">
     <ng-container *ngIf="wizardChoiceA !== undefined && show1.value">
       <h3 class="subheader">Potions</h3>
@@ -233,6 +265,26 @@
           <td>{{ animal.descriptionOption }}</td>
         </tr>
       </table>
+    </ng-container>
+  </div>
+  <div class="wizard1comments">
+    <ng-container *ngIf="wizardChoiceA !== undefined && show1.value">
+      <h3 class="subheader">Comments</h3>
+      <ul>
+        <li *ngFor="let comment of wizardChoiceA.comments">
+          {{ comment.content }}
+        </li>
+      </ul>
+    </ng-container>
+  </div>
+  <div class="wizard2comments">
+    <ng-container *ngIf="wizardChoiceB !== undefined && show2.value">
+      <h3 class="subheader">Comments</h3>
+      <ul>
+        <li *ngFor="let comment of wizardChoiceB.comments">
+          {{ comment.content }}
+        </li>
+      </ul>
     </ng-container>
   </div>
 

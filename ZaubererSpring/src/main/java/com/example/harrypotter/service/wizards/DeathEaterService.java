@@ -50,14 +50,14 @@ public class DeathEaterService {
 
         animalService.createFlobberworm(de);
 
+        sawService.strengthHogwartsHouse(de);
+
         sawService.weaknessDumbledore(de);
         sawService.weaknessVoldmort(de);
         sawService.weaknessHeadmaster(de);
         sawService.weaknessDeathEater(de);
         sawService.weaknessProfessor(de);
         sawService.weaknessPotionsMaster(de);
-
-        sawService.strengthHogwartsHouse(de);
 
 
         return new ResponseEntity<>(de, HttpStatus.OK);

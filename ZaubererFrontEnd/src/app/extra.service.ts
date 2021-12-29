@@ -31,7 +31,7 @@ export class ExtraService {
   ];
 
   ranking: string[] = [
-    'Dursley',
+    'Vernon Dursley',
     'Ordinary Muggle',
     'Hogwarts Caretaker',
     'Gurg',

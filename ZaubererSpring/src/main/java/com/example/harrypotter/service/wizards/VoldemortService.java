@@ -55,9 +55,6 @@ public class VoldemortService {
 
         animalService.createFlobberworm(v);
 
-        sawService.weaknessVoldmort(v);
-        sawService.weaknessHeadmaster(v);
-
         sawService.strengthHogwartsHouse(v);
         sawService.strengthHeadmaster(v);
         sawService.strengthProfessor(v);
@@ -65,6 +62,8 @@ public class VoldemortService {
         sawService.strengthAlumni(v);
         sawService.strengthPotionsMaster(v);
 
+        sawService.weaknessVoldmort(v);
+        sawService.weaknessDumbledore(v);
 
         return new ResponseEntity<>((v), HttpStatus.OK);
     }

@@ -8,10 +8,10 @@ import { ExtraService } from '../extra.service';
 
 @Component({
   selector: 'app-fight',
-  templateUrl: './fight.component.html',
-  styleUrls: ['./fight.component.css'],
+  templateUrl: './prologue.component.html',
+  styleUrls: ['./prologue.component.css'],
 })
-export class FightComponent implements OnInit {
+export class PrologueComponent implements OnInit {
   zauberer: HpWizard[] = [];
 
   wizardChoiceA?: HpWizard;
