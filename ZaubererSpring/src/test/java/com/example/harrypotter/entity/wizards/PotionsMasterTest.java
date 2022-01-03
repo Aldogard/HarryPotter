@@ -15,7 +15,7 @@ public class PotionsMasterTest {
         assertEquals("TestPm", test.getName());
         assertEquals(BigDecimal.valueOf(8), test.getHealthPoints());
         assertEquals("Skilled", test.getDescription());
-        assertEquals("Potionsmaster", test.getKlasse());
+        assertEquals("Potions Master", test.getKlasse());
         assertEquals(BigDecimal.valueOf(1.25), test.getFaktor());
         assertEquals(test.getHealthPoints(), test.getInternHealthPoints());
     }

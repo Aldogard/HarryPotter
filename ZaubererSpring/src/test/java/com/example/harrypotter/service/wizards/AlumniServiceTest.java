@@ -1,36 +1,51 @@
-//package com.example.harrypotter.service.wizards;
-//
-//import com.example.harrypotter.entity.wizards.Alumni;
-//import org.junit.jupiter.api.Test;
-//import org.junit.jupiter.api.extension.ExtendWith;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-//import org.springframework.test.context.junit.jupiter.SpringExtension;
-//import org.springframework.test.web.servlet.MockMvc;
-//import org.springframework.test.web.servlet.MvcResult;
-//import org.springframework.test.web.servlet.RequestBuilder;
-//import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-//
-//import java.math.BigDecimal;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//
-//@ExtendWith(SpringExtension.class)
-//@WebMvcTest(AlumniService.class)
-//class AlumniServiceTest {
-//
-//    @Autowired
-//    private MockMvc mockMvc;
-//
-//    @Test
-//    public void testAlumni() throws Exception {
-//        Alumni test = new Alumni("TestA", BigDecimal.valueOf(1), "old");
-//        RequestBuilder request = MockMvcRequestBuilders.get("/wizard");
-//        MvcResult result = mockMvc.perform(request).andReturn();
-//        assertNotNull(result.getResponse().getContentAsString());
-//
-//
-//    }
-//
-//
-//}
+package com.example.harrypotter.service.wizards;
+
+
+import com.example.harrypotter.entity.wizards.Alumni;
+
+import com.example.harrypotter.entity.wizards.Wizard;
+import com.example.harrypotter.repo.wizards.WizardRepo;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+
+import java.math.BigDecimal;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@DataJpaTest
+class AlumniServiceTest {
+
+    @Autowired
+    private AlumniService alumniService;
+
+    @Autowired
+    private WizardRepo wizardRepo;
+
+    @AfterEach
+    public void deleteAll(){
+        wizardRepo.deleteAll();
+    }
+
+    @Test
+    public void testAlumni() {
+        Alumni alumni = new Alumni("Test", BigDecimal.valueOf(10), "test");
+        Wizard response = alumniService.createAlumni(alumni).getBody();
+
+
+        assertNotNull(response);
+        assertNotNull(response.getName());
+        assertTrue(wizardRepo.findAll().size()>0);
+        assertTrue(wizardRepo.findByName("Test").get(0).getId()>0);
+
+
+
+
+
+
+    }
+
+
+}

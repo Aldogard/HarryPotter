@@ -3,7 +3,6 @@ package com.example.harrypotter.entity.wizards;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 
@@ -11,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-@SpringBootTest
 public class WizardTest {
     @Test
     public void testWizard(){
@@ -40,7 +38,7 @@ public class WizardTest {
         assertEquals(0, test.getPtCounter());
         assertEquals(0, test.getVictories());
         assertEquals(0, test.getAmount());
-        assertEquals("Dursley", test.getRank());
+        assertEquals("Vernon Dursley", test.getRank());
         assertEquals(BigDecimal.valueOf(0.0), test.getRating());
 //        //Test bei Service
 //        assertNotNull(test.getConditions());

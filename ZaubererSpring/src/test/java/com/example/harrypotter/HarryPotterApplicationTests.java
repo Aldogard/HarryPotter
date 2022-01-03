@@ -7,7 +7,6 @@ import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.example.harrypotter.service.wizards.WizardService;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -16,7 +15,6 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class HarryPotterApplicationTests {
 

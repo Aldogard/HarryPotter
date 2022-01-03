@@ -39,6 +39,9 @@ public class WizardService {
         return faker.harryPotter().quote();
     }
 
+    public ResponseEntity<Wizard> getWizardById(Integer id){
+        return new ResponseEntity<>(wizardRepo.findById(id).orElse(null), HttpStatus.OK);
+    }
 
     public ResponseEntity<Wizard> updateWizard(Headmaster wizard, int id) {
         Wizard updatedWizard = null;

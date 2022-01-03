@@ -4,12 +4,8 @@ import com.example.harrypotter.repo.wizards.CommentsRepo;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,7 +16,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
 public class CommentsTest {
 //    List<Wizard> wizards = new ArrayList<>();
 //
@@ -51,8 +46,7 @@ public class CommentsTest {
     public void testComments(){
         Alumni test = new Alumni("test", BigDecimal.valueOf(25), "Test");
         Comments comment = new Comments("Test", test);
-//        wizardRepo.save(test);
-//        Integer test2 = wizardRepo.findByName("test").get(0).getId();
+
         assertNotNull(comment);
         assertEquals("Test", comment.getContent());
         assertEquals(test, comment.getWizard());

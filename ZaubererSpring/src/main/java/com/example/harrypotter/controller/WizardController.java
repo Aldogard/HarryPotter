@@ -59,7 +59,7 @@ public class WizardController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Wizard> getWizardById(@PathVariable Integer id) {
-        return new ResponseEntity<>(wizardRepo.findById(id).orElse(null), HttpStatus.OK);
+        return wizardService.getWizardById(id);
     }
 
     @GetMapping("/name/{name}")
