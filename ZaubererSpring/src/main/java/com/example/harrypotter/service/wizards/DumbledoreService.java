@@ -29,9 +29,6 @@ public class DumbledoreService {
         if(wizardService.checkHouse(dumbledore)){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
-        if (wizardService.checkName(dumbledore)) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
         Dumbledore d = new Dumbledore(dumbledore.getName(), dumbledore.getHealthPoints(), dumbledore.getDescription());
 
         wizardRepo.save(d);
@@ -51,8 +48,6 @@ public class DumbledoreService {
         spellService.createAntiFiendfyre(d);
         spellService.createFirestorm(d);
 
-        animalService.createFlobberworm(d);
-
         potionService.createAntiParalysis(d, 2);
         potionService.createBrainElixir(d, 1);
         potionService.createExplodingPotion(d, 3);
@@ -61,6 +56,8 @@ public class DumbledoreService {
         potionService.createWitSharpeningPotion(d, 2);
         potionService.createExtimuloPotion(d,3);
 
+        animalService.createFlobberworm(d);
+
         sawService.strengthAlumni(d);
         sawService.strengthDeathEater(d);
         sawService.strengthProfessor(d);
@@ -68,8 +65,6 @@ public class DumbledoreService {
 
         sawService.weaknessDumbledore(d);
         sawService.weaknessPotionsMaster(d);
-
-
 
         return new ResponseEntity<>(d, HttpStatus.OK);
     }

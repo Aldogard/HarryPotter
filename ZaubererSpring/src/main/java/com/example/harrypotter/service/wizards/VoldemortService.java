@@ -29,9 +29,6 @@ public class VoldemortService {
         if(wizardService.checkHouse(voldemort)){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
-        if (wizardService.checkName(voldemort)) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
         Voldemort v = new Voldemort(voldemort.getName(), voldemort.getHealthPoints(), voldemort.getDescription());
         wizardRepo.save(v);
         conditionService.addConditions(v);

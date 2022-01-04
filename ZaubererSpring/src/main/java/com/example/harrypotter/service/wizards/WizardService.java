@@ -5,7 +5,6 @@ import com.example.harrypotter.entity.wizards.*;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.github.javafaker.Faker;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,25 +13,10 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Slf4j
 @Service
 @AllArgsConstructor
 public class WizardService {
-
-
     private WizardRepo wizardRepo;
-
-
-    //Für Tests
-    public List<Wizard> getAllWizards() {
-        return wizardRepo.findAll();
-    }
-
-    public Wizard saveWizard(Wizard wizard) {
-        return wizardRepo.save(wizard);
-    }
-
-    //
 
     public String quote() {
         Faker faker = new Faker();
@@ -69,7 +53,7 @@ public class WizardService {
             for (Wizard w : wizardRepo.findAll()) {
                 if (w.getId().equals(id)) {
                     wizardRepo.deleteById(id);
-                    return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
+                    return new ResponseEntity<>(null, HttpStatus.OK);
                 }
             }
         } else {
@@ -90,10 +74,8 @@ public class WizardService {
     }
 
     public ResponseEntity<Wizard> getVoldemort(String voldemort) {
-        System.out.println("Test");
         if (wizardRepo.findByKlasse(voldemort).size() > 0) {
             Wizard lv = wizardRepo.findByKlasse(voldemort).get(0);
-            System.out.println(lv.getName());
             return new ResponseEntity<>(lv, HttpStatus.OK);
         }
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
@@ -130,9 +112,11 @@ public class WizardService {
                 w.setAmount(wizard.getAmount());
                 w.setRating(wizard.getRating());
                 updatedWizard = wizardRepo.save(w);
+                return new ResponseEntity<>(updatedWizard, HttpStatus.OK);
             }
         }
-        return new ResponseEntity<>(updatedWizard, HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+
     }
 
 
@@ -143,9 +127,11 @@ public class WizardService {
                 w.setVictories(wizard.getVictories());
                 w.setRank(wizard.getRank());
                 updatedWizard = wizardRepo.save(w);
+                return new ResponseEntity<>(updatedWizard, HttpStatus.OK);
             }
         }
-        return new ResponseEntity<>(updatedWizard, HttpStatus.OK);
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+
     }
 
     public boolean checkName(Wizard wizard) {

@@ -13,95 +13,95 @@ import org.springframework.stereotype.Service;
 public class StrengthAndWeaknessService {
     private SaWRepo saWRepo;
 
-    public void strengthHeadmaster(Wizard wizard){
+    public void strengthHeadmaster(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Headmaster", true, wizard));
     }
 
-    public void weaknessHeadmaster(Wizard wizard){
+    public void weaknessHeadmaster(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Headmaster", false, wizard));
     }
 
-    public void strengthVoldemort(Wizard wizard){
+    public void strengthVoldemort(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Voldemort", true, wizard));
     }
 
-    public void weaknessVoldmort(Wizard wizard){
+    public void weaknessVoldmort(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Voldemort", false, wizard));
     }
 
-    public StrengthAndWeakness strengthHufflepuff(Wizard wizard){
-        return new StrengthAndWeakness("Hufflepuff", true, wizard);
+    public void strengthHufflepuff(Wizard wizard) {
+        saWRepo.save(new StrengthAndWeakness("Hufflepuff", true, wizard));
     }
 
-    public void weaknessHufflepuff(Wizard wizard){
+    public void weaknessHufflepuff(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Hufflepuff", false, wizard));
     }
 
-    public void strengthDeathEater(Wizard wizard){
+    public void strengthDeathEater(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("DeathEater", true, wizard));
     }
 
-    public void weaknessDeathEater(Wizard wizard){
+    public void weaknessDeathEater(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("DeathEater", false, wizard));
     }
 
-    public void strengthGryffindor(Wizard wizard){
+    public void strengthGryffindor(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Gryffindor", true, wizard));
     }
 
-    public void weaknessGryffindor(Wizard wizard){
+    public void weaknessGryffindor(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Gryffindor", false, wizard));
     }
 
-    public void strengthSlytherin(Wizard wizard){
+    public void strengthSlytherin(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Slytherin", true, wizard));
     }
 
-    public void weaknessSlytherin(Wizard wizard){
+    public void weaknessSlytherin(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Slytherin", false, wizard));
     }
 
-    public void strengthRavenclaw(Wizard wizard){
+    public void strengthRavenclaw(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Ravenclaw", true, wizard));
     }
 
-    public void weaknessRavenclaw(Wizard wizard){
+    public void weaknessRavenclaw(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Ravenclaw", false, wizard));
     }
 
-    public void strengthAlumni(Wizard wizard){
+    public void strengthAlumni(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Alumni", true, wizard));
     }
 
-    public void weaknessAlumni(Wizard wizard){
+    public void weaknessAlumni(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Alumni", false, wizard));
     }
 
-    public void strengthProfessor(Wizard wizard){
+    public void strengthProfessor(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Professor", true, wizard));
     }
 
-    public void weaknessProfessor(Wizard wizard){
+    public void weaknessProfessor(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Professor", false, wizard));
     }
 
-    public void strengthDumbledore(Wizard wizard){
+    public void strengthDumbledore(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Dumbledore", true, wizard));
     }
 
-    public void weaknessDumbledore(Wizard wizard){
+    public void weaknessDumbledore(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Dumbledore", false, wizard));
     }
 
-    public void strengthPotionsMaster(Wizard wizard){
+    public void strengthPotionsMaster(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Potions Master", true, wizard));
     }
 
-    public void weaknessPotionsMaster(Wizard wizard){
+    public void weaknessPotionsMaster(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Potions Master", false, wizard));
     }
 
-    public void strengthHogwartsHouse(Wizard wizard){
+    public void strengthHogwartsHouse(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Gryffindor", true, wizard));
         saWRepo.save(new StrengthAndWeakness("Slytherin", true, wizard));
         saWRepo.save(new StrengthAndWeakness("Hufflepuff", true, wizard));

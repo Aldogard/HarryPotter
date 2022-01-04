@@ -58,7 +58,7 @@ public class HufflepuffService {
         sawService.weaknessAlumni(hp);
         sawService.weaknessDeathEater(hp);
         sawService.weaknessHufflepuff(hp);
-        sawService.strengthPotionsMaster(hp);
+        sawService.weaknessPotionsMaster(hp);
 
         return new ResponseEntity<>(hp, HttpStatus.OK);
     }

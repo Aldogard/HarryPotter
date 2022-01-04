@@ -40,7 +40,7 @@ Weitere Aufgaben:
 
 	Tests! --> ab 27.12 --> Udemy Kurs --> ab 03.01.
 	Design! --> ab 03.01.
-	Potionsmaster Problematik
+	Potionsmaster Problematik --> Erledigt
 	Imperio für Potions und Animals?
 	Pointer Curser auch für Buttons?
 	Validators im BE
@@ -61,6 +61,7 @@ Zu einem späteren Zeitpunkt erledigen:
 	Anzahl von Verteidigern und Angreifern variabel halten --> Potenziell sehr aufwendig
 	Lösung für Ranks
 	Effekte für Umgebungen
+	updateVictories und updateRating nochmal angucken
 
 
 

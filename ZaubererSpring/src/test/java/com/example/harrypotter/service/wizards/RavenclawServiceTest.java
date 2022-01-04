@@ -1,12 +1,11 @@
 package com.example.harrypotter.service.wizards;
 
-
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
-import com.example.harrypotter.entity.wizards.Alumni;
-
 import com.example.harrypotter.entity.wizards.Condition;
+import com.example.harrypotter.entity.wizards.Hufflepuff;
+import com.example.harrypotter.entity.wizards.Ravenclaw;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
@@ -21,17 +20,16 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-
 import java.math.BigDecimal;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
-class AlumniServiceTest {
-
+public class RavenclawServiceTest {
     @Autowired
-    private AlumniService alumniService;
+    private RavenclawService ravenclawService;
 
     @Autowired
     private WizardRepo wizardRepo;
@@ -52,20 +50,20 @@ class AlumniServiceTest {
     private SaWRepo saWRepo;
 
     @AfterEach
-    public void deleteAll(){
+    public void deleteAll() {
         wizardRepo.deleteAll();
     }
 
     @Test
-    public void testAlumniService() {
-        Alumni alumni = new Alumni("Test", BigDecimal.valueOf(10), "test");
-        ResponseEntity<Wizard> response = alumniService.createAlumni(alumni);
+    public void testRavenclawService() {
+        Ravenclaw ravenclaw = new Ravenclaw("Test", BigDecimal.valueOf(10), "test");
+        ResponseEntity<Wizard> response = ravenclawService.createRavenclaw(ravenclaw);
 
-        Wizard wizardResponse =response.getBody();
+        Wizard wizardResponse = response.getBody();
         HttpStatus httpStatusResponse = response.getStatusCode();
         assertEquals(HttpStatus.OK, httpStatusResponse);
 
-        HttpStatus httpStatus = alumniService.createAlumni(alumni).getStatusCode();
+        HttpStatus httpStatus = ravenclawService.createRavenclaw(ravenclaw).getStatusCode();
         assertEquals(HttpStatus.BAD_REQUEST, httpStatus);
 
         assertNotNull(wizardResponse);
@@ -78,7 +76,7 @@ class AlumniServiceTest {
 
         List<Spell> spells = spellRepo.findAll();
         assertNotNull(spells);
-        assertEquals(7, spells.size());
+        assertEquals(8, spells.size());
         assertTrue(Util.checkFiendfyre(spells));
 
         List<Potion> potions = potionsRepo.findAll();
@@ -90,7 +88,7 @@ class AlumniServiceTest {
         assertEquals(1, animals.size());
 
         assertNotNull(saWRepo.findAll());
-        assertEquals(4, Util.findStrength(saWRepo.findAll()).size());
-        assertEquals(6, Util.findWeaknesses(saWRepo.findAll()).size());
+        assertEquals(3, Util.findStrength(saWRepo.findAll()).size());
+        assertEquals(5, Util.findWeaknesses(saWRepo.findAll()).size());
     }
 }

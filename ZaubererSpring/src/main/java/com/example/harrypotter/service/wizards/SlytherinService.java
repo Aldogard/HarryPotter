@@ -60,7 +60,7 @@ public class SlytherinService {
         sawService.weaknessHeadmaster(sl);
         sawService.weaknessVoldmort(sl);
         sawService.weaknessDeathEater(sl);
-        sawService.strengthSlytherin(sl);
+        sawService.weaknessSlytherin(sl);
 
         return new ResponseEntity<>(sl, HttpStatus.OK);
     }

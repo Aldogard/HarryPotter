@@ -1,12 +1,11 @@
 package com.example.harrypotter.service.wizards;
 
-
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
-import com.example.harrypotter.entity.wizards.Alumni;
-
 import com.example.harrypotter.entity.wizards.Condition;
+import com.example.harrypotter.entity.wizards.Dumbledore;
+import com.example.harrypotter.entity.wizards.Gryffindor;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
@@ -18,20 +17,20 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.web.JsonPath;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest
-class AlumniServiceTest {
-
+public class GryffindorServiceTest {
     @Autowired
-    private AlumniService alumniService;
+    private GryffindorService gryffindorService;
 
     @Autowired
     private WizardRepo wizardRepo;
@@ -52,20 +51,20 @@ class AlumniServiceTest {
     private SaWRepo saWRepo;
 
     @AfterEach
-    public void deleteAll(){
+    public void deleteAll() {
         wizardRepo.deleteAll();
     }
 
     @Test
-    public void testAlumniService() {
-        Alumni alumni = new Alumni("Test", BigDecimal.valueOf(10), "test");
-        ResponseEntity<Wizard> response = alumniService.createAlumni(alumni);
+    public void testGryffindorService() {
+        Gryffindor gryffindor = new Gryffindor("Test", BigDecimal.valueOf(10), "test");
+        ResponseEntity<Wizard> response = gryffindorService.createGryffindor(gryffindor);
 
-        Wizard wizardResponse =response.getBody();
+        Wizard wizardResponse = response.getBody();
         HttpStatus httpStatusResponse = response.getStatusCode();
         assertEquals(HttpStatus.OK, httpStatusResponse);
 
-        HttpStatus httpStatus = alumniService.createAlumni(alumni).getStatusCode();
+        HttpStatus httpStatus = gryffindorService.createGryffindor(gryffindor).getStatusCode();
         assertEquals(HttpStatus.BAD_REQUEST, httpStatus);
 
         assertNotNull(wizardResponse);
@@ -78,19 +77,19 @@ class AlumniServiceTest {
 
         List<Spell> spells = spellRepo.findAll();
         assertNotNull(spells);
-        assertEquals(7, spells.size());
+        assertEquals(5, spells.size());
         assertTrue(Util.checkFiendfyre(spells));
 
         List<Potion> potions = potionsRepo.findAll();
         assertNotNull(potions);
-        assertEquals(6, potions.size());
+        assertEquals(3, potions.size());
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
         assertEquals(1, animals.size());
 
         assertNotNull(saWRepo.findAll());
-        assertEquals(4, Util.findStrength(saWRepo.findAll()).size());
-        assertEquals(6, Util.findWeaknesses(saWRepo.findAll()).size());
+        assertEquals(2, Util.findStrength(saWRepo.findAll()).size());
+        assertEquals(7, Util.findWeaknesses(saWRepo.findAll()).size());
     }
 }
