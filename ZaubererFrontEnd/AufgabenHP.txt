@@ -20,7 +20,7 @@ Weitere Ideen: --> Erledigt
 	Verschiedene Umgebungen --> Erledigt
 	Erfahrung? --> Erledigt --> Siege werden gespeichert
 	Delete Verstecken --> Erledigt
-	Tests!
+	Tests! --> Erledigt
 	Weitere Filter --> Erledigt --> Filter für jedes Haus
 	Beschreibung für Zaubertränke und Zauber --> Erledigt
 	Beschreibung für Zauberer --> Erledigt --> Müssen beim Erstellen geschrieben werden
@@ -38,7 +38,8 @@ Weitere Aufgaben:
 	Erfahrung für Spells --> Erledigt
 	Kombination von Fiendfyre und stunned lösen --> Erledigt
 
-	Tests! --> ab 27.12 --> Udemy Kurs --> ab 03.01.
+Ab hier noch offene Aufgaben:
+	Tests! --> ab 27.12 --> Udemy Kurs --> ab 03.01. --> Erledigt
 	Design! --> ab 03.01.
 	Potionsmaster Problematik --> Erledigt
 	Imperio für Potions und Animals?
@@ -62,6 +63,7 @@ Zu einem späteren Zeitpunkt erledigen:
 	Lösung für Ranks
 	Effekte für Umgebungen
 	updateVictories und updateRating nochmal angucken
+	Tests für Controller
 
 
 
