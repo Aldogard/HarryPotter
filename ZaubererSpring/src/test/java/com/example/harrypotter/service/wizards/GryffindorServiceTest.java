@@ -4,20 +4,18 @@ import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
 import com.example.harrypotter.entity.wizards.Condition;
-import com.example.harrypotter.entity.wizards.Dumbledore;
 import com.example.harrypotter.entity.wizards.Gryffindor;
 import com.example.harrypotter.entity.wizards.Wizard;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
 import com.example.harrypotter.repo.options.SpellRepo;
 import com.example.harrypotter.repo.wizards.ConditionRepo;
-import com.example.harrypotter.repo.wizards.SaWRepo;
+import com.example.harrypotter.repo.wizards.StrengthAndWeaknessRepo;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.data.web.JsonPath;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -48,7 +46,7 @@ public class GryffindorServiceTest {
     private AnimalRepo animalRepo;
 
     @Autowired
-    private SaWRepo saWRepo;
+    private StrengthAndWeaknessRepo saWRepo;
 
     @AfterEach
     public void deleteAll() {
@@ -73,12 +71,12 @@ public class GryffindorServiceTest {
         assertNotNull(wizardRepo.findByName("Test").get(0).getId());
 
         List<Condition> conditions = conditionRepo.findAll();
-        assertEquals(Util.numberOfConditions, conditions.size());
+        assertEquals(UtilWizards.numberOfConditions, conditions.size());
 
         List<Spell> spells = spellRepo.findAll();
         assertNotNull(spells);
         assertEquals(5, spells.size());
-        assertTrue(Util.checkFiendfyre(spells));
+        assertTrue(UtilWizards.checkFiendfyre(spells));
 
         List<Potion> potions = potionsRepo.findAll();
         assertNotNull(potions);
@@ -89,7 +87,7 @@ public class GryffindorServiceTest {
         assertEquals(1, animals.size());
 
         assertNotNull(saWRepo.findAll());
-        assertEquals(2, Util.findStrength(saWRepo.findAll()).size());
-        assertEquals(7, Util.findWeaknesses(saWRepo.findAll()).size());
+        assertEquals(2, UtilWizards.findStrength(saWRepo.findAll()).size());
+        assertEquals(7, UtilWizards.findWeaknesses(saWRepo.findAll()).size());
     }
 }

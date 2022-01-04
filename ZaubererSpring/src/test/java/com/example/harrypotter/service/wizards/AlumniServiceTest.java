@@ -12,7 +12,7 @@ import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
 import com.example.harrypotter.repo.options.SpellRepo;
 import com.example.harrypotter.repo.wizards.ConditionRepo;
-import com.example.harrypotter.repo.wizards.SaWRepo;
+import com.example.harrypotter.repo.wizards.StrengthAndWeaknessRepo;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -49,7 +49,7 @@ class AlumniServiceTest {
     private AnimalRepo animalRepo;
 
     @Autowired
-    private SaWRepo saWRepo;
+    private StrengthAndWeaknessRepo saWRepo;
 
     @AfterEach
     public void deleteAll(){
@@ -58,7 +58,7 @@ class AlumniServiceTest {
 
     @Test
     public void testAlumniService() {
-        Alumni alumni = new Alumni("Test", BigDecimal.valueOf(10), "test");
+        Alumni alumni = UtilWizards.createTesti();
         ResponseEntity<Wizard> response = alumniService.createAlumni(alumni);
 
         Wizard wizardResponse =response.getBody();
@@ -71,15 +71,15 @@ class AlumniServiceTest {
         assertNotNull(wizardResponse);
         assertNotNull(wizardResponse.getName());
         assertEquals(1, wizardRepo.findAll().size());
-        assertNotNull(wizardRepo.findByName("Test").get(0).getId());
+        assertNotNull(wizardRepo.findByName("Testi").get(0).getId());
 
         List<Condition> conditions = conditionRepo.findAll();
-        assertEquals(Util.numberOfConditions, conditions.size());
+        assertEquals(UtilWizards.numberOfConditions, conditions.size());
 
         List<Spell> spells = spellRepo.findAll();
         assertNotNull(spells);
         assertEquals(7, spells.size());
-        assertTrue(Util.checkFiendfyre(spells));
+        assertTrue(UtilWizards.checkFiendfyre(spells));
 
         List<Potion> potions = potionsRepo.findAll();
         assertNotNull(potions);
@@ -90,7 +90,7 @@ class AlumniServiceTest {
         assertEquals(1, animals.size());
 
         assertNotNull(saWRepo.findAll());
-        assertEquals(4, Util.findStrength(saWRepo.findAll()).size());
-        assertEquals(6, Util.findWeaknesses(saWRepo.findAll()).size());
+        assertEquals(4, UtilWizards.findStrength(saWRepo.findAll()).size());
+        assertEquals(6, UtilWizards.findWeaknesses(saWRepo.findAll()).size());
     }
 }

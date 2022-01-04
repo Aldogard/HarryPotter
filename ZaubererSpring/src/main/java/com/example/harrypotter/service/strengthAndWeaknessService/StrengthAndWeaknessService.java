@@ -2,16 +2,14 @@ package com.example.harrypotter.service.strengthAndWeaknessService;
 
 import com.example.harrypotter.entity.wizards.StrengthAndWeakness;
 import com.example.harrypotter.entity.wizards.Wizard;
-import com.example.harrypotter.repo.wizards.SaWRepo;
+import com.example.harrypotter.repo.wizards.StrengthAndWeaknessRepo;
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
 @AllArgsConstructor
 public class StrengthAndWeaknessService {
-    private SaWRepo saWRepo;
+    private StrengthAndWeaknessRepo saWRepo;
 
     public void strengthHeadmaster(Wizard wizard) {
         saWRepo.save(new StrengthAndWeakness("Headmaster", true, wizard));

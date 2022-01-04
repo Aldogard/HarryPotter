@@ -1,19 +1,19 @@
 # HarryPotter
-Personal Harry Potter project to improve my Java and TS skills.
+My personal Harry Potter project to improve my Java and TS skills.
 
 I am currently learning Java and Angular and I want to deepen and expand my skills by doing this little project.
-Since I am a huge Harry Potter fan, i decided to create a Harry Potter battle.
+Since I am a huge Harry Potter fan, I decided to create a Harry Potter battle.
 
 At the moment, the project includes:
 
-- Home Site
+- Home Page
 - Overview for
-  - all wizards
+  - all Wizards
   - Potions
   - Spells
   - Animals
 - Detailview for
-  - all wizards
+  - all Wizards
   - Potions
   - Spells
   - Animals

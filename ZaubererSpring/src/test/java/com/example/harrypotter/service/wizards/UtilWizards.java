@@ -1,13 +1,20 @@
 package com.example.harrypotter.service.wizards;
 
 import com.example.harrypotter.entity.options.Spell;
+import com.example.harrypotter.entity.wizards.Alumni;
 import com.example.harrypotter.entity.wizards.StrengthAndWeakness;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Util {
+public class UtilWizards {
     public static final int numberOfConditions = 2;
+
+    public static Alumni createTesti(){
+        return new Alumni("Testi", BigDecimal.valueOf(10), "Test");
+
+    }
 
     public static List<StrengthAndWeakness> findStrength (List<StrengthAndWeakness> sawList){
         List<StrengthAndWeakness> strength = new ArrayList<>();

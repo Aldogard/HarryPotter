@@ -13,8 +13,6 @@ public class PotionService {
 
     private OptionsRepo optionsRepo;
 
-
-
     //Potions
     public void createAntiParalysis(Wizard wizard, Integer storage) {
         optionsRepo.save(new Potion(

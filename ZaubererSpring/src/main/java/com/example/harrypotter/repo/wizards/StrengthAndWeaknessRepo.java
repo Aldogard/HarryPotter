@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SaWRepo extends CrudRepository<StrengthAndWeakness, Integer> {
+public interface StrengthAndWeaknessRepo extends CrudRepository<StrengthAndWeakness, Integer> {
     List<StrengthAndWeakness> findAll();
 }

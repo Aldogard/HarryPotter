@@ -346,7 +346,7 @@ public class SpellService {
                 5.0,
                 0.0,
                 0.1,
-                true,
+                false,
                 false,
                 false,
                 false,
