@@ -18,6 +18,7 @@ import { UpdateWizardComponent } from './update-wizard/update-wizard.component';
 import { RanksComponent } from './ranks/ranks.component';
 import { OverviewAnimalComponent } from './overview-animal/overview-animal.component';
 import { DetailsAnimalComponent } from './details-animal/details-animal.component';
+import { CompareComponent } from './compare/compare.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'rules', component: RulesComponent},
   { path: 'ranks', component: RanksComponent},
   { path: 'animals', component: OverviewAnimalComponent},
+  { path: 'compare', component: CompareComponent},
 
 ];
 

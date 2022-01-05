@@ -4,18 +4,18 @@
   grid-template-rows: auto;
   grid-template-areas:
     "header header"
-    "wizard1 wizard1"
-    "wizard1saw wizard2saw"
-    "wizard1potion wizard2potion"
-    "wizard1attack wizard2attack"
-    "wizard1animal wizard2animal"
-    "wizard1comments wizard2comments"
+    "wizard1 ."
+    "wizard1saw ."
+    "wizard1potion ."
+    "wizard1attack ."
+    "wizard1animal ."
+    "wizard1comments ."
     "comment rating";
 }
 
 .header {
   margin: 10px;
-  border: 5px solid rgb(122, 11, 11);
+  border: 5px solid rgb(191, 137, 112);
   padding: 10px;
   list-style-type: none;
 }
@@ -38,41 +38,24 @@
   grid-area: wizard1saw;
 }
 
-.wizard2saw{
-  grid-area: wizard2saw;
-}
-
 .wizard1potion {
   grid-area: wizard1potion;
 }
 
-.wizard2potion {
-  grid-area: wizard2potion;
-}
 
 .wizard1attack {
   grid-area: wizard1attack;
 }
 
-.wizard2attack {
-  grid-area: wizard2attack;
-}
 
 .wizard1animal {
   grid-area: wizard1animal;
-}
-
-.wizard2animal {
-  grid-area: wizard2animal;
 }
 
 .wizard1comments{
   grid-area: wizard1comments;
 }
 
-.wizard2comments{
-  grid-area: wizard2comments;
-}
 
 .comment {
   grid-area: comment;

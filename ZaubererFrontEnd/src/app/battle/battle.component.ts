@@ -42,7 +42,7 @@ export class BattleComponent implements OnInit {
 
   ngOnInit(): void {
     this.environment = this.ms.environment.value;
-    this.ms.zaubererArray.subscribe((za) => {
+    this.ms.wizardArray.subscribe((za) => {
       this.wizardsArray = za;
       this.wizard1 = za[0];
       this.wizard2 = za[1];

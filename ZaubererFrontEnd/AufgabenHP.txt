@@ -42,10 +42,13 @@ Ab hier noch offene Aufgaben:
 	Tests! --> ab 27.12 --> Udemy Kurs --> ab 03.01. --> Erledigt
 	Design! --> ab 03.01.
 	Potionsmaster Problematik --> Erledigt
+	Validators im BE --> Erledigt
+	Battle und Fight ändern bspw. pre Battle und Battle --> Erledigt
+
+	
 	Imperio für Potions und Animals?
 	Pointer Curser auch für Buttons?
-	Validators im BE
-	Battle und Fight ändern bspw. pre Battle und Battle --> Erledigt
+	
 
 Noch vor dem Design:
 	--> Detail View und Overview sinnvoll kombinieren

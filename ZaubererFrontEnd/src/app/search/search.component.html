@@ -6,11 +6,17 @@
         <th>Name</th>
         <th></th>
       </tr>
-      <tr *ngFor="let z of wizardsResults">
+      <!-- <tr *ngFor="let z of wizardsResults">
         <td>{{ z | json}}</td>
-      </tr>
+      </tr> -->
       <tr *ngFor="let z of wizardsResults">
         <td>{{ z.name }}</td>
+        <td> <button
+          class="formButton"
+          (click)="goToDetail(z)"
+        >
+          Detail View
+        </button></td>
       </tr>
     </table>
   </div>

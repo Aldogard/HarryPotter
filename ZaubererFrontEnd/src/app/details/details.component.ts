@@ -13,22 +13,23 @@ import { ExtraService } from '../extra.service';
 })
 export class DetailsComponent implements OnInit {
   choiceA: FormControl = new FormControl(1);
-  choiceB: FormControl = new FormControl(1);
   choiceRating: FormControl = new FormControl(1);
   stars: FormControl = new FormControl('', [Validators.required]);
   getZaubererId: FormControl = new FormControl(1);
   numberOfRating: FormControl = new FormControl(0);
   show1 = new BehaviorSubject<boolean>(true);
-  show2 = new BehaviorSubject<boolean>(true);
 
   idForComment: number = 0;
   idForRating: number = 0;
 
   wizardChoiceA?: HpWizard;
-  wizardChoiceB?: HpWizard;
   availableStars: number[] = [1, 2, 3, 4, 5];
-
   wizards: HpWizard[] = [];
+
+  wizardMs?: HpWizard;
+  wizardsFirstPart: HpWizard[] = [];
+  wizardsSecondPart: HpWizard[] = [];
+
   commentForm = this.fb.group({
     content: [
       '',
@@ -43,21 +44,25 @@ export class DetailsComponent implements OnInit {
 
   constructor(
     private hpService: HarrypotterService,
-    private zusatzService: ExtraService,
     private fb: FormBuilder,
-    private mss: MessageService
+    private ms: MessageService
   ) {}
 
   ngOnInit(): void {
     this.hpService.getWizards().subscribe((element) => {
       this.wizards = element;
+      this.wizardMs = this.ms.wizard;
+      this.ms.sendWizard(undefined);
       this.getWizardAByName();
-      this.getWizardBByName();
       this.getWizardByNameComment();
       this.getWizardByNameRating();
       this.wizardChoiceA = this.wizards[0];
-      this.wizardChoiceB = this.wizards[0];
     });
+  }
+
+  getWizardAByNameAndUndefined(){
+    this.wizardMs = undefined;
+    this.getWizardAByName();
   }
 
   getWizardAByName() {
@@ -67,21 +72,21 @@ export class DetailsComponent implements OnInit {
     if (!id) {
       id = this.wizards[0].id;
     }
+    if(this.wizardMs !==undefined){
+      this.wizards.forEach(wizard => {
+        if(this.wizardMs!==undefined){
+        if(wizard.id < this.wizardMs?.id){
+          this.wizardsFirstPart.push(wizard);
+        }
+        if(wizard.id > this.wizardMs.id){
+          this.wizardsSecondPart.push(wizard);
+        }
+      }})
+      id = this.wizardMs.id;
+    } 
 
     this.choiceA = new FormControl(id);
     this.getWizardAById();
-  }
-
-  getWizardBByName() {
-    let id = (<HTMLInputElement>document.getElementById('wizardUpdateB'))
-      .value as unknown as number;
-
-    if (!id) {
-      id = this.wizards[0].id;
-    }
-
-    this.choiceB = new FormControl(id);
-    this.getWizardBById();
   }
 
   getWizardAById() {
@@ -89,27 +94,17 @@ export class DetailsComponent implements OnInit {
       this.wizardChoiceA = zauberer;
       this.show1.next(true);
     });
-    console.log(this.choiceA);
-  }
-
-  getWizardBById() {
-    this.hpService.getWizardById(this.choiceB.value).subscribe((zauberer) => {
-      this.wizardChoiceB = zauberer;
-      this.show2.next(true);
-    });
-    console.log(this.choiceB);
   }
 
   showHide1(status: boolean) {
     this.show1.next(status);
   }
 
-  showHide2(status: boolean) {
-    this.show2.next(status);
-  }
-
   post() {
-    const response = this.hpService.postComment(this.commentForm.value, this.idForComment);
+    const response = this.hpService.postComment(
+      this.commentForm.value,
+      this.idForComment
+    );
     response.subscribe((x) => {
       this.commentForm = this.fb.group({
         content: [
@@ -135,12 +130,12 @@ export class DetailsComponent implements OnInit {
   }
 
   getWizardByNameRating() {
-    this.idForRating = (<HTMLInputElement>document.getElementById('wizardIdRating'))
-      .value as unknown as number;
+    this.idForRating = (<HTMLInputElement>(
+      document.getElementById('wizardIdRating')
+    )).value as unknown as number;
     if (!this.idForRating) {
       this.idForRating = this.wizards[0].id;
     }
-
   }
 
   getRating() {
@@ -164,39 +159,38 @@ export class DetailsComponent implements OnInit {
   }
 
   passOnRating() {
-    const response = this.hpService.postRating(this.ratingForm.value, this.idForRating );
+    const response = this.hpService.postRating(
+      this.ratingForm.value,
+      this.idForRating
+    );
     response.subscribe((x) => {
       this.stars.setValue('');
     });
   }
 
   gotoPotionDetail(potionId: number) {
-    this.mss.sendPotionId(potionId);
+    this.ms.sendPotionId(potionId);
     const url = 'potiondetail/' + potionId;
     window.open(url);
     //this.zusatzService.redirectTo('potiondetail');
   }
 
   gotoSpellDetail(attackId: number) {
-    this.mss.sendAttackId(attackId);
+    this.ms.sendAttackId(attackId);
     const url = 'spelldetail/' + attackId;
     window.open(url);
     //this.zusatzService.redirectTo('attackdetail');
   }
 
   gotoAnimalDetail(animalId: number) {
-    this.mss.sendAnimalId(animalId);
+    this.ms.sendAnimalId(animalId);
     const url = 'animaldetail/' + animalId;
     window.open(url);
     //this.zusatzService.redirectTo('attackdetail');
   }
 
-
-
   gotoRanks() {
     window.open('ranks');
     //this.zusatzService.redirectTo('attackdetail');
   }
-
-
 }

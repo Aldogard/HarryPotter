@@ -5,15 +5,17 @@ import { HpWizard } from './hp-wizard';
 @Injectable({
   providedIn: 'root'
 })
-export class MessageService {
+export class MessageService  {
 
   word = new BehaviorSubject<string>('');
-  zaubererArray = new BehaviorSubject<HpWizard[]>([]);
+  wizardArray = new BehaviorSubject<HpWizard[]>([]);
   potionId = new BehaviorSubject<number>(0);
   attackId = new BehaviorSubject<number>(0);
   animalId = new BehaviorSubject<number>(0);
   show = new BehaviorSubject<boolean>(false);
   environment = new BehaviorSubject<string>('');
+  wizard?: HpWizard;
+  
 
   constructor() { }
 
@@ -22,7 +24,7 @@ export class MessageService {
   }
 
   sendArray(array: HpWizard[]){
-    this.zaubererArray.next(array);
+    this.wizardArray.next(array);
   }
 
   sendPotionId(id: number){
@@ -43,6 +45,10 @@ export class MessageService {
 
   sendEnvironment(environment: string){
     this.environment.next(environment);
+  }
+
+  sendWizard(wizard: HpWizard | undefined){
+    this.wizard = wizard;
   }
 
 

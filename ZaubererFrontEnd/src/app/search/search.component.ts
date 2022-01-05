@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ExtraService } from '../extra.service';
 import { HarrypotterService } from '../harrypotter.service';
 import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
@@ -16,7 +17,8 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private hpService: HarrypotterService,
-    private ms: MessageService
+    private ms: MessageService,
+    private extraService: ExtraService,
   ) {}
 
   ngOnInit(): void {
@@ -36,4 +38,11 @@ export class SearchComponent implements OnInit {
       }
     });
   }
+
+  goToDetail(wizard: HpWizard) {
+    this.ms.sendWizard(wizard);
+    this.extraService.redirectToWithTimeout('/detail')
+  }
+
+
 }

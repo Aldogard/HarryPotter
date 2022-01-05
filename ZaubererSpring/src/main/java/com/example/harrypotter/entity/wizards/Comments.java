@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Data
 @Entity(name = "comments")
@@ -16,6 +18,8 @@ public class Comments {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @NotNull
+    @Size(min = 10, max = 100)
     @Column(name = "content")
     private String content;
 

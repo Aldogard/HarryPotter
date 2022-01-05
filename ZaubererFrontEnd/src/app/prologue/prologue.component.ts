@@ -49,10 +49,10 @@ export class PrologueComponent implements OnInit {
     this.ms.sendEnvironment(this.environment);
     this.hpService.getWizards().subscribe((wizards) => {
       this.zauberer = wizards;
-      this.choiceA = new FormControl(wizards[0].id);
-      this.choiceB = new FormControl(wizards[0].id);
-      this.choiceC = new FormControl(wizards[0].id);
-      this.choiceD = new FormControl(wizards[0].id);
+      // this.choiceA = new FormControl(wizards[0].id);
+      // this.choiceB = new FormControl(wizards[0].id);
+      // this.choiceC = new FormControl(wizards[0].id);
+      // this.choiceD = new FormControl(wizards[0].id);
       this.wizardChoiceA = wizards[0];
       this.wizardChoiceB = wizards[0];
       this.wizardChoiceC = wizards[0];

@@ -1,0 +1,128 @@
+<div class="container">
+    <h1 class="header">Compare two wizards</h1>
+    <table class="wizard1">
+      <tr>
+        <th>Please select</th>
+        <th>
+          <div class="buttonA">
+            <select id="wizardUpdateA" (change)="getWizardAByName()">
+              <option value="{{ z.id }}" *ngFor="let z of wizards">
+                {{ z.name }}
+              </option>
+            </select>
+            <button (click)="showHide1(true)">Show</button>
+            <button (click)="showHide1(false)">Hide</button>
+          </div>
+        </th>
+        <th>
+          <div class="buttonB">
+            <select id="wizardUpdateB" (change)="getWizardBByName()">
+              <option value="{{ z.id }}" *ngFor="let z of wizards">
+                {{ z.name }}
+              </option>
+            </select>
+            <button (click)="showHide2(true)">Show</button>
+            <button (click)="showHide2(false)">Hide</button>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <td>Healthpoints</td>
+        <td>
+          <div *ngIf="wizardChoiceA !== undefined && show1.value">
+            {{ wizardChoiceA.healthPoints }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="wizardChoiceB !== undefined && show2.value">
+            {{ wizardChoiceB.healthPoints }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Faktor</td>
+        <td>
+          <div *ngIf="wizardChoiceA !== undefined && show1.value">
+            {{ wizardChoiceA.faktor }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="wizardChoiceB !== undefined && show2.value">
+            {{ wizardChoiceB.faktor }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Energy</td>
+        <td>
+          <div *ngIf="wizardChoiceA !== undefined && show1.value">
+            {{ wizardChoiceA.energy }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="wizardChoiceB !== undefined && show2.value">
+            {{ wizardChoiceB.energy }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Victories</td>
+        <td>
+          <div *ngIf="wizardChoiceA !== undefined && show1.value">
+            {{ wizardChoiceA.victories }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="wizardChoiceB !== undefined && show2.value">
+            {{ wizardChoiceB.victories }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Rank</td>
+        <td>
+          <div *ngIf="wizardChoiceA !== undefined && show1.value">
+            <a (click)="gotoRanks()" class="link"> {{ wizardChoiceA.rank }}</a>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="wizardChoiceB !== undefined && show2.value">
+            <a (click)="gotoRanks()" class="link"> {{ wizardChoiceB.rank }}</a>
+          </div>
+        </td>
+      </tr>
+  
+      <tr>
+        <td>Class</td>
+        <td>
+          <div *ngIf="wizardChoiceA !== undefined && show1.value">
+            {{ wizardChoiceA.klasse }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="wizardChoiceB !== undefined && show2.value">
+            {{ wizardChoiceB.klasse }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>Rating</td>
+        <td>
+          <div *ngIf="wizardChoiceA !== undefined && show1.value">
+            {{ wizardChoiceA.rating }} ({{ wizardChoiceA.amount }} Ratings)
+          </div>
+        </td>
+        <td>
+          <div *ngIf="wizardChoiceB !== undefined && show2.value">
+            {{ wizardChoiceB.rating }} ({{ wizardChoiceB.amount }} Ratings)
+          </div>
+        </td>
+      </tr>
+    </table>
+
+
+
+
+
+  
+   
