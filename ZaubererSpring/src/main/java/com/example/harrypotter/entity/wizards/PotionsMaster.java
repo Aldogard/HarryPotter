@@ -11,6 +11,14 @@ import java.math.BigDecimal;
 @DiscriminatorValue("potions_master")
 public class PotionsMaster extends Wizard {
 
+    /**
+     * Constructor for a wizard of the class Potions Master.
+     * The Factor is set to 1.25.
+     * @param name name of the wizards (mandatory)
+     * @param healthPoints initial health-points of the wizard (between 1 and 100)
+     * @param description a brief description of the wizard (max 100 characters)
+     */
+
     public PotionsMaster(String name, BigDecimal healthPoints, String description) {
         super(name, healthPoints, description);
         this.setKlasse("Potions Master");

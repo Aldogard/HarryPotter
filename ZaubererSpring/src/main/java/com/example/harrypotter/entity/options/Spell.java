@@ -47,8 +47,23 @@ public class Spell extends Options {
     private Wizard wizard;
 
 
+
     /**
-     * Constructor to create a spell
+     * Constructor that creates a spell.
+     * @param name name of the spell
+     * @param energyUsage indicates the energy required use a spell
+     * @param maxDamage maximum amount of damage this wizard can inflict
+     * @param healing amount of healing that can be achieved by using a spell
+     * @param stunned indicates whether a spell can stun an opponent
+     * @param confunded indicates whether a spell can confound an opponent
+     * @param imperio indicates whether a spell can control an opponent
+     * @param crucio indicates whether a spell can torture an opponent
+     * @param protego indicates whether a spell can protect a wizard
+     * @param fiendfyre indicates whether the spell casts a Fiendfyre
+     * @param antiFiendfyre indicates whether a spell stops a Fiendfyre
+     * @param requiredExperience some spells can only be used after a wizard acquired a certain amount of experience
+     * @param wizard indicates to which wizard this spell belongs
+     * @param description description about the effects of the spell
      */
 
     public Spell(

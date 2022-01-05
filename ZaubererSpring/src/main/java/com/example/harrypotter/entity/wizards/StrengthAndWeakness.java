@@ -25,6 +25,15 @@ public class StrengthAndWeakness {
     @JoinColumn(name = "wizard_id")
     private Wizard wizard;
 
+    /**
+     * Each class has certain classes against which it is especially strong or weak.
+     * The relations are created using this constructor.
+     * @param house name of the class
+     * @param strength indicates whether this class does well or bad against the other class.
+     *                 True indicates strength, false weakness.
+     * @param wizard indicates to which wizard the strengths and weaknesses belong.
+     */
+
     public StrengthAndWeakness(String house, Boolean strength, Wizard wizard){
         this.house = house;
         this.strength = strength;

@@ -28,6 +28,18 @@ public class Animal extends Options{
     private Wizard wizard;
 
 
+    /**
+     * Constructor that creates an animal.
+     * @param name name of the animal
+     * @param energyUsage indicates the energy required to put an animal into action
+     * @param maxDamage maximum amount of damage this animal can inflict
+     * @param requiredExperience some animal can only be put into action after a wizard acquired a certain amount of experience
+     * @param healing amount of healing that can be achieved by activating an animal
+     * @param recovery amount of energy that can be recovered by activating an animal
+     * @param wizard indicates to which wizard this animal belongs
+     * @param description description about the effects of the animal
+     */
+
     public Animal(
             String name,
             Double energyUsage,

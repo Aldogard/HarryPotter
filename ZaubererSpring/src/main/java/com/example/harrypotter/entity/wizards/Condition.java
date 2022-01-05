@@ -25,7 +25,12 @@ public class Condition {
     @JoinColumn(name = "wizard_id")
     private Wizard wizard;
 
-    
+    /**
+     * Each wizard has conditions that can be either true or false.
+     * All conditions are initially not met (false)
+     * @param wizard indicates to which wizard the conditions belongs
+     * @param name name of the condition
+     */
 
     public Condition(Wizard wizard, String name){
         this.wizard = wizard;

@@ -29,6 +29,12 @@ public class Comments {
 
     }
 
+    /**
+     * Constructor to create a new comment. Each comment must contain:
+     * @param content contains the submitted comment
+     * @param wizard indicates to which wizard the comment belongs
+     */
+
     public Comments(String content, Wizard wizard){
         this.content = content;
         this.wizard = wizard;

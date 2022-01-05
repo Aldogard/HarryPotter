@@ -42,6 +42,25 @@ public class Potion extends Options{
     @JoinColumn(name = "wizard_id")
     private Wizard wizard;
 
+
+
+    /**
+     * Constructor that creates a potion.
+     * @param name name of the potion
+     * @param storage potions must be taken out of a wizard's storage. Storage indicates how often a wizards owns this potion
+     * @param healing amount of healing that can be achieved by using a potion
+     * @param recovery amount of energy that can be recovered by using a potion
+     * @param antiParalysis indicates whether this potion protects against stunning spells
+     * @param antiConfunded indicates whether this potion protects against confounding spells
+     * @param regeneration indicates whether this potion is a regeneration potions
+     * @param unicornBlood indicates whether this potion is unicorn blood
+     * @param maxDamage maximum amount of damage this potion can inflict
+     * @param additionalFactor some potions can increase the additional factor of a wizard
+     * @param requiredExperience some potions can only be used after a wizard acquired a certain amount of experience
+     * @param wizard indicates to which wizard this potion belongs
+     * @param description description about the effects of the potion
+     */
+
     public Potion(
             String name,
             Integer storage,
