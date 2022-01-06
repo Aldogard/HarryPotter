@@ -1,7 +1,20 @@
+<div class="header gold">
+  <h1 class="headeranimaldetail headertext">Detail View</h1>
+</div>
+
 <div class="container">
   <ng-container *ngIf="animal !== undefined">
-    <h1>Detail View for {{ animal.name }}</h1>
-    <table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>{{animal.name}}</th>
+        </tr>
+      </thead>
+      <tr>
+        <td></td>
+      </tr>
+      <tbody>
       <tr>
         <td>Energy Usage</td>
         <td>{{ animal.energyUsage }}</td>
@@ -26,7 +39,11 @@
         <td>Description</td>
         <td>{{ animal.descriptionOption }}</td>
       </tr>
+    </tbody>
     </table>
+    <h2 class="gold">Further Information</h2>
+    <ul>
+    </ul>
   </ng-container>
   <br />
   <a (click)="gotoWiki()" class="link"

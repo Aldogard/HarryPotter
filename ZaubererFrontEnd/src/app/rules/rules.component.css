@@ -1,17 +1,13 @@
-.header {
+.headerrules {
     margin: 10px;
-    border: 5px solid rgb(0, 0, 0);
+    border: 5px solid rgb(211, 166, 37);
     padding: 10px;
     list-style-type: none;
     text-align: center;
-    grid-area: header;
+    border-radius: 0.25rem;
+  
   }
   
-  .header {
-    text-decoration: none;
-    color: black;
-  }
-
   .gotoFight{
       text-align: center;
   }

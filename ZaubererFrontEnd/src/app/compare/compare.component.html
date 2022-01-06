@@ -1,31 +1,58 @@
-<div class="container">
-    <h1 class="header">Compare two wizards</h1>
-    <table class="wizard1">
+<div class="header gold">
+  <h1 class="headercompare headertext">Compare two wizards</h1>
+</div>
+
+<div class="container mt-5">
+  <table class="table">
+    <thead>
       <tr>
         <th>Please select</th>
         <th>
-          <div class="buttonA">
-            <select id="wizardUpdateA" (change)="getWizardAByName()">
-              <option value="{{ z.id }}" *ngFor="let z of wizards">
-                {{ z.name }}
-              </option>
-            </select>
-            <button (click)="showHide1(true)">Show</button>
-            <button (click)="showHide1(false)">Hide</button>
-          </div>
+          <select
+            class="formButton"
+            id="wizardUpdateA"
+            (change)="getWizardAByName()"
+          >
+            <option
+              class="options"
+              value="{{ z.id }}"
+              *ngFor="let z of wizards"
+            >
+              {{ z.name }}
+            </option>
+          </select>
+          <button class="formButtonTable" (click)="showHide1(true)">
+            Show
+          </button>
+          <button class="formButtonTable" (click)="showHide1(false)">
+            Hide
+          </button>
         </th>
         <th>
           <div class="buttonB">
-            <select id="wizardUpdateB" (change)="getWizardBByName()">
+            <select
+              class="formButton"
+              id="wizardUpdateB"
+              (change)="getWizardBByName()"
+            >
               <option value="{{ z.id }}" *ngFor="let z of wizards">
                 {{ z.name }}
               </option>
             </select>
-            <button (click)="showHide2(true)">Show</button>
-            <button (click)="showHide2(false)">Hide</button>
+            <button class="formButtonTable" (click)="showHide2(true)">
+              Show
+            </button>
+            <button class="formButtonTable" (click)="showHide2(false)">
+              Hide
+            </button>
           </div>
         </th>
       </tr>
+    </thead>
+    <tr>
+      <td></td>
+    </tr>
+    <tbody>
       <tr>
         <td>Healthpoints</td>
         <td>
@@ -91,7 +118,7 @@
           </div>
         </td>
       </tr>
-  
+
       <tr>
         <td>Class</td>
         <td>
@@ -118,11 +145,6 @@
           </div>
         </td>
       </tr>
-    </table>
-
-
-
-
-
-  
-   
+    </tbody>
+  </table>
+</div>

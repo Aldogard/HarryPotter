@@ -1,26 +1,40 @@
-<div id="search-component">
-  <div *ngIf="wizardsResults.length > 0">
-    <h3 class="head">Results for {{ searchTerm }}</h3>
-    <table class="search-result">
-      <tr>
-        <th>Name</th>
-        <th></th>
-      </tr>
-      <!-- <tr *ngFor="let z of wizardsResults">
+<div id="search-component" *ngIf="wizardsResults.length > 0">
+  <div class="header gold">
+    <h1 class="headerresult headertext">Results for {{ searchTerm }}</h1>
+  </div>
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-6">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Class</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tr>
+            <td></td>
+          </tr>
+          <tbody>
+            <!-- <tr *ngFor="let z of wizardsResults">
         <td>{{ z | json}}</td>
       </tr> -->
-      <tr *ngFor="let z of wizardsResults">
-        <td>{{ z.name }}</td>
-        <td> <button
-          class="formButton"
-          (click)="goToDetail(z)"
-        >
-          Detail View
-        </button></td>
-      </tr>
-    </table>
+            <tr *ngFor="let z of wizardsResults">
+              <td>{{ z.name }}</td>
+              <td>{{z.klasse}}</td>
+              <td>
+                <button class="formButtonColumn" (click)="goToDetail(z)">
+                  Details
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-  <p class="noResults" *ngIf="wizardsResults.length === 0">
-    No Results found!
-  </p>
+</div>
+<div class="header gold" *ngIf="wizardsResults.length === 0">
+  <h1 class="headerresult headertext">No Results found!</h1>
 </div>

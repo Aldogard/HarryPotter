@@ -1,58 +1,74 @@
-<div class="container">
-  <h1>Animals</h1>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Energy Usage</th>
-      <th>Healing</th>
-      <th>Recovery</th>
-      <th>Max Damage</th>
-      <th>Experience</th>
-    </tr>
-    <tr *ngFor="let animal of animals">
-      <td>{{ animal.name }}</td>
-      <td>{{ animal.energyUsage }}</td>
-      <td>{{ animal.healing }}</td>
-      <td>{{ animal.energyRecovery }}</td>
-      <td>{{ animal.maxDamage }}</td>
-      <td>{{ animal.requiredExperience }}</td>
-    </tr>
-  </table>
-  <div class="hints">
-    <h3>Explanations</h3>
-    <ul>
-      <li>
-        Energy Usage indicates the required energy to put the animal into action.
-        An animal can only be activated if the wizard has enough energy
-        remaining.
-      </li>
-      <li>
-        Healing indicates the percentage of the initial Healthpoints, that is
-        restored by using the Animal. 0 indicates that this Animal cannot
-        restore health.
-      </li>
-      <li>
-        Energy indicates the percentage of the initial Energy, that is restored
-        by using the Animal. 0 indicates that this Animal cannot restore energy.
-      </li>
-      <li>
-        Most Animals are able to inflict damage on the opposing Wizard. Max
-        Damage indicates the maximum amount of damage that can be inflicted.
-      </li>
-      <li>
-        Experience indicates the number of victories a wizards needs in order to
-        tame an animal.
-      </li>
-    </ul>
-  </div>
+<div class="header gold">
+  <h1 class="headertext headeranimals">Overview Animals</h1>
+</div>
+<div class="container-fluid padding mt-5">
+  <div class="row padding">
+    <div class="col-md-12 col-lg-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Energy Usage</th>
+            <th>Healing</th>
+            <th>Recovery</th>
+            <th>Max Damage</th>
+            <th>Experience</th>
+          </tr>
+        </thead>
+        <tr>
+          <td></td>
+        </tr>
+        <tbody>
+          <tr *ngFor="let animal of animals">
+            <td>{{ animal.name }}</td>
+            <td>{{ animal.energyUsage }}</td>
+            <td>{{ animal.healing }}</td>
+            <td>{{ animal.energyRecovery }}</td>
+            <td>{{ animal.maxDamage }}</td>
+            <td>{{ animal.requiredExperience }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="hints">
+      <h2 class="gold">Explanations</h2>
+      <ul>
+        <li>
+          Energy Usage indicates the required energy to put the animal into
+          action. An animal can only be activated if the wizard has enough
+          energy remaining.
+        </li>
+        <li>
+          Healing indicates the percentage of the initial Healthpoints, that is
+          restored by using the Animal. 0 indicates that this Animal cannot
+          restore health.
+        </li>
+        <li>
+          Energy indicates the percentage of the initial Energy, that is
+          restored by using the Animal. 0 indicates that this Animal cannot
+          restore energy.
+        </li>
+        <li>
+          Most Animals are able to inflict damage on the opposing Wizard. Max
+          Damage indicates the maximum amount of damage that can be inflicted.
+        </li>
+        <li>
+          Experience indicates the number of victories a wizards needs in order
+          to tame an animal.
+        </li>
+      </ul>
+    </div>
 
-  <div class="goto">
-    <p>
-      For a detailed view of all Spells or a return to Overview, please click
-      the respective Button
-    </p>
-    <button (click)="gotoPotions()">Go to Potions</button>
-    <button (click)="gotoAttacks()">Go to Spells</button>
-    <button (click)="gotoOverview()">Go to Overview</button>
+    <div class="goto">
+      <p>
+        For a detailed view of all Spells or a return to Overview, please click
+        the respective Button
+      </p>
+      <button class="formButton" (click)="gotoPotions()">Go to Potions</button>
+      <button class="formButton" (click)="gotoAttacks()">Go to Spells</button>
+      <button class="formButton" (click)="gotoOverview()">
+        Go to Overview
+      </button>
+    </div>
   </div>
 </div>

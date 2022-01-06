@@ -1,23 +1,21 @@
 .link {
-    text-decoration: none;
-    color: black;
-  }
+  text-decoration: none;
+  color: black;
+}
 
-  .link:hover{
+.link:hover {
+  cursor: pointer;
+}
 
-    cursor: pointer;
-  }
-
-  body{
-    font-family: 'The Nautigal', cursive;
-    font-size: 1.5rem;
-    color: white;
-    background: rgb(14, 26, 64);
+body {
+  font-family: "The Nautigal", cursive;
+  font-size: 1.5rem;
+  color: white;
+  background: rgb(14, 26, 64);
 }
 
 .gold {
-    color: rgb(211, 166, 37);
-    
+  color: rgb(211, 166, 37);
 }
 
 .headertext {
@@ -25,288 +23,359 @@
 }
 
 .white {
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
-.navbar, .carousel {
- border-bottom: 1px solid limegreen;
+.navbar,
+.carousel {
+  border-bottom: 1px solid limegreen;
 }
 
-#compare, #about {
-    padding-top: 100px;
+#compare,
+#about {
+  padding-top: 100px;
 }
 
-a {text-decoration: none;}
+a {
+  text-decoration: none;
+}
 
 a:hover {
-    color: rgb(14, 26, 64);
+  color: rgb(14, 26, 64);
 }
 
-.mtop{
-   margin-top: 10%; 
-} 
+.mtop {
+  margin-top: 10%;
+}
 
-.clearing { 
-    clear: both; 
+.clearing {
+  clear: both;
 }
 
 .form-text {
-    font-size: 1rem;
-    color:darkgray;
+  font-size: 1rem;
+  color: darkgray;
 }
 
-.abstandLinks{
-    margin-left: 10px;
+.abstandLinks {
+  margin-left: 10px;
 }
 
-.hinweis{
-    font-size: 1.1rem;
-    color:limegreen;
+.hinweis {
+  font-size: 1.1rem;
+  color: limegreen;
 }
 
 /*Navigation*/
 .nav-link {
-    cursor:pointer;
+  cursor: pointer;
 }
 
 .nav-link:active,
 .nav-link:hover {
-    color: limegreen !important;
+  color: limegreen !important;
 }
 
 .abstand-icon {
-    margin: 0px 0px;
+  margin: 0px 0px;
 }
 
-.icon-link:active svg, 
-.icon-link:hover svg{
-    color: limegreen;
+.icon-link:active svg,
+.icon-link:hover svg {
+  color: limegreen;
 }
 
 details[open] {
-    margin-bottom: 1em;
-  }
+  margin-bottom: 1em;
+}
 
 /*slider*/
 
 .slider-image {
-    width: 100vw;
-    height: 70vh;
-    background-position: center;
-    background-size: cover;
+  width: 100vw;
+  height: 70vh;
+  background-position: center;
+  background-size: cover;
 }
 
-tr, td {
+tr,
+td {
   color: white;
 }
 
 /*vergleich*/
 .card-image {
-    height: 500px;
-    background-position: center;
-    background-size: cover;
+  height: 500px;
+  background-position: center;
+  background-size: cover;
 }
 
-@media (max-width: 800px){
-.card-group {
+@media (max-width: 800px) {
+  .card-group {
     display: flex;
-    flex-flow:column wrap;
-}}
+    flex-flow: column wrap;
+  }
+}
 
 /*über uns*/
 .about-image {
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    background-position: center;
-    background-size: cover;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
 }
 
 .footer {
-    font-family: sans-serif;
-    font-size: 1rem;
-    text-align: center;
-    border-top: 1px solid #888;
+  font-family: sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  border-top: 1px solid #888;
 }
 
-.button-abstand{
-    margin: 20px;
-    padding: 5px 10px;
-    border-radius: 3px;
+.button-abstand {
+  margin: 20px;
+  padding: 5px 10px;
+  border-radius: 3px;
 }
 
-.button-abstand:hover{
-    margin: 20px;
-    padding: 5px 10px;
-    border-radius: 3px;
-    background-color: limegreen;
-    border: 1px solid limegreen;
-    color: white;
+.button-abstand:hover {
+  margin: 20px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: limegreen;
+  border: 1px solid limegreen;
+  color: white;
 }
 
-
-
-.auswahl{
-    margin-left: 15px;
-    padding: 8px 10px;
-    border-radius: 3px;
+.auswahl {
+  margin-left: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
 }
 
-.auswahl:hover{
-    margin-left: 15px;
-    padding: 8px 10px;
-    border-radius: 3px;
-    background-color: limegreen;
-    border: 1px solid limegreen;
-    color: white;
+.auswahl:hover {
+  margin-left: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  background-color: limegreen;
+  border: 1px solid limegreen;
+  color: white;
 }
 /*für Tabelle*/
 
-
-
-thead  {
+thead {
   font-weight: 300 !important;
 }
 
-
-.button-abstand{
-    margin: 20px;
-    padding: 5px 10px;
-    border-radius: 3px;
+.button-abstand {
+  margin: 20px;
+  padding: 5px 10px;
+  border-radius: 3px;
 }
 
-.button-abstand:hover{
-    margin: 20px;
-    padding: 5px 10px;
-    border-radius: 3px;
-    background-color: limegreen;
-    border: 1px solid limegreen;
-    color: white;
+.button-abstand:hover {
+  margin: 20px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: limegreen;
+  border: 1px solid limegreen;
+  color: white;
 }
 
-.formButton{
-    height: 50px;
-    padding: 0 1rem;
-    margin: 0 0.7rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: white;
-    background-color: rgb(14, 26, 64);
-    border-radius: 0.25rem;
-    border: 1px solid white;
-    -webkit-transition: background-color 0.5s ease-out;
+.formButton {
+  height: 50px;
+  width: 150px;
+  padding: 0 1rem;
+  margin: 0 0.7rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  background-color: rgb(14, 26, 64);
+  border-radius: 0.25rem;
+  border: 1px solid white;
+  -webkit-transition: background-color 0.5s ease-out;
   -moz-transition: background-color 0.5s ease-out;
   -o-transition: background-color 0.5s ease-out;
   transition: background-color 0.5s ease-out;
 }
 
-.formButton:hover {
-    height: 50px;
-    padding: 0 1rem;
-    margin: 0 0.7rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: white;
-    background-color: rgb(211, 166, 37);
-    border-radius: 0.25rem;
-    border: 1px solid rgb(211, 166, 37);
+.formButtonTable {
+  height: 50px;
+  width: 75px;
+  /* padding: 0 1rem; */
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  background-color: rgb(14, 26, 64);
+  border-radius: 0.25rem;
+  border: 1px solid white;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+}
+
+.formButtonColumn {
+  height: 35px;
+  width: 75px;
+  /* padding: 0 1rem; */
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  background-color: rgb(14, 26, 64);
+  border-radius: 0.25rem;
+  border: 1px solid white;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
 }
 
 
-.auswahl{
-    margin-left: 15px;
-    padding: 8px 10px;
-    border-radius: 3px;
+.formButton:hover:enabled {
+  padding: 0 1rem;
+  margin: 0 0.7rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  background-color: rgb(211, 166, 37);
+  border-radius: 0.25rem;
+  border: 1px solid rgb(211, 166, 37);
 }
 
-.auswahl:hover{
-    margin-left: 15px;
-    padding: 8px 10px;
-    border-radius: 3px;
-    background-color: limegreen;
-    border: 1px solid limegreen;
-    color: white;
+.formButtonTable:hover:enabled {
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  background-color: rgb(211, 166, 37);
+  border-radius: 0.25rem;
+  border: 1px solid rgb(211, 166, 37);
+}
+
+.formButtonColumn:hover:enabled {
+  padding: 0 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  background-color: rgb(211, 166, 37);
+  border-radius: 0.25rem;
+  border: 1px solid rgb(211, 166, 37);
+}
+
+
+.auswahl {
+  margin-left: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+}
+
+.auswahl:hover {
+  margin-left: 15px;
+  padding: 8px 10px;
+  border-radius: 3px;
+  background-color: limegreen;
+  border: 1px solid limegreen;
+  color: white;
 }
 
 .formFelder {
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #212529;
-    background-color: #fff;
-    border-radius: 0.25rem;
-    border: 1px solid white;
-}  
+  width: 150px;
+  padding: 0.375rem 0.75rem;
+  margin: 0 0.7rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #212529;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  border: 1px solid white;
+}
+
+.formFelderRadio {
+  padding: 0.375rem 0.75rem;
+  margin: 0 0.7rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #212529;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  border: 1px solid white;
+}
+
+
 
 .ergebnis {
-    padding: 0.375rem 0.75rem;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #212529;
-    background-color: #fff;
-    border-radius: 0.25rem;
-    border: 1px solid white;
-    width: 100px;
-    margin-left:  0.7rem;
-    margin-top:  1rem;
-    margin-bottom:  1rem;
-}    
+  padding: 0.375rem 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #212529;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  border: 1px solid white;
+  width: 100px;
+  margin-left: 0.7rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 
 .searchButton {
-    display: block;
-    width: 100%;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    background-color: #fff;
-    background-clip: padding-box;
-    border-radius: 0.25rem;
-    border: 0px !important;
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 0.25rem;
+  border: 0px !important;
 }
 
 .update {
-    margin: 0 0.5rem;
-    border: 1px solid green;
-    width: 40px;
+  margin: 0 0.5rem;
+  border: 1px solid green;
+  width: 40px;
 }
 
 .radioAbstand {
-    padding: 0 0.5rem;
+  padding: 0 0.5rem;
 }
 
 /*folgende nur zum Testen*/
 .warn {
-    color: red;
-    font-size: 44px;;
+  color: red;
+  font-size: 44px;
 }
 
 .gelb {
-    border: 2px solid yellow;
+  border: 2px solid yellow;
 }
 
 .orange {
-    border: 2px solid rgb(255, 153, 0);
-    height: 40px;
- 
+  border: 2px solid rgb(255, 153, 0);
+  height: 40px;
 }
 
 .blau {
-    border: 2px solid rgb(69, 227, 248);
+  border: 2px solid rgb(69, 227, 248);
 }
 
 .grun {
-    border: 2px solid rgb(28, 172, 88);
+  border: 2px solid rgb(28, 172, 88);
 }
 
 .pink {
-    border: 2px solid rgb(172, 28, 136);
+  border: 2px solid rgb(172, 28, 136);
 }
 
 .kleiner {
-    height: 550px;
+  height: 550px;
 }
-

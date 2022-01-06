@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+import { ExtraService } from '../extra.service';
 import { HarrypotterService } from '../harrypotter.service';
 import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
@@ -17,6 +18,13 @@ export class DetailsComponent implements OnInit {
   getZaubererId: FormControl = new FormControl(1);
   numberOfRating: FormControl = new FormControl(0);
   show1 = new BehaviorSubject<boolean>(true);
+
+  showSaw = new BehaviorSubject<boolean>(true);
+  showPotions = new BehaviorSubject<boolean>(true);
+  showSpells = new BehaviorSubject<boolean>(true);
+  showAnimals= new BehaviorSubject<boolean>(true);
+  showComments = new BehaviorSubject<boolean>(true);
+
 
   idForComment: number = 0;
   idForRating: number = 0;
@@ -44,7 +52,8 @@ export class DetailsComponent implements OnInit {
   constructor(
     private hpService: HarrypotterService,
     private fb: FormBuilder,
-    private ms: MessageService
+    private ms: MessageService,
+    private extraService: ExtraService,
   ) {}
 
   ngOnInit(): void {
@@ -90,6 +99,27 @@ export class DetailsComponent implements OnInit {
     this.show1.next(status);
   }
 
+  showHideSaw(status:boolean){
+    this.showSaw.next(status);
+  }
+
+  showHideSpells(status:boolean){
+    this.showSpells.next(status);
+  }
+
+  showHidePotions(status:boolean){
+    this.showPotions.next(status);
+  }
+
+  showHideAnimals(status:boolean){
+    this.showAnimals.next(status);
+  }
+
+  showHideComments(status:boolean){
+    this.showComments.next(status);
+  }
+
+
   post() {
     const response = this.hpService.postComment(
       this.commentForm.value,
@@ -107,6 +137,7 @@ export class DetailsComponent implements OnInit {
         ],
       });
     });
+    this.extraService.redirectTo('detail');
   }
 
   getWizardByNameComment() {
@@ -156,6 +187,7 @@ export class DetailsComponent implements OnInit {
     response.subscribe((x) => {
       this.stars.setValue('');
     });
+    this.extraService.redirectTo('detail');
   }
 
   gotoPotionDetail(potionId: number) {

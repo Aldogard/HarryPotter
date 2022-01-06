@@ -1,4 +1,3 @@
-
 .headeroverview {
   margin: 10px;
   border: 5px solid rgb(26, 71, 42);
@@ -6,19 +5,18 @@
   list-style-type: none;
   text-align: center;
   border-radius: 0.25rem;
-
 }
 
-.goto{
+.filter {
+  margin: 0.7rem;
+}
+
+.goto {
   text-align: center;
   justify-content: space-around;
 }
 
 th {
-  font-size: 2.0rem;
+  font-size: 2rem;
 }
-
-
-
-
 

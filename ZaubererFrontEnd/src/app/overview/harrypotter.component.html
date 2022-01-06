@@ -5,102 +5,101 @@
 <div class="container-fluid padding mt-5">
   <div class="row padding">
     <div class="col-md-12 col-lg-3">
-      <div class="filter">
-        <h2 class="headertext gold">Filter:</h2>
-        <a *ngFor="let c of class">
-          <button class="formButton" (click)="getWizard(c)">{{ c }}</button>
-          <br />
-        </a>
+      <h2 class="headertext gold filter">Filter:</h2>
+      <a *ngFor="let c of class">
+        <button class="formButton" (click)="getWizard(c)">{{ c }}</button>
         <br />
-        <input
-          type="number"
-          [formControl]="max"
-          placeholder="Max Healtpoints"
-          (keyup.enter)="maxSearch($event)"
-        />
-        <br />
-        <input
-          type="number"
-          [formControl]="min"
-          placeholder="Min Healtpoints"
-          (keyup.enter)="minSearch($event)"
-        />
-        <br />
-        <input
-          type="number"
-          [formControl]="minVictories"
-          placeholder="Min Victories"
-          (keyup.enter)="getMinVictories($event)"
-        />
-        <br />
-        <input
-          type="number"
-          [formControl]="spellAmount"
-          placeholder="Spells"
-          (keyup.enter)="getSpellAmount($event)"
-        />
-        <br />
-        <input
-          type="number"
-          [formControl]="potionAmount"
-          placeholder="Potions"
-          (keyup.enter)="getPotionAmount($event)"
-        />
-        <br />
-        <input
-          type="number"
-          [formControl]="animalAmount"
-          placeholder="Animals"
-          (keyup.enter)="getAnimalAmount($event)"
-        />
-        <br />
-        <button (click)="deleteFilter()">Remove Filter</button>
-      </div>
+      </a>
+      <br />
+      <input
+        class="formFelder"
+        type="number"
+        [formControl]="max"
+        placeholder="Max Healtpoints"
+        (keyup.enter)="maxSearch($event)"
+      />
+      <br />
+      <input
+        class="formFelder"
+        type="number"
+        [formControl]="min"
+        placeholder="Min Healtpoints"
+        (keyup.enter)="minSearch($event)"
+      />
+      <br />
+      <input
+        class="formFelder"
+        type="number"
+        [formControl]="minVictories"
+        placeholder="Min Victories"
+        (keyup.enter)="getMinVictories($event)"
+      />
+      <br />
+      <input
+        class="formFelder"
+        type="number"
+        [formControl]="spellAmount"
+        placeholder="Spells"
+        (keyup.enter)="getSpellAmount($event)"
+      />
+      <br />
+      <input
+        class="formFelder"
+        type="number"
+        [formControl]="potionAmount"
+        placeholder="Potions"
+        (keyup.enter)="getPotionAmount($event)"
+      />
+      <br />
+      <input
+        class="formFelder"
+        type="number"
+        [formControl]="animalAmount"
+        placeholder="Animals"
+        (keyup.enter)="getAnimalAmount($event)"
+      />
+      <br />
+      <br />
+      <button class="formButton" (click)="deleteFilter()">Remove Filter</button>
     </div>
 
     <div class="tablewizards col-lg-9">
       <table class="table">
         <thead>
-        <tr>
-          <th>Name</th>
-          <th>Healthpoints</th>
-          <th>Class</th>
-          <th>Spells</th>
-          <th>Potions</th>
-          <th>Animals</th>
-          <th>Victories</th>
-        </tr>
+          <tr>
+            <th>Name</th>
+            <th>Healthpoints</th>
+            <th>Class</th>
+            <th>Spells</th>
+            <th>Potions</th>
+            <th>Animals</th>
+            <th>Victories</th>
+          </tr>
         </thead>
         <tr>
           <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
         </tr>
         <tbody>
-        <tr *ngFor="let z of wizards">
-          <td>{{ z.name }}</td>
-          <td>{{ z.healthPoints }}</td>
-          <td>{{ z.klasse }}</td>
-          <td>{{ z.spells.length }}</td>
-          <td>{{ z.potions.length }}</td>
-          <td>{{ z.animals.length }}</td>
-          <td>{{ z.victories }}</td>
-        </tr>
+          <tr *ngFor="let z of wizards">
+            <td>{{ z.name }}</td>
+            <td>{{ z.healthPoints }}</td>
+            <td>{{ z.klasse }}</td>
+            <td>{{ z.spells.length }}</td>
+            <td>{{ z.potions.length }}</td>
+            <td>{{ z.animals.length }}</td>
+            <td>{{ z.victories }}</td>
+          </tr>
         </tbody>
       </table>
     </div>
     <div class="goto">
       <p>
-        For a detailed view of all Potions and Spells, please click the
-        respective Button
+        For an overview of all Potions, Spells and Animals, please click the
+        respective button.
       </p>
-      <button (click)="gotoPotions()">Go to Potions</button>
-      <button (click)="gotoSpells()">Go to Spells</button>
-      <button (click)="gotoAnimals()">Go to Animals</button>
+      <button class="formButton" (click)="gotoPotions()">Go to Potions</button>
+      <button class="formButton" (click)="gotoSpells()">Go to Spells</button>
+      <button class="formButton" (click)="gotoAnimals()">Go to Animals</button>
     </div>
   </div>
 </div>

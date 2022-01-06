@@ -1,3 +1,13 @@
+.headerbattle {
+  margin: 10px;
+  border: 5px solid rgb(211, 166, 37);
+  padding: 10px;
+  list-style-type: none;
+  text-align: center;
+  border-radius: 0.25rem;
+
+}
+
 .container {
   display: grid;
   grid-template-columns: 49% 49%;
@@ -12,19 +22,6 @@
     ;
 }
 
-.header {
-  margin: 10px;
-  border: 5px solid rgb(0, 0, 0);
-  padding: 10px;
-  list-style-type: none;
-  text-align: center;
-  grid-area: header;
-}
-
-.header {
-  text-decoration: none;
-  color: black;
-}
 
 .headertable {
   grid-area: ht;

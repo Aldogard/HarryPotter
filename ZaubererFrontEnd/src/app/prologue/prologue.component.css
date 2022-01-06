@@ -1,41 +1,31 @@
-.container {
-  display: grid;
-  grid-template-columns: 49% 49%;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "header header"
-    "intro intro"
-    "radio radio"
-    "choose1 choose2"
-    "choose3 choose4"
-    "check check"
-    "hint hint"
-    ;
-}
 
-
-.header {
+.headerprologue {
   margin: 10px;
-  border: 5px solid rgb(25, 25, 112);
+  border: 5px solid rgb(211, 166, 37);
   padding: 10px;
   list-style-type: none;
+  text-decoration: none;
   text-align: center;
-  grid-area: header;
+  border-radius: 0.25rem;
+
 }
 
-.header {
-  text-decoration: none;
-  color: black;
+.abstandeinsbutton {
+  margin:0px 0px 0px 4px;
 }
+
+input.radio {
+  display: inline-block;
+}
+
+
 
 .intro{
-  grid-area: intro;
   text-align: center;
 }
 
 
 .size{
-  grid-area: radio;
   text-align: center;
 
 }
@@ -44,31 +34,21 @@ input.radio {
   display: inline-block;
 }
 
-.choose1 {
-  grid-area: choose1;
-
+.choice{
+  text-align: center;
 }
 
-.choose2 {
-  grid-area: choose2;
-}
-
-.choose3 {
-  grid-area: choose3;
-}
-
-.choose4 {
-  grid-area: choose4;
-}
 
 .hint {
-  grid-area: hint;
   text-align: center;
 }
 
 .check{
-  grid-area: check;
   text-align: center;
+}
+
+.link {
+  color: white;
 }
 
 

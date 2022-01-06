@@ -2,3 +2,13 @@
     text-align: center;
     justify-content: space-around;
   }
+
+  .headeranimals {
+    margin: 10px;
+    border: 5px solid rgb(26, 71, 42);
+    padding: 10px;
+    border-radius: 0.25rem;
+    list-style-type: none;
+    text-align: center;
+  }
+  

@@ -30,6 +30,7 @@ export class BattleComponent implements OnInit {
   attackWizard2 = new BehaviorSubject<boolean>(true);
   showResult = new BehaviorSubject<boolean>(false);
   showStart = new BehaviorSubject<boolean>(true);
+  showTable = new BehaviorSubject<boolean>(true);
   attackWizardNumber: number = 1;
   voldemortIsDead: boolean = false;
   environment: string = '';
@@ -44,8 +45,14 @@ export class BattleComponent implements OnInit {
     this.environment = this.ms.environment.value;
     this.ms.wizardArray.subscribe((za) => {
       this.wizardsArray = za;
-      this.wizard1 = za[0];
-      this.wizard2 = za[1];
+      // this.wizard1 = za[0];
+      // this.wizard2 = za[1];
+      this.hpService.getWizards().subscribe(wizards => {
+        this.wizard1 = wizards[0];
+        this.wizard2 = wizards[1];
+        this.wizardsArray.push(this.wizard1);
+        this.wizardsArray.push(this.wizard2);
+      })
     });
     this.determineStarter();
   }
@@ -531,6 +538,9 @@ export class BattleComponent implements OnInit {
     } else {
       return 'None';
     }
-
+  }
+  showHideTable(status: boolean){
+    this.showTable.next(status);
+      
   }
 }
