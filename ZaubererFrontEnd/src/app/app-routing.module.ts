@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { HarrypotterComponent } from './overview/harrypotter.component';
 import { OverviewPotionComponent } from './overview-potion/potions.component';
 import { RulesComponent } from './rules/rules.component';
-import { SearchComponent } from './search/search.component';
+import { ResultComponent } from './result/result.component';
 import { UpdateWizardComponent } from './update-wizard/update-wizard.component';
 import { RanksComponent } from './ranks/ranks.component';
 import { OverviewAnimalComponent } from './overview-animal/overview-animal.component';
@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'prologue', component: PrologueComponent},
   { path: 'credits', component: CreditsComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'result', component: SearchComponent},
+  { path: 'result', component: ResultComponent},
   { path: 'battle', component: BattleComponent},
   { path: 'spells', component: OverviewSpellComponent},
   { path: 'potions', component: OverviewPotionComponent},

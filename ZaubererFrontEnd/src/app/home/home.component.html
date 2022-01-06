@@ -1,34 +1,37 @@
-<div class="container">
-  <div class="header">
-    <h1 class="headertext">The most accomplished Wizard</h1>
-  </div>
-  <div class="item-a">
-    <div *ngIf="wizard !== undefined">
-      <h3>{{ wizard.name }}</h3>
-      <ul>
-        <li>Healthpoints: {{ wizard.healthPoints }}</li>
-        <li>Factor: {{ wizard.faktor }}</li>
-        <li>Energy: {{ wizard.energy }}</li>
-        <li *ngIf="wizard.victories === 1">Victory: {{ wizard.victories }}</li>
-        <li *ngIf="wizard.victories !== 1">
-          Victories: {{ wizard.victories }}
-        </li>
-        <li>Rank: {{ wizard.rank }}</li>
-        <li>Class: {{ wizard.klasse }}</li>
-        <li *ngIf="wizard.amount < 2">
-          Rating: {{ wizard.rating }} ({{ wizard.amount }} Review)
-        </li>
-        <li *ngIf="wizard.amount > 1">
-          Rating: {{ wizard.rating }} ({{ wizard.amount }} Reviews)
-        </li>
-        <li>Spells: {{ wizard.spells.length }}</li>
-        <li>Potions: {{ wizard.potions.length }}</li>
-        <li>Animals: {{ wizard.animals.length }}</li>
-      </ul>
+<div class="header gold">
+  <h1 class="headertext headerhome">The most accomplished Wizard</h1>
+</div>
+
+<div class="container-fluid padding mt-5">
+  <div class="row padding">
+    <div class="col-md-12 col-lg-6" *ngIf="wizard !== undefined">
+        <h2 class="headertext gold">{{ wizard.name }}</h2>
+        <ul>
+          <li>Healthpoints: {{ wizard.healthPoints }}</li>
+          <li>Factor: {{ wizard.faktor }}</li>
+          <li>Energy: {{ wizard.energy }}</li>
+          <li *ngIf="wizard.victories === 1">
+            Victory: {{ wizard.victories }}
+          </li>
+          <li *ngIf="wizard.victories !== 1">
+            Victories: {{ wizard.victories }}
+          </li>
+          <li>Rank: {{ wizard.rank }}</li>
+          <li>Class: {{ wizard.klasse }}</li>
+          <li *ngIf="wizard.amount < 2">
+            Rating: {{ wizard.rating }} ({{ wizard.amount }} Review)
+          </li>
+          <li *ngIf="wizard.amount > 1">
+            Rating: {{ wizard.rating }} ({{ wizard.amount }} Reviews)
+          </li>
+          <li>Spells: {{ wizard.spells.length }}</li>
+          <li>Potions: {{ wizard.potions.length }}</li>
+          <li>Animals: {{ wizard.animals.length }}</li>
+        </ul>
+      </div>
+    <div class="col-lg-6">
+      <h2 class="headertext gold">Inspirational Harry Potter Quote:</h2>
+      <p>{{ quote }}</p>
     </div>
-  </div>
-  <div class="item-b">
-    <h4>Inspirational Harry Potter Quote:</h4>
-    <p>{{ quote }}</p>
   </div>
 </div>

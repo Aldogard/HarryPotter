@@ -1,48 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ExtraService } from '../extra.service';
-import { HarrypotterService } from '../harrypotter.service';
-import { HpWizard } from '../hp-wizard';
+import { Router } from '@angular/router';
 import { MessageService } from '../message.service';
+import { ExtraService } from '../extra.service';
 
 @Component({
-  selector: 'app-search',
+  selector: 'app-search-connection',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-  wizards: HpWizard[] = [];
-  wizardsResults: HpWizard[] = [];
-  searchTerm: string = '';
-
+  content: FormControl = new FormControl('');
   constructor(
-    private hpService: HarrypotterService,
     private ms: MessageService,
     private extraService: ExtraService,
   ) {}
 
-  ngOnInit(): void {
-    this.hpService
-      .getWizards()
-      .subscribe((element) => (this.wizards = element));
-      
-    this.ms.word.subscribe((search) => {
-      this.searchTerm = search;
-      this.hpService
-        .getWizardSearch(this.searchTerm)
-        .subscribe((results) => (this.wizardsResults = results));
-      if(this.wizardsResults.length===0){
-        this.hpService
-        .getWizardSearchKlasse(this.searchTerm)
-        .subscribe(results => this.wizardsResults = results);
-      }
-    });
+  ngOnInit(): void {}
+
+  search(event: any) {
+    this.ms.sendWord(this.content.value);
+    this.extraService.redirectTo('result');
   }
-
-  goToDetail(wizard: HpWizard) {
-    this.ms.sendWizard(wizard);
-    this.extraService.redirectToWithTimeout('/detail')
-  }
-
-
 }

@@ -16,7 +16,7 @@ export class CreateWizardComponent implements OnInit {
   constructor(
     private hpService: HarrypotterService,
     private extraService: ExtraService,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {}
@@ -27,7 +27,14 @@ export class CreateWizardComponent implements OnInit {
       '',
       [Validators.required, Validators.min(1), Validators.max(100)],
     ],
-    description: ['', [Validators.required, Validators.maxLength(100)]],
+    description: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(100),
+      ],
+    ],
   });
 
   submit() {
@@ -36,7 +43,7 @@ export class CreateWizardComponent implements OnInit {
       .postWizard(this.wizardForm.value, this.createWizardNr.value)
       .subscribe((a) => {
         this.show = true;
-        //this.zusatzservice.redirectToWithTimeout('overview');
+        this.extraService.redirectToWithTimeout('overview');
       });
   }
 }

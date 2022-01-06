@@ -5,32 +5,25 @@
       <th>Please select</th>
       <th>
         <div class="buttonA">
-          <ng-container *ngIf="wizardMs===undefined">
-          <select id="wizardUpdateA" (change)="getWizardAByNameAndUndefined()">
-            <option value="{{ z.id }}" *ngFor="let z of wizards">
-              {{ z.name }}
-            </option>
-          </select>
-        </ng-container>
-        <ng-container *ngIf="wizardMs!==undefined">
-          <select id="wizardUpdateA" (change)="getWizardAByNameAndUndefined()">
-            <option value="{{ z.id }}" *ngFor="let z of wizardsFirstPart">
-              {{ z.name }}
-            </option>
-            <option selected value="{{ wizardMs.id }}">
-              {{ wizardMs.name }}
-            </option>
-            <option value="{{ z.id }}" *ngFor="let z of wizardsSecondPart">
-              {{ z.name }}
-            </option>
-          </select>
-        </ng-container>
+            <select
+              id="wizardUpdateA"
+              (change)="getWizardAByNameAndUndefined()"
+            >
+              <option
+                value="{{ z.id }}"
+                *ngFor="let z of wizards"
+                [selected]="wizardMs !== undefined && wizardMs['id'] === z.id"
+              >
+                {{ z.name }}
+              </option>
+            </select>
           <button (click)="showHide1(true)">Show</button>
           <button (click)="showHide1(false)">Hide</button>
         </div>
       </th>
-      <th>
+      <th></th>
     </tr>
+
     <tr>
       <td>Healthpoints</td>
       <td>
@@ -53,7 +46,9 @@
         <div *ngIf="wizardChoiceA !== undefined && show1.value">
           {{ wizardChoiceA.energy }}
         </div>
+      </td>
     </tr>
+
     <tr>
       <td>Victories</td>
       <td>
@@ -86,7 +81,7 @@
           {{ wizardChoiceA.rating }} ({{ wizardChoiceA.amount }} Ratings)
         </div>
       </td>
-      <td>
+      <td></td>
     </tr>
   </table>
   <div class="wizard1saw">

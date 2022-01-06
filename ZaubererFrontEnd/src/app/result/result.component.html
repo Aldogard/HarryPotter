@@ -1,0 +1,26 @@
+<div id="search-component">
+  <div *ngIf="wizardsResults.length > 0">
+    <h3 class="head">Results for {{ searchTerm }}</h3>
+    <table class="search-result">
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+      <!-- <tr *ngFor="let z of wizardsResults">
+        <td>{{ z | json}}</td>
+      </tr> -->
+      <tr *ngFor="let z of wizardsResults">
+        <td>{{ z.name }}</td>
+        <td> <button
+          class="formButton"
+          (click)="goToDetail(z)"
+        >
+          Detail View
+        </button></td>
+      </tr>
+    </table>
+  </div>
+  <p class="noResults" *ngIf="wizardsResults.length === 0">
+    No Results found!
+  </p>
+</div>

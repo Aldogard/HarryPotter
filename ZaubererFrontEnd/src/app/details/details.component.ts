@@ -4,7 +4,6 @@ import { BehaviorSubject } from 'rxjs';
 import { HarrypotterService } from '../harrypotter.service';
 import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
-import { ExtraService } from '../extra.service';
 
 @Component({
   selector: 'app-details',
@@ -73,15 +72,6 @@ export class DetailsComponent implements OnInit {
       id = this.wizards[0].id;
     }
     if(this.wizardMs !==undefined){
-      this.wizards.forEach(wizard => {
-        if(this.wizardMs!==undefined){
-        if(wizard.id < this.wizardMs?.id){
-          this.wizardsFirstPart.push(wizard);
-        }
-        if(wizard.id > this.wizardMs.id){
-          this.wizardsSecondPart.push(wizard);
-        }
-      }})
       id = this.wizardMs.id;
     } 
 

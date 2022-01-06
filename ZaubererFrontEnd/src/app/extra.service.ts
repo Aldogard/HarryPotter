@@ -68,6 +68,6 @@ export class ExtraService {
       this.router
         .navigateByUrl('/', { skipLocationChange: true })
         .then(() => this.router.navigate([url]));
-    }, 500);
+    }, 700);
   }
 }

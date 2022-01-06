@@ -13,8 +13,8 @@ import { CreateWizardComponent } from './create-wizard/create-wizard.component';
 import { PrologueComponent } from './prologue/prologue.component';
 import { CreditsComponent } from './credits/credits.component';
 import { HomeComponent } from './home/home.component';
+import { ResultComponent } from './result/result.component';
 import { SearchComponent } from './search/search.component';
-import { SearchConnectionComponent } from './search-connection/search-connection.component';
 import { BattleComponent } from './battle/battle.component';
 import { OverviewSpellComponent } from './overview-spell/spells.component';
 import { OverviewPotionComponent } from './overview-potion/potions.component';
@@ -37,8 +37,8 @@ import { CompareComponent } from './compare/compare.component';
     PrologueComponent,
     CreditsComponent,
     HomeComponent,
+    ResultComponent,
     SearchComponent,
-    SearchConnectionComponent,
     BattleComponent,
     OverviewSpellComponent,
     OverviewPotionComponent,

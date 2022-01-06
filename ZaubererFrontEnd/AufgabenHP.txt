@@ -45,14 +45,14 @@ Ab hier noch offene Aufgaben:
 	Validators im BE --> Erledigt
 	Battle und Fight ändern bspw. pre Battle und Battle --> Erledigt
 
-	
+
 	Imperio für Potions und Animals?
 	Pointer Curser auch für Buttons?
 	
 
 Noch vor dem Design:
 	--> Detail View und Overview sinnvoll kombinieren
-	Was passiert mit den Suchergebnissen --> Detailansicht? 
+	Was passiert mit den Suchergebnissen --> Detailansicht? --> Erledigt
 	
 
 

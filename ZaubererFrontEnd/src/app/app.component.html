@@ -1,34 +1,56 @@
-<div class="container">
-  <a href="home" class="item-a">
-  <h1>The</h1>
-  </a>
-  <a href="home">
-  <h1>Battle</h1>
-  </a>
-  <div class="item-e">
-    <a href="home">
-    <img src="assets/hp.png" height="150"
-    />
-    </a>
+<div class="container-fluid padding mt-4">
+  <div class="row padding">
+    <div class="col-md-12 col-lg-3 header">
+      <a href="home">
+        <h1 class="white">The</h1>
+      </a>
+      </div>
+      <div class="col-lg-5 header">
+      <a href="home">
+        <img src="assets/hp.png" height="150" />
+      </a>
+      </div>
+      <div class="col-lg-3 header">
+      <a href="home">
+        <h1 class="white">Battle</h1>
+      </a>
+    </div>
   </div>
-  <nav>
-    <ul class="item-c">
-      <li class="item-ca"><a routerLink="overview">Overview</a></li>
-      <li class="item-ca"><a routerLink="compare">Comparison</a></li>
-      <li class="item-ca"><a routerLink="detail">Detail View</a></li>
-      <li class="item-ca"><a routerLink="prologue">Battle</a></li>
-      <!-- <li><a routerLink="/ceta">Credits</a></li> -->
-      <li>
-        <app-search-connection></app-search-connection>
-      </li>
-      <li class="item-ca"><a routerLink="create">Create</a></li>
-      <li class="item-ca"><a routerLink="update">Update</a></li>
-    </ul>
-  </nav>
-  <div class="item-b">
-    <router-outlet></router-outlet>
+</div>
+<div class="container-fluid padding mt-4">
+  <div class="row padding">
+    <div class="col-md-12 col-lg-2">
+      <nav>
+        <ul>
+          <li class="item">
+            <a routerLink="overview" class="white">Overview</a>
+          </li>
+          <li class="item">
+            <a routerLink="compare" class="white">Comparison</a>
+          </li>
+          <li class="item">
+            <a routerLink="detail" class="white">Detail View</a>
+          </li>
+          <li class="item">
+            <a routerLink="prologue" class="white">Battle</a>
+          </li>
+          <li class="item">
+            <app-search-connection></app-search-connection>
+          </li>
+          <li class="item">
+            <a routerLink="create" class="white">Create</a>
+          </li>
+          <li class="item">
+            <a routerLink="update" class="white">Update</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-lg-9">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <div class="item-d">
+  <div>
     <p>Creator of the Website: Aldogard Kasianowski</p>
   </div>
 </div>

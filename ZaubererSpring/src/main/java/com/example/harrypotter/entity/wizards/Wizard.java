@@ -29,8 +29,8 @@ public abstract class Wizard {
     @Column(name = "wizard_name")
     private String name;
 
-    @PositiveOrZero
-    @DecimalMin("0.0")
+    @NotNull
+    @DecimalMin("1.0")
     @DecimalMax("100.0")
     @Column(name = "health_points")
     private BigDecimal healthPoints;
@@ -112,7 +112,8 @@ public abstract class Wizard {
     @Column(name = "victories")
     private Integer victories;
 
-    @Size(max = 100)
+    @NotNull
+    @Size(min = 10, max = 100)
     @Column(name ="description")
     private String description;
 
