@@ -8,7 +8,8 @@ import { ExtraService } from '../extra.service';
 })
 export class RanksComponent implements OnInit {
   ranks: string[] = []
-  count: number[] = [];
+  count10: number[] = [];
+  count20: number[] = [];
 
   constructor(private extraService: ExtraService) {}
 
@@ -16,12 +17,20 @@ export class RanksComponent implements OnInit {
     this.ranks = this.extraService.ranking;
   }
 
-  counter() {
-    for (let i = 0; i < 20; i++) {
-      this.count.push(i);
+  counterTill10() {
+    for (let i = 0; i < 10; i++) {
+      this.count10.push(i);
     }
     
-    return this.count;
+    return this.count10;
+  }
+
+  counterFrom10() {
+    for (let i = 10; i < 20; i++) {
+      this.count20.push(i);
+    }
+    
+    return this.count20;
   }
 
   round(rank: number){

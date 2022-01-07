@@ -7,23 +7,8 @@
   text-align: center;
 }
 
-
-/* .container {
-  display: grid;
-  grid-template-columns: 49% 49%;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "header header"
-    "wizard quote";
+li{
+  list-style-type: none;
 }
 
-.item-a {
-  grid-area: wizard;
-}
-.item-f {
-  grid-area: quote;
-}
 
-.header {
-  grid-area: header;
-} */

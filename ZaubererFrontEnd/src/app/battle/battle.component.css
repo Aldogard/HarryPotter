@@ -8,63 +8,37 @@
 
 }
 
-.container {
-  display: grid;
-  grid-template-columns: 49% 49%;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "header header"
-    "note note"
-    "ht ht"
-    "table participants"
-    "fs fs"
-    "result result"
-    ;
-}
-
-
-.headertable {
-  grid-area: ht;
-  text-align: center;
-}
-
 
 .fs {
-  grid-area: fs;
   text-align: center;
 }
 
 .table {
-  grid-area: table;
   text-align: center;
 }
 
 .result {
-  grid-area: result;
   text-align: center;
 }
 
-.link {
-  text-decoration: none;
-  color: black;
-}
 
 .note {
   text-align: center;
-  grid-area: note;
 }
 
-.participants {
-  grid-area: participants;
+input.radio {
+  display: inline-block;
 }
 
-.headeroverview {
-  text-align: left;
-}
+
 
 .note:hover{
   margin: 10px 100px 10px 100px;
   border: 1px solid rgb(0, 0, 0);
   padding: 10px 10px;
   list-style-type: none;
+}
+
+.buttons{
+  text-align: center;
 }

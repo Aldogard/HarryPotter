@@ -1,13 +1,46 @@
-<div class="container">
-    <h1>Wizard Ranks</h1>
-    <table>
-      <tr>
-        <th>Rank</th>
-        <th>Required Victories</th>
-      </tr>
-      <tr *ngFor="let rank of counter()">
-        <td>{{ ranks[rank] }}</td>
-        <td>{{ round(rank) }}</td>
-      </tr>
-    </table>
+<div class="header gold pt-lg-3 sticky-top">
+  <h1 class="headerranks headertext">Ranks</h1>
+</div>
+
+<div class="container-fluid padding mt-5">
+  <div class="row padding">
+    <div class="col-md-12 col-lg-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Required Victories</th>
+          </tr>
+        </thead>
+        <tr>
+          <td></td>
+        </tr>
+        <tbody>
+          <tr *ngFor="let rank of counterTill10()">
+            <td>{{ ranks[rank] }}</td>
+            <td>{{ round(rank) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-lg-6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Required Victories</th>
+          </tr>
+        </thead>
+        <tr>
+          <td></td>
+        </tr>
+        <tbody>
+          <tr *ngFor="let rank of counterFrom10()">
+            <td>{{ ranks[rank] }}</td>
+            <td>{{ round(rank) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

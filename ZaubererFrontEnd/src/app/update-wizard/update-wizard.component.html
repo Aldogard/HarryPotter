@@ -1,17 +1,16 @@
-<div class="header gold">
+<div class="header gold pt-lg-3 sticky-top">
   <h1 class="headerupdate headertext">Update a wizard</h1>
 </div>
 
 <div class="container-fluid padding mt-5">
   <div class="row padding">
     <div class="col-md-12 col-lg-4">
-      <label required for="wizardUpdate2">Choose a wizard:</label>
+      <label required for="wizardUpdate2">Please choose a wizard:</label><br/>
       <select class="formButton" id="wizardUpdate" (change)="getWizardByName()">
         <option value="{{ z.id }}" *ngFor="let z of wizards">
           {{ z.name }}
         </option>
       </select>
-
       <form #hpForm="ngForm" (ngSubmit)="update(hpForm)">
         <div *ngIf="wizardChoice !== undefined">
           <label for="name"></label>

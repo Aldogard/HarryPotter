@@ -1,14 +1,15 @@
-<div class="header gold">
+<div class="header gold pt-lg-3 sticky-top">
   <h1 class="headeranimaldetail headertext">Detail View</h1>
 </div>
 
 <div class="container">
   <ng-container *ngIf="animal !== undefined">
-    <table class="table">
+    <br/>
+    <table class="table" style="width: 100%">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>{{animal.name}}</th>
+          <th style="width: 20%">Name</th>
+          <th style="width: 80%">{{animal.name}}</th>
         </tr>
       </thead>
       <tr>
@@ -41,12 +42,15 @@
       </tr>
     </tbody>
     </table>
+    <br/>
     <h2 class="gold">Further Information</h2>
     <ul>
     </ul>
   </ng-container>
   <br />
+  <div class="link">
   <a (click)="gotoWiki()" class="link"
     >The description is taken from the wonderful Harry Potter Wiki!</a
   >
+  </div>
 </div>

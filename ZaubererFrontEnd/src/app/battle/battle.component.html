@@ -1,4 +1,4 @@
-<div class="header gold">
+<div class="header gold pt-lg-3 sticky-top">
   <h1 class="headerbattle headertext">
     The unprecentended Battle
     <ng-container *ngIf="wizardsArray.length !== 0"
@@ -10,372 +10,624 @@
 <ng-container *ngIf="wizard1 !== undefined && wizard2 !== undefined">
   <div class="container-fluid padding mt-5">
     <div class="row padding">
-      <div class="col-md-12 col-lg-6">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Currently fighting</th>
-                <th>{{ wizard1.name }}</th>
-                <th>{{ wizard2.name }}</th>
-              </tr>
-              <tr>
-                <th>
-                  <button class="formButton" (click)="gotoRules()">
-                    Rules
-                  </button>
-                </th>
-                <th>
-                  <button class="formButton" (click)="showHideTable(true)">
+      <div class="col-md-12 col-lg-12">
+        <table class="table" *ngIf="showTable.value">
+          <thead>
+            <tr>
+              <th colspan="11" class="gold">
+                <h2>Currently Fighting</h2>
+              </th>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <th>Healthpoints</th>
+              <th>Energy</th>
+              <th>Factor</th>
+              <th>Experience</th>
+              <th>Abilities</th>
+              <th>Add Factor</th>
+              <th>Stunned</th>
+              <th>Confounded</th>
+              <th>Protego</th>
+              <th>Fiendfyre</th>
+            </tr>
+          </thead>
+          <tr>
+            <td></td>
+          </tr>
+          <tbody>
+            <tr>
+              <td>{{ wizard1.name }}</td>
+              <td>{{ wizard1.healthPoints }}</td>
+              <td>{{ wizard1.energy }}</td>
+              <td>{{ wizard1.faktor }}</td>
+              <td>{{ wizard1.victories }}</td>
+              <td>{{ strengthAndWeakness(wizard1, wizard2) }}</td>
+              <td>{{ wizard1.additionalFactor }}</td>
+              <td>{{ wizard2.conditions[1].condition }}</td>
+              <td>{{ wizard2.conditions[0].condition }}</td>
+              <td>{{ wizard1.protego }}</td>
+              <td>{{ wizard1.fiendfyre }}</td>
+            </tr>
+            <tr>
+              <td>{{ wizard2.name }}</td>
+              <td>{{ wizard2.healthPoints }}</td>
+              <td>{{ wizard2.energy }}</td>
+              <td>{{ wizard2.faktor }}</td>
+              <td>{{ wizard2.victories }}</td>
+              <td>{{ strengthAndWeakness(wizard2, wizard1) }}</td>
+              <td>{{ wizard2.additionalFactor }}</td>
+              <td>{{ wizard2.conditions[1].condition }}</td>
+              <td>{{ wizard2.conditions[0].condition }}</td>
+              <td>{{ wizard2.protego }}</td>
+              <td>{{ wizard2.fiendfyre }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="buttons">
+          <button class="formButton" (click)="gotoRules()">Rules</button>
+          <button class="formButton" (click)="showHideTable(true)">Show</button>
+          <button class="formButton" (click)="showHideTable(false)">
+            Hide
+          </button>
+        </div>
+        <ng-container *ngIf="attackWizard2.value">
+          <div class="fs">
+            <br />
+            <h2 class="gold" *ngIf="showStart.value">
+              The Battle beginns. {{ wizard2.name }} is already waiting and will
+              start the battle!
+            </h2>
+            <h2 class="gold" *ngIf="!showStart.value">
+              Now, {{ wizard2.name }} will attack
+            </h2>
+            <label required for="options"
+              >Please chose an Option for the Attack: &nbsp;&nbsp;</label
+            >
+            <a *ngFor="let option of options">
+              <input
+                id="rate_{{ option }}"
+                value="{{ option }}"
+                type="radio"
+                name="radio"
+                [(ngModel)]="chosenOption"
+              />
+              &nbsp;&nbsp;{{ option }}&nbsp;&nbsp;
+            </a>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="attackWizard2.value">
+          <div class="fs">
+            <br />
+            <ng-container *ngIf="chosenOption === 'Spell'">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Energy Usage</th>
+                    <th>Max Damage</th>
+                    <th>Stunned</th>
+                    <th>Confound</th>
+                    <th>Experience</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td></td>
+                </tr>
+                <tbody>
+                  <tr *ngFor="let spell of wizard2.spells">
+                    <td>{{ spell.name }}</td>
+                    <td>{{ spell.energyUsage }}</td>
+                    <td>{{ spell.maxDamage }}</td>
+                    <td>{{ spell.stunned }}</td>
+                    <td>{{ spell.confunded }}</td>
+                    <td>{{ spell.requiredExperience }}</td>
+                    <td>
+                      <button
+                        class="formButtonColumn"
+                        (click)="getSpell(spell)"
+                        [disabled]="
+                          wizard2.energy - spell.energyUsage < 0 ||
+                          (spell.name === 'Piertotum Locomotor' &&
+                            (environment !== 'Main Gate' ||
+                              wizard2.ptCounter > 0)) ||
+                          wizard2.victories < spell.requiredExperience
+                        "
+                      >
+                        Select
+                      </button>
+                      <button
+                        class="formButtonColumn"
+                        (click)="gotoAttackDetail(spell.id)"
+                      >
+                        Details
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p *ngIf="validateSpell.value && chosenOption === 'Spell'">
+                Do you want to use {{ spell.value.name }} to attack
+                {{ wizard1.name }}?
+                <button
+                  class="formButton"
+                  (click)="executeAttack(wizard2, wizard1, false)"
+                >
+                  Yes
+                </button>
+              </p>
+            </ng-container>
+
+            <ng-container *ngIf="chosenOption === 'Potion'">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Storage</th>
+                    <th>Healing</th>
+                    <th>Recovery</th>
+                    <th>Anti-Paralysis</th>
+                    <th>Max Damage</th>
+                    <th>Add. Factor</th>
+                    <th>Experience</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td></td>
+                </tr>
+                <tbody>
+                  <tr *ngFor="let potion of wizard2.potions">
+                    <td>{{ potion.name }}</td>
+                    <td>{{ potion.storage }}</td>
+                    <td>{{ potion.healing }}</td>
+                    <td>{{ potion.energyRecovery }}</td>
+                    <td>{{ potion.antiParalysis }}</td>
+                    <td>{{ potion.maxDamage }}</td>
+                    <td>{{ potion.additionalFactor }}</td>
+                    <td>{{ potion.requiredExperience }}</td>
+                    <td>
+                      <button
+                        class="formButtonColumn"
+                        (click)="getPotion(potion)"
+                        [disabled]="
+                          potion.storage < 1 ||
+                          (potion.name === 'Unicorn Blood' &&
+                            wizard2.healthPoints > 10) ||
+                          (potion.name === 'Regeneration Potion' &&
+                            !voldemortIsDead) ||
+                          wizard2.victories < potion.requiredExperience
+                        "
+                      >
+                        Select</button
+                      ><button
+                        class="formButtonColumn"
+                        (click)="gotoPotionDetail(potion.id)"
+                      >
+                        Details
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p *ngIf="validatePotion.value && chosenOption === 'Potion'">
+                Do you want to use the {{ potion.value.name }}?
+                <button
+                  class="formButton"
+                  (click)="executePotion(wizard2, wizard1, false)"
+                >
+                  Yes
+                </button>
+              </p>
+            </ng-container>
+            <ng-container *ngIf="chosenOption === 'Animal'">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Energy Usage</th>
+                    <th>Healing</th>
+                    <th>Recovery</th>
+                    <th>Max Damage</th>
+                    <th>Experience</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td></td>
+                </tr>
+                <tbody>
+                  <tr *ngFor="let animal of wizard2.animals">
+                    <td>{{ animal.name }}</td>
+                    <td>{{ animal.energyUsage }}</td>
+                    <td>{{ animal.healing }}</td>
+                    <td>{{ animal.energyRecovery }}</td>
+                    <td>{{ animal.maxDamage }}</td>
+                    <td>{{ animal.requiredExperience }}</td>
+                    <td>
+                      <button
+                        class="formButtonColumn"
+                        (click)="getAnimal(animal)"
+                        [disabled]="
+                          wizard2.victories < animal.requiredExperience
+                        "
+                      >
+                        Select
+                      </button>
+                      <button
+                        class="formButton"
+                        (click)="gotoAnimalDetail(animal.id)"
+                      >
+                        Details
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p *ngIf="validateAnimal.value && chosenOption === 'Animal'">
+                Do you want to send {{ animal.value.name }} into the Fight?
+                <button
+                  class="formButton"
+                  (click)="useAnimal(wizard2, wizard1, false)"
+                >
+                  Yes
+                </button>
+              </p>
+            </ng-container>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="attackWizard1.value">
+          <div class="fs">
+            <br />
+            <h2 class="gold" *ngIf="showStart.value">
+              The Battle beginns. {{ wizard1.name }} arrives at the
+              {{ environment }} sooner than expected and starts a surprise
+              attack!
+            </h2>
+            <h2 class="gold" *ngIf="!showStart.value">
+              Now {{ wizard1.name }} will mount an attack
+            </h2>
+            <label required for="options"
+              >Please chose an Option for the Attack: &nbsp;&nbsp;</label
+            >
+            <a *ngFor="let option of options">
+              <input
+                id="rate_{{ option }}"
+                value="{{ option }}"
+                type="radio"
+                name="radio"
+                [(ngModel)]="chosenOption"
+              />&nbsp;&nbsp;{{ option }}&nbsp;&nbsp;
+            </a>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="attackWizard1.value">
+          <div class="fs">
+            <br />
+            <ng-container *ngIf="chosenOption === 'Spell'">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Energy Usage</th>
+                    <th>Max Damage</th>
+                    <th>Stunned</th>
+                    <th>Confound</th>
+                    <th>Experience</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td></td>
+                </tr>
+                <tbody>
+                  <tr *ngFor="let spell of wizard1.spells">
+                    <td>{{ spell.name }}</td>
+                    <td>{{ spell.energyUsage }}</td>
+                    <td>{{ spell.maxDamage }}</td>
+                    <td>{{ spell.stunned }}</td>
+                    <td>{{ spell.confunded }}</td>
+                    <td>{{ spell.requiredExperience }}</td>
+                    <td>
+                      <button
+                        class="formButtonColumn"
+                        (click)="getSpell(spell)"
+                        [disabled]="
+                          wizard1.energy - spell.energyUsage < 0 ||
+                          (spell.name === 'Piertotum Locomotor' &&
+                            (environment !== 'Main Gate' ||
+                              wizard1.ptCounter > 0)) ||
+                          wizard1.victories < spell.requiredExperience
+                        "
+                      >
+                        Select
+                      </button>
+                      <button
+                        class="formButtonColumn"
+                        (click)="gotoAttackDetail(spell.id)"
+                      >
+                        Details
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p *ngIf="validateSpell.value && chosenOption === 'Spell'">
+                Do you want to use {{ spell.value.name }} to attack
+                {{ wizard2.name }}?
+                <button
+                  class="formButton"
+                  (click)="executeAttack(wizard1, wizard2, true)"
+                >
+                  Yes
+                </button>
+              </p>
+            </ng-container>
+
+            <ng-container *ngIf="chosenOption === 'Potion'">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Storage</th>
+                    <th>Healing</th>
+                    <th>Recovery</th>
+                    <th>Anti-Paralysis</th>
+                    <th>Max Damage</th>
+                    <th>Add. Factor</th>
+                    <th>Experience</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td></td>
+                </tr>
+                <tbody>
+                  <tr *ngFor="let potion of wizard1.potions">
+                    <td>{{ potion.name }}</td>
+                    <td>{{ potion.storage }}</td>
+                    <td>{{ potion.healing }}</td>
+                    <td>{{ potion.energyRecovery }}</td>
+                    <td>{{ potion.antiParalysis }}</td>
+                    <td>{{ potion.maxDamage }}</td>
+                    <td>{{ potion.additionalFactor }}</td>
+                    <td>{{ potion.requiredExperience }}</td>
+                    <td>
+                      <button
+                        class="formButtonColumn"
+                        (click)="getPotion(potion)"
+                        [disabled]="
+                          potion.storage < 1 ||
+                          (potion.name === 'Unicorn Blood' &&
+                            wizard1.healthPoints > 10) ||
+                          (potion.name === 'Regeneration Potion' &&
+                            !voldemortIsDead) ||
+                          wizard1.victories < potion.requiredExperience
+                        "
+                      >
+                        Select</button
+                      ><button
+                        class="formButtonColumn"
+                        (click)="gotoPotionDetail(potion.id)"
+                      >
+                        Details
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p *ngIf="validatePotion.value && chosenOption === 'Potion'">
+                Do you want to use the {{ potion.value.name }}?
+                <button
+                  class="formButton"
+                  (click)="executePotion(wizard1, wizard2, true)"
+                >
+                  Yes
+                </button>
+              </p>
+            </ng-container>
+            <ng-container *ngIf="chosenOption === 'Animal'">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Energy Usage</th>
+                    <th>Healing</th>
+                    <th>Recovery</th>
+                    <th>Max Damage</th>
+                    <th>Experience</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td></td>
+                </tr>
+                <tbody>
+                  <tr *ngFor="let animal of wizard1.animals">
+                    <td>{{ animal.name }}</td>
+                    <td>{{ animal.energyUsage }}</td>
+                    <td>{{ animal.healing }}</td>
+                    <td>{{ animal.energyRecovery }}</td>
+                    <td>{{ animal.maxDamage }}</td>
+                    <td>{{ animal.requiredExperience }}</td>
+                    <td>
+                      <button
+                        class="formButtonColumn"
+                        (click)="getAnimal(animal)"
+                        [disabled]="
+                          wizard1.victories < animal.requiredExperience
+                        "
+                      >
+                        Select
+                      </button>
+                      <button
+                        class="formButtonColumn"
+                        (click)="gotoAnimalDetail(animal.id)"
+                      >
+                        Details
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p *ngIf="validateAnimal.value && chosenOption === 'Animal'">
+                Do you want to send {{ animal.value.name }} into the Fight?
+                <button
+                  class="formButton"
+                  (click)="useAnimal(wizard1, wizard2, true)"
+                >
+                  Yes
+                </button>
+              </p>
+            </ng-container>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- <div class="col-lg-3" *ngIf="wizardsArray.length !== 0">
+        <table class="table">
+          <thead>
+            <tr>
+              <th colspan="4">Status of all participating Wizards</th>
+            </tr>
+          </thead>
+          <tr>
+            <td></td>
+          </tr>
+          <tbody>
+            <tr *ngFor="let part of wizardsArray">
+              <td *ngIf="part.id === wizardsArray[0].id">
+                {{ part.name }}, brave Defender:
+              </td>
+              <td *ngIf="part.id !== wizardsArray[0].id">
+                {{ part.name }}, Attacker:
+              </td>
+              <td>{{part.healthPoints}}</td>
+              <td>{{part.energy}}</td> -->
+      <!-- <td *ngIf="part.healthPoints >= 10 && !part.halfLife">Alive</td>
+              <td
+                *ngIf="
+                  (part.healthPoints < 10 && part.healthPoints > 0) ||
+                  (part.halfLife && part.healthPoints > -100)
+                "
+              >
+                Barely Alive
+              </td>
+              <td *ngIf="part.healthPoints <= 0 && !part.halfLife">Defeated</td>
+              <td *ngIf="part.healthPoints <= -100 && part.halfLife">
+                Defeated
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4">
+                  <button class="formButtonColumn" (click)="gotoRules()">Rules</button>
+                  <button class="formButtonColumn" (click)="showHideTable(true)">
                     Show
                   </button>
-                </th>
-                <th>
-                  <button class="formButton" (click)="showHideTable(false)">
+                  <button class="formButtonColumn" (click)="showHideTable(false)">
                     Hide
                   </button>
-                </th>
-              </tr>
-            </thead>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
+              </td>
             </tr>
-            <tbody *ngIf="showTable.value">
-              <tr>
-                <td>Healthpoints</td>
-                <td>{{ wizard1.healthPoints }}</td>
-                <td>{{ wizard2.healthPoints }}</td>
-              </tr>
-              <tr>
-                <td>Energy</td>
-                <td>{{ wizard1.energy }}</td>
-                <td>{{ wizard2.energy }}</td>
-              </tr>
-              <tr>
-                <td>Factor</td>
-                <td>{{ wizard1.faktor }}</td>
-                <td>{{ wizard2.faktor }}</td>
-              </tr>
-              <tr>
-                <td>Experience</td>
-                <td>{{ wizard1.victories }}</td>
-                <td>{{ wizard2.victories }}</td>
-              </tr>
-              <tr>
-                <td>Abilities vs other wizard</td>
-                <td>{{ strengthAndWeakness(wizard1, wizard2) }}</td>
-                <td>{{ strengthAndWeakness(wizard2, wizard1) }}</td>
-              </tr>
-              <tr>
-                <td>Additional Factor</td>
-                <td>{{ wizard1.additionalFactor }}</td>
-                <td>{{ wizard2.additionalFactor }}</td>
-              </tr>
-              <tr>
-                <td>Impact Stunned</td>
-                <td>{{ wizard1.stunnedProtection }}</td>
-                <td>{{ wizard2.stunnedProtection }}</td>
-              </tr>
-              <tr>
-                <td>Impact Confunded</td>
-                <td>{{ wizard1.confundedProtection }}</td>
-                <td>{{ wizard2.confundedProtection }}</td>
-              </tr>
-              <tr>
-                <td>Protego</td>
-                <td>{{ wizard1.protego }}</td>
-                <td>{{ wizard2.protego }}</td>
-              </tr>
-              <tr>
-                <td>Fiendfyre cast</td>
-                <td>{{ wizard1.fiendfyre }}</td>
-                <td>{{ wizard2.fiendfyre }}</td>
-              </tr>
-              <tr>
-                <td>Confunded</td>
-                <td>{{ wizard1.conditions[0].condition }}</td>
-                <td>{{ wizard2.conditions[0].condition }}</td>
-              </tr>
-              <tr>
-                <td>Stunned</td>
-                <td>{{ wizard1.conditions[1].condition }}</td>
-                <td>{{ wizard2.conditions[1].condition }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          </tbody>
+        </table> -->
 
-      <div class="col-lg-6">
-        <a id="top"></a>
-        <div class="participants" *ngIf="wizardsArray.length !== 0">
-          <h4>Status of all participating Wizards</h4>
-          <p *ngFor="let part of wizardsArray">
-            <a *ngIf="part.id === wizardsArray[0].id">
-              {{ part.name }}, brave Defender:
-            </a>
-            <a *ngIf="part.id !== wizardsArray[0].id">
-              {{ part.name }}, Attacker:
-            </a>
-            <ng-container *ngIf="part.healthPoints >= 10 && !part.halfLife"
-              >Alive</ng-container
-            >
-            <ng-container
-              *ngIf="
-                (part.healthPoints < 10 && part.healthPoints > 0) ||
-                (part.halfLife && part.healthPoints > -100)
-              "
-            >
-              Barely Alive</ng-container
-            ><ng-container *ngIf="part.healthPoints <= 0 && !part.halfLife"
-              >Defeated</ng-container
-            >
-            <ng-container *ngIf="part.healthPoints <= -100 && part.halfLife"
-              >Defeated</ng-container
-            >
-          </p>
-        </div>
-      </div>
+      <!-- <table class="table">
+        <thead>
+          <tr>
+            <th>Currently fighting</th>
+            <th>{{ wizard1.name }}</th>
+            <th>{{ wizard2.name }}</th>
+          </tr>
+        </thead>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tbody *ngIf="showTable.value">
+          <tr>
+            <td>Healthpoints</td>
+            <td>{{ wizard1.healthPoints }}</td>
+            <td>{{ wizard2.healthPoints }}</td>
+          </tr>
+          <tr>
+            <td>Energy</td>
+            <td>{{ wizard1.energy }}</td>
+            <td>{{ wizard2.energy }}</td>
+          </tr>
+          <tr>
+            <td>Factor</td>
+            <td>{{ wizard1.faktor }}</td>
+            <td>{{ wizard2.faktor }}</td>
+          </tr>
+          <tr>
+            <td>Experience</td>
+            <td>{{ wizard1.victories }}</td>
+            <td>{{ wizard2.victories }}</td>
+          </tr>
+          <tr>
+            <td>Abilities vs other wizard</td>
+            <td>{{ strengthAndWeakness(wizard1, wizard2) }}</td>
+            <td>{{ strengthAndWeakness(wizard2, wizard1) }}</td>
+          </tr>
+          <tr>
+            <td>Additional Factor</td>
+            <td>{{ wizard1.additionalFactor }}</td>
+            <td>{{ wizard2.additionalFactor }}</td>
+          </tr>
+          <tr>
+            <td>Impact Stunned</td>
+            <td>{{ wizard1.stunnedProtection }}</td>
+            <td>{{ wizard2.stunnedProtection }}</td>
+          </tr>
+          <tr>
+            <td>Impact Confunded</td>
+            <td>{{ wizard1.confundedProtection }}</td>
+            <td>{{ wizard2.confundedProtection }}</td>
+          </tr>
+          <tr>
+            <td>Protego</td>
+            <td>{{ wizard1.protego }}</td>
+            <td>{{ wizard2.protego }}</td>
+          </tr>
+          <tr>
+            <td>Fiendfyre cast</td>
+            <td>{{ wizard1.fiendfyre }}</td>
+            <td>{{ wizard2.fiendfyre }}</td>
+          </tr>
+          <tr>
+            <td>Confunded</td>
+            <td>{{ wizard1.conditions[0].condition }}</td>
+            <td>{{ wizard2.conditions[0].condition }}</td>
+          </tr>
+          <tr>
+            <td>Stunned</td>
+            <td>{{ wizard1.conditions[1].condition }}</td>
+            <td>{{ wizard2.conditions[1].condition }}</td>
+          </tr>
+        </tbody>
+      </table> -->
+      <!-- </div> -->
+    </div>
 
-      <ng-container *ngIf="attackWizard2.value">
-        <div class="fs">
-          <p *ngIf="showStart.value">
-            The Battle beginns. {{ wizard2.name }} is already waiting and will
-            start the battle!
-          </p>
-          <p *ngIf="!showStart.value">Now, {{ wizard2.name }} will attack</p>
-          <label required for="options"
-            >Please chose an Option for the Attack:</label
-          >
-          <a class="radio" *ngFor="let option of options">
-            <input
-              id="rate_{{ option }}"
-              value="{{ option }}"
-              type="radio"
-              name="radio"
-              [(ngModel)]="chosenOption"
-            />{{ option }}
-          </a>
-          <ng-container *ngIf="chosenOption === 'Spell'">
-            <ul *ngFor="let spell of wizard2.spells">
-              <li>Name: {{ spell.name }}</li>
-              <li>Energy Usage: {{ spell.energyUsage }}</li>
-              <li>Max Damage: {{ spell.maxDamage }}</li>
-              <li>Stunned: {{ spell.stunned }}</li>
-              <li>Confunded: {{ spell.confunded }}</li>
-              <li>Experience: {{ spell.requiredExperience }}</li>
-              <li>
-                <button
-                  (click)="getSpell(spell)"
-                  [disabled]="
-                    wizard2.energy - spell.energyUsage < 0 ||
-                    (spell.name === 'Piertotum Locomotor' &&
-                      (environment !== 'Main Gate' || wizard2.ptCounter > 0)) ||
-                    wizard2.victories < spell.requiredExperience
-                  "
-                >
-                  Select
-                </button>
-                <button (click)="gotoAttackDetail(spell.id)">Details</button>
-              </li>
-            </ul>
-            <p *ngIf="validateSpell.value && chosenOption === 'Spell'">
-              Do you want to use {{ spell.value.name }} to attack
-              {{ wizard1.name }}?
-              <button (click)="executeAttack(wizard2, wizard1, false)">
-                Yes
-              </button>
-            </p>
-          </ng-container>
-
-          <ng-container *ngIf="chosenOption === 'Potion'">
-            <ul *ngFor="let potion of wizard2.potions">
-              <li>Name: {{ potion.name }}</li>
-              <li>Storage: {{ potion.storage }}</li>
-              <li>Healing: {{ potion.healing }}</li>
-              <li>Energy Recovery: {{ potion.energyRecovery }}</li>
-              <li>Anti-Paralysis: {{ potion.antiParalysis }}</li>
-              <li>Max Damage: {{ potion.maxDamage }}</li>
-              <li>Additional Factor: {{ potion.additionalFactor }}</li>
-              <li>Experience: {{ potion.requiredExperience }}</li>
-              <li>
-                <button
-                  (click)="getPotion(potion)"
-                  [disabled]="
-                    potion.storage < 1 ||
-                    (potion.name === 'Unicorn Blood' &&
-                      wizard2.healthPoints > 10) ||
-                    (potion.name === 'Regeneration Potion' &&
-                      !voldemortIsDead) ||
-                    wizard2.victories < potion.requiredExperience
-                  "
-                >
-                  Select
-                </button>
-                <button (click)="gotoPotionDetail(potion.id)">Details</button>
-              </li>
-            </ul>
-            <p *ngIf="validatePotion.value && chosenOption === 'Potion'">
-              Do you want to use the {{ potion.value.name }}?
-              <button (click)="executePotion(wizard2, wizard1, false)">
-                Yes
-              </button>
-            </p>
-          </ng-container>
-
-          <ng-container *ngIf="chosenOption === 'Animal'">
-            <ul *ngFor="let animal of wizard2.animals">
-              <li>Name: {{ animal.name }}</li>
-              <li>Energy Usage: {{ animal.energyUsage }}</li>
-              <li>Healing: {{ animal.healing }}</li>
-              <li>Energy Recovery: {{ animal.energyRecovery }}</li>
-              <li>Max Damage: {{ animal.maxDamage }}</li>
-              <li>Experience: {{ animal.requiredExperience }}</li>
-              <li>
-                <button
-                  (click)="getAnimal(animal)"
-                  [disabled]="wizard2.victories < animal.requiredExperience"
-                >
-                  Select
-                </button>
-                <button (click)="gotoAnimalDetail(animal.id)">Details</button>
-              </li>
-            </ul>
-            <p *ngIf="validateAnimal.value && chosenOption === 'Animal'">
-              Do you want to send {{ animal.value.name }} into the Fight?
-              <button (click)="useAnimal(wizard2, wizard1, false)">Yes</button>
-            </p>
-          </ng-container>
-        </div>
-      </ng-container>
-
-      <ng-container *ngIf="attackWizard1.value">
-        <div class="fs">
-          <p *ngIf="showStart.value">
-            The Battle beginns. {{ wizard1.name }} arrives at the
-            {{ environment }} sooner than expected and starts a surprise attack!
-          </p>
-          <p *ngIf="!showStart.value">
-            Now {{ wizard1.name }} will mount an attack
-          </p>
-          <label required for="options"
-            >Please chose an Option for the Attack:</label
-          >
-          <a class="radio" *ngFor="let option of options">
-            <input
-              id="rate_{{ option }}"
-              value="{{ option }}"
-              type="radio"
-              name="radio"
-              [(ngModel)]="chosenOption"
-            />{{ option }}
-          </a>
-          <ng-container *ngIf="chosenOption === 'Spell'">
-            <ul *ngFor="let spell of wizard1.spells">
-              <li>Name: {{ spell.name }}</li>
-              <li>Energy Usage: {{ spell.energyUsage }}</li>
-              <li>Max Damage: {{ spell.maxDamage }}</li>
-              <li>Stunned: {{ spell.stunned }}</li>
-              <li>Confunded: {{ spell.confunded }}</li>
-              <li>Experience: {{ spell.requiredExperience }}</li>
-              <li>
-                <button
-                  (click)="getSpell(spell)"
-                  [disabled]="
-                    wizard1.energy - spell.energyUsage < 0 ||
-                    (spell.name === 'Piertotum Locomotor' &&
-                      (environment !== 'Main Gate' || wizard1.ptCounter > 0)) ||
-                    wizard1.victories < spell.requiredExperience
-                  "
-                >
-                  Select
-                </button>
-                <button (click)="gotoAttackDetail(spell.id)">Details</button>
-              </li>
-            </ul>
-            <p *ngIf="validateSpell.value && chosenOption === 'Spell'">
-              Do you want to use {{ spell.value.name }} to attack
-              {{ wizard2.name }}?
-              <button (click)="executeAttack(wizard1, wizard2, true)">
-                Yes
-              </button>
-            </p>
-          </ng-container>
-
-          <ng-container *ngIf="chosenOption === 'Potion'">
-            <ul *ngFor="let potion of wizard1.potions">
-              <li>Name: {{ potion.name }}</li>
-              <li>Storage: {{ potion.storage }}</li>
-              <li>Healing: {{ potion.healing }}</li>
-              <li>Energy Recovery: {{ potion.energyRecovery }}</li>
-              <li>Anti-Paralysis: {{ potion.antiParalysis }}</li>
-              <li>Max Damage: {{ potion.maxDamage }}</li>
-              <li>Additional Factor: {{ potion.additionalFactor }}</li>
-              <li>Experience: {{ potion.requiredExperience }}</li>
-              <li>
-                <button
-                  (click)="getPotion(potion)"
-                  [disabled]="
-                    potion.storage < 1 ||
-                    (potion.name === 'Unicorn Blood' &&
-                      wizard1.healthPoints > 10) ||
-                    wizard1.victories < potion.requiredExperience
-                  "
-                >
-                  Select
-                </button>
-                <button (click)="gotoPotionDetail(potion.id)">Details</button>
-              </li>
-            </ul>
-            <p *ngIf="validatePotion.value && chosenOption === 'Potion'">
-              Do you want to use the {{ potion.value.name }}?
-              <button (click)="executePotion(wizard1, wizard2, true)">
-                Yes
-              </button>
-            </p>
-          </ng-container>
-
-          <ng-container *ngIf="chosenOption === 'Animal'">
-            <ul *ngFor="let animal of wizard1.animals">
-              <li>Name: {{ animal.name }}</li>
-              <li>Energy Usage: {{ animal.energyUsage }}</li>
-              <li>Healing: {{ animal.healing }}</li>
-              <li>Energy Recovery: {{ animal.energyRecovery }}</li>
-              <li>Max Damage: {{ animal.maxDamage }}</li>
-              <li>Experience: {{ animal.requiredExperience }}</li>
-              <li>
-                <button
-                  (click)="getAnimal(animal)"
-                  [disabled]="wizard1.victories < animal.requiredExperience"
-                >
-                  Select
-                </button>
-                <button (click)="gotoAnimalDetail(animal.id)">Details</button>
-              </li>
-            </ul>
-            <p *ngIf="validateAnimal.value && chosenOption === 'Animal'">
-              Do you want to send {{ animal.value.name }} into the Fight?
-              <button (click)="useAnimal(wizard1, wizard2, true)">Yes</button>
-            </p>
-          </ng-container>
-        </div>
-      </ng-container>
-      <div *ngIf="showResult.value" class="result">
-        <p *ngIf="wizard1.healthPoints > 0">
-          The fight is over. Hogwarts is still standing!
-        </p>
-        <p *ngIf="wizard1.healthPoints > -100 && wizard1.halfLife">
-          The fight is over. Hogwarts is still standing!
-        </p>
-        <p *ngIf="wizard2.healthPoints > 0">
-          The fight is over. Hogwarts has fallen. The Resistance has to admit
-          defeat!
-        </p>
-        <p *ngIf="wizard2.healthPoints > -100 && wizard2.halfLife">
-          The fight is over. Hogwarts has fallen. The Resistance has to admit
-          defeat!
-        </p>
-      </div>
+    <div *ngIf="showResult.value" class="result">
+      <p *ngIf="wizard1.healthPoints > 0">
+        The fight is over. Hogwarts is still standing!
+      </p>
+      <p *ngIf="wizard1.healthPoints > -100 && wizard1.halfLife">
+        The fight is over. Hogwarts is still standing!
+      </p>
+      <p *ngIf="wizard2.healthPoints > 0">
+        The fight is over. Hogwarts has fallen. The Resistance has to admit
+        defeat!
+      </p>
+      <p *ngIf="wizard2.healthPoints > -100 && wizard2.halfLife">
+        The fight is over. Hogwarts has fallen. The Resistance has to admit
+        defeat!
+      </p>
     </div>
   </div>
 
