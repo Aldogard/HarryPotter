@@ -7,10 +7,10 @@ import { ExtraService } from '../extra.service';
 
 @Component({
   selector: 'app-harrypotter',
-  templateUrl: './harrypotter.component.html',
-  styleUrls: ['./harrypotter.component.css'],
+  templateUrl: './overview.component.html',
+  styleUrls: ['./overview.component.css'],
 })
-export class HarrypotterComponent implements OnInit {
+export class OverviewComponent implements OnInit {
   wizards: HpWizard[] = [];
   results: HpWizard[] = [];
   showAll = new BehaviorSubject<boolean>(true);

@@ -1,47 +1,64 @@
-<div>
-  <h3>Delete</h3>
+<div class="pt-lg-3 sticky-top header gold">
+  <h1 class="headerdelete headertext">Overview</h1>
 </div>
-<div>
-  <p>
-    It is only possible to delete a wizard if there are still more than 5
-    wizards!
-  </p>
-  <p>
-    Currently there are {{ wizards.length }} wizards.
-    <a *ngIf="wizards.length <= 5"> Deleting is not available.</a>
-  </p>
-  <div>
-    <label required for="wizardUpdate2">Choose a wizard:</label>
-    <select id="wizardUpdate" (change)="getWizardByName()">
-      <option value="{{ w.id }}" *ngFor="let w of wizards">
-        {{ w.name }}
-      </option>
-    </select>
 
-    <!-- <label required for="zaubererDetail">Choose a wizard:</label>
+<div class="container-fluid padding mt-5">
+  <div class="row padding">
+    <div class="col-md-12 col-lg-6">
+      <h2 class="gold">Delete one wizard</h2>
+      <div>
+        <label required for="wizardUpdate2">Choose a wizard:</label>
+        <select
+          class="formButton"
+          id="wizardUpdate"
+          (change)="getWizardByName()"
+        >
+          <option value="{{ w.id }}" *ngFor="let w of wizards">
+            {{ w.name }}
+          </option>
+        </select>
+
+        <!-- <label required for="zaubererDetail">Choose a wizard:</label>
   <select id="zaubererDetail" [formControl]="choice2">
     <option *ngFor="let z of zauberer">{{ z.id }}</option>
   </select> -->
 
-    <button (click)="deleteZaubererById()" [disabled]="wizards.length < 6">
-      Confirm
-    </button>
-    <div *ngIf="!show">
-      <p>Caution: A deleted wizard cannot be restored!</p>
+        <button
+          class="formButton"
+          (click)="deleteZaubererById()"
+          [disabled]="wizards.length < 6"
+        >
+          Confirm
+        </button>
+        <p *ngIf="!show"><br/>Caution: A deleted wizard cannot be restored!</p>
+        <p>
+          It is only possible to delete a wizard if there are still more than 5
+          wizards!
+        </p>
+        <p>
+          Currently there are {{ wizards.length }} wizards.
+          <a *ngIf="wizards.length <= 5"> Deleting is not available.</a>
+        </p>
+        <p *ngIf="show">Der Zauberer wurde gelöscht</p>
+      </div>
     </div>
-    <p *ngIf="show">Der Zauberer wurde gelöscht</p>
+    <div class="col-lg-6">
+      <h2 class="gold">Delete all wizards</h2>
+      <label required for="pin"></label>
+      <input
+        class="formFelder"
+        id="pin"
+        type="number"
+        [formControl]="accessNumber"
+        placeholder="Please type in Access Nr"
+      />
+      <button
+        class="formButton"
+        (click)="deleteAll()"
+        [disabled]="!accessNumber.valid"
+      >
+        Confirm
+      </button>
+    </div>
   </div>
-</div>
-<div>
-  <h3>Delete all wizards</h3>
-  <label required for="pin"></label>
-  <input
-    id="pin"
-    type="number"
-    [formControl]="accessNumber"
-    placeholder="Please type in Access Nr"
-  />
-  <button (click)="deleteAll()" [disabled]="!accessNumber.valid">
-    Confirm
-  </button>
 </div>

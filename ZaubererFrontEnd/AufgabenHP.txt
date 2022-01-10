@@ -29,7 +29,7 @@ Weitere Ideen: --> Erledigt
 	--> Erledigt
 
 Weitere Aufgaben:
-	Weitere Zauber implementieren --> Siehe intellij
+	Weitere Zauber implementieren --> Siehe intellij -_> Erledigt
 	Weitere Attribute anzeigen --> Erledigt
 	Spell anstatt Attack im FE und BE --> Erledigt
 	Umgebungen --> Erledigt
@@ -46,8 +46,10 @@ Ab hier noch offene Aufgaben:
 	Battle und Fight ändern bspw. pre Battle und Battle --> Erledigt
 
 
+	Design für Credtis und Delete
 	Imperio für Potions und Animals?
 	Pointer Curser auch für Buttons?
+
 	
 
 Noch vor dem Design:

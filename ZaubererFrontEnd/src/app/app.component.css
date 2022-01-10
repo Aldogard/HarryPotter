@@ -1,14 +1,10 @@
-
 li {
   margin: 10px;
   border: 1px solid rgb(255, 255, 255);
-  padding: 10px 20px;
+  padding: 10px 50px;
   border-radius: 0.25rem;
   list-style-type: none;
- 
-
 }
-
 
 .item:hover {
   background-color: rgb(211, 166, 37);
@@ -18,30 +14,7 @@ p {
   text-align: center;
 }
 
-.header{
-  text-align: center;  
-  
+.header {
+  text-align: center;
 }
-
-
-
-
-/* .crud {
-  justify-content: space-around;
-  
-}
-
-.crudelement:hover {
-  background-color: rgb(46, 75, 224);
- 
-}
-
-.crudelement {
-    margin: 10px;
-    border: 1px solid rgb(46, 75, 224);
-    padding: 10px 20px;
-    list-style-type: none;
-} */
-
-
 

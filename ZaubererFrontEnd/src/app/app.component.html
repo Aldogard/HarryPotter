@@ -1,65 +1,74 @@
-  <div class="container-fluid padding mt-4">
-    <div class="row padding">
-      <div class="col-md-12 col-lg-3 header">
-        <a href="home">
-          <h1 class="white">The</h1>
-        </a>
-      </div>
-      <div class="col-lg-6 header">
-        <a href="home">
-          <img src="assets/hp.png" height="150" />
-        </a>
-      </div>
-      <div class="col-lg-3 header">
-        <a href="home">
-          <h1 class="white">Battle</h1>
-        </a>
-      </div>
+<div class="container-fluid padding mt-4">
+  <div class="row padding">
+    <div class="col-md-12 col-lg-3 header">
+      <a href="home">
+        <h1 class="white">The</h1>
+      </a>
+    </div>
+    <div class="col-lg-6 header">
+      <a href="home">
+        <img src="assets/hp.png" height="150" />
+      </a>
+    </div>
+    <div class="col-lg-3 header">
+      <a href="home">
+        <h1 class="white">Battle</h1>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid padding mt-5">
+  <div class="row padding">
+    <div class="col-md-12 col-lg-2">
+      <nav class="navbar-expand-lg pt-lg-3">
+        <button
+          class="navbar-toggler formButton pt-lg-3"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Show Navigation
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav flex-column mb-2 mb-lg-0">
+            <li class="item nav-item mx-lg-2">
+              <a routerLink="overview" class="white">Overview</a>
+            </li>
+            <li class="item nav-item mx-lg-2">
+              <a routerLink="compare" class="white">Comparison</a>
+            </li>
+            <li class="item nav-item mx-lg-2">
+              <a routerLink="detail" class="white">Detail View</a>
+            </li>
+            <li class="item nav-item mx-lg-2">
+              <a routerLink="prologue" class="white">Battle</a>
+            </li>
+            <li class="item nav-item mx-lg-2">
+              <app-search-connection></app-search-connection>
+            </li>
+            <li class="item nav-item mx-lg-2">
+              <a routerLink="create" class="white">Create</a>
+            </li>
+            <li class="item nav-item mx-lg-2">
+              <a routerLink="update" class="white">Update</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="col-lg-9 container">
+      <router-outlet></router-outlet>
     </div>
   </div>
 
-  <div class="content2">
-    <div class="container-fluid padding mt-4">
-      <div class="row padding">
-        <div class="col-md-12 col-lg-2">
-          <nav class="navbar-expand-lg pt-lg-3 sticky-top">
-            <ul>
-              <li class="item">
-                <a routerLink="overview" class="white">Overview</a>
-              </li>
-              <li class="item">
-                <a routerLink="compare" class="white">Comparison</a>
-              </li>
-              <li class="item">
-                <a routerLink="detail" class="white">Detail View</a>
-              </li>
-              <li class="item">
-                <a routerLink="prologue" class="white">Battle</a>
-              </li>
-              <li class="item">
-                <app-search-connection></app-search-connection>
-              </li>
-              <li class="item">
-                <a routerLink="create" class="white">Create</a>
-              </li>
-              <li class="item">
-                <a routerLink="update" class="white">Update</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      
-          <div class="col-lg-9 container">
-            <router-outlet></router-outlet>
-          </div>
-        </div>
-  
-      
-        <br />
-        <div>
-          <p class="gold">Creator of the Website: Aldogard Kasianowski</p>
-        </div>
-    </div>
+  <br />
+  <div>
+    <p class="gold">Creator of the Website: Aldogard Kasianowski</p>
   </div>
-
-
+</div>

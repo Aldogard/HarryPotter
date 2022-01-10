@@ -10,7 +10,7 @@ import { DetailsPotionComponent } from './details-potion/details-potion.componen
 import { DetailsComponent } from './details/details.component';
 import { PrologueComponent } from './prologue/prologue.component';
 import { HomeComponent } from './home/home.component';
-import { HarrypotterComponent } from './overview/harrypotter.component';
+import { OverviewComponent } from './overview/overview.component';
 import { OverviewPotionComponent } from './overview-potion/potions.component';
 import { RulesComponent } from './rules/rules.component';
 import { ResultComponent } from './result/result.component';
@@ -25,13 +25,13 @@ const routes: Routes = [
   { path: 'spelldetail', redirectTo: 'overview', pathMatch: 'full'},
   { path: 'potiondetail', redirectTo: 'overview', pathMatch: 'full'},
   { path: 'animaldetail', redirectTo: 'overview', pathMatch: 'full'},
-  { path: 'overview', component: HarrypotterComponent },
+  { path: 'overview', component: OverviewComponent },
   { path: 'detail', component: DetailsComponent },
   { path: 'delete', component: DeleteWizardComponent },
   { path: 'create', component: CreateWizardComponent },
   { path: 'update', component: UpdateWizardComponent },
   { path: 'prologue', component: PrologueComponent},
-  { path: 'credits', component: CreditsComponent},
+  // { path: 'credits', component: CreditsComponent},
   { path: 'home', component: HomeComponent},
   { path: 'result', component: ResultComponent},
   { path: 'battle', component: BattleComponent},
