@@ -1,6 +1,6 @@
 package com.example.harrypotter.entity.options;
 
-import com.example.harrypotter.entity.wizards.Dumbledore;
+import com.example.harrypotter.entity.magicalbeings.wizards.Dumbledore;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

@@ -1,7 +1,7 @@
 package com.example.harrypotter.service.options;
 
 import com.example.harrypotter.entity.options.Potion;
-import com.example.harrypotter.entity.wizards.Alumni;
+import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 import com.example.harrypotter.repo.options.PotionsRepo;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import org.junit.jupiter.api.AfterEach;

@@ -1,5 +1,6 @@
-package com.example.harrypotter.entity.wizards;
+package com.example.harrypotter.entity.magicalbeings;
 
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
@@ -23,17 +24,17 @@ public class Condition {
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "wizard_id")
-    private Wizard wizard;
+    private MagicalBeing magicalBeing;
 
     /**
      * Each wizard has conditions that can be either true or false.
      * All conditions are initially not met (false)
-     * @param wizard indicates to which wizard the conditions belongs
+     * @param magicalBeing indicates to which wizard the conditions belongs
      * @param name name of the condition
      */
 
-    public Condition(Wizard wizard, String name){
-        this.wizard = wizard;
+    public Condition(MagicalBeing magicalBeing, String name){
+        this.magicalBeing = magicalBeing;
         this.name = name;
         this.condition = false;
     }

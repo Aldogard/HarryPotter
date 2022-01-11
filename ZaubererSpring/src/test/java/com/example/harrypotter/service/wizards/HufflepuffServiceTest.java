@@ -3,9 +3,9 @@ package com.example.harrypotter.service.wizards;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
-import com.example.harrypotter.entity.wizards.Condition;
-import com.example.harrypotter.entity.wizards.Hufflepuff;
-import com.example.harrypotter.entity.wizards.Wizard;
+import com.example.harrypotter.entity.magicalbeings.Condition;
+import com.example.harrypotter.entity.magicalbeings.wizards.Hufflepuff;
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
 import com.example.harrypotter.repo.options.SpellRepo;
@@ -55,7 +55,7 @@ public class HufflepuffServiceTest {
 
     @Test
     public void testHufflepuffService() {
-        Hufflepuff hufflepuff = new Hufflepuff("Test", BigDecimal.valueOf(10), "test");
+        Hufflepuff hufflepuff = new Hufflepuff("Test", BigDecimal.valueOf(10), "test and more than 10");
         ResponseEntity<Wizard> response = hufflepuffService.createHufflepuff(hufflepuff);
 
         Wizard wizardResponse = response.getBody();

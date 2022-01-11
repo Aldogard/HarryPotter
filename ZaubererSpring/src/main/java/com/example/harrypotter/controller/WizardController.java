@@ -1,6 +1,6 @@
 package com.example.harrypotter.controller;
 
-import com.example.harrypotter.entity.wizards.*;
+import com.example.harrypotter.entity.magicalbeings.wizards.*;
 import com.example.harrypotter.repo.options.OptionsRepo;
 import com.example.harrypotter.repo.wizards.ConditionRepo;
 import com.example.harrypotter.repo.wizards.WizardRepo;

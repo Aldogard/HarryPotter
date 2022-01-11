@@ -1,10 +1,10 @@
 package com.example.harrypotter.service.wizards;
 
 
-import com.example.harrypotter.entity.wizards.Professor;
-import com.example.harrypotter.entity.wizards.Wizard;
+import com.example.harrypotter.entity.magicalbeings.wizards.Professor;
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.WizardRepo;
-import com.example.harrypotter.service.ConditionService;
+import com.example.harrypotter.service.comments.ConditionService;
 import com.example.harrypotter.service.options.AnimalService;
 import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;

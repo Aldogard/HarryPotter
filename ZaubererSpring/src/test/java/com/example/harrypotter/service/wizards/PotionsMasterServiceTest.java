@@ -3,9 +3,9 @@ package com.example.harrypotter.service.wizards;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
-import com.example.harrypotter.entity.wizards.Condition;
-import com.example.harrypotter.entity.wizards.PotionsMaster;
-import com.example.harrypotter.entity.wizards.Wizard;
+import com.example.harrypotter.entity.magicalbeings.Condition;
+import com.example.harrypotter.entity.magicalbeings.wizards.PotionsMaster;
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
 import com.example.harrypotter.repo.options.SpellRepo;
@@ -55,7 +55,7 @@ public class PotionsMasterServiceTest {
 
     @Test
     public void testPotionsMasterService() {
-        PotionsMaster potionsMaster = new PotionsMaster("Test", BigDecimal.valueOf(10), "test");
+        PotionsMaster potionsMaster = new PotionsMaster("Test", BigDecimal.valueOf(10), "test and more than 10");
         ResponseEntity<Wizard> response = potionsMasterService.createPotionsMaster(potionsMaster);
 
         Wizard wizardResponse = response.getBody();

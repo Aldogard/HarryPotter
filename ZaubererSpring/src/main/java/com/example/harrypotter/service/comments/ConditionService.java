@@ -1,7 +1,7 @@
-package com.example.harrypotter.service;
+package com.example.harrypotter.service.comments;
 
-import com.example.harrypotter.entity.wizards.Condition;
-import com.example.harrypotter.entity.wizards.Wizard;
+import com.example.harrypotter.entity.magicalbeings.Condition;
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.ConditionRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

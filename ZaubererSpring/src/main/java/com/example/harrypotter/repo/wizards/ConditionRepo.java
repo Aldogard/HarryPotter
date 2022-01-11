@@ -1,6 +1,6 @@
 package com.example.harrypotter.repo.wizards;
 
-import com.example.harrypotter.entity.wizards.Condition;
+import com.example.harrypotter.entity.magicalbeings.Condition;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

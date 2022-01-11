@@ -1,7 +1,8 @@
-package com.example.harrypotter.entity.wizards;
+package com.example.harrypotter.entity.magicalbeings;
 
 
 
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
@@ -25,8 +26,8 @@ public class Comments {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "wizard_id")
-    private Wizard wizard;
+    @JoinColumn(name = "mb_id")
+    private MagicalBeing magicalBeing;
 
 
     public Comments(){
@@ -36,12 +37,12 @@ public class Comments {
     /**
      * Constructor to create a new comment. Each comment must contain:
      * @param content contains the submitted comment
-     * @param wizard indicates to which wizard the comment belongs
+     * @param magicalBeing indicates to which wizard the comment belongs
      */
 
-    public Comments(String content, Wizard wizard){
+    public Comments(String content, MagicalBeing magicalBeing){
         this.content = content;
-        this.wizard = wizard;
+        this.magicalBeing = magicalBeing;
     }
 
 }

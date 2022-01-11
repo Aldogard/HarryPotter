@@ -1,4 +1,4 @@
-package com.example.harrypotter.entity.wizards;
+package com.example.harrypotter.entity.magicalbeings.wizards;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;

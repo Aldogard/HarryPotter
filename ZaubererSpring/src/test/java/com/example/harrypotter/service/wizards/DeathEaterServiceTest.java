@@ -3,9 +3,9 @@ package com.example.harrypotter.service.wizards;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
-import com.example.harrypotter.entity.wizards.Condition;
-import com.example.harrypotter.entity.wizards.DeathEater;
-import com.example.harrypotter.entity.wizards.Wizard;
+import com.example.harrypotter.entity.magicalbeings.Condition;
+import com.example.harrypotter.entity.magicalbeings.wizards.DeathEater;
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
 import com.example.harrypotter.repo.options.SpellRepo;
@@ -54,7 +54,7 @@ public class DeathEaterServiceTest {
 
     @Test
     public void testDeathEaterService() {
-        DeathEater deathEater = new DeathEater("Test", BigDecimal.valueOf(10), "test");
+        DeathEater deathEater = new DeathEater("Test", BigDecimal.valueOf(10), "test  and more than 10");
         ResponseEntity<Wizard> response = deathEaterService.createDeathEater(deathEater);
 
         Wizard wizardResponse = response.getBody();

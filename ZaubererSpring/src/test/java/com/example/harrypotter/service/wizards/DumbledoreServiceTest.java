@@ -3,9 +3,9 @@ package com.example.harrypotter.service.wizards;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
-import com.example.harrypotter.entity.wizards.Condition;
-import com.example.harrypotter.entity.wizards.Dumbledore;
-import com.example.harrypotter.entity.wizards.Wizard;
+import com.example.harrypotter.entity.magicalbeings.Condition;
+import com.example.harrypotter.entity.magicalbeings.wizards.Dumbledore;
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
 import com.example.harrypotter.repo.options.SpellRepo;
@@ -56,7 +56,7 @@ public class DumbledoreServiceTest {
 
     @Test
     public void testDumbledoreService() {
-        Dumbledore dumbledore = new Dumbledore("Test", BigDecimal.valueOf(10), "test");
+        Dumbledore dumbledore = new Dumbledore("Test", BigDecimal.valueOf(10), "test and more than 10");
         ResponseEntity<Wizard> response = dumbledoreService.createDumbledore(dumbledore);
 
         Wizard wizardResponse = response.getBody();

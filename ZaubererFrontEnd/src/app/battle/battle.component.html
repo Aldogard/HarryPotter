@@ -540,7 +540,7 @@
                           Select
                         </button>
                         <button
-                          class="formButton"
+                          class="formButtonColumn"
                           (click)="gotoAnimalDetail(animal.id)"
                         >
                           Details
@@ -771,7 +771,8 @@
         </div>
       </div>
 
-      <div *ngIf="showResult.value" class="result">
+      <div *ngIf="showResult.value" class="result gold">
+        <br/>
         <p *ngIf="wizard1.healthPoints > 0">
           The fight is over. Hogwarts is still standing!
         </p>
@@ -793,7 +794,7 @@
   <div class="link" *ngIf="wizard1 === undefined">
     <a href="prologue" class="link"
       >No wizards have been selected! Please go to Battle in order to set up a
-      Fight
+      Battle
     </a>
   </div>
 </div>

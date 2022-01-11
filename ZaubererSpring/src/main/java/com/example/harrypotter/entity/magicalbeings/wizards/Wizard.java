@@ -1,5 +1,8 @@
-package com.example.harrypotter.entity.wizards;
+package com.example.harrypotter.entity.magicalbeings.wizards;
 
+import com.example.harrypotter.entity.magicalbeings.Comments;
+import com.example.harrypotter.entity.magicalbeings.Condition;
+import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Spell;
 import com.example.harrypotter.entity.options.Potion;
@@ -17,23 +20,9 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
         discriminatorType=DiscriminatorType.STRING)
-public abstract class Wizard {
+@DiscriminatorValue("wizard")
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-
-    @NotNull
-    @NotBlank
-    @Column(name = "wizard_name")
-    private String name;
-
-    @NotNull
-    @DecimalMin("1.0")
-    @DecimalMax("100.0")
-    @Column(name = "health_points")
-    private BigDecimal healthPoints;
+public abstract class Wizard extends MagicalBeing {
 
     /**
      * Each wizard has a factor by which his attack is multiplied.
@@ -48,6 +37,7 @@ public abstract class Wizard {
 
     @Column(name = "additional_factor")
     private BigDecimal additionalFactor;
+
 
     /**
      * Each wizard belongs to a class which brings certain advantages and disadvantages.
@@ -112,15 +102,6 @@ public abstract class Wizard {
     @Column(name = "victories")
     private Integer victories;
 
-    @NotNull
-    @Size(min = 10, max = 100)
-    @Column(name ="description")
-    private String description;
-
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "wizard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Condition> conditions;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "wizard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -129,10 +110,6 @@ public abstract class Wizard {
     @JsonManagedReference
     @OneToMany(mappedBy = "wizard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Potion> potions;
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "wizard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Comments> comments;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "wizard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -154,10 +131,7 @@ public abstract class Wizard {
      */
 
     public Wizard(String name, BigDecimal healthPoints, String description) {
-        this.id = null;
-        this.name= name;
-        this.healthPoints = healthPoints;
-        this.description = description;
+        super(name, healthPoints, description, "Wizard");
         this.energy = internEnergy;
         this.additionalFactor = BigDecimal.valueOf(1.0);
         this.halfLife = false;

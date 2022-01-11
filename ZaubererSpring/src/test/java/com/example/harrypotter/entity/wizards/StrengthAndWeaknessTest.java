@@ -1,5 +1,7 @@
 package com.example.harrypotter.entity.wizards;
 
+import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
+import com.example.harrypotter.entity.magicalbeings.wizards.StrengthAndWeakness;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

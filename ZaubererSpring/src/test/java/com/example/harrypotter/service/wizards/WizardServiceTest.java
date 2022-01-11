@@ -1,7 +1,7 @@
 package com.example.harrypotter.service.wizards;
 
 
-import com.example.harrypotter.entity.wizards.*;
+import com.example.harrypotter.entity.magicalbeings.wizards.*;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -62,7 +62,7 @@ public class WizardServiceTest {
                 new Headmaster(
                         "Testi",
                         BigDecimal.valueOf(5),
-                        "NEW"), 10000);
+                        "NEW and more than 10"), 10000);
         assertNull(responseTest.getBody());
         assertEquals(HttpStatus.FORBIDDEN, responseTest.getStatusCode());
 
@@ -70,7 +70,7 @@ public class WizardServiceTest {
                 new Headmaster(
                         "Testi",
                         BigDecimal.valueOf(5),
-                        "NEW"), alumni.getId());
+                        "NEW and more than 10"), alumni.getId());
         assertEquals(alumni, response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
@@ -87,7 +87,7 @@ public class WizardServiceTest {
 
         for (int i=0; i<5; i++){
             String number = "Testi " + i;
-            wizardRepo.save(new Alumni(number, BigDecimal.valueOf(10), "Test"));
+            wizardRepo.save(new Alumni(number, BigDecimal.valueOf(10), "Test and more than 10"));
         }
 
         assertEquals(6, wizardRepo.findAll().size());
@@ -106,7 +106,7 @@ public class WizardServiceTest {
     @Test
     public void testGetAllWizards(){
         Alumni alumni = UtilWizards.createTesti();
-        Headmaster headmaster = new Headmaster("Headi", BigDecimal.valueOf(5), "Master");
+        Headmaster headmaster = new Headmaster("Headi", BigDecimal.valueOf(5), "Master and more than 10");
         wizardRepo.save(alumni);
         wizardRepo.save(headmaster);
         ResponseEntity<List<Wizard>> response = wizardService.getAllWizards(null, null);
@@ -133,7 +133,7 @@ public class WizardServiceTest {
         assertNull(responseNoVoldemort.getBody());
         assertEquals(HttpStatus.NO_CONTENT, responseNoVoldemort.getStatusCode());
 
-        Voldemort voldemort = new Voldemort("Voldi", BigDecimal.valueOf(10), "Dark");
+        Voldemort voldemort = new Voldemort("Voldi", BigDecimal.valueOf(10), "Dark and more than 10");
         wizardRepo.save(voldemort);
 
         ResponseEntity<Wizard> response = wizardService.getVoldemort("Voldemort");
@@ -145,13 +145,13 @@ public class WizardServiceTest {
     public void testGetAllWizardsHp(){
         for (int i = 0; i<5; i++){
             String number = "Test" + i;
-            wizardRepo.save(new Alumni(number, BigDecimal.valueOf(i), "Test"));
+            wizardRepo.save(new Alumni(number, BigDecimal.valueOf(i+1), "Test  and more than 10"));
         }
-        ResponseEntity<List<Wizard>> responseMax= wizardService.getAllWizardsHp(2.5, null);
+        ResponseEntity<List<Wizard>> responseMax= wizardService.getAllWizardsHp(3.5, null);
         assertEquals(2, responseMax.getBody().size());
         assertEquals(HttpStatus.OK, responseMax.getStatusCode());
 
-        ResponseEntity<List<Wizard>> responseMin= wizardService.getAllWizardsHp(null, 2.5);
+        ResponseEntity<List<Wizard>> responseMin= wizardService.getAllWizardsHp(null, 3.5);
         assertEquals(3, responseMin.getBody().size());
         assertEquals(HttpStatus.OK, responseMin.getStatusCode());
     }
@@ -160,7 +160,7 @@ public class WizardServiceTest {
     public void testGetAllWizardsVictories(){
         Alumni alumni = UtilWizards.createTesti();
         alumni.setVictories(10);
-        Alumni alumni100Victories = new Alumni("Test100", BigDecimal.valueOf(100), "Test100");
+        Alumni alumni100Victories = new Alumni("Test100", BigDecimal.valueOf(100), "Test100  and more than 10");
         alumni.setVictories(10);
         alumni100Victories.setVictories(100);
         wizardRepo.save(alumni);
@@ -182,7 +182,7 @@ public class WizardServiceTest {
         Alumni alumni = UtilWizards.createTesti();
         wizardRepo.save(alumni);
 
-        Headmaster alumniUpdate = new Headmaster("Testi", BigDecimal.valueOf(10), "Test");
+        Headmaster alumniUpdate = new Headmaster("Testi", BigDecimal.valueOf(10), "Test  and more than 10");
         alumniUpdate.setAmount(5);
         alumniUpdate.setRating(BigDecimal.valueOf(3.5));
 
@@ -210,7 +210,7 @@ public class WizardServiceTest {
         Alumni alumni = UtilWizards.createTesti();
         wizardRepo.save(alumni);
 
-        Headmaster alumniUpdate = new Headmaster("Testi", BigDecimal.valueOf(10), "Test");
+        Headmaster alumniUpdate = new Headmaster("Testi", BigDecimal.valueOf(10), "Test  and more than 10");
         alumniUpdate.setId(alumni.getId());
         alumniUpdate.setVictories(10);
 
@@ -220,7 +220,7 @@ public class WizardServiceTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(alumni.getVictories(), alumniUpdate.getVictories());
 
-        Headmaster alumniUpdateWrongId = new Headmaster("Testi", BigDecimal.valueOf(10), "Test");
+        Headmaster alumniUpdateWrongId = new Headmaster("Testi", BigDecimal.valueOf(10), "Test  and more than 10");
         alumniUpdate.setId(1000);
         alumniUpdate.setVictories(50);
 
@@ -235,7 +235,7 @@ public class WizardServiceTest {
     @Test
     public void testCheckName(){
         Alumni alumni = UtilWizards.createTesti();
-        Alumni alumni2 = new Alumni("Test2", BigDecimal.valueOf(10), "Test");
+        Alumni alumni2 = new Alumni("Test2", BigDecimal.valueOf(10), "Test  and more than 10");
         wizardRepo.save(alumni);
 
         boolean response = wizardService.checkName(alumni);
@@ -249,7 +249,7 @@ public class WizardServiceTest {
     @Test
     public void testCheckHouse(){
         Alumni alumni = UtilWizards.createTesti();
-        Professor professor = new Professor("Test2", BigDecimal.valueOf(10), "Test");
+        Professor professor = new Professor("Test2", BigDecimal.valueOf(10), "Test  and more than 10");
         wizardRepo.save(alumni);
 
         boolean response = wizardService.checkHouse(alumni);

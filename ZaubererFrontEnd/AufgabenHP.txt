@@ -40,12 +40,10 @@ Weitere Aufgaben:
 
 Ab hier noch offene Aufgaben:
 	Tests! --> ab 27.12 --> Udemy Kurs --> ab 03.01. --> Erledigt
-	Design! --> ab 03.01.
+	Design! --> ab 03.01. --> Erledigt
 	Potionsmaster Problematik --> Erledigt
 	Validators im BE --> Erledigt
 	Battle und Fight ändern bspw. pre Battle und Battle --> Erledigt
-
-
 	Design für Credtis und Delete --> Erledigt
 	Pointer Curser auch für Buttons? --> Nein
 
@@ -75,6 +73,15 @@ Zu einem späteren Zeitpunkt erledigen:
 	Effekte für Umgebungen
 	updateVictories und updateRating nochmal angucken
 	Tests für Controller
+
+Weitere Ideen:
+	Quiz und Login
+	Training
+	Login
+	Weitere Kreaturen
+	
+
+
 
 
 

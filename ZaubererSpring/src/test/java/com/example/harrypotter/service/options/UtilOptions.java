@@ -2,14 +2,13 @@ package com.example.harrypotter.service.options;
 
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
-import com.example.harrypotter.entity.wizards.Alumni;
+import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class UtilOptions {
     public static Alumni createTesti(){
-        return new Alumni("Testi", BigDecimal.valueOf(10), "Test");
+        return new Alumni("Testi", BigDecimal.valueOf(10), "Test and more than 10");
 
     }
 

@@ -1,7 +1,8 @@
 package com.example.harrypotter.service.wizards;
 
 
-import com.example.harrypotter.entity.wizards.*;
+import com.example.harrypotter.entity.magicalbeings.wizards.Headmaster;
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 import com.github.javafaker.Faker;
 import lombok.AllArgsConstructor;

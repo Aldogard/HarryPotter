@@ -1,7 +1,7 @@
 package com.example.harrypotter.service.options;
 
 import com.example.harrypotter.entity.options.Potion;
-import com.example.harrypotter.entity.wizards.Wizard;
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.options.OptionsRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

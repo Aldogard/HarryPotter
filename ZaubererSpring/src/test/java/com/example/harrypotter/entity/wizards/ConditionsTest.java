@@ -1,5 +1,7 @@
 package com.example.harrypotter.entity.wizards;
 
+import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
+import com.example.harrypotter.entity.magicalbeings.Condition;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -12,7 +14,7 @@ public class ConditionsTest {
         Alumni test = new Alumni("Test", BigDecimal.valueOf(25), "Test");
         Condition condition = new Condition(test, "testConditions");
         assertNotNull(condition);
-        assertEquals(test, condition.getWizard());
+        assertEquals(test, condition.getMagicalBeing());
         assertEquals("testConditions", condition.getName());
         assertFalse(condition.getCondition());
     }

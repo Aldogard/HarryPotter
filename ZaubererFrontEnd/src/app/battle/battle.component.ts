@@ -475,6 +475,7 @@ export class BattleComponent implements OnInit {
     this.attackWizard2.next(false);
     this.attackWizard1.next(false);
     this.showResult.next(true);
+    this.showTable.next(false);
   }
 
   gotoNextRound(defendWizard: HpWizard) {

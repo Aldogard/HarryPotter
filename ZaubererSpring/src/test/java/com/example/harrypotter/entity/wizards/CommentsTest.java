@@ -1,5 +1,6 @@
 package com.example.harrypotter.entity.wizards;
 
+import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 import com.example.harrypotter.repo.wizards.CommentsRepo;
 import com.example.harrypotter.repo.wizards.WizardRepo;
 
