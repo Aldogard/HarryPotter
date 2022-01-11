@@ -4,53 +4,52 @@
 
 <div class="container">
   <ng-container *ngIf="animal !== undefined">
-    <br/>
+    <br />
     <table class="table" style="width: 100%">
       <thead>
         <tr>
           <th style="width: 20%">Name</th>
-          <th style="width: 80%">{{animal.name}}</th>
+          <th style="width: 80%">{{ animal.name }}</th>
         </tr>
       </thead>
       <tr>
         <td></td>
       </tr>
       <tbody>
-      <tr>
-        <td>Energy Usage</td>
-        <td>{{ animal.energyUsage }}</td>
-      </tr>
-      <tr>
-        <td>Healing</td>
-        <td>{{ animal.healing }}</td>
-      </tr>
-      <tr>
-        <td>Energy Recovery</td>
-        <td>{{ animal.energyRecovery }}</td>
-      </tr>
-      <tr>
-        <td>Max Damage</td>
-        <td>{{ animal.maxDamage }}</td>
-      </tr>
-      <tr>
-        <td>Experience needed</td>
-        <td>{{ animal.requiredExperience }}</td>
-      </tr>
-      <tr>
-        <td>Description</td>
-        <td>{{ animal.descriptionOption }}</td>
-      </tr>
-    </tbody>
+        <tr>
+          <td>Energy Usage</td>
+          <td>{{ animal.energyUsage }}</td>
+        </tr>
+        <tr>
+          <td>Healing</td>
+          <td>{{ animal.healing }}</td>
+        </tr>
+        <tr>
+          <td>Energy Recovery</td>
+          <td>{{ animal.energyRecovery }}</td>
+        </tr>
+        <tr>
+          <td>Max Damage</td>
+          <td>{{ animal.maxDamage }}</td>
+        </tr>
+        <tr>
+          <td>Experience needed</td>
+          <td>{{ animal.requiredExperience }}</td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td>{{ animal.descriptionOption }}</td>
+        </tr>
+      </tbody>
     </table>
-    <br/>
+    <br />
     <h2 class="gold">Further Information</h2>
-    <ul>
-    </ul>
+    <ul></ul>
   </ng-container>
   <br />
   <div class="link">
-  <a (click)="gotoWiki()" class="link"
-    >The description is taken from the wonderful Harry Potter Wiki!</a
-  >
+    <a (click)="gotoWiki()" class="link"
+      >The description is taken from the wonderful Harry Potter Wiki!</a
+    >
   </div>
 </div>

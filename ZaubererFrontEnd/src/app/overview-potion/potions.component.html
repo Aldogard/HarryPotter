@@ -2,84 +2,91 @@
   <h1 class="headerpotions headertext">Overview Potions</h1>
 </div>
 
-<div class="container-fluid padding mt-5">
-  <div class="row padding">
-    <div class="col-md-12 col-lg-12">
-      <table class="table">
-        <thead>
+<div class="container">
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Healing</th>
+              <th>Recovery</th>
+              <th>Anti-Paralysis</th>
+              <th>Anti-Confunded</th>
+              <th>Max Damage</th>
+              <th>AF</th>
+              <th>Experience</th>
+            </tr>
+          </thead>
           <tr>
-            <th>Name</th>
-            <th>Healing</th>
-            <th>Recovery</th>
-            <th>Anti-Paralysis</th>
-            <th>Anti-Confunded</th>
-            <th>Max Damage</th>
-            <th>AF</th>
-            <th>Experience</th>
+            <td></td>
           </tr>
-        </thead>
-        <tr>
-          <td></td>
-        </tr>
-        <tbody>
-          <tr *ngFor="let potion of potions">
-            <td>{{ potion.name }}</td>
-            <td>{{ potion.healing }}</td>
-            <td>{{ potion.energyRecovery }}</td>
-            <td>{{ potion.antiParalysis }}</td>
-            <td>{{ potion.antiConfunded }}</td>
-            <td>{{ potion.maxDamage }}</td>
-            <td>{{ potion.additionalFactor }}</td>
-            <td>{{ potion.requiredExperience }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="hints">
-      <h2 class="gold">Explanations</h2>
-      <ul>
-        <li>
-          Healing indicates the percentage of the initial Healthpoints, that is
-          restored by using the Potion. 0 indicates that this potion cannot
-          restore health. Some Potions can even decrease the health of a wizard.
-        </li>
-        <li>
-          Energy indicates the percentage of the initial Energy, that is
-          restored by using the Potion. 0 indicates that this potion cannot
-          restore energy.
-        </li>
-        <li>
-          Anti Paralysis indicates whether the use of the Potion protects
-          against stun effects.
-        </li>
-        <li>
-          Anti Confunded indicates whether the use of the Potion protects
-          against confound effects.
-        </li>
-        <li>
-          Some Potions are able to inflict damage on the opposing Wizard. Max
-          Damage indicates the maximum amount of damage that can be inflicted.
-          However, most Potions are only affecting the user.
-        </li>
-        <li>
-          Additional Factor (AF) increases the Factor of the Wizard times the
-          indicated Factor when the Potion is used. 1 indicates that there is no
-          increase.
-        </li>
-        <li>
-          Experience indicates the number of victories a wizards needs in order
-          to use the Potion.
-        </li>
-      </ul>
-    </div>
-    <div class="goto">
-      <p>
-        For a detailed view of all Spells or a return to Overview, please click
-        the respective Button
-      </p>
-      <button class="formButton" (click)="gotoOverview()">Go to Overview</button>
-      <button class="formButton" (click)="gotoAttacks()">Go to Spells</button>
-      <button class="formButton" (click)="gotoAnimals()">Go to Animals</button>
+          <tbody>
+            <tr *ngFor="let potion of potions">
+              <td>{{ potion.name }}</td>
+              <td>{{ potion.healing }}</td>
+              <td>{{ potion.energyRecovery }}</td>
+              <td>{{ potion.antiParalysis }}</td>
+              <td>{{ potion.antiConfunded }}</td>
+              <td>{{ potion.maxDamage }}</td>
+              <td>{{ potion.additionalFactor }}</td>
+              <td>{{ potion.requiredExperience }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="hints">
+        <h2 class="gold">Explanations</h2>
+        <ul>
+          <li>
+            Healing indicates the percentage of the initial Healthpoints, that
+            is restored by using the Potion. 0 indicates that this potion cannot
+            restore health. Some Potions can even decrease the health of a
+            wizard.
+          </li>
+          <li>
+            Energy indicates the percentage of the initial Energy, that is
+            restored by using the Potion. 0 indicates that this potion cannot
+            restore energy.
+          </li>
+          <li>
+            Anti Paralysis indicates whether the use of the Potion protects
+            against stun effects.
+          </li>
+          <li>
+            Anti Confunded indicates whether the use of the Potion protects
+            against confound effects.
+          </li>
+          <li>
+            Some Potions are able to inflict damage on the opposing Wizard. Max
+            Damage indicates the maximum amount of damage that can be inflicted.
+            However, most Potions are only affecting the user.
+          </li>
+          <li>
+            Additional Factor (AF) increases the Factor of the Wizard times the
+            indicated Factor when the Potion is used. 1 indicates that there is
+            no increase.
+          </li>
+          <li>
+            Experience indicates the number of victories a wizards needs in
+            order to use the Potion.
+          </li>
+        </ul>
+      </div>
+      <div class="goto">
+        <p>
+          For a detailed view of all Spells or a return to Overview, please
+          click the respective Button
+        </p>
+        <button class="formButton" (click)="gotoOverview()">
+          Go to Overview
+        </button>
+        <button class="formButton" (click)="gotoAttacks()">Go to Spells</button>
+        <button class="formButton" (click)="gotoAnimals()">
+          Go to Animals
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -46,16 +46,22 @@ Ab hier noch offene Aufgaben:
 	Battle und Fight ändern bspw. pre Battle und Battle --> Erledigt
 
 
-	Design für Credtis und Delete
-	Imperio für Potions und Animals?
-	Pointer Curser auch für Buttons?
-
-	
+	Design für Credtis und Delete --> Erledigt
+	Pointer Curser auch für Buttons? --> Nein
 
 Noch vor dem Design:
 	--> Detail View und Overview sinnvoll kombinieren
 	Was passiert mit den Suchergebnissen --> Detailansicht? --> Erledigt
 	
+Weitere Aufgaben:
+	Imperio für Potions und Animals?
+	Abstand zum Überschrift Block
+	Sticky Top Navigation
+	Mehr Spalten für Details
+	Zwischenstand vom Kampf anders anzeigen
+	Create und Update Design ändern
+	Fotos?
+
 
 
 Zu einem späteren Zeitpunkt erledigen:

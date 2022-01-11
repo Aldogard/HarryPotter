@@ -32,13 +32,12 @@ input.radio {
 
 
 
-.note:hover{
-  margin: 10px 100px 10px 100px;
-  border: 1px solid rgb(0, 0, 0);
-  padding: 10px 10px;
-  list-style-type: none;
-}
+
 
 .buttons{
+  text-align: center;
+}
+
+.headertable{
   text-align: center;
 }

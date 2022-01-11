@@ -2,27 +2,16 @@
   <h1 class="headeroverview headertext">Overview</h1>
 </div>
 
-<div class="container-fluid padding mt-5">
-  <div class="row padding">
-    <div class="col-md-12 col-lg-2">
-      <h2 class="headertext gold filter">Filter:</h2>
-      <nav class="navbar-expand-lg">
-        <button
-          class="navbar-toggler formButton"
-          data-bs-toggle="collapse"
-          data-bs-target="#filter"
-          aria-controls="filter"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          Show Filter
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse flex-column" id="filter">
+<div class="container">
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div>
+        <div class="goto" *ngIf="showFilter.value">
+        <h2 class="headertext gold filter">Filter:</h2>
           <a *ngFor="let c of class">
             <button class="formButton" (click)="getWizard(c)">{{ c }}</button>
           </a>
+          <br />
           <br />
           <input
             class="formFelder"
@@ -66,53 +55,64 @@
             placeholder="Animals"
             (keyup.enter)="getAnimalAmount($event)"
           />
+        </div>
+        <div class="goto">
           <br />
           <button class="formButton" (click)="deleteFilter()">
             Remove Filter
           </button>
+          <button class="formButton" (click)="showHideFilter(true)" *ngIf="!showFilter.value">
+            Show Filter
+          </button>
+          <button class="formButton" (click)="showHideFilter(false)" *ngIf="showFilter.value">
+            Hide Filter
+          </button>
         </div>
-      </nav>
-      <br />
-    </div>
-    <div class="col-lg-1"></div>
-
-    <div class="container tablewizards col-lg-9">
-      <table class="table" style="width: 90%">
-        <thead>
+      </div>
+      <div class="container tablewizards col-md-12 col-lg-12">
+        <br />
+        <table class="table" style="width: 100%">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>HP</th>
+              <th>Class</th>
+              <th>Spells</th>
+              <th>Potions</th>
+              <th>Animals</th>
+              <th>Victories</th>
+            </tr>
+          </thead>
           <tr>
-            <th>Name</th>
-            <th>HP</th>
-            <th>Class</th>
-            <th>Spells</th>
-            <th>Potions</th>
-            <th>Animals</th>
-            <th>Victories</th>
+            <td></td>
           </tr>
-        </thead>
-        <tr>
-          <td></td>
-        </tr>
-        <tbody>
-          <tr *ngFor="let z of wizards">
-            <td>{{ z.name }}</td>
-            <td>{{ z.healthPoints }}</td>
-            <td>{{ z.klasse }}</td>
-            <td>{{ z.spells.length }}</td>
-            <td>{{ z.potions.length }}</td>
-            <td>{{ z.animals.length }}</td>
-            <td>{{ z.victories }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="goto">
-      <p>
-        For an overview of all Potions, Spells and Animals, please click the
-        respective button.
-      </p>
-      <button class="formButton" (click)="gotoPotions()">Go to Potions</button>
-      <button class="formButton" (click)="gotoSpells()">Go to Spells</button>
-      <button class="formButton" (click)="gotoAnimals()">Go to Animals</button>
+          <tbody>
+            <tr *ngFor="let z of wizards">
+              <td>{{ z.name }}</td>
+              <td>{{ z.healthPoints }}</td>
+              <td>{{ z.klasse }}</td>
+              <td>{{ z.spells.length }}</td>
+              <td>{{ z.potions.length }}</td>
+              <td>{{ z.animals.length }}</td>
+              <td>{{ z.victories }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="goto">
+        <br />
+        <p>
+          For an overview of all Potions, Spells and Animals, please click the
+          respective button.
+        </p>
+        <button class="formButton" (click)="gotoPotions()">
+          Go to Potions
+        </button>
+        <button class="formButton" (click)="gotoSpells()">Go to Spells</button>
+        <button class="formButton" (click)="gotoAnimals()">
+          Go to Animals
+        </button>
+      </div>
     </div>
   </div>
 </div>

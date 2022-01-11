@@ -2,9 +2,10 @@
   <h1 class="headertext headerhome">The most accomplished Wizard</h1>
 </div>
 
-<div class="container-fluid padding mt-5">
-  <div class="row padding">
-    <div class="col-md-12 col-lg-6" *ngIf="wizard !== undefined">
+<div class="container">
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-6" *ngIf="wizard !== undefined">
         <h2 class="headertext gold">{{ wizard.name }}</h2>
         <ul>
           <li>Healthpoints: {{ wizard.healthPoints }}</li>
@@ -29,9 +30,10 @@
           <li>Animals: {{ wizard.animals.length }}</li>
         </ul>
       </div>
-    <div class="col-lg-6">
-      <h2 class="headertext gold">Inspirational Harry Potter Quote:</h2>
-      <p>{{ quote }}</p>
+      <div class="col-lg-6">
+        <h2 class="headertext gold">Inspirational Harry Potter Quote:</h2>
+        <p>{{ quote }}</p>
+      </div>
     </div>
   </div>
 </div>

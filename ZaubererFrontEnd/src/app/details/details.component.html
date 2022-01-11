@@ -2,353 +2,391 @@
   <h1 class="headerdetail headertext">Detail View</h1>
 </div>
 
-<div class="container-fluid padding mt-5">
-  <div class="row padding">
-    <div class="col-md-12 col-lg-12">
-      <table class="table" style="width: 100%">
-        <thead>
-          <tr>
-            <th style="width: 20%">Please select</th>
-            <th style="width: 55%">
-              <select
-                class="formButton"
-                id="wizardUpdateA"
-                (change)="getWizardAByNameAndUndefined()"
-              >
-                <option
-                  value="{{ z.id }}"
-                  *ngFor="let z of wizards"
-                  [selected]="wizardMs !== undefined && wizardMs['id'] === z.id"
+<div class="container">
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-12">
+        <table class="table" style="width: 100%">
+          <thead>
+            <tr>
+              <th style="width: 20%">Please select</th>
+              <th style="width: 55%">
+                <select
+                  class="formButton"
+                  id="wizardUpdateA"
+                  (change)="getWizardAByNameAndUndefined()"
                 >
-                  {{ z.name }}
-                </option>
-              </select>
-            </th>
-            <th style="width: 25%" class="columnCenter">
-              <button class="formButtonTable" (click)="showHide1(true)">
-                Show
-              </button>
-              <button class="formButtonTable" (click)="showHide1(false)">
-                Hide
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tr>
-          <td></td>
-        </tr>
-        <tbody *ngIf="wizardChoiceA !== undefined && show1.value">
+                  <option
+                    value="{{ z.id }}"
+                    *ngFor="let z of wizards"
+                    [selected]="
+                      wizardMs !== undefined && wizardMs['id'] === z.id
+                    "
+                  >
+                    {{ z.name }}
+                  </option>
+                </select>
+              </th>
+              <th style="width: 25%" class="columnCenter">
+                <button
+                  class="formButtonTable"
+                  (click)="showHide1(true)"
+                  *ngIf="!show1.value"
+                >
+                  Show
+                </button>
+                <button
+                  class="formButtonTable"
+                  (click)="showHide1(false)"
+                  *ngIf="show1.value"
+                >
+                  Hide
+                </button>
+              </th>
+            </tr>
+          </thead>
           <tr>
-            <td>Healthpoints</td>
-            <td>
-              <div *ngIf="wizardChoiceA !== undefined && show1.value">
+            <td></td>
+          </tr>
+          <tbody *ngIf="wizardChoiceA !== undefined && show1.value">
+            <tr>
+              <td>Healthpoints</td>
+              <td>
                 {{ wizardChoiceA.healthPoints }}
-              </div>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Faktor</td>
-            <td>
-              <div *ngIf="wizardChoiceA !== undefined && show1.value">
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Faktor</td>
+              <td>
                 {{ wizardChoiceA.faktor }}
-              </div>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Energy</td>
-            <td>
-              <div *ngIf="wizardChoiceA !== undefined && show1.value">
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Energy</td>
+              <td>
                 {{ wizardChoiceA.energy }}
-              </div>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Victories</td>
-            <td>
-              <div *ngIf="wizardChoiceA !== undefined && show1.value">
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Victories</td>
+              <td>
                 {{ wizardChoiceA.victories }}
-              </div>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Rank</td>
-            <td>
-              <div *ngIf="wizardChoiceA !== undefined && show1.value">
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Rank</td>
+              <td>
                 <a (click)="gotoRanks()" class="link">
                   {{ wizardChoiceA.rank }}</a
                 >
-              </div>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Class</td>
-            <td>
-              <div *ngIf="wizardChoiceA !== undefined && show1.value">
-                {{ wizardChoiceA.klasse }}
-              </div>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Rating</td>
-            <td>
-              <div *ngIf="wizardChoiceA !== undefined && show1.value">
-                {{ wizardChoiceA.rating }} ({{ wizardChoiceA.amount }} Ratings)
-              </div>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <th colspan="3" class="columnOptionHeader">
-              Strengths And Weaknesses
-            </th>
-          </tr>
-          <tr>
-            <th>Class</th>
-            <th>Strength or Weakness</th>
-            <th class="columnCenter">
-              <button class="formButtonColumn" (click)="showHideSaw(true)">
-                Show
-              </button>
-              <button class="formButtonColumn" (click)="showHideSaw(false)">
-                Hide
-              </button>
-            </th>
-          </tr>
-          <ng-container *ngIf="showSaw.value">
-            <tr *ngFor="let saw of wizardChoiceA.strengthAndWeaknesses">
-              <td>{{ saw.house }}</td>
-              <td *ngIf="saw.strength">Strength</td>
-              <td *ngIf="!saw.strength">Weakness</td>
+              </td>
               <td></td>
             </tr>
-          </ng-container>
-          <tr>
-            <th colspan="3" class="columnOptionHeader">Spells</th>
-          </tr>
-          <tr>
-            <th>Name</th>
-            <th>Max Damage</th>
-            <th class="columnCenter">
-              <button class="formButtonColumn" (click)="showHideSpells(true)">
-                Show
-              </button>
-              <button class="formButtonColumn" (click)="showHideSpells(false)">
-                Hide
-              </button>
-            </th>
-          </tr>
-          <ng-container *ngIf="showSpells.value">
-            <tr *ngFor="let spell of wizardChoiceA.spells">
-              <td>{{ spell.name }}</td>
-              <td>{{ spell.maxDamage }}</td>
-              <td class="columnCenter">
+            <tr>
+              <td>Class</td>
+              <td>
+                {{ wizardChoiceA.klasse }}
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Rating</td>
+              <td>
+                {{ wizardChoiceA.rating }} ({{ wizardChoiceA.amount }}
+                Ratings)
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <th colspan="3" class="columnOptionHeader">
+                Strengths And Weaknesses
+              </th>
+            </tr>
+            <tr>
+              <th>Class</th>
+              <th>Strength or Weakness</th>
+              <th class="columnCenter">
                 <button
                   class="formButtonColumn"
-                  (click)="gotoSpellDetail(spell.id)"
+                  (click)="showHideSaw(true)"
+                  *ngIf="!showSaw.value"
                 >
-                  Details
+                  Show
                 </button>
-              </td>
+                <button
+                  class="formButtonColumn"
+                  (click)="showHideSaw(false)"
+                  *ngIf="showSaw.value"
+                >
+                  Hide
+                </button>
+              </th>
             </tr>
-          </ng-container>
+            <ng-container *ngIf="showSaw.value">
+              <tr *ngFor="let saw of wizardChoiceA.strengthAndWeaknesses">
+                <td>{{ saw.house }}</td>
+                <td *ngIf="saw.strength">Strength</td>
+                <td *ngIf="!saw.strength">Weakness</td>
+                <td></td>
+              </tr>
+            </ng-container>
+            <tr>
+              <th colspan="3" class="columnOptionHeader">Spells</th>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <th>Max Damage</th>
+              <th class="columnCenter">
+                <button
+                  class="formButtonColumn"
+                  (click)="showHideSpells(true)"
+                  *ngIf="!showSpells.value"
+                >
+                  Show
+                </button>
+                <button
+                  class="formButtonColumn"
+                  (click)="showHideSpells(false)"
+                  *ngIf="showSpells.value"
+                >
+                  Hide
+                </button>
+              </th>
+            </tr>
+            <ng-container *ngIf="showSpells.value">
+              <tr *ngFor="let spell of wizardChoiceA.spells">
+                <td>{{ spell.name }}</td>
+                <td>{{ spell.maxDamage }}</td>
+                <td class="columnCenter">
+                  <button
+                    class="formButtonColumn"
+                    (click)="gotoSpellDetail(spell.id)"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
 
-          <tr>
-            <th colspan="3" class="columnOptionHeader">Potions</th>
-          </tr>
-          <tr>
-            <th>Name</th>
-            <th>Storage</th>
-            <th class="columnCenter">
-              <button class="formButtonColumn" (click)="showHidePotions(true)">
-                Show
-              </button>
-              <button class="formButtonColumn" (click)="showHidePotions(false)">
-                Hide
-              </button>
-            </th>
-          </tr>
-          <ng-container *ngIf="showPotions.value">
-            <tr *ngFor="let potion of wizardChoiceA.potions">
-              <td>{{ potion.name }}</td>
-              <td>{{ potion.storage }}</td>
-              <td class="columnCenter">
+            <tr>
+              <th colspan="3" class="columnOptionHeader">Potions</th>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <th>Storage</th>
+              <th class="columnCenter">
                 <button
                   class="formButtonColumn"
-                  (click)="gotoPotionDetail(potion.id)"
+                  (click)="showHidePotions(true)"
+                  *ngIf="!showPotions.value"
                 >
-                  Details
+                  Show
                 </button>
-              </td>
+                <button
+                  class="formButtonColumn"
+                  (click)="showHidePotions(false)"
+                  *ngIf="showPotions.value"
+                >
+                  Hide
+                </button>
+              </th>
             </tr>
-          </ng-container>
+            <ng-container *ngIf="showPotions.value">
+              <tr *ngFor="let potion of wizardChoiceA.potions">
+                <td>{{ potion.name }}</td>
+                <td>{{ potion.storage }}</td>
+                <td class="columnCenter">
+                  <button
+                    class="formButtonColumn"
+                    (click)="gotoPotionDetail(potion.id)"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
 
-          <tr>
-            <th colspan="3" class="columnOptionHeader">Animals</th>
-          </tr>
-          <tr>
-            <th>Name</th>
-            <th>Max Damage</th>
-            <th class="columnCenter">
-              <button class="formButtonColumn" (click)="showHideAnimals(true)">
-                Show
-              </button>
-              <button class="formButtonColumn" (click)="showHideAnimals(false)">
-                Hide
-              </button>
-            </th>
-          </tr>
-          <ng-container *ngIf="showAnimals.value">
-            <tr *ngFor="let animal of wizardChoiceA.animals">
-              <td>{{ animal.name }}</td>
-              <td>{{ animal.maxDamage }}</td>
-              <td class="columnCenter">
+            <tr>
+              <th colspan="3" class="columnOptionHeader">Animals</th>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <th>Max Damage</th>
+              <th class="columnCenter">
                 <button
                   class="formButtonColumn"
-                  (click)="gotoAnimalDetail(animal.id)"
+                  (click)="showHideAnimals(true)"
+                  *ngIf="!showAnimals.value"
                 >
-                  Details
+                  Show
                 </button>
-              </td>
+                <button
+                  class="formButtonColumn"
+                  (click)="showHideAnimals(false)"
+                  *ngIf="showAnimals.value"
+                >
+                  Hide
+                </button>
+              </th>
             </tr>
-          </ng-container>
-          <tr>
-            <th colspan="3" class="columnOptionHeader">Comments</th>
-          </tr>
-          <tr>
-            <th>Content</th>
-            <th></th>
-            <th class="columnCenter">
-              <button class="formButtonColumn" (click)="showHideComments(true)">
-                Show
-              </button>
-              <button
-                class="formButtonColumn"
-                (click)="showHideComments(false)"
-              >
-                Hide
-              </button>
-            </th>
-          </tr>
-          <ng-container *ngIf="showComments.value">
-            <tr *ngFor="let comment of wizardChoiceA.comments">
-              <td colspan="3">{{ comment.content }}</td>
+            <ng-container *ngIf="showAnimals.value">
+              <tr *ngFor="let animal of wizardChoiceA.animals">
+                <td>{{ animal.name }}</td>
+                <td>{{ animal.maxDamage }}</td>
+                <td class="columnCenter">
+                  <button
+                    class="formButtonColumn"
+                    (click)="gotoAnimalDetail(animal.id)"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+            <tr>
+              <th colspan="3" class="columnOptionHeader">Comments</th>
             </tr>
-          </ng-container>
-        </tbody>
-      </table>
+            <tr>
+              <th>Content</th>
+              <th></th>
+              <th class="columnCenter">
+                <button
+                  class="formButtonColumn"
+                  (click)="showHideComments(true)"
+                  *ngIf="!showComments.value"
+                >
+                  Show
+                </button>
+                <button
+                  class="formButtonColumn"
+                  (click)="showHideComments(false)"
+                  *ngIf="showComments.value"
+                >
+                  Hide
+                </button>
+              </th>
+            </tr>
+            <ng-container *ngIf="showComments.value">
+              <tr *ngFor="let comment of wizardChoiceA.comments">
+                <td colspan="3">{{ comment.content }}</td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <br />
+    <br />
 
-  <div class="row padding">
-    <div class="col-md-12 col-lg-6">
-      <h2 class="headertext gold">Comment:</h2>
-      <table>
-        <tr>
-          <td><label required for="wizardComment2">Choose a wizard:</label></td>
-          <td>
-            <select
-              class="formButton"
-              id="wizardComment"
-              (change)="getWizardByNameComment()"
-            >
-              <option value="{{ z.id }}" *ngFor="let z of wizards">
-                {{ z.name }}
-              </option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="name">Comment: </label></td>
-          <td>
-            <form [formGroup]="commentForm" (ngSubmit)="post()">
-              <input
-                class="formFelder"
-                id="name"
-                type="text"
-                formControlName="content"
-                placeholder="Up to 100 Characters"
-              />
-            </form>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <form [formGroup]="commentForm" (ngSubmit)="post()">
-              <button
+    <div class="row padding">
+      <div class="col-md-12 col-lg-6">
+        <h2 class="headertext gold">Comment:</h2>
+        <table>
+          <tr>
+            <td>
+              <label required for="wizardComment2">Choose a wizard:</label>
+            </td>
+            <td>
+              <select
                 class="formButton"
-                type="submit"
-                [disabled]="!commentForm.valid"
+                id="wizardComment"
+                (change)="getWizardByNameComment()"
               >
-                Submit
-              </button>
-            </form>
-          </td>
-        </tr>
-      </table>
-
-      <br />
-    </div>
-
-    <div class="col-lg-6">
-      <h2 class="headertext gold">Rating:</h2>
-      <table>
-        <tr>
-          <td>
-            <label required for="wizardRating2">Choose a wizard:</label>
-          </td>
-          <td>
-            <select
-              class="formButton"
-              id="wizardIdRating"
-              (change)="getWizardByNameRating()"
-            >
-              <option value="{{ z.id }}" *ngFor="let z of wizards">
-                {{ z.name }}
-              </option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td><label for="rate">Rating: </label></td>
-          <td>
-            <form [formGroup]="ratingForm" (ngSubmit)="passOnRating()">
-              <a *ngFor="let star of availableStars">
+                <option value="{{ z.id }}" *ngFor="let z of wizards">
+                  {{ z.name }}
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="name">Comment: </label></td>
+            <td>
+              <form [formGroup]="commentForm" (ngSubmit)="post()">
                 <input
-                  class="formFelderRadio radioAbstand"
-                  id="rate_{{ star }}"
-                  value="{{ star }}"
-                  type="radio"
-                  name="rate"
-                  [formControl]="stars"
-                  (change)="getRating()"
-                />{{ star }}
-              </a>
-            </form>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>
-            <form [formGroup]="ratingForm" (ngSubmit)="passOnRating()">
-              <button
+                  class="formFelder"
+                  id="name"
+                  type="text"
+                  formControlName="content"
+                  placeholder="Up to 100 Characters"
+                />
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <form [formGroup]="commentForm" (ngSubmit)="post()">
+                <button
+                  class="formButton"
+                  type="submit"
+                  [disabled]="!commentForm.valid"
+                >
+                  Submit
+                </button>
+              </form>
+            </td>
+          </tr>
+        </table>
+
+        <br />
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="headertext gold">Rating:</h2>
+        <table>
+          <tr>
+            <td>
+              <label required for="wizardRating2">Choose a wizard:</label>
+            </td>
+            <td>
+              <select
                 class="formButton"
-                type="submit"
-                [disabled]="!stars.valid"
+                id="wizardIdRating"
+                (change)="getWizardByNameRating()"
               >
-                Submit
-              </button>
-            </form>
-          </td>
-        </tr>
-      </table>
+                <option value="{{ z.id }}" *ngFor="let z of wizards">
+                  {{ z.name }}
+                </option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="rate">Rating: </label></td>
+            <td>
+              <form [formGroup]="ratingForm" (ngSubmit)="passOnRating()">
+                <a *ngFor="let star of availableStars">
+                  <input
+                    class="formFelderRadio radioAbstand"
+                    id="rate_{{ star }}"
+                    value="{{ star }}"
+                    type="radio"
+                    name="rate"
+                    [formControl]="stars"
+                    (change)="getRating()"
+                  />{{ star }}
+                </a>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <form [formGroup]="ratingForm" (ngSubmit)="passOnRating()">
+                <button
+                  class="formButton"
+                  type="submit"
+                  [disabled]="!stars.valid"
+                >
+                  Submit
+                </button>
+              </form>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>

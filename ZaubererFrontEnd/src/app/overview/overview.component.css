@@ -24,3 +24,7 @@ th {
   margin-left: auto;
   margin-right: auto;
 }
+
+.removeFilter{
+ justify-content: space-around;
+}

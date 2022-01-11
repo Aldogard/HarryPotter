@@ -18,6 +18,9 @@ export class BattleComponent implements OnInit {
   wizardsArray: HpWizard[] = [];
   wizard1?: HpWizard;
   wizard2?: HpWizard;
+  wizard3?: HpWizard;
+  wizard4?: HpWizard;
+  wizard5?: HpWizard;
   options = this.extraService.options;
   chosenOption: string = '';
   validateSpell = new BehaviorSubject<boolean>(false);
@@ -31,6 +34,7 @@ export class BattleComponent implements OnInit {
   showResult = new BehaviorSubject<boolean>(false);
   showStart = new BehaviorSubject<boolean>(true);
   showTable = new BehaviorSubject<boolean>(true);
+  showDetails = new BehaviorSubject<boolean>(true);
   attackWizardNumber: number = 1;
   voldemortIsDead: boolean = false;
   environment: string = '';
@@ -45,14 +49,20 @@ export class BattleComponent implements OnInit {
     this.environment = this.ms.environment.value;
     this.ms.wizardArray.subscribe((za) => {
       this.wizardsArray = za;
-      // this.wizard1 = za[0];
-      // this.wizard2 = za[1];
-      this.hpService.getWizards().subscribe(wizards => {
-        this.wizard1 = wizards[0];
-        this.wizard2 = wizards[1];
-        this.wizardsArray.push(this.wizard1);
-        this.wizardsArray.push(this.wizard2);
-      })
+      this.wizard1 = za[0];
+      this.wizard2 = za[1];
+      if (za.length > 2) {
+        this.wizard3 = za[2];
+      }
+      if (za.length > 3) {
+        this.wizard4 = za[3];
+      }
+      // this.hpService.getWizards().subscribe((wizards) => {
+      //   this.wizard1 = wizards[0];
+      //   this.wizard2 = wizards[1];
+      //   this.wizardsArray.push(this.wizard1);
+      //   this.wizardsArray.push(this.wizard2);
+      // });
     });
     this.determineStarter();
   }
@@ -210,7 +220,9 @@ export class BattleComponent implements OnInit {
       defendWizard !== this.wizardsArray[this.wizardsArray.length - 1]
     ) {
       this.attackWizardNumber++;
+      const tempStorage = this.wizard2;
       this.wizard2 = this.wizardsArray[this.attackWizardNumber];
+      this.switchWizards(tempStorage);
       this.gotoNextRound(defendWizard);
     } else if (
       ((defendWizard.healthPoints <= -100 && defendWizard.halfLife) ||
@@ -218,7 +230,9 @@ export class BattleComponent implements OnInit {
       defendWizard !== this.wizardsArray[this.wizardsArray.length - 1]
     ) {
       this.attackWizardNumber++;
+      const tempStorage = this.wizard2;
       this.wizard2 = this.wizardsArray[this.attackWizardNumber];
+      this.switchWizards(tempStorage);
       this.gotoNextRound(defendWizard);
     } else {
       this.attackWizard2.next(!this.attackWizard2.value);
@@ -310,6 +324,7 @@ export class BattleComponent implements OnInit {
             Math.round(v.internHealthPoints * Math.random() * 100) / 100;
           v.potions.forEach((p) => (p.storage = 0));
           this.wizardsArray.push(v);
+          this.wizard5 = v;
           alert('Voldemort has been resurected and rejoins the Fight!');
         }
       });
@@ -376,7 +391,10 @@ export class BattleComponent implements OnInit {
   checkIfDead() {
     return (
       this.wizardsArray.filter(
-        (v) => v.klasse === 'Voldemort' && v.healthPoints < 0 && this.wizardsArray[0] !== v
+        (v) =>
+          v.klasse === 'Voldemort' &&
+          v.healthPoints < 0 &&
+          this.wizardsArray[0] !== v
       ).length > 0
     );
   }
@@ -520,27 +538,43 @@ export class BattleComponent implements OnInit {
     window.open('rules');
   }
 
-  strengthAndWeakness(wizard1: HpWizard, wizard2: HpWizard){
-    let indicator
-    wizard1.strengthAndWeaknesses.forEach(saw => {
-      if(saw.house === wizard2.klasse && saw.strength){
+  strengthAndWeakness(wizard1: HpWizard, wizard2: HpWizard) {
+    let indicator;
+    wizard1.strengthAndWeaknesses.forEach((saw) => {
+      if (saw.house === wizard2.klasse && saw.strength) {
         indicator = true;
-        console.log("check true")
-      } else if(saw.house === wizard2.klasse && !saw.strength){
+        console.log('check true');
+      } else if (saw.house === wizard2.klasse && !saw.strength) {
         indicator = false;
-        console.log("check false")
+        console.log('check false');
       }
-    })
-    if(indicator === true){
-      return 'Strong'
-    } else if (indicator === false){
-      return 'Weak'
+    });
+    if (indicator === true) {
+      return 'Strong';
+    } else if (indicator === false) {
+      return 'Weak';
     } else {
       return 'None';
     }
   }
-  showHideTable(status: boolean){
+  showHideTable(status: boolean) {
     this.showTable.next(status);
-      
+    this.showDetails.next(true);
+  }
+
+  showHideDetails(status: boolean) {
+    this.showDetails.next(status);
+  }
+
+  switchWizards(wizard: HpWizard | undefined) {
+    if (this.attackWizardNumber === 2) {
+      this.wizard3 = wizard;
+    }
+    if (this.attackWizardNumber === 3) {
+      this.wizard4 = wizard;
+    }
+    if (this.attackWizardNumber === 4) {
+      this.wizard5 = wizard;
+    }
   }
 }

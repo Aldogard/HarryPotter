@@ -14,7 +14,7 @@ export class OverviewComponent implements OnInit {
   wizards: HpWizard[] = [];
   results: HpWizard[] = [];
   showAll = new BehaviorSubject<boolean>(true);
-  showFilter = new BehaviorSubject<boolean>(false);
+  showFilter = new BehaviorSubject<boolean>(true);
   max: FormControl = new FormControl();
   min: FormControl = new FormControl();
   spellAmount = new FormControl('');
@@ -122,5 +122,10 @@ export class OverviewComponent implements OnInit {
 
   gotoAnimals(){
     this.extraService.redirectTo('animals')
+  }
+
+  showHideFilter(status: boolean){
+    this.showFilter.next(status);
+
   }
 }

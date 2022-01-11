@@ -21,10 +21,10 @@
               {{ z.name }}
             </option>
           </select>
-          <button class="formButtonTable" (click)="showHide1(true)">
+          <button class="formButtonTable" (click)="showHide1(true)" *ngIf="!show1.value">
             Show
           </button>
-          <button class="formButtonTable" (click)="showHide1(false)">
+          <button class="formButtonTable" (click)="showHide1(false)" *ngIf="show1.value">
             Hide
           </button>
         </th>
@@ -39,10 +39,10 @@
                 {{ z.name }}
               </option>
             </select>
-            <button class="formButtonTable" (click)="showHide2(true)">
+            <button class="formButtonTable" (click)="showHide2(true)" *ngIf="!show2.value">
               Show
             </button>
-            <button class="formButtonTable" (click)="showHide2(false)">
+            <button class="formButtonTable" (click)="showHide2(false)" *ngIf="show2.value">
               Hide
             </button>
           </div>

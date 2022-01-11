@@ -34,10 +34,6 @@ input.radio {
   display: inline-block;
 }
 
-.choice{
-  text-align: center;
-}
-
 
 .hint {
   text-align: center;
@@ -49,6 +45,11 @@ input.radio {
 
 .link {
   color: white;
+}
+
+.choice {
+  text-align: center;
+  justify-content: space-around;
 }
 
 

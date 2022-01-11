@@ -1,76 +1,85 @@
 <div class="header gold pt-lg-3 sticky-top">
   <h1 class="headerspells headertext">Overview Spells</h1>
 </div>
-<div class="container-fluid padding mt-5">
-  <div class="row padding">
-    <div class="col-md-12 col-lg-12">
-      <table class="table">
-        <thead>
+<div class="container">
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Energy Usage</th>
+              <th>Max Damage</th>
+              <th>Stunned</th>
+              <th>Confunded</th>
+              <th>Imperio</th>
+              <th>Protego</th>
+              <th>Experience</th>
+            </tr>
+          </thead>
           <tr>
-            <th>Name</th>
-            <th>Energy Usage</th>
-            <th>Max Damage</th>
-            <th>Stunned</th>
-            <th>Confunded</th>
-            <th>Imperio</th>
-            <th>Protego</th>
-            <th>Experience</th>
+            <td></td>
           </tr>
-        </thead>
-        <tr>
-          <td></td>
-        </tr>
-        <tbody>
-          <tr *ngFor="let spell of spells">
-            <td>{{ spell.name }}</td>
-            <td>{{ spell.energyUsage }}</td>
-            <td>{{ spell.maxDamage }}</td>
-            <td>{{ spell.stunned }}</td>
-            <td>{{ spell.confunded }}</td>
-            <td>{{ spell.imperio }}</td>
-            <td>{{ spell.protego }}</td>
-            <td>{{ spell.requiredExperience }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          <tbody>
+            <tr *ngFor="let spell of spells">
+              <td>{{ spell.name }}</td>
+              <td>{{ spell.energyUsage }}</td>
+              <td>{{ spell.maxDamage }}</td>
+              <td>{{ spell.stunned }}</td>
+              <td>{{ spell.confunded }}</td>
+              <td>{{ spell.imperio }}</td>
+              <td>{{ spell.protego }}</td>
+              <td>{{ spell.requiredExperience }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <div class="hints">
-      <h2 class="gold">Explanations</h2>
-      <ul>
-        <li>
-          Energy Usage indicates the required energy to perform the spell. A
-          spell can only be performed if the wizard has enough energy remaining.
-        </li>
-        <li>
-          Most Spells are able to inflict damage on the opposing Wizard. Max
-          Damage indicates the maximum amount of damage that can be inflicted.
-          Caution, some Spells have some special features, which make them
-          especially useful or especially dangerous!
-        </li>
-        <li>
-          Stunned indicates whether the Spell can stun the opposing wizard or
-          not. The use of some Potions can protect against the stun effect.
-        </li>
-        <li>
-          Confunded indicates whether the Spell can confound the opposing wizard
-          or not. The use of some Potions can protect against the confound
-          effect.
-        </li>
-        <li>
-          Experience indicates the number of victories a wizards needs in order
-          to use the spell.
-        </li>
-      </ul>
-    </div>
-    <div class="goto">
-      <p>
-        For a detailed view of all Potions or a return to Overview, please click
-        the respective Button
-      </p>
-      <button class="formButton" (click)="gotoPotions()">Go to Potions</button>
-      <button class="formButton" (click)="gotoOverview()">Go to Overview</button>
-      <button class="formButton" (click)="gotoAnimals()">Go to Animals</button>
+      <div class="hints">
+        <h2 class="gold">Explanations</h2>
+        <ul>
+          <li>
+            Energy Usage indicates the required energy to perform the spell. A
+            spell can only be performed if the wizard has enough energy
+            remaining.
+          </li>
+          <li>
+            Most Spells are able to inflict damage on the opposing Wizard. Max
+            Damage indicates the maximum amount of damage that can be inflicted.
+            Caution, some Spells have some special features, which make them
+            especially useful or especially dangerous!
+          </li>
+          <li>
+            Stunned indicates whether the Spell can stun the opposing wizard or
+            not. The use of some Potions can protect against the stun effect.
+          </li>
+          <li>
+            Confunded indicates whether the Spell can confound the opposing
+            wizard or not. The use of some Potions can protect against the
+            confound effect.
+          </li>
+          <li>
+            Experience indicates the number of victories a wizards needs in
+            order to use the spell.
+          </li>
+        </ul>
+      </div>
+      <div class="goto">
+        <p>
+          For a detailed view of all Potions or a return to Overview, please
+          click the respective Button
+        </p>
+        <button class="formButton" (click)="gotoPotions()">
+          Go to Potions
+        </button>
+        <button class="formButton" (click)="gotoOverview()">
+          Go to Overview
+        </button>
+        <button class="formButton" (click)="gotoAnimals()">
+          Go to Animals
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -21,7 +21,7 @@
     <br />
     <a *ngFor="let star of battleSize">
       <input
-        class="formFelderRadio radioAbstand"
+        class="formFelderRadio radioAbstand white"
         id="rate_{{ star }}"
         value="{{ star }}"
         type="radio"
@@ -41,11 +41,11 @@
             numberOfParticipants.value === '3'
           "
         >
-          <div class="buttonA choose1">
+          <div class="abstandeinsbutton">
             <br />
-            <label required for="wizardUpdate">Choose a Defender: </label>
+            <label required for="wizardUpdate">Choose a Defender:</label>
             <select
-              class="formButton abstandeinsbutton"
+              class="formButton"
               id="wizardUpdateA"
               (change)="getWizardAByName()"
             >
@@ -61,21 +61,20 @@
             numberOfParticipants.value === '2' ||
             numberOfParticipants.value === '3'
           "
-          class="choose3 buttonC"
         >
-          <label required for="wizardUpdate">Choose an Attacker: </label>
-          <select
-            class="formButton"
-            id="wizardUpdateC"
-            (change)="getWizardCByName()"
-          >
-            <option value="{{ z.id }}" *ngFor="let z of zauberer">
-              {{ z.name }}
-            </option>
-          </select>
+            <label required for="wizardUpdate">Choose an Attacker: </label>
+            <select
+              class="formButton"
+              id="wizardUpdateC"
+              (change)="getWizardCByName()"
+            >
+              <option value="{{ z.id }}" *ngFor="let z of zauberer">
+                {{ z.name }}
+              </option>
+            </select>
         </ng-container>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 choice">
         <ng-container
           *ngIf="
             numberOfParticipants.value === '1' ||
@@ -83,7 +82,7 @@
             numberOfParticipants.value === '3'
           "
         >
-          <div class="buttonB choose2">
+          <div>
             <br />
             <label required for="wizardUpdate">Choose an Attacker: </label>
             <select
@@ -97,6 +96,7 @@
             </select>
           </div>
         </ng-container>
+
         <ng-container
           *ngIf="numberOfParticipants.value === '3'"
           class="choose4 buttonD"
@@ -115,94 +115,94 @@
       </div>
     </div>
   </div>
-</div>
 
-<div
-  class="check"
-  *ngIf="
-    wizardChoiceA !== undefined &&
-    wizardChoiceB !== undefined &&
-    numberOfParticipants.value === '1'
-  "
->
-  <br />
-  <div class="gold">
-  Do you want to start the battle with these Wizards:
-  <a>{{ wizardChoiceA.name }} and </a>
-  <a>{{ wizardChoiceB.name }}? </a>
-  </div>
-  <button
-    class="formButton"
-    (click)="send2()"
-    [disabled]="!numberOfParticipants.valid"
+  <div
+    class="check"
+    *ngIf="
+      wizardChoiceA !== undefined &&
+      wizardChoiceB !== undefined &&
+      numberOfParticipants.value === '1'
+    "
   >
-    Yes
-  </button>
-</div>
-
-<div
-  class="check"
-  *ngIf="
-    wizardChoiceA !== undefined &&
-    wizardChoiceB !== undefined &&
-    wizardChoiceC !== undefined &&
-    numberOfParticipants.value === '2'
-  "
->
-<br/>
-<div class="gold">
-  Do you want to start the battle with these Wizards:
-  <a>{{ wizardChoiceA.name }}, </a>
-  <a>{{ wizardChoiceB.name }} and </a>
-  <a>{{ wizardChoiceC.name }} </a>
-</div>
-  <button
-    class="formButton"
-    (click)="send3()"
-    [disabled]="!numberOfParticipants.valid"
-  >
-    Yes
-  </button>
-</div>
-
-<div
-  class="check"
-  *ngIf="
-    wizardChoiceA !== undefined &&
-    wizardChoiceB !== undefined &&
-    wizardChoiceC !== undefined &&
-    wizardChoiceD !== undefined &&
-    numberOfParticipants.value === '3'
-  "
->
-  <br />
-  <div class="gold">
-  Do you want to start the battle with these Wizards:
-  <a>{{ wizardChoiceA.name }}, </a>
-  <a>{{ wizardChoiceB.name }}, </a>
-  <a>{{ wizardChoiceC.name }} and </a>
-  <a>{{ wizardChoiceD.name }} </a>
-  </div>
-  <button
-    class="formButton"
-    (click)="send4()"
-    [disabled]="!numberOfParticipants.valid"
-  >
-    Yes
-  </button>
-</div>
-<div class="hint" *ngIf="numberOfParticipants.value !== ''">
-  <br/>
-  <p>Note: Each wizard can compete only once!</p>
-  <a>
-    <a (click)="gotoDetails()" class="link"
-      >If you unsure which wizard to choose, you can examine all the wizards in
-      the Detail View.</a
-    >
     <br />
-    <a (click)="gotoWiki()" class="link"
-      >Furthermore, the Harry Potter Wiki is an excellent source for even more
-      information.</a
+    <div class="gold">
+      Do you want to start the battle with these Wizards:
+      <a>{{ wizardChoiceA.name }} and </a>
+      <a>{{ wizardChoiceB.name }}? </a>
+    </div>
+    <button
+      class="formButton"
+      (click)="send2()"
+      [disabled]="!numberOfParticipants.valid"
     >
-  </a>
+      Yes
+    </button>
+  </div>
+
+  <div
+    class="check"
+    *ngIf="
+      wizardChoiceA !== undefined &&
+      wizardChoiceB !== undefined &&
+      wizardChoiceC !== undefined &&
+      numberOfParticipants.value === '2'
+    "
+  >
+    <br />
+    <div class="gold">
+      Do you want to start the battle with these Wizards:
+      <a>{{ wizardChoiceA.name }}, </a>
+      <a>{{ wizardChoiceB.name }} and </a>
+      <a>{{ wizardChoiceC.name }} </a>
+    </div>
+    <button
+      class="formButton"
+      (click)="send3()"
+      [disabled]="!numberOfParticipants.valid"
+    >
+      Yes
+    </button>
+  </div>
+
+  <div
+    class="check"
+    *ngIf="
+      wizardChoiceA !== undefined &&
+      wizardChoiceB !== undefined &&
+      wizardChoiceC !== undefined &&
+      wizardChoiceD !== undefined &&
+      numberOfParticipants.value === '3'
+    "
+  >
+    <br />
+    <div class="gold">
+      Do you want to start the battle with these Wizards:
+      <a>{{ wizardChoiceA.name }}, </a>
+      <a>{{ wizardChoiceB.name }}, </a>
+      <a>{{ wizardChoiceC.name }} and </a>
+      <a>{{ wizardChoiceD.name }} </a>
+    </div>
+    <button
+      class="formButton"
+      (click)="send4()"
+      [disabled]="!numberOfParticipants.valid"
+    >
+      Yes
+    </button>
+  </div>
+  <div class="hint" *ngIf="numberOfParticipants.value !== ''">
+    <br />
+    <p>Note: Each wizard can compete only once!</p>
+    <a>
+      <a (click)="gotoDetails()" class="link"
+        >If you unsure which wizard to choose, you can examine all the wizards
+        in the Detail View.</a
+      >
+      <br />
+      <a (click)="gotoWiki()" class="link"
+        >Furthermore, the Harry Potter Wiki is an excellent source for even more
+        information.</a
+      >
+    </a>
+  </div>
 </div>

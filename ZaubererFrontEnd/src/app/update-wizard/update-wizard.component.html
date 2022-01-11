@@ -1,74 +1,80 @@
 <div class="header gold pt-lg-3 sticky-top">
   <h1 class="headerupdate headertext">Update a wizard</h1>
 </div>
-
-<div class="container-fluid padding mt-5">
-  <div class="row padding">
-    <div class="col-md-12 col-lg-4">
-      <label required for="wizardUpdate2">Please choose a wizard:</label><br/>
-      <select class="formButton" id="wizardUpdate" (change)="getWizardByName()">
-        <option value="{{ z.id }}" *ngFor="let z of wizards">
-          {{ z.name }}
-        </option>
-      </select>
-      <form #hpForm="ngForm" (ngSubmit)="update(hpForm)">
-        <div *ngIf="wizardChoice !== undefined">
-          <label for="name"></label>
-          <input
-            class="formFelder"
-            id="name"
-            type="text"
-            [(ngModel)]="wizardChoice.name"
-            placeholder="Name"
-            name="name"
-            required
-          />
-        </div>
-        <div *ngIf="wizardChoice !== undefined">
-          <label for="hp"></label>
-          <input
-            class="formFelder"
-            id="hp"
-            type="number"
-            [(ngModel)]="wizardChoice.healthPoints"
-            placeholder="Healthpoints"
-            name="healthPoints"
-            required
-            min="1"
-            max="100"
-          />
-        </div>
-        <div *ngIf="wizardChoice !== undefined">
-          <label for="hp"></label>
-          <input
-            class="formFelder"
-            id="hp"
-            type="text"
-            [(ngModel)]="wizardChoice.description"
-            placeholder="Description"
-            name="description"
-            required
-            minlength="10"
-            maxlength="100"
-          />
-        </div>
-        <button class="formButton" type="submit" [disabled]="!hpForm.valid">
-          Submit
-        </button>
-      </form>
-      <p *ngIf="show">The wizard has been updated</p>
-    </div>
-    <div class="col-lg-8">
-      <h2 class="gold">Rules for the Update of a wizard:</h2>
-      <ol>
-        <li>Every name can be used only once</li>
-        <li>The name has to be at least 3 characters long</li>
-        <li>Healthpoints cannot be smaller than 1</li>
-        <li>Healthpoints cannot be larger than 100</li>
-        <li>
-          A description must be written, but it cannot extend 100 characters
-        </li>
-      </ol>
+<div class="container">
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-4">
+        <label required for="wizardUpdate2">Please choose a wizard:</label
+        ><br />
+        <select
+          class="formButton"
+          id="wizardUpdate"
+          (change)="getWizardByName()"
+        >
+          <option value="{{ z.id }}" *ngFor="let z of wizards">
+            {{ z.name }}
+          </option>
+        </select>
+        <form #hpForm="ngForm" (ngSubmit)="update(hpForm)">
+          <div *ngIf="wizardChoice !== undefined">
+            <label for="name"></label>
+            <input
+              class="formFelder"
+              id="name"
+              type="text"
+              [(ngModel)]="wizardChoice.name"
+              placeholder="Name"
+              name="name"
+              required
+            />
+          </div>
+          <div *ngIf="wizardChoice !== undefined">
+            <label for="hp"></label>
+            <input
+              class="formFelder"
+              id="hp"
+              type="number"
+              [(ngModel)]="wizardChoice.healthPoints"
+              placeholder="Healthpoints"
+              name="healthPoints"
+              required
+              min="1"
+              max="100"
+            />
+          </div>
+          <div *ngIf="wizardChoice !== undefined">
+            <label for="hp"></label>
+            <input
+              class="formFelder"
+              id="hp"
+              type="text"
+              [(ngModel)]="wizardChoice.description"
+              placeholder="Description"
+              name="description"
+              required
+              minlength="10"
+              maxlength="100"
+            />
+          </div>
+          <button class="formButton" type="submit" [disabled]="!hpForm.valid">
+            Submit
+          </button>
+        </form>
+        <p *ngIf="show">The wizard has been updated</p>
+      </div>
+      <div class="col-lg-8">
+        <h2 class="gold">Rules for the Update of a wizard:</h2>
+        <ol>
+          <li>Every name can be used only once</li>
+          <li>The name has to be at least 3 characters long</li>
+          <li>Healthpoints cannot be smaller than 1</li>
+          <li>Healthpoints cannot be larger than 100</li>
+          <li>
+            A description must be written, but it cannot extend 100 characters
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </div>
