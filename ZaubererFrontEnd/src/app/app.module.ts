@@ -25,6 +25,8 @@ import { RanksComponent } from './ranks/ranks.component';
 import { DetailsAnimalComponent } from './details-animal/details-animal.component';
 import { OverviewAnimalComponent } from './overview-animal/overview-animal.component';
 import { CompareComponent } from './compare/compare.component';
+import { ChessComponent } from './chess/chess.component';
+import { TrainingComponent } from './training/training.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { CompareComponent } from './compare/compare.component';
     DetailsAnimalComponent,
     OverviewAnimalComponent,
     CompareComponent,
+    ChessComponent,
+    TrainingComponent,
   ],
   imports: [
     BrowserModule,

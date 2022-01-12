@@ -8,6 +8,17 @@
     <div class="col-md-12 col-lg-4">
       <table>
         <tr>
+          <td><label required for="zauberer">Choose a being type:</label></td>
+          <td>
+            <select class="formButton" [formControl]="createBeing">
+              <option *ngFor="let b of being">
+                {{ b }}
+              </option>
+            </select>
+          </td>
+
+        </tr>
+        <tr *ngIf="createBeing.value === 'Wizard'">
           <td><label required for="zauberer">Choose a wizard type:</label></td>
           <td>
             <select class="formButton" [formControl]="createWizardNr">

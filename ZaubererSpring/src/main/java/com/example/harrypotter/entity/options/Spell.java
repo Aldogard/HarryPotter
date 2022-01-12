@@ -1,6 +1,7 @@
 package com.example.harrypotter.entity.options;
 
 
+import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
@@ -43,8 +44,8 @@ public class Spell extends Options {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "wizard_id")
-    private Wizard wizard;
+    @JoinColumn(name = "magicalBeing_id")
+    private MagicalBeing magicalBeing;
 
 
 
@@ -62,7 +63,7 @@ public class Spell extends Options {
      * @param fiendfyre indicates whether the spell casts a Fiendfyre
      * @param antiFiendfyre indicates whether a spell stops a Fiendfyre
      * @param requiredExperience some spells can only be used after a wizard acquired a certain amount of experience
-     * @param wizard indicates to which wizard this spell belongs
+     * @param magicalBeing indicates to which magical being this spell belongs
      * @param description description about the effects of the spell
      */
 
@@ -79,7 +80,7 @@ public class Spell extends Options {
             Boolean fiendfyre,
             Boolean antiFiendfyre,
             Integer requiredExperience,
-            Wizard wizard,
+            MagicalBeing magicalBeing,
             String description) {
 
         super(name, maxDamage, description, requiredExperience, healing);
@@ -91,7 +92,7 @@ public class Spell extends Options {
         this.protego = protego;
         this.fiendfyre = fiendfyre;
         this.antiFiendfyre = antiFiendfyre;
-        this.wizard = wizard;
+        this.magicalBeing = magicalBeing;
     }
 
 

@@ -79,7 +79,7 @@ Weitere Ideen:
 	Training
 	Login
 	Weitere Kreaturen
-	
+	Schachspiel einbauen
 
 
 

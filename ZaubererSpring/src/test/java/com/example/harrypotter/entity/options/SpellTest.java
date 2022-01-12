@@ -12,7 +12,21 @@ public class SpellTest {
     @Test
     public void testSpell(){
         Dumbledore test = new Dumbledore("TestW", BigDecimal.valueOf(4), "Neutral");
-        Spell spell = new Spell("testSpell", 2.0, 2.0, 0.9, false, false, false, false, false, false, false, 2, test, "Powerful");
+        Spell spell = new Spell(
+                "testSpell",
+                2.0,
+                2.0,
+                0.9,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                2,
+                test,
+                "Powerful");
         assertNotNull(spell);
         assertEquals("testSpell", spell.getName());
         assertEquals(BigDecimal.valueOf(2.0), spell.getMaxDamage());
@@ -28,7 +42,7 @@ public class SpellTest {
         assertFalse(spell.getProtego());
         assertFalse(spell.getFiendfyre());
         assertFalse(spell.getAntiFiendfyre());
-        assertEquals(test, spell.getWizard());
+        assertEquals(test, spell.getMagicalBeing());
 
     }
 }

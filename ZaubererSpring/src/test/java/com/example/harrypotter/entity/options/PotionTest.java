@@ -13,7 +13,20 @@ public class PotionTest {
     @Test
     public void testPotion(){
         Dumbledore test = new Dumbledore("TestW", BigDecimal.valueOf(4), "Neutral");
-        Potion potion = new Potion("testPotion", 2, 0.5 , 0.3, false, false, false, false, 2.0, 1.5, 3, test, "Rare");
+        Potion potion = new Potion(
+                "testPotion",
+                2,
+                0.5 ,
+                0.3,
+                false,
+                false,
+                false,
+                false,
+                2.0,
+                1.5,
+                3,
+                test,
+                "Rare");
 
         assertNotNull(potion);
         assertEquals("testPotion", potion.getName());
@@ -29,7 +42,7 @@ public class PotionTest {
         assertFalse(potion.getRegeneration());
         assertFalse(potion.getUnicornBlood());
         assertEquals(BigDecimal.valueOf(1.5), potion.getAdditionalFactor());
-        assertEquals(test, potion.getWizard());
+        assertEquals(test, potion.getMagicalBeing());
 
     }
 

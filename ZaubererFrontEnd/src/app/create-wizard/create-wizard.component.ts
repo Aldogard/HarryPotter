@@ -9,8 +9,10 @@ import { ExtraService } from '../extra.service';
   styleUrls: ['./create-wizard.component.css'],
 })
 export class CreateWizardComponent implements OnInit {
+  being = this.extraService.being;
   wizardType = this.extraService.wizardType;
   createWizardNr = new FormControl('Headmaster', [Validators.required]);
+  createBeing = new FormControl('Wizard', [Validators.required]);
   show: boolean = false;
 
   constructor(
@@ -39,11 +41,22 @@ export class CreateWizardComponent implements OnInit {
 
   submit() {
     this.show = false;
+    if(this.createBeing.value === 'Wizard'){
     this.hpService
       .postWizard(this.wizardForm.value, this.createWizardNr.value)
       .subscribe((a) => {
         this.show = true;
         this.extraService.redirectToWithTimeout('overview');
       });
+    } else if(this.createBeing.value === 'Giant'){
+      this.hpService
+        .postGiant(this.wizardForm.value)
+        .subscribe((a) => {
+          this.show = true;
+          this.extraService.redirectToWithTimeout('overview');
+        });
+      }
   }
+
+ 
 }

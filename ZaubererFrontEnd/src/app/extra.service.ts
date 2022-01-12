@@ -5,6 +5,12 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class ExtraService {
+
+  being: string[] = [
+    'Wizard',
+    'Giant'
+  ]
+
   wizardType: string[] = [
     'Headmaster',
     'Voldemort',

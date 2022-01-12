@@ -551,9 +551,9 @@ export class BattleComponent implements OnInit {
       }
     });
     if (indicator === true) {
-      return 'Strong';
+      return 'Strength';
     } else if (indicator === false) {
-      return 'Weak';
+      return 'Weakness';
     } else {
       return 'None';
     }

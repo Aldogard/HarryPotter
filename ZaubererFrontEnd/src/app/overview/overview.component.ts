@@ -12,6 +12,7 @@ import { ExtraService } from '../extra.service';
 })
 export class OverviewComponent implements OnInit {
   wizards: HpWizard[] = [];
+  magicalBeings: HpWizard[] = [];
   results: HpWizard[] = [];
   showAll = new BehaviorSubject<boolean>(true);
   showFilter = new BehaviorSubject<boolean>(true);

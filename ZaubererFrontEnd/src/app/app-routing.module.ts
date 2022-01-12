@@ -19,6 +19,8 @@ import { RanksComponent } from './ranks/ranks.component';
 import { OverviewAnimalComponent } from './overview-animal/overview-animal.component';
 import { DetailsAnimalComponent } from './details-animal/details-animal.component';
 import { CompareComponent } from './compare/compare.component';
+import { ChessComponent } from './chess/chess.component';
+import { TrainingComponent } from './training/training.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -44,6 +46,8 @@ const routes: Routes = [
   { path: 'ranks', component: RanksComponent},
   { path: 'animals', component: OverviewAnimalComponent},
   { path: 'compare', component: CompareComponent},
+  { path: 'chess', component: ChessComponent},
+  { path: 'training', component: TrainingComponent},
 
 ];
 

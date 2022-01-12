@@ -1,5 +1,6 @@
 package com.example.harrypotter.entity.options;
 
+import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
@@ -39,8 +40,8 @@ public class Potion extends Options{
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "wizard_id")
-    private Wizard wizard;
+    @JoinColumn(name = "magicalBeing_id")
+    private MagicalBeing magicalBeing;
 
 
 
@@ -57,7 +58,7 @@ public class Potion extends Options{
      * @param maxDamage maximum amount of damage this potion can inflict
      * @param additionalFactor some potions can increase the additional factor of a wizard
      * @param requiredExperience some potions can only be used after a wizard acquired a certain amount of experience
-     * @param wizard indicates to which wizard this potion belongs
+     * @param magicalBeing indicates to which magical being this potion belongs
      * @param description description about the effects of the potion
      */
 
@@ -73,7 +74,7 @@ public class Potion extends Options{
             Double maxDamage,
             Double additionalFactor,
             Integer requiredExperience,
-            Wizard wizard,
+            MagicalBeing magicalBeing,
             String description) {
 
         super(name, maxDamage, description, requiredExperience, healing);
@@ -84,7 +85,7 @@ public class Potion extends Options{
         this.regeneration = regeneration;
         this.unicornBlood = unicornBlood;
         this.additionalFactor = BigDecimal.valueOf(additionalFactor);
-        this.wizard = wizard;
+        this.magicalBeing = magicalBeing;
 
     }
 

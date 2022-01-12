@@ -3,9 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HpSpell } from './hp-spell';
 import { HpPotion } from './hp-potion';
-import { HpWizard } from './hp-wizard';
+import { HpMagicalBeing } from './hp-magical-being';
 import { HpAnimal } from './hp-animal';
+import { HpWizard } from './hp-wizard';
 const url: string = 'http://localhost:8080/wizard';
+const urlMb: string = 'http://localhost:8080/mb';
+const urlGiant: string = 'http://localhost:8080/giant';
 
 @Injectable({
   providedIn: 'root',
@@ -13,16 +16,20 @@ const url: string = 'http://localhost:8080/wizard';
 export class HarrypotterService {
   constructor(private http: HttpClient) {}
 
-  getWizards(): Observable<HpWizard[]> {
-    return this.http.get<HpWizard[]>(url);
+  getMagicalBeings(){
+    return this.http.get<HpMagicalBeing[]>(urlMb);
   }
 
-  getWizardById(id: number): Observable<HpWizard> {
+  getWizards() {
+    return this.http.get<HpWizard[]>(urlMb);
+  }
+
+  getWizardById(id: number) {
     const urlId: string = url + '/' + id;
     return this.http.get<HpWizard>(urlId);
   }
 
-  getWizardByName(name: string): Observable<HpWizard> {
+  getWizardByName(name: string) {
     const urlName: string = url + '/name/' + name;
     return this.http.get<HpWizard>(urlName);
   }
@@ -35,6 +42,10 @@ export class HarrypotterService {
     const urlWizard = url + '/' + stringLowercase;
     console.log(urlWizard);
     return this.http.post<HpWizard>(urlWizard, body);
+  }
+
+  postGiant(body:HpMagicalBeing){
+    return this.http.post<HpMagicalBeing>(urlGiant, body);
   }
 
   deleteWizard(id: number): Observable<unknown> {

@@ -26,7 +26,7 @@ public class Comments {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "mb_id")
+    @JoinColumn(name = "magicalBeing_id")
     private MagicalBeing magicalBeing;
 
 

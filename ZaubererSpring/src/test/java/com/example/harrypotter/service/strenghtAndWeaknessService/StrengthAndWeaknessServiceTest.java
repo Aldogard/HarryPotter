@@ -1,8 +1,8 @@
 package com.example.harrypotter.service.strenghtAndWeaknessService;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
-import com.example.harrypotter.repo.wizards.StrengthAndWeaknessRepo;
-import com.example.harrypotter.repo.wizards.WizardRepo;
+import com.example.harrypotter.repo.magicalbeings.wizards.StrengthAndWeaknessRepo;
+import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import com.example.harrypotter.service.options.UtilOptions;
 import com.example.harrypotter.service.strengthAndWeaknessService.StrengthAndWeaknessService;
 import org.junit.jupiter.api.AfterEach;

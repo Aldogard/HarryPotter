@@ -1,9 +1,9 @@
-import { HpSpell } from "./hp-spell";
+import { HpAnimal } from "./hp-animal";
 import { HpComment } from "./hp-comment";
 import { HpCondition } from "./hp-condition";
 import { HpPotion } from "./hp-potion";
-import { HpAnimal } from "./hp-animal";
 import { HpSaw } from "./hp-saw";
+import { HpSpell } from "./hp-spell";
 
 export interface HpWizard {
     id: number,
@@ -11,6 +11,7 @@ export interface HpWizard {
     healthPoints: number,
     faktor: number,
     energy: number,
+    species: string,
     stunnedProtection: number,
     confundedProtection: number,
     protego: boolean,

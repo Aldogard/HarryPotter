@@ -3,7 +3,7 @@ package com.example.harrypotter.service.options;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 import com.example.harrypotter.repo.options.AnimalRepo;
-import com.example.harrypotter.repo.wizards.WizardRepo;
+import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

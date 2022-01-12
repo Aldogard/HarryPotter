@@ -23,7 +23,7 @@ public class Condition {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "wizard_id")
+    @JoinColumn(name = "magicalBeing_id")
     private MagicalBeing magicalBeing;
 
     /**

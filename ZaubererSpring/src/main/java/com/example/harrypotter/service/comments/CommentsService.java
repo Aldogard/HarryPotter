@@ -1,8 +1,8 @@
 package com.example.harrypotter.service.comments;
 
 import com.example.harrypotter.entity.magicalbeings.Comments;
-import com.example.harrypotter.repo.wizards.CommentsRepo;
-import com.example.harrypotter.repo.wizards.WizardRepo;
+import com.example.harrypotter.repo.magicalbeings.CommentsRepo;
+import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
