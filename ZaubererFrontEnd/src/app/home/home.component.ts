@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HarrypotterService } from '../harrypotter.service';
+import { WizardService } from '../wizard.service';
 import { HpSpell } from '../hp-spell';
 import { HpPotion } from '../hp-potion';
 import { HpWizard } from '../hp-wizard';
+import { MagicalBeingService } from '../magical-being.service';
+import { HpMagicalBeing } from '../hp-magical-being';
 
 @Component({
   selector: 'app-home',
@@ -10,33 +12,33 @@ import { HpWizard } from '../hp-wizard';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  wizard?: HpWizard;
+  magicalBeing?: HpMagicalBeing;
   quote: string = '';
 
-  constructor(private hpService: HarrypotterService) {}
+  constructor(private mbService: MagicalBeingService) {}
 
   ngOnInit(): void {
-    this.getBestWizard();
+    this.getBestMagicalBeing();
     this.getQuote();
   }
 
-  getBestWizard() {
+  getBestMagicalBeing() {
     let max = 0;
     let maxVictories = 0;
-    this.hpService.getWizards().subscribe((arrayZ) => {
-      max = arrayZ[0].id;
-      arrayZ.forEach((zauberer) => {
-        if (zauberer.victories > maxVictories) {
-          maxVictories = zauberer.victories;
-          max = zauberer.id;
+    this.mbService.getMagicalBeings().subscribe((arrayMb) => {
+      max = arrayMb[0].id;
+      arrayMb.forEach((mb) => {
+        if (mb.victories > maxVictories) {
+          maxVictories = mb.victories;
+          max = mb.id;
         }
       });
-      this.hpService.getWizardById(max).subscribe((w) => (this.wizard = w));
+      this.mbService.getMagicalBeingById(max).subscribe((w) => (this.magicalBeing = w));
     });
   }
 
   getQuote() {
-    this.hpService.getQuote().subscribe((q) => {
+    this.mbService.getQuote().subscribe((q) => {
       this.quote = q;
     });
   }

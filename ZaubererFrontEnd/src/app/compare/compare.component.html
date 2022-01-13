@@ -1,5 +1,5 @@
 <div class="header gold pt-lg-3 sticky-top">
-  <h1 class="headercompare headertext">Compare two wizards</h1>
+  <h1 class="headercompare headertext">Compare two Wizards</h1>
 </div>
 
 <div class="container mt-5">
@@ -10,13 +10,13 @@
         <th>
           <select
             class="formButton"
-            id="wizardUpdateA"
-            (change)="getWizardAByName()"
+            id="magicalBeingUpdateA"
+            (change)="getMagicalBeingAByName()"
           >
             <option
               class="options"
               value="{{ z.id }}"
-              *ngFor="let z of wizards"
+              *ngFor="let z of magicalBeings"
             >
               {{ z.name }}
             </option>
@@ -32,10 +32,10 @@
           <div class="buttonB">
             <select
               class="formButton"
-              id="wizardUpdateB"
-              (change)="getWizardBByName()"
+              id="magicalBeingUpdateB"
+              (change)="getMagicalBeingBByName()"
             >
-              <option value="{{ z.id }}" *ngFor="let z of wizards">
+              <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
                 {{ z.name }}
               </option>
             </select>
@@ -56,65 +56,65 @@
       <tr>
         <td>Healthpoints</td>
         <td>
-          <div *ngIf="wizardChoiceA !== undefined && show1.value">
-            {{ wizardChoiceA.healthPoints }}
+          <div *ngIf="magicalBeingChoiceA !== undefined && show1.value">
+            {{ magicalBeingChoiceA.healthPoints }}
           </div>
         </td>
         <td>
-          <div *ngIf="wizardChoiceB !== undefined && show2.value">
-            {{ wizardChoiceB.healthPoints }}
+          <div *ngIf="magicalBeingChoiceB !== undefined && show2.value">
+            {{ magicalBeingChoiceB.healthPoints }}
           </div>
         </td>
       </tr>
       <tr>
         <td>Faktor</td>
         <td>
-          <div *ngIf="wizardChoiceA !== undefined && show1.value">
-            {{ wizardChoiceA.faktor }}
+          <div *ngIf="magicalBeingChoiceA !== undefined && show1.value">
+            {{ magicalBeingChoiceA.faktor }}
           </div>
         </td>
         <td>
-          <div *ngIf="wizardChoiceB !== undefined && show2.value">
-            {{ wizardChoiceB.faktor }}
+          <div *ngIf="magicalBeingChoiceB !== undefined && show2.value">
+            {{ magicalBeingChoiceB.faktor }}
           </div>
         </td>
       </tr>
       <tr>
         <td>Energy</td>
         <td>
-          <div *ngIf="wizardChoiceA !== undefined && show1.value">
-            {{ wizardChoiceA.energy }}
+          <div *ngIf="magicalBeingChoiceA !== undefined && show1.value">
+            {{ magicalBeingChoiceA.energy }}
           </div>
         </td>
         <td>
-          <div *ngIf="wizardChoiceB !== undefined && show2.value">
-            {{ wizardChoiceB.energy }}
+          <div *ngIf="magicalBeingChoiceB !== undefined && show2.value">
+            {{ magicalBeingChoiceB.energy }}
           </div>
         </td>
       </tr>
       <tr>
         <td>Victories</td>
         <td>
-          <div *ngIf="wizardChoiceA !== undefined && show1.value">
-            {{ wizardChoiceA.victories }}
+          <div *ngIf="magicalBeingChoiceA !== undefined && show1.value">
+            {{ magicalBeingChoiceA.victories }}
           </div>
         </td>
         <td>
-          <div *ngIf="wizardChoiceB !== undefined && show2.value">
-            {{ wizardChoiceB.victories }}
+          <div *ngIf="magicalBeingChoiceB !== undefined && show2.value">
+            {{ magicalBeingChoiceB.victories }}
           </div>
         </td>
       </tr>
       <tr>
         <td>Rank</td>
         <td>
-          <div *ngIf="wizardChoiceA !== undefined && show1.value">
-            <a (click)="gotoRanks()" class="link"> {{ wizardChoiceA.rank }}</a>
+          <div *ngIf="magicalBeingChoiceA !== undefined && show1.value">
+            <a (click)="gotoRanks()" class="link"> {{ magicalBeingChoiceA.rank }}</a>
           </div>
         </td>
         <td>
-          <div *ngIf="wizardChoiceB !== undefined && show2.value">
-            <a (click)="gotoRanks()" class="link"> {{ wizardChoiceB.rank }}</a>
+          <div *ngIf="magicalBeingChoiceB !== undefined && show2.value">
+            <a (click)="gotoRanks()" class="link"> {{ magicalBeingChoiceB.rank }}</a>
           </div>
         </td>
       </tr>
@@ -122,26 +122,26 @@
       <tr>
         <td>Class</td>
         <td>
-          <div *ngIf="wizardChoiceA !== undefined && show1.value">
-            {{ wizardChoiceA.klasse }}
+          <div *ngIf="magicalBeingChoiceA !== undefined && show1.value">
+            {{ magicalBeingChoiceA.klasse }}
           </div>
         </td>
         <td>
-          <div *ngIf="wizardChoiceB !== undefined && show2.value">
-            {{ wizardChoiceB.klasse }}
+          <div *ngIf="magicalBeingChoiceB !== undefined && show2.value">
+            {{ magicalBeingChoiceB.klasse }}
           </div>
         </td>
       </tr>
       <tr>
         <td>Rating</td>
         <td>
-          <div *ngIf="wizardChoiceA !== undefined && show1.value">
-            {{ wizardChoiceA.rating }} ({{ wizardChoiceA.amount }} Ratings)
+          <div *ngIf="magicalBeingChoiceA !== undefined && show1.value">
+            {{ magicalBeingChoiceA.rating }} ({{ magicalBeingChoiceA.amount }} Ratings)
           </div>
         </td>
         <td>
-          <div *ngIf="wizardChoiceB !== undefined && show2.value">
-            {{ wizardChoiceB.rating }} ({{ wizardChoiceB.amount }} Ratings)
+          <div *ngIf="magicalBeingChoiceB !== undefined && show2.value">
+            {{ magicalBeingChoiceB.rating }} ({{ magicalBeingChoiceB.amount }} Ratings)
           </div>
         </td>
       </tr>

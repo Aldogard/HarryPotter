@@ -144,6 +144,10 @@ public abstract class MagicalBeing {
     @OneToMany(mappedBy = "magicalBeing", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Animal> animals;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "magicalBeing", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<StrengthAndWeakness> strengthAndWeaknesses;
+
 
     public MagicalBeing(String name, BigDecimal healthPoints, String description, String species) {
         this.name = name;

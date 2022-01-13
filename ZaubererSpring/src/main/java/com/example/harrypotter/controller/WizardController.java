@@ -43,39 +43,9 @@ public class WizardController {
         return wizardService.getAllWizards(name, klasse);
     }
 
-
-    @GetMapping("/hp")
-    @ResponseBody
-    public ResponseEntity<List<Wizard>> getAllByHealthPoints(@RequestParam(required = false) Double min, @RequestParam(required = false) Double max) {
-        return wizardService.getAllWizardsHp(min, max);
-    }
-
-    @GetMapping("/victory")
-    @ResponseBody
-    public ResponseEntity<List<Wizard>> getAllByVictory(@RequestParam(required = false) Integer victories) {
-        return wizardService.getAllWizardsVictories(victories);
-    }
-
-
     @GetMapping("/{id}")
     public ResponseEntity<Wizard> getWizardById(@PathVariable Integer id) {
         return wizardService.getWizardById(id);
-    }
-
-    @GetMapping("/name/{name}")
-    public ResponseEntity<Wizard> getWizardByName(@PathVariable String name) {
-        for (Wizard zauberer : wizardRepo.findAll()) {
-            if (zauberer.getName().equals(name)) {
-                return new ResponseEntity<>(wizardRepo.findById(zauberer.getId()).orElse(null), HttpStatus.OK);
-            }
-        }
-
-        return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-    }
-
-    @GetMapping("/voldemort")
-    public ResponseEntity<Wizard> getVoldemort(){
-        return wizardService.getVoldemort("Voldemort");
     }
 
 
@@ -133,48 +103,5 @@ public class WizardController {
     public ResponseEntity<Wizard> createPotionsMaster(@RequestBody @Validated PotionsMaster potionsMaster){
         return potionsMasterService.createPotionsMaster(potionsMaster);
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Wizard> updateWizard(@RequestBody @Validated Headmaster wizard, @PathVariable int id) {
-       return wizardService.updateWizard(wizard, id);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteWizard(@PathVariable Integer id) {
-       return wizardService.deleteWizard(id);
-    }
-
-    @DeleteMapping("/deleteall")
-    public ResponseEntity<Void> deleteAllWizards() {
-        wizardRepo.deleteAll(wizardRepo.findAll());
-        if (wizardRepo.findAll().size() == 0) {
-            return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
-        }
-    }
-
-
-    @GetMapping("/pin")
-    public ResponseEntity<Integer> getNumber() {
-        return new ResponseEntity<>(394, HttpStatus.OK);
-    }
-
-    @GetMapping("/quote")
-    public ResponseEntity<String> getQuote() {
-        String quote = wizardService.quote();
-        return new ResponseEntity<>(quote, HttpStatus.OK);
-    }
-
-    @PutMapping("/rating/{id}")
-    public ResponseEntity<Wizard> updateRating(@RequestBody @Validated Headmaster wizard, @PathVariable int id) {
-        return wizardService.updateRating(wizard, id);
-    }
-
-    @PutMapping("/victory")
-    public ResponseEntity<Wizard> updateVictories(@RequestBody @Validated Headmaster wizard){
-        return wizardService.updateVictories(wizard);
-    }
-
 
 }

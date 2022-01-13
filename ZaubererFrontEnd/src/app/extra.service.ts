@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 })
 export class ExtraService {
 
-  being: string[] = [
+  beingType: string[] = [
     'Wizard',
     'Giant'
   ]

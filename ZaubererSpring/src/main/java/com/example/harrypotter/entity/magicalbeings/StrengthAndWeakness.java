@@ -1,6 +1,7 @@
-package com.example.harrypotter.entity.magicalbeings.wizards;
+package com.example.harrypotter.entity.magicalbeings;
 
 
+import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
@@ -22,8 +23,8 @@ public class StrengthAndWeakness {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "wizard_id")
-    private Wizard wizard;
+    @JoinColumn(name = "magicalBeing_id")
+    private MagicalBeing magicalBeing;
 
     /**
      * Each class has certain classes against which it is especially strong or weak.
@@ -31,13 +32,13 @@ public class StrengthAndWeakness {
      * @param house name of the class
      * @param strength indicates whether this class does well or bad against the other class.
      *                 True indicates strength, false weakness.
-     * @param wizard indicates to which wizard the strengths and weaknesses belong.
+     * @param magicalBeings indicates to which wizard the strengths and weaknesses belong.
      */
 
-    public StrengthAndWeakness(String house, Boolean strength, Wizard wizard){
+    public StrengthAndWeakness(String house, Boolean strength, Wizard magicalBeings){
         this.house = house;
         this.strength = strength;
-        this.wizard = wizard;
+        this.magicalBeing = magicalBeings;
     }
 
     public StrengthAndWeakness() {

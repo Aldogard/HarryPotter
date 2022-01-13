@@ -11,9 +11,9 @@
           <select
             class="formButton"
             id="wizardUpdate"
-            (change)="getWizardByName()"
+            (change)="getMagicalBeingByName()"
           >
-            <option value="{{ w.id }}" *ngFor="let w of wizards">
+            <option value="{{ w.id }}" *ngFor="let w of magicalBeings">
               {{ w.name }}
             </option>
           </select>
@@ -25,8 +25,8 @@
 
           <button
             class="formButton"
-            (click)="deleteZaubererById()"
-            [disabled]="wizards.length < 6"
+            (click)="deleteMagicalBeingById()"
+            [disabled]="magicalBeings.length < 6"
           >
             Confirm
           </button>
@@ -38,8 +38,8 @@
             5 wizards!
           </p>
           <p>
-            Currently there are {{ wizards.length }} wizards.
-            <a *ngIf="wizards.length <= 5"> Deleting is not available.</a>
+            Currently there are {{ magicalBeings.length }} wizards.
+            <a *ngIf="magicalBeings.length <= 5"> Deleting is not available.</a>
           </p>
           <p *ngIf="show">Der Zauberer wurde gelöscht</p>
         </div>

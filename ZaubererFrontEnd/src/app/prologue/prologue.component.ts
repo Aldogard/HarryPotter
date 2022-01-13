@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { HarrypotterService } from '../harrypotter.service';
 import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
 import { ExtraService } from '../extra.service';
+import { HpMagicalBeing } from '../hp-magical-being';
+import { MagicalBeingService } from '../magical-being.service';
 
 @Component({
   selector: 'app-fight',
@@ -12,15 +13,15 @@ import { ExtraService } from '../extra.service';
   styleUrls: ['./prologue.component.css'],
 })
 export class PrologueComponent implements OnInit {
-  zauberer: HpWizard[] = [];
+  magicalBeings: HpMagicalBeing[] = [];
 
-  wizardChoiceA?: HpWizard;
+  magicalBeingChoiceA?: HpMagicalBeing;
   choiceA = new FormControl('');
-  wizardChoiceB?: HpWizard;
+  magicalBeingChoiceB?: HpMagicalBeing;
   choiceB = new FormControl('');
-  wizardChoiceC?: HpWizard;
+  magicalBeingChoiceC?: HpMagicalBeing;
   choiceC = new FormControl('');
-  wizardChoiceD?: HpWizard;
+  magicalBeingChoiceD?: HpMagicalBeing;
   choiceD = new FormControl('');
   show2 = new BehaviorSubject<boolean>(false);
   show3 = new BehaviorSubject<boolean>(false);
@@ -36,7 +37,7 @@ export class PrologueComponent implements OnInit {
   battleSize = this.extraService.battleSize;
 
   constructor(
-    private hpService: HarrypotterService,
+    private mbService: MagicalBeingService,
     private extraService: ExtraService,
     private ms: MessageService
   ) {}
@@ -47,94 +48,94 @@ export class PrologueComponent implements OnInit {
         Math.floor(Math.random() * this.extraService.environment.length)
       ];
     this.ms.sendEnvironment(this.environment);
-    this.hpService.getWizards().subscribe((wizards) => {
-      this.zauberer = wizards;
+    this.mbService.getMagicalBeings().subscribe((mb) => {
+      this.magicalBeings = mb;
       // this.choiceA = new FormControl(wizards[0].id);
       // this.choiceB = new FormControl(wizards[0].id);
       // this.choiceC = new FormControl(wizards[0].id);
       // this.choiceD = new FormControl(wizards[0].id);
-      this.wizardChoiceA = wizards[0];
-      this.wizardChoiceB = wizards[0];
-      this.wizardChoiceC = wizards[0];
-      this.wizardChoiceD = wizards[0];
+      this.magicalBeingChoiceA = mb[0];
+      this.magicalBeingChoiceB = mb[0];
+      this.magicalBeingChoiceC = mb[0];
+      this.magicalBeingChoiceD = mb[0];
     });
   }
 
 
-  getWizardAByName() {
+  getMagicalBeingAByName() {
     let id = (<HTMLInputElement>document.getElementById('wizardUpdateA'))
       .value as unknown as number;
 
     if (!id) {
-      id = this.zauberer[0].id;
+      id = this.magicalBeings[0].id;
     }
 
     this.choiceA = new FormControl(id);
-    this.getWizardAById();
+    this.getMagicalBeingAById();
   }
 
-  getWizardAById() {
-    this.hpService.getWizardById(this.choiceA.value).subscribe((wizard) => {
-      this.wizardChoiceA = wizard;
+  getMagicalBeingAById() {
+    this.mbService.getMagicalBeingById(this.choiceA.value).subscribe((wizard) => {
+      this.magicalBeingChoiceA = wizard;
       this.show2.next(true);
     });
   }
 
-  getWizardBByName() {
+  getMagicalBeingBByName() {
     let id = (<HTMLInputElement>document.getElementById('wizardUpdateB'))
       .value as unknown as number;
 
     if (!id) {
-      id = this.zauberer[1].id;
+      id = this.magicalBeings[1].id;
     }
 
     this.choiceB = new FormControl(id);
-    this.getWizardBById();
+    this.getMagicalBeingBById();
   }
 
-  getWizardBById() {
-    this.hpService.getWizardById(this.choiceB.value).subscribe((wizard) => {
-      this.wizardChoiceB = wizard;
+  getMagicalBeingBById() {
+    this.mbService.getMagicalBeingById(this.choiceB.value).subscribe((wizard) => {
+      this.magicalBeingChoiceB = wizard;
       this.show2.next(true);
 
     });
   }
 
-  getWizardCByName() {
+  getMagicalBeingCByName() {
     let id = (<HTMLInputElement>document.getElementById('wizardUpdateC'))
       .value as unknown as number;
 
     if (!id) {
-      id = this.zauberer[2].id;
+      id = this.magicalBeings[2].id;
     }
 
     this.choiceC = new FormControl(id);
-    this.getWizardCById();
+    this.getMagicalBeingCById();
   }
 
-  getWizardCById() {
-    this.hpService.getWizardById(this.choiceC.value).subscribe((wizard) => {
-      this.wizardChoiceC = wizard;
+  getMagicalBeingCById() {
+    this.mbService.getMagicalBeingById(this.choiceC.value).subscribe((wizard) => {
+      this.magicalBeingChoiceC = wizard;
       this.show3.next(true);
 
     });
   }
 
-  getWizardDByName() {
+  getMagicalBeingDByName() {
     let id = (<HTMLInputElement>document.getElementById('wizardUpdateD'))
       .value as unknown as number;
 
     if (!id) {
-      id = this.zauberer[3].id;
+      id = this.magicalBeings[3].id;
     }
 
     this.choiceD = new FormControl(id);
-    this.getWizardDById();
+    this.getMagicalBeingDById();
   }
 
-  getWizardDById() {
-    this.hpService.getWizardById(this.choiceD.value).subscribe((wizard) => {
-      this.wizardChoiceD = wizard;
+  getMagicalBeingDById() {
+    this.mbService.getMagicalBeingById(this.choiceD.value).subscribe((wizard) => {
+      this.magicalBeingChoiceD = wizard;
       this.show4.next(true);
 
     });
@@ -142,12 +143,12 @@ export class PrologueComponent implements OnInit {
   send2() {
     let participants = [];
     if (
-      this.wizardChoiceA !== undefined &&
-      this.wizardChoiceB !== undefined
+      this.magicalBeingChoiceA !== undefined &&
+      this.magicalBeingChoiceB !== undefined
     ) {
-      participants.push(this.wizardChoiceA);
-      if (this.wizardChoiceB.id !== this.wizardChoiceA.id) {
-        participants.push(this.wizardChoiceB);
+      participants.push(this.magicalBeingChoiceA);
+      if (this.magicalBeingChoiceB.id !== this.magicalBeingChoiceA.id) {
+        participants.push(this.magicalBeingChoiceB);
       }
     }
     if (participants.length !== 2) {
@@ -160,19 +161,19 @@ export class PrologueComponent implements OnInit {
   send3() {
     let participants = [];
     if (
-      this.wizardChoiceA !== undefined &&
-      this.wizardChoiceB !== undefined &&
-      this.wizardChoiceC !== undefined
+      this.magicalBeingChoiceA !== undefined &&
+      this.magicalBeingChoiceB !== undefined &&
+      this.magicalBeingChoiceC !== undefined
     ) {
-      participants.push(this.wizardChoiceA);
-      if (this.wizardChoiceB.id !== this.wizardChoiceA.id) {
-        participants.push(this.wizardChoiceB);
+      participants.push(this.magicalBeingChoiceA);
+      if (this.magicalBeingChoiceB.id !== this.magicalBeingChoiceA.id) {
+        participants.push(this.magicalBeingChoiceB);
       }
       if (
-        this.wizardChoiceC.id !== this.wizardChoiceA.id &&
-        this.wizardChoiceC.id !== this.wizardChoiceB.id
+        this.magicalBeingChoiceC.id !== this.magicalBeingChoiceA.id &&
+        this.magicalBeingChoiceC.id !== this.magicalBeingChoiceB.id
       ) {
-        participants.push(this.wizardChoiceC);
+        participants.push(this.magicalBeingChoiceC);
       }
     }
 
@@ -186,27 +187,27 @@ export class PrologueComponent implements OnInit {
   send4() {
     let participants = [];
     if (
-      this.wizardChoiceA !== undefined &&
-      this.wizardChoiceB !== undefined &&
-      this.wizardChoiceC !== undefined &&
-      this.wizardChoiceD !== undefined
+      this.magicalBeingChoiceA !== undefined &&
+      this.magicalBeingChoiceB !== undefined &&
+      this.magicalBeingChoiceC !== undefined &&
+      this.magicalBeingChoiceD !== undefined
     ) {
-      participants.push(this.wizardChoiceA);
-      if (this.wizardChoiceB.id !== this.wizardChoiceA.id) {
-        participants.push(this.wizardChoiceB);
+      participants.push(this.magicalBeingChoiceA);
+      if (this.magicalBeingChoiceB.id !== this.magicalBeingChoiceA.id) {
+        participants.push(this.magicalBeingChoiceB);
       }
       if (
-        this.wizardChoiceC.id !== this.wizardChoiceA.id &&
-        this.wizardChoiceC.id !== this.wizardChoiceB.id
+        this.magicalBeingChoiceC.id !== this.magicalBeingChoiceA.id &&
+        this.magicalBeingChoiceC.id !== this.magicalBeingChoiceB.id
       ) {
-        participants.push(this.wizardChoiceC);
+        participants.push(this.magicalBeingChoiceC);
       }
       if (
-        this.wizardChoiceD.id !== this.wizardChoiceA.id &&
-        this.wizardChoiceD.id !== this.wizardChoiceB.id &&
-        this.wizardChoiceD.id !== this.wizardChoiceC.id
+        this.magicalBeingChoiceD.id !== this.magicalBeingChoiceA.id &&
+        this.magicalBeingChoiceD.id !== this.magicalBeingChoiceB.id &&
+        this.magicalBeingChoiceD.id !== this.magicalBeingChoiceC.id
       ) {
-        participants.push(this.wizardChoiceD);
+        participants.push(this.magicalBeingChoiceD);
       }
     }
 

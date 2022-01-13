@@ -10,32 +10,32 @@
         <select
           class="formButton"
           id="wizardUpdate"
-          (change)="getWizardByName()"
+          (change)="getMagicalBeingByName()"
         >
-          <option value="{{ z.id }}" *ngFor="let z of wizards">
+          <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
             {{ z.name }}
           </option>
         </select>
         <form #hpForm="ngForm" (ngSubmit)="update(hpForm)">
-          <div *ngIf="wizardChoice !== undefined">
+          <div *ngIf="magicalBeingChoice !== undefined">
             <label for="name"></label>
             <input
               class="formFelder"
               id="name"
               type="text"
-              [(ngModel)]="wizardChoice.name"
+              [(ngModel)]="magicalBeingChoice.name"
               placeholder="Name"
               name="name"
               required
             />
           </div>
-          <div *ngIf="wizardChoice !== undefined">
+          <div *ngIf="magicalBeingChoice !== undefined">
             <label for="hp"></label>
             <input
               class="formFelder"
               id="hp"
               type="number"
-              [(ngModel)]="wizardChoice.healthPoints"
+              [(ngModel)]="magicalBeingChoice.healthPoints"
               placeholder="Healthpoints"
               name="healthPoints"
               required
@@ -43,13 +43,13 @@
               max="100"
             />
           </div>
-          <div *ngIf="wizardChoice !== undefined">
+          <div *ngIf="magicalBeingChoice !== undefined">
             <label for="hp"></label>
             <input
               class="formFelder"
               id="hp"
               type="text"
-              [(ngModel)]="wizardChoice.description"
+              [(ngModel)]="magicalBeingChoice.description"
               placeholder="Description"
               name="description"
               required

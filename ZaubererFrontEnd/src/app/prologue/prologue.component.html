@@ -47,9 +47,9 @@
             <select
               class="formButton"
               id="wizardUpdateA"
-              (change)="getWizardAByName()"
+              (change)="getMagicalBeingAByName()"
             >
-              <option value="{{ z.id }}" *ngFor="let z of zauberer">
+              <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
                 {{ z.name }}
               </option>
             </select>
@@ -66,9 +66,9 @@
             <select
               class="formButton"
               id="wizardUpdateC"
-              (change)="getWizardCByName()"
+              (change)="getMagicalBeingCByName()"
             >
-              <option value="{{ z.id }}" *ngFor="let z of zauberer">
+              <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
                 {{ z.name }}
               </option>
             </select>
@@ -88,9 +88,9 @@
             <select
               class="formButton"
               id="wizardUpdateB"
-              (change)="getWizardBByName()"
+              (change)="getMagicalBeingBByName()"
             >
-              <option value="{{ z.id }}" *ngFor="let z of zauberer">
+              <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
                 {{ z.name }}
               </option>
             </select>
@@ -105,9 +105,9 @@
           <select
             class="formButton"
             id="wizardUpdateD"
-            (change)="getWizardDByName()"
+            (change)="getMagicalBeingDByName()"
           >
-            <option value="{{ z.id }}" *ngFor="let z of zauberer">
+            <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
               {{ z.name }}
             </option>
           </select>
@@ -119,16 +119,16 @@
   <div
     class="check"
     *ngIf="
-      wizardChoiceA !== undefined &&
-      wizardChoiceB !== undefined &&
+    magicalBeingChoiceA !== undefined &&
+    magicalBeingChoiceB !== undefined &&
       numberOfParticipants.value === '1'
     "
   >
     <br />
     <div class="gold">
       Do you want to start the battle with these Wizards:
-      <a>{{ wizardChoiceA.name }} and </a>
-      <a>{{ wizardChoiceB.name }}? </a>
+      <a>{{ magicalBeingChoiceA.name }} and </a>
+      <a>{{ magicalBeingChoiceB.name }}? </a>
     </div>
     <button
       class="formButton"
@@ -142,18 +142,18 @@
   <div
     class="check"
     *ngIf="
-      wizardChoiceA !== undefined &&
-      wizardChoiceB !== undefined &&
-      wizardChoiceC !== undefined &&
+    magicalBeingChoiceA !== undefined &&
+    magicalBeingChoiceB !== undefined &&
+    magicalBeingChoiceC !== undefined &&
       numberOfParticipants.value === '2'
     "
   >
     <br />
     <div class="gold">
       Do you want to start the battle with these Wizards:
-      <a>{{ wizardChoiceA.name }}, </a>
-      <a>{{ wizardChoiceB.name }} and </a>
-      <a>{{ wizardChoiceC.name }} </a>
+      <a>{{ magicalBeingChoiceA.name }}, </a>
+      <a>{{ magicalBeingChoiceB.name }} and </a>
+      <a>{{ magicalBeingChoiceC.name }} </a>
     </div>
     <button
       class="formButton"
@@ -167,20 +167,20 @@
   <div
     class="check"
     *ngIf="
-      wizardChoiceA !== undefined &&
-      wizardChoiceB !== undefined &&
-      wizardChoiceC !== undefined &&
-      wizardChoiceD !== undefined &&
+    magicalBeingChoiceA !== undefined &&
+    magicalBeingChoiceB !== undefined &&
+    magicalBeingChoiceC !== undefined &&
+    magicalBeingChoiceD !== undefined &&
       numberOfParticipants.value === '3'
     "
   >
     <br />
     <div class="gold">
       Do you want to start the battle with these Wizards:
-      <a>{{ wizardChoiceA.name }}, </a>
-      <a>{{ wizardChoiceB.name }}, </a>
-      <a>{{ wizardChoiceC.name }} and </a>
-      <a>{{ wizardChoiceD.name }} </a>
+      <a>{{ magicalBeingChoiceA.name }}, </a>
+      <a>{{ magicalBeingChoiceB.name }}, </a>
+      <a>{{ magicalBeingChoiceC.name }} and </a>
+      <a>{{ magicalBeingChoiceD.name }} </a>
     </div>
     <button
       class="formButton"

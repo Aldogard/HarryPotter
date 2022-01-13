@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ExtraService } from '../extra.service';
-import { HarrypotterService } from '../harrypotter.service';
+import { WizardService } from '../wizard.service';
 import { HpAnimal } from '../hp-animal';
+import { MagicalBeingService } from '../magical-being.service';
 
 @Component({
   selector: 'app-details-animal',
@@ -13,14 +14,14 @@ export class DetailsAnimalComponent implements OnInit {
   id: number = 0;
   animal?: HpAnimal;
   constructor(
-    private hpService: HarrypotterService,
+    private mbService: MagicalBeingService,
     private extraService: ExtraService,
     private ar: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.id = this.ar.snapshot.paramMap.get('id') as unknown as number;
-    this.hpService.getAnimalById(this.id).subscribe((a) => {
+    this.mbService.getAnimalById(this.id).subscribe((a) => {
       if (!a) {
         this.extraService.redirectTo('overview');
       } else {

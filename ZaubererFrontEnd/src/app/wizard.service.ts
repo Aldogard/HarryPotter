@@ -13,7 +13,7 @@ const urlGiant: string = 'http://localhost:8080/giant';
 @Injectable({
   providedIn: 'root',
 })
-export class HarrypotterService {
+export class WizardService {
   constructor(private http: HttpClient) {}
 
   getMagicalBeings(){
@@ -21,7 +21,7 @@ export class HarrypotterService {
   }
 
   getWizards() {
-    return this.http.get<HpWizard[]>(urlMb);
+    return this.http.get<HpWizard[]>(url);
   }
 
   getWizardById(id: number) {

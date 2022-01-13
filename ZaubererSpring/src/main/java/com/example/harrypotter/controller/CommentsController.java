@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/wizard")
+@RequestMapping("/mb")
 public class CommentsController {
 
     @Autowired

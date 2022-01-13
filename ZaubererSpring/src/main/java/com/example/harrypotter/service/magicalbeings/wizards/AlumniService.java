@@ -2,6 +2,7 @@ package com.example.harrypotter.service.magicalbeings.wizards;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import com.example.harrypotter.service.comments.ConditionService;
 import com.example.harrypotter.service.options.AnimalService;
@@ -24,6 +25,7 @@ public class AlumniService {
     private ConditionService conditionService;
     private StrengthAndWeaknessService sawService;
     private WizardService wizardService;
+    private MagicalBeingRepo magicalBeingRepo;
 
     public ResponseEntity<Wizard> createAlumni(Alumni alumni) {
         if (wizardService.checkName(alumni)) {
@@ -31,7 +33,7 @@ public class AlumniService {
         }
 
         Alumni a = new Alumni(alumni.getName(), alumni.getHealthPoints(), alumni.getDescription());
-        wizardRepo.save(a);
+        magicalBeingRepo.save(a);
         conditionService.addConditions(a);
 
         spellService.createExpelliarmus(a);

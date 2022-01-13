@@ -1,11 +1,5 @@
 package com.example.harrypotter.entity.magicalbeings.wizards;
 
-import com.example.harrypotter.entity.magicalbeings.Comments;
-import com.example.harrypotter.entity.magicalbeings.Condition;
-import com.example.harrypotter.entity.magicalbeings.wizards.Dumbledore;
-import com.example.harrypotter.entity.magicalbeings.wizards.StrengthAndWeakness;
-import com.example.harrypotter.entity.options.Potion;
-import com.example.harrypotter.entity.options.Spell;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

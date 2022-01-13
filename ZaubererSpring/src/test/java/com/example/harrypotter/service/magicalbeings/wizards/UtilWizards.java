@@ -2,7 +2,7 @@ package com.example.harrypotter.service.magicalbeings.wizards;
 
 import com.example.harrypotter.entity.options.Spell;
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
-import com.example.harrypotter.entity.magicalbeings.wizards.StrengthAndWeakness;
+import com.example.harrypotter.entity.magicalbeings.StrengthAndWeakness;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

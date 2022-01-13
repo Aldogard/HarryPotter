@@ -1,6 +1,6 @@
 package com.example.harrypotter.service.strengthAndWeaknessService;
 
-import com.example.harrypotter.entity.magicalbeings.wizards.StrengthAndWeakness;
+import com.example.harrypotter.entity.magicalbeings.StrengthAndWeakness;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.magicalbeings.wizards.StrengthAndWeaknessRepo;
 import lombok.AllArgsConstructor;

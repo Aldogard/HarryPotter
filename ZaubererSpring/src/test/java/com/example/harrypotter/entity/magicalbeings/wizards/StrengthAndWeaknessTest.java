@@ -1,7 +1,6 @@
 package com.example.harrypotter.entity.magicalbeings.wizards;
 
-import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
-import com.example.harrypotter.entity.magicalbeings.wizards.StrengthAndWeakness;
+import com.example.harrypotter.entity.magicalbeings.StrengthAndWeakness;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -17,6 +16,6 @@ public class StrengthAndWeaknessTest {
         assertNotNull(saw);
         assertEquals("Hufflepuff", saw.getHouse());
         assertTrue(saw.getStrength());
-        assertEquals(test, saw.getWizard());
+        assertEquals(test, saw.getMagicalBeing());
     }
 }

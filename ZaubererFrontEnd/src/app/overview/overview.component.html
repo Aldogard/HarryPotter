@@ -9,7 +9,7 @@
         <div class="goto" *ngIf="showFilter.value">
         <h2 class="headertext gold filter">Filter:</h2>
           <a *ngFor="let c of class">
-            <button class="formButton" (click)="getWizard(c)">{{ c }}</button>
+            <button class="formButton" (click)="getMagicalBeing(c)">{{ c }}</button>
           </a>
           <br />
           <br />
@@ -87,7 +87,7 @@
             <td></td>
           </tr>
           <tbody>
-            <tr *ngFor="let z of wizards">
+            <tr *ngFor="let z of magicalBeings">
               <td>{{ z.name }}</td>
               <td>{{ z.healthPoints }}</td>
               <td>{{ z.klasse }}</td>

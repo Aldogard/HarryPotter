@@ -10,11 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+
 @Service
 @AllArgsConstructor
 public class GiantService {
     private MagicalBeingService magicalBeingService;
-    private GiantRepo giantRepo;
     private MagicalBeingRepo magicalBeingRepo;
     private ConditionService conditionService;
 
@@ -27,9 +27,8 @@ public class GiantService {
         Giant giantNew = new Giant(
                 giant.getName(),
                 giant.getHealthPoints(),
-                giant.getDescription()) {
-        };
-        giantRepo.save(giantNew);
+                giant.getDescription());
+        magicalBeingRepo.save(giantNew);
         conditionService.addConditions(giantNew);
 
         return new ResponseEntity<>(giantNew, HttpStatus.OK);

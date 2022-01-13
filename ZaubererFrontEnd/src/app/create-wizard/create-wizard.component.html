@@ -31,7 +31,7 @@
         <tr>
           <td></td>
           <td> 
-            <form [formGroup]="wizardForm" (ngSubmit)="submit()">
+            <form [formGroup]="magicalBeingForm" (ngSubmit)="submit()">
             <div>
               <label for="name">
                 <input
@@ -49,7 +49,7 @@
         <tr>
           <td></td>
           <td>
-            <form [formGroup]="wizardForm" (ngSubmit)="submit()">
+            <form [formGroup]="magicalBeingForm" (ngSubmit)="submit()">
             <div>
               <label for="hp">
                 <input
@@ -67,7 +67,7 @@
         <tr>
           <td></td>
           <td>
-            <form [formGroup]="wizardForm" (ngSubmit)="submit()">
+            <form [formGroup]="magicalBeingForm" (ngSubmit)="submit()">
               <div>
                 <label for="hp">
                   <input
@@ -85,11 +85,11 @@
         <tr>
           <td></td>
           <td>
-            <form [formGroup]="wizardForm" (ngSubmit)="submit()">
+            <form [formGroup]="magicalBeingForm" (ngSubmit)="submit()">
               <button
               class="formButton"
               type="submit"
-              [disabled]="!wizardForm.valid || !createWizardNr.valid"
+              [disabled]="!magicalBeingForm.valid || !createWizardNr.valid"
             >
               Submit
             </button>

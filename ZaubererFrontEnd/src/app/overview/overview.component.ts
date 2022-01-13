@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { HarrypotterService } from '../harrypotter.service';
+import { WizardService } from '../wizard.service';
 import { HpWizard } from '../hp-wizard';
 import { ExtraService } from '../extra.service';
+import { HpMagicalBeing } from '../hp-magical-being';
+import { MagicalBeingService } from '../magical-being.service';
 
 @Component({
   selector: 'app-harrypotter',
@@ -11,8 +13,7 @@ import { ExtraService } from '../extra.service';
   styleUrls: ['./overview.component.css'],
 })
 export class OverviewComponent implements OnInit {
-  wizards: HpWizard[] = [];
-  magicalBeings: HpWizard[] = [];
+  magicalBeings: HpMagicalBeing[] = [];
   results: HpWizard[] = [];
   showAll = new BehaviorSubject<boolean>(true);
   showFilter = new BehaviorSubject<boolean>(true);
@@ -25,26 +26,26 @@ export class OverviewComponent implements OnInit {
   class: string[] = this.extraService.wizardType;
 
   constructor(
-    private hpService: HarrypotterService,
+    private mbService: MagicalBeingService,
     private extraService: ExtraService
   ) {}
 
   ngOnInit(): void {
-    this.getAllWizards();
+    this.getAllMagicalBeings();
   }
 
-  getAllWizards() {
-    this.hpService.getWizards().subscribe((element) => {
-      this.wizards = element;
+  getAllMagicalBeings() {
+    this.mbService.getMagicalBeings().subscribe((element) => {
+      this.magicalBeings = element;
       //this.mss.sendArray(this.zauberer);
     });
   }
 
-  getWizard(house: string) {
+  getMagicalBeing(house: string) {
     console.log(house);
-    this.hpService
-      .getWizardSearchKlasse(house)
-      .subscribe((x) => (this.wizards = x));
+    this.mbService
+      .getMagicalBeingSearchKlasse(house)
+      .subscribe((x) => (this.magicalBeings = x));
   }
 
   deleteFilter() {
@@ -52,64 +53,64 @@ export class OverviewComponent implements OnInit {
   }
 
   maxSearch(event: any) {
-    this.hpService
+    this.mbService
       .getHealthpointsMax(Math.round(this.max.value))
-      .subscribe((x) => (this.wizards = x));
+      .subscribe((x) => (this.magicalBeings = x));
   }
 
   minSearch(event: any) {
-    this.hpService
+    this.mbService
       .getHealthpointsMin(Math.round(this.min.value))
       .subscribe((x) => {
-        this.wizards = x;
+        this.magicalBeings = x;
       });
   }
 
   getSpellAmount(event: any) {
-    this.hpService.getWizards().subscribe((za) => {
+    this.mbService.getMagicalBeings().subscribe((za) => {
       let platzhalter = za;
-      this.wizards = [];
+      this.magicalBeings = [];
       platzhalter
         .filter(
           (element) =>
             element.spells.length === Math.round(this.spellAmount.value)
         )
-        .forEach((element) => this.wizards.push(element));
+        .forEach((element) => this.magicalBeings.push(element));
     });
   }
 
   getPotionAmount(event: any) {
-    this.hpService.getWizards().subscribe((za) => {
+    this.mbService.getMagicalBeings().subscribe((za) => {
       let platzhalter = za;
-      this.wizards = [];
+      this.magicalBeings = [];
       platzhalter
         .filter(
           (element) =>
             element.potions.length === Math.round(this.potionAmount.value)
         )
-        .forEach((element) => this.wizards.push(element));
+        .forEach((element) => this.magicalBeings.push(element));
     });
   }
 
   getAnimalAmount(event: any) {
-    this.hpService.getWizards().subscribe((za) => {
+    this.mbService.getMagicalBeings().subscribe((za) => {
       let platzhalter = za;
-      this.wizards = [];
+      this.magicalBeings = [];
       platzhalter
         .filter(
           (element) =>
             element.animals.length === Math.round(this.animalAmount.value)
         )
-        .forEach((element) => this.wizards.push(element));
+        .forEach((element) => this.magicalBeings.push(element));
     });
   }
 
   getMinVictories(event: any) {
     console.log(this.minVictories.value);
-    this.hpService
+    this.mbService
       .getVictoriesMin(Math.round(this.minVictories.value))
       .subscribe((x) => {
-        this.wizards = x;
+        this.magicalBeings = x;
       });
   }
 

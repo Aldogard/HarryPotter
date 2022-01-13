@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { ExtraService } from '../extra.service';
-import { HarrypotterService } from '../harrypotter.service';
+import { WizardService } from '../wizard.service';
 import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
+import { MagicalBeingService } from '../magical-being.service';
+import { HpMagicalBeing } from '../hp-magical-being';
 
 @Component({
   selector: 'app-details',
@@ -15,7 +17,7 @@ export class DetailsComponent implements OnInit {
   choiceA: FormControl = new FormControl(1);
   choiceRating: FormControl = new FormControl(1);
   stars: FormControl = new FormControl('', [Validators.required]);
-  getZaubererId: FormControl = new FormControl(1);
+  getMagicalBeingId: FormControl = new FormControl(1);
   numberOfRating: FormControl = new FormControl(0);
   show1 = new BehaviorSubject<boolean>(true);
 
@@ -29,13 +31,13 @@ export class DetailsComponent implements OnInit {
   idForComment: number = 0;
   idForRating: number = 0;
 
-  wizardChoiceA?: HpWizard;
+  magicalBeingChoiceA?: HpMagicalBeing;
   availableStars: number[] = [1, 2, 3, 4, 5];
-  wizards: HpWizard[] = [];
+  magicalBeings: HpMagicalBeing[] = [];
 
-  wizardMs?: HpWizard;
-  wizardsFirstPart: HpWizard[] = [];
-  wizardsSecondPart: HpWizard[] = [];
+  magicalBeingMs?: HpMagicalBeing;
+  magicalBeingsFirstPart: HpMagicalBeing[] = [];
+  magicalBeingsSecondPart: HpMagicalBeing[] = [];
 
   commentForm = this.fb.group({
     content: [
@@ -50,47 +52,47 @@ export class DetailsComponent implements OnInit {
   ratingForm = this.fb.group({});
 
   constructor(
-    private hpService: HarrypotterService,
+    private mbService: MagicalBeingService,
     private fb: FormBuilder,
     private ms: MessageService,
     private extraService: ExtraService,
   ) {}
 
   ngOnInit(): void {
-    this.hpService.getWizards().subscribe((element) => {
-      this.wizards = element;
-      this.wizardMs = this.ms.wizard;
-      this.ms.sendWizard(undefined);
-      this.getWizardAByName();
-      this.getWizardByNameComment();
-      this.getWizardByNameRating();
-      this.wizardChoiceA = this.wizards[0];
+    this.mbService.getMagicalBeings().subscribe((element) => {
+      this.magicalBeings = element;
+      this.magicalBeingMs = this.ms.magicalBeing;
+      this.ms.sendMagicalBeing(undefined);
+      this.getMagicalBeingAByName();
+      this.getMagicalBeingByNameComment();
+      this.getMagicalBeingByNameRating();
+      this.magicalBeingChoiceA = this.magicalBeings[0];
     });
   }
 
-  getWizardAByNameAndUndefined(){
-    this.wizardMs = undefined;
-    this.getWizardAByName();
+  getMagicalBeingAByNameAndUndefined(){
+    this.magicalBeingMs = undefined;
+    this.getMagicalBeingAByName();
   }
 
-  getWizardAByName() {
+  getMagicalBeingAByName() {
     let id = (<HTMLInputElement>document.getElementById('wizardUpdateA'))
       .value as unknown as number;
 
     if (!id) {
-      id = this.wizards[0].id;
+      id = this.magicalBeings[0].id;
     }
-    if(this.wizardMs !==undefined){
-      id = this.wizardMs.id;
+    if(this.magicalBeingMs !==undefined){
+      id = this.magicalBeingMs.id;
     } 
 
     this.choiceA = new FormControl(id);
-    this.getWizardAById();
+    this.getMagicalBeingAById();
   }
 
-  getWizardAById() {
-    this.hpService.getWizardById(this.choiceA.value).subscribe((zauberer) => {
-      this.wizardChoiceA = zauberer;
+  getMagicalBeingAById() {
+    this.mbService.getMagicalBeingById(this.choiceA.value).subscribe((mb) => {
+      this.magicalBeingChoiceA = mb;
       this.show1.next(true);
     });
   }
@@ -121,7 +123,7 @@ export class DetailsComponent implements OnInit {
 
 
   post() {
-    const response = this.hpService.postComment(
+    const response = this.mbService.postComment(
       this.commentForm.value,
       this.idForComment
     );
@@ -140,28 +142,28 @@ export class DetailsComponent implements OnInit {
     this.extraService.redirectTo('detail');
   }
 
-  getWizardByNameComment() {
+  getMagicalBeingByNameComment() {
     this.idForComment = (<HTMLInputElement>(
       document.getElementById('wizardComment')
     )).value as unknown as number;
 
     if (!this.idForComment) {
-      this.idForComment = this.wizards[0].id;
+      this.idForComment = this.magicalBeings[0].id;
     }
   }
 
-  getWizardByNameRating() {
+  getMagicalBeingByNameRating() {
     this.idForRating = (<HTMLInputElement>(
       document.getElementById('wizardIdRating')
     )).value as unknown as number;
     if (!this.idForRating) {
-      this.idForRating = this.wizards[0].id;
+      this.idForRating = this.magicalBeings[0].id;
     }
   }
 
   getRating() {
     let currentAmount: number = 0;
-    this.hpService.getWizardById(this.idForRating).subscribe((x) => {
+    this.mbService.getMagicalBeingById(this.idForRating).subscribe((x) => {
       currentAmount = x.amount + 1;
       this.numberOfRating = new FormControl(currentAmount);
       const newRating: number =
@@ -180,7 +182,7 @@ export class DetailsComponent implements OnInit {
   }
 
   passOnRating() {
-    const response = this.hpService.postRating(
+    const response = this.mbService.postRating(
       this.ratingForm.value,
       this.idForRating
     );

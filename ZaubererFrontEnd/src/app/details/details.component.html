@@ -14,13 +14,13 @@
                 <select
                   class="formButton"
                   id="wizardUpdateA"
-                  (change)="getWizardAByNameAndUndefined()"
+                  (change)="getMagicalBeingAByNameAndUndefined()"
                 >
                   <option
                     value="{{ z.id }}"
-                    *ngFor="let z of wizards"
+                    *ngFor="let z of magicalBeings"
                     [selected]="
-                      wizardMs !== undefined && wizardMs['id'] === z.id
+                    magicalBeingMs !== undefined && magicalBeingMs['id'] === z.id
                     "
                   >
                     {{ z.name }}
@@ -48,32 +48,32 @@
           <tr>
             <td></td>
           </tr>
-          <tbody *ngIf="wizardChoiceA !== undefined && show1.value">
+          <tbody *ngIf="magicalBeingChoiceA !== undefined && show1.value">
             <tr>
               <td>Healthpoints</td>
               <td>
-                {{ wizardChoiceA.healthPoints }}
+                {{ magicalBeingChoiceA.healthPoints }}
               </td>
               <td></td>
             </tr>
             <tr>
               <td>Faktor</td>
               <td>
-                {{ wizardChoiceA.faktor }}
+                {{ magicalBeingChoiceA.faktor }}
               </td>
               <td></td>
             </tr>
             <tr>
               <td>Energy</td>
               <td>
-                {{ wizardChoiceA.energy }}
+                {{ magicalBeingChoiceA.energy }}
               </td>
               <td></td>
             </tr>
             <tr>
               <td>Victories</td>
               <td>
-                {{ wizardChoiceA.victories }}
+                {{ magicalBeingChoiceA.victories }}
               </td>
               <td></td>
             </tr>
@@ -81,7 +81,7 @@
               <td>Rank</td>
               <td>
                 <a (click)="gotoRanks()" class="link">
-                  {{ wizardChoiceA.rank }}</a
+                  {{ magicalBeingChoiceA.rank }}</a
                 >
               </td>
               <td></td>
@@ -89,14 +89,14 @@
             <tr>
               <td>Class</td>
               <td>
-                {{ wizardChoiceA.klasse }}
+                {{ magicalBeingChoiceA.klasse }}
               </td>
               <td></td>
             </tr>
             <tr>
               <td>Rating</td>
               <td>
-                {{ wizardChoiceA.rating }} ({{ wizardChoiceA.amount }}
+                {{ magicalBeingChoiceA.rating }} ({{ magicalBeingChoiceA.amount }}
                 Ratings)
               </td>
               <td></td>
@@ -127,7 +127,7 @@
               </th>
             </tr>
             <ng-container *ngIf="showSaw.value">
-              <tr *ngFor="let saw of wizardChoiceA.strengthAndWeaknesses">
+              <tr *ngFor="let saw of magicalBeingChoiceA.strengthAndWeaknesses">
                 <td>{{ saw.house }}</td>
                 <td *ngIf="saw.strength">Strength</td>
                 <td *ngIf="!saw.strength">Weakness</td>
@@ -158,7 +158,7 @@
               </th>
             </tr>
             <ng-container *ngIf="showSpells.value">
-              <tr *ngFor="let spell of wizardChoiceA.spells">
+              <tr *ngFor="let spell of magicalBeingChoiceA.spells">
                 <td>{{ spell.name }}</td>
                 <td>{{ spell.maxDamage }}</td>
                 <td class="columnCenter">
@@ -196,7 +196,7 @@
               </th>
             </tr>
             <ng-container *ngIf="showPotions.value">
-              <tr *ngFor="let potion of wizardChoiceA.potions">
+              <tr *ngFor="let potion of magicalBeingChoiceA.potions">
                 <td>{{ potion.name }}</td>
                 <td>{{ potion.storage }}</td>
                 <td class="columnCenter">
@@ -234,7 +234,7 @@
               </th>
             </tr>
             <ng-container *ngIf="showAnimals.value">
-              <tr *ngFor="let animal of wizardChoiceA.animals">
+              <tr *ngFor="let animal of magicalBeingChoiceA.animals">
                 <td>{{ animal.name }}</td>
                 <td>{{ animal.maxDamage }}</td>
                 <td class="columnCenter">
@@ -271,7 +271,7 @@
               </th>
             </tr>
             <ng-container *ngIf="showComments.value">
-              <tr *ngFor="let comment of wizardChoiceA.comments">
+              <tr *ngFor="let comment of magicalBeingChoiceA.comments">
                 <td colspan="3">{{ comment.content }}</td>
               </tr>
             </ng-container>
@@ -293,9 +293,9 @@
               <select
                 class="formButton"
                 id="wizardComment"
-                (change)="getWizardByNameComment()"
+                (change)="getMagicalBeingByNameComment()"
               >
-                <option value="{{ z.id }}" *ngFor="let z of wizards">
+                <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
                   {{ z.name }}
                 </option>
               </select>
@@ -345,9 +345,9 @@
               <select
                 class="formButton"
                 id="wizardIdRating"
-                (change)="getWizardByNameRating()"
+                (change)="getMagicalBeingByNameRating()"
               >
-                <option value="{{ z.id }}" *ngFor="let z of wizards">
+                <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
                   {{ z.name }}
                 </option>
               </select>

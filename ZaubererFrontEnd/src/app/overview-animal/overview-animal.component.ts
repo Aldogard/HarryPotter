@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ExtraService } from '../extra.service';
-import { HarrypotterService } from '../harrypotter.service';
+import { WizardService } from '../wizard.service';
 import { HpAnimal } from '../hp-animal';
 import { HpWizard } from '../hp-wizard';
+import { MagicalBeingService } from '../magical-being.service';
 
 @Component({
   selector: 'app-overview-animal',
@@ -14,12 +15,12 @@ export class OverviewAnimalComponent implements OnInit {
   animals: HpAnimal[] = [];
 
   constructor(
-    private hpService: HarrypotterService,
+    private mbService: MagicalBeingService,
     private extraService: ExtraService
   ) {}
 
   ngOnInit(): void {
-    this.hpService.getWizards().subscribe((ws) => {
+    this.mbService.getMagicalBeings().subscribe((ws) => {
       ws.forEach((w) =>
         w.animals.forEach((p) => {
           if (

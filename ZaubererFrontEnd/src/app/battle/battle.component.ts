@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { HarrypotterService } from '../harrypotter.service';
-import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
 import { ExtraService } from '../extra.service';
 import { HpSpell } from '../hp-spell';
 import { HpPotion } from '../hp-potion';
 import { HpAnimal } from '../hp-animal';
+import { MagicalBeingService } from '../magical-being.service';
+import { HpMagicalBeing } from '../hp-magical-being';
 
 @Component({
   selector: 'app-battle',
@@ -15,12 +15,12 @@ import { HpAnimal } from '../hp-animal';
   styleUrls: ['./battle.component.css'],
 })
 export class BattleComponent implements OnInit {
-  wizardsArray: HpWizard[] = [];
-  wizard1?: HpWizard;
-  wizard2?: HpWizard;
-  wizard3?: HpWizard;
-  wizard4?: HpWizard;
-  wizard5?: HpWizard;
+  magicalBeingsArray: HpMagicalBeing[] = [];
+  magicalBeing1?: HpMagicalBeing;
+  magicalBeing2?: HpMagicalBeing;
+  magicalBeing3?: HpMagicalBeing;
+  magicalBeing4?: HpMagicalBeing;
+  magicalBeing5?: HpMagicalBeing;
   options = this.extraService.options;
   chosenOption: string = '';
   validateSpell = new BehaviorSubject<boolean>(false);
@@ -29,48 +29,43 @@ export class BattleComponent implements OnInit {
   spell = new FormControl('');
   potion = new FormControl('');
   animal = new FormControl('');
-  attackWizard1 = new BehaviorSubject<boolean>(false);
-  attackWizard2 = new BehaviorSubject<boolean>(true);
+  attackMagicalBeing1 = new BehaviorSubject<boolean>(false);
+  attackMagicalBeing2 = new BehaviorSubject<boolean>(true);
   showResult = new BehaviorSubject<boolean>(false);
   showStart = new BehaviorSubject<boolean>(true);
   showTable = new BehaviorSubject<boolean>(true);
   showDetails = new BehaviorSubject<boolean>(true);
-  attackWizardNumber: number = 1;
+  attackMagicalBeingNumber: number = 1;
   voldemortIsDead: boolean = false;
   environment: string = '';
 
   constructor(
-    private hpService: HarrypotterService,
+    private mbService: MagicalBeingService,
     private extraService: ExtraService,
     private ms: MessageService
   ) {}
 
   ngOnInit(): void {
     this.environment = this.ms.environment.value;
-    this.ms.wizardArray.subscribe((za) => {
-      this.wizardsArray = za;
-      this.wizard1 = za[0];
-      this.wizard2 = za[1];
+    this.ms.magicalBeingArray.subscribe((za) => {
+      this.magicalBeingsArray = za;
+      this.magicalBeing1 = za[0];
+      this.magicalBeing2 = za[1];
       if (za.length > 2) {
-        this.wizard3 = za[2];
+        this.magicalBeing3 = za[2];
       }
       if (za.length > 3) {
-        this.wizard4 = za[3];
+        this.magicalBeing4 = za[3];
       }
-      // this.hpService.getWizards().subscribe((wizards) => {
-      //   this.wizard1 = wizards[0];
-      //   this.wizard2 = wizards[1];
-      //   this.wizardsArray.push(this.wizard1);
-      //   this.wizardsArray.push(this.wizard2);
-      // });
+
     });
     this.determineStarter();
   }
 
   determineStarter() {
     if (Math.random() > 0.5) {
-      this.attackWizard1.next(true);
-      this.attackWizard2.next(false);
+      this.attackMagicalBeing1.next(true);
+      this.attackMagicalBeing2.next(false);
     }
   }
 
@@ -95,261 +90,286 @@ export class BattleComponent implements OnInit {
   }
 
   executeAttack(
-    attackWizard: HpWizard,
-    defendWizard: HpWizard,
+    attackMagicalBeing: HpMagicalBeing,
+    defendMagicalBeing: HpMagicalBeing,
     defender: boolean
   ) {
-    this.preparation(attackWizard);
-    this.fiendfyreEffects(attackWizard);
-    if (!attackWizard.conditions[1].condition) {
-      attackWizard.energy = attackWizard.energy - this.spell.value.energyUsage;
-      this.spellEffects(defendWizard, attackWizard);
+    this.preparation(attackMagicalBeing);
+    this.fiendfyreEffects(attackMagicalBeing);
+    if (!attackMagicalBeing.conditions[1].condition) {
+      attackMagicalBeing.energy =
+        attackMagicalBeing.energy - this.spell.value.energyUsage;
+      this.spellEffects(defendMagicalBeing, attackMagicalBeing);
 
       this.getDamage(
-        attackWizard,
-        defendWizard,
+        attackMagicalBeing,
+        defendMagicalBeing,
         this.spell.value.maxDamage,
         true
       );
 
-      this.formattingStunnedAndConfunded(defendWizard);
-      this.confunded(defendWizard);
-      this.stunned(defendWizard);
+      this.formattingStunnedAndConfunded(defendMagicalBeing);
+      this.confunded(defendMagicalBeing);
+      this.stunned(defendMagicalBeing);
     } else {
       alert(
-        attackWizard.name + ' has been stunned and cannot attack this round!'
+        attackMagicalBeing.name +
+          ' has been stunned and cannot attack this round!'
       );
     }
 
-    attackWizard.energy = Math.round(attackWizard.energy * 10) / 10;
-    this.resetAFandProtego(attackWizard, defendWizard);
-    this.reduceProtection(defendWizard);
-    this.halfLifeEffects(attackWizard);
-    this.nextRound(defendWizard, defender, attackWizard);
+    attackMagicalBeing.energy = Math.round(attackMagicalBeing.energy * 10) / 10;
+    this.resetAFandProtego(attackMagicalBeing, defendMagicalBeing);
+    this.reduceProtection(defendMagicalBeing);
+    this.halfLifeEffects(attackMagicalBeing);
+    this.nextRound(defendMagicalBeing, defender, attackMagicalBeing);
 
     if (this.spell.value.fiendfyre) {
-      attackWizard.fiendfyre = true;
+      attackMagicalBeing.fiendfyre = true;
     }
     if (this.spell.value.name === 'Piertotum Locomotor') {
-      attackWizard.ptCounter++;
+      attackMagicalBeing.ptCounter++;
     }
     this.formattingOfKeyVariables();
   }
 
   executePotion(
-    attackWizard: HpWizard,
-    defendWizard: HpWizard,
+    attackMagicalBeing: HpMagicalBeing,
+    defendMagicalBeing: HpMagicalBeing,
     defender: boolean
   ) {
-    this.preparation(attackWizard);
-    this.fiendfyreEffects(attackWizard);
-    if (!attackWizard.conditions[1].condition) {
-      this.potionEffects(attackWizard, defender);
+    this.preparation(attackMagicalBeing);
+    this.fiendfyreEffects(attackMagicalBeing);
+    if (!attackMagicalBeing.conditions[1].condition) {
+      this.potionEffects(attackMagicalBeing, defender);
 
       this.getDamage(
-        attackWizard,
-        defendWizard,
+        attackMagicalBeing,
+        defendMagicalBeing,
         this.potion.value.maxDamage,
         false
       );
 
-      this.formattingStunnedAndConfunded(defendWizard);
+      this.formattingStunnedAndConfunded(defendMagicalBeing);
     } else {
       alert(
-        attackWizard.name +
+        attackMagicalBeing.name +
           ' has been stunned and cannot use a Potion this round!'
       );
     }
 
-    attackWizard.energy = Math.round(attackWizard.energy * 10) / 10;
-    this.reduceProtection(defendWizard);
-    this.nextRound(defendWizard, defender, attackWizard);
+    attackMagicalBeing.energy = Math.round(attackMagicalBeing.energy * 10) / 10;
+    this.reduceProtection(defendMagicalBeing);
+    this.nextRound(defendMagicalBeing, defender, attackMagicalBeing);
     this.formattingOfKeyVariables();
   }
 
-  useAnimal(attackWizard: HpWizard, defendWizard: HpWizard, defender: boolean) {
-    this.preparation(attackWizard);
-    this.fiendfyreEffects(attackWizard);
-    if (!attackWizard.conditions[1].condition) {
-      attackWizard.energy = attackWizard.energy - this.animal.value.energyUsage;
-      this.animalEffects(defendWizard, attackWizard);
-      this.fiendfyreEffects(attackWizard);
+  useAnimal(
+    attackMagicalBeing: HpMagicalBeing,
+    defendMagicalBeing: HpMagicalBeing,
+    defender: boolean
+  ) {
+    this.preparation(attackMagicalBeing);
+    this.fiendfyreEffects(attackMagicalBeing);
+    if (!attackMagicalBeing.conditions[1].condition) {
+      attackMagicalBeing.energy =
+        attackMagicalBeing.energy - this.animal.value.energyUsage;
+      this.animalEffects(defendMagicalBeing, attackMagicalBeing);
+      this.fiendfyreEffects(attackMagicalBeing);
       this.getDamage(
-        attackWizard,
-        defendWizard,
+        attackMagicalBeing,
+        defendMagicalBeing,
         this.animal.value.maxDamage,
         false
       );
 
-      this.formattingStunnedAndConfunded(defendWizard);
+      this.formattingStunnedAndConfunded(defendMagicalBeing);
     } else {
       alert(
-        attackWizard.name +
+        attackMagicalBeing.name +
           ' has been stunned and cannot use a Potion this round!'
       );
     }
 
-    attackWizard.energy = Math.round(attackWizard.energy * 10) / 10;
-    this.reduceProtection(defendWizard);
-    this.nextRound(defendWizard, defender, attackWizard);
+    attackMagicalBeing.energy = Math.round(attackMagicalBeing.energy * 10) / 10;
+    this.reduceProtection(defendMagicalBeing);
+    this.nextRound(defendMagicalBeing, defender, attackMagicalBeing);
     this.formattingOfKeyVariables();
   }
 
-  nextRound(defendWizard: HpWizard, defender: boolean, attackWizard: HpWizard) {
+  nextRound(
+    defendMagicalBeing: HpMagicalBeing,
+    defender: boolean,
+    attackMagicalBeing: HpMagicalBeing
+  ) {
     this.voldemortIsDead = this.checkIfDead();
 
     if (
-      ((defendWizard.healthPoints <= 0 && !defendWizard.halfLife) ||
-        (attackWizard.healthPoints <= 0 && !attackWizard.halfLife)) &&
+      ((defendMagicalBeing.healthPoints <= 0 && !defendMagicalBeing.halfLife) ||
+        (attackMagicalBeing.healthPoints <= 0 &&
+          !attackMagicalBeing.halfLife)) &&
       (!defender ||
-        defendWizard === this.wizardsArray[this.wizardsArray.length - 1])
+        defendMagicalBeing ===
+          this.magicalBeingsArray[this.magicalBeingsArray.length - 1])
     ) {
       this.victoryFormation();
       this.updateVictories();
     } else if (
-      ((defendWizard.healthPoints <= -100 && defendWizard.halfLife) ||
-        (attackWizard.healthPoints <= -100 && attackWizard.halfLife)) &&
+      ((defendMagicalBeing.healthPoints <= -100 &&
+        defendMagicalBeing.halfLife) ||
+        (attackMagicalBeing.healthPoints <= -100 &&
+          attackMagicalBeing.halfLife)) &&
       (!defender ||
-        defendWizard === this.wizardsArray[this.wizardsArray.length - 1])
+        defendMagicalBeing ===
+          this.magicalBeingsArray[this.magicalBeingsArray.length - 1])
     ) {
       this.victoryFormation();
       this.updateVictories();
     } else if (
-      ((defendWizard.healthPoints <= 0 && !defendWizard.halfLife) ||
-        (attackWizard.healthPoints <= 0 && !attackWizard.halfLife)) &&
-      defendWizard !== this.wizardsArray[this.wizardsArray.length - 1]
+      ((defendMagicalBeing.healthPoints <= 0 && !defendMagicalBeing.halfLife) ||
+        (attackMagicalBeing.healthPoints <= 0 &&
+          !attackMagicalBeing.halfLife)) &&
+      defendMagicalBeing !==
+        this.magicalBeingsArray[this.magicalBeingsArray.length - 1]
     ) {
-      this.attackWizardNumber++;
-      const tempStorage = this.wizard2;
-      this.wizard2 = this.wizardsArray[this.attackWizardNumber];
-      this.switchWizards(tempStorage);
-      this.gotoNextRound(defendWizard);
+      this.attackMagicalBeingNumber++;
+      const tempStorage = this.magicalBeing2;
+      this.magicalBeing2 =
+        this.magicalBeingsArray[this.attackMagicalBeingNumber];
+      this.switchMagicalBeings(tempStorage);
+      this.gotoNextRound(defendMagicalBeing);
     } else if (
-      ((defendWizard.healthPoints <= -100 && defendWizard.halfLife) ||
-        (attackWizard.healthPoints <= -100 && attackWizard.halfLife)) &&
-      defendWizard !== this.wizardsArray[this.wizardsArray.length - 1]
+      ((defendMagicalBeing.healthPoints <= -100 &&
+        defendMagicalBeing.halfLife) ||
+        (attackMagicalBeing.healthPoints <= -100 &&
+          attackMagicalBeing.halfLife)) &&
+      defendMagicalBeing !==
+        this.magicalBeingsArray[this.magicalBeingsArray.length - 1]
     ) {
-      this.attackWizardNumber++;
-      const tempStorage = this.wizard2;
-      this.wizard2 = this.wizardsArray[this.attackWizardNumber];
-      this.switchWizards(tempStorage);
-      this.gotoNextRound(defendWizard);
+      this.attackMagicalBeingNumber++;
+      const tempStorage = this.magicalBeing2;
+      this.magicalBeing2 =
+        this.magicalBeingsArray[this.attackMagicalBeingNumber];
+      this.switchMagicalBeings(tempStorage);
+      this.gotoNextRound(defendMagicalBeing);
     } else {
-      this.attackWizard2.next(!this.attackWizard2.value);
-      this.attackWizard1.next(!this.attackWizard1.value);
+      this.attackMagicalBeing2.next(!this.attackMagicalBeing2.value);
+      this.attackMagicalBeing1.next(!this.attackMagicalBeing1.value);
     }
   }
 
   getDamage(
-    attackWizard: HpWizard,
-    defendWizard: HpWizard,
+    attackMagicalBeing: HpMagicalBeing,
+    defendMagicalBeing: HpMagicalBeing,
     damageFromAction: number,
     spell: boolean
   ) {
     let randomFactor = Math.round(Math.random() * 100) / 100;
     if (spell) {
-      randomFactor = randomFactor * attackWizard.additionalFactor;
+      randomFactor = randomFactor * attackMagicalBeing.additionalFactor;
       if (
-        attackWizard.conditions[0].condition &&
-        attackWizard.confundedProtection === 0
+        attackMagicalBeing.conditions[0].condition &&
+        attackMagicalBeing.confundedProtection === 0
       ) {
         randomFactor = randomFactor / 2;
       }
-      attackWizard.strengthAndWeaknesses.forEach((saw) => {
-        if (saw.house === defendWizard.klasse && saw.strength) {
+      attackMagicalBeing.strengthAndWeaknesses.forEach((saw) => {
+        if (saw.house === defendMagicalBeing.klasse && saw.strength) {
           console.log('Double');
           randomFactor = randomFactor * 2;
-        } else if (saw.house === defendWizard.klasse && !saw.strength) {
+        } else if (saw.house === defendMagicalBeing.klasse && !saw.strength) {
           console.log('Half');
           randomFactor = randomFactor / 2;
         }
       });
     }
-    const wizardFactor = attackWizard.faktor;
+    const magicalBeingFactor = attackMagicalBeing.faktor;
     const maxDamage = damageFromAction;
     const damage =
-      Math.round(randomFactor * wizardFactor * maxDamage * 100) / 100;
+      Math.round(randomFactor * magicalBeingFactor * maxDamage * 100) / 100;
 
     if (
       Math.random() > 0.5 &&
-      defendWizard.protego &&
-      !attackWizard.fiendfyre
+      defendMagicalBeing.protego &&
+      !attackMagicalBeing.fiendfyre
     ) {
-      attackWizard.healthPoints =
-        Math.round((defendWizard.healthPoints - damage) * 100) / 100;
-      alert(attackWizard.name + ' received ' + damage + ' damage');
+      attackMagicalBeing.healthPoints =
+        Math.round((defendMagicalBeing.healthPoints - damage) * 100) / 100;
+      alert(attackMagicalBeing.name + ' received ' + damage + ' damage');
     } else {
-      defendWizard.healthPoints =
-        Math.round((defendWizard.healthPoints - damage) * 100) / 100;
-      alert(defendWizard.name + ' received ' + damage + ' damage');
+      defendMagicalBeing.healthPoints =
+        Math.round((defendMagicalBeing.healthPoints - damage) * 100) / 100;
+      alert(defendMagicalBeing.name + ' received ' + damage + ' damage');
     }
     return Math.round(damage * 100) / 100;
   }
 
-  potionEffects(attackWizard: HpWizard, defender: boolean) {
+  potionEffects(attackMagicalBeing: HpMagicalBeing, defender: boolean) {
     if (this.potion.value.storage > 0) {
       this.potion.value.storage = this.potion.value.storage - 1;
     }
-    attackWizard.additionalFactor = this.potion.value.additionalFactor;
-    attackWizard.healthPoints =
+    attackMagicalBeing.additionalFactor = this.potion.value.additionalFactor;
+    attackMagicalBeing.healthPoints =
       Math.round(
-        (attackWizard.healthPoints +
-          this.potion.value.healing * attackWizard.internHealthPoints) *
+        (attackMagicalBeing.healthPoints +
+          this.potion.value.healing * attackMagicalBeing.internHealthPoints) *
           100
       ) / 100;
-    attackWizard.energy =
+    attackMagicalBeing.energy =
       Math.round(
-        (attackWizard.energy +
-          this.potion.value.energyRecovery * attackWizard.internEnergy) *
+        (attackMagicalBeing.energy +
+          this.potion.value.energyRecovery * attackMagicalBeing.internEnergy) *
           100
       ) / 100;
     if (this.potion.value.antiParalysis) {
-      attackWizard.stunnedProtection = 3;
+      attackMagicalBeing.stunnedProtection = 3;
     }
 
     if (this.potion.value.antiConfunded) {
-      attackWizard.confundedProtection = 3;
+      attackMagicalBeing.confundedProtection = 3;
     }
 
     if (this.potion.value.unicornBlood) {
-      attackWizard.halfLife = true;
+      attackMagicalBeing.halfLife = true;
     }
 
     if (this.potion.value.regeneration && !defender && this.voldemortIsDead) {
-      this.hpService.getVoldemort().subscribe((v) => {
+      this.mbService.getVoldemort().subscribe((v) => {
         console.log(v);
         if (v) {
           v.name = v.name + ' (resurected)';
           v.healthPoints =
             Math.round(v.internHealthPoints * Math.random() * 100) / 100;
           v.potions.forEach((p) => (p.storage = 0));
-          this.wizardsArray.push(v);
-          this.wizard5 = v;
+          this.magicalBeingsArray.push(v);
+          this.magicalBeing5 = v;
           alert('Voldemort has been resurected and rejoins the Fight!');
         }
       });
     }
   }
 
-  spellEffects(defendWizard: HpWizard, attackWizard: HpWizard) {
+  spellEffects(defendMagicalBeing: HpMagicalBeing, attackMagicalBeing: HpMagicalBeing) {
     if (this.spell.value.imperio) {
       if (
-        attackWizard.id === this.wizardsArray[0].id &&
-        attackWizard.id !== this.wizardsArray[this.wizardsArray.length - 1].id
+        attackMagicalBeing.id === this.magicalBeingsArray[0].id &&
+        attackMagicalBeing.id !==
+          this.magicalBeingsArray[this.magicalBeingsArray.length - 1].id
       )
-        if (defendWizard.additionalFactor < 1.5) {
+        if (defendMagicalBeing.additionalFactor < 1.5) {
           {
             const choice = Math.floor(
               Math.random() *
-                (this.wizardsArray.length - this.attackWizardNumber) +
-                this.attackWizardNumber +
+                (this.magicalBeingsArray.length -
+                  this.attackMagicalBeingNumber) +
+                this.attackMagicalBeingNumber +
                 1
             );
             this.getDamage(
-              defendWizard,
-              this.wizardsArray[choice - 1],
-              defendWizard.spells[
-                Math.floor(Math.random() * defendWizard.spells.length)
+              defendMagicalBeing,
+              this.magicalBeingsArray[choice - 1],
+              defendMagicalBeing.spells[
+                Math.floor(Math.random() * defendMagicalBeing.spells.length)
               ].maxDamage,
               true
             );
@@ -358,73 +378,73 @@ export class BattleComponent implements OnInit {
           alert('Brain Elixir prevented Imperio');
         }
 
-      this.confunded(defendWizard);
+      this.confunded(defendMagicalBeing);
     } else {
       if (this.spell.value.protego) {
-        attackWizard.protego = true;
+        attackMagicalBeing.protego = true;
       }
 
-      attackWizard.healthPoints =
+      attackMagicalBeing.healthPoints =
         Math.round(
-          (attackWizard.healthPoints +
-            this.spell.value.healing * attackWizard.internHealthPoints) *
+          (attackMagicalBeing.healthPoints +
+            this.spell.value.healing * attackMagicalBeing.internHealthPoints) *
             100
         ) / 100;
     }
   }
 
-  animalEffects(defendWizard: HpWizard, attackWizard: HpWizard) {
-    attackWizard.healthPoints =
+  animalEffects(defendMagicalBeing: HpMagicalBeing, attackMagicalBeing: HpMagicalBeing) {
+    attackMagicalBeing.healthPoints =
       Math.round(
-        (attackWizard.healthPoints +
-          this.animal.value.healing * attackWizard.internHealthPoints) *
+        (attackMagicalBeing.healthPoints +
+          this.animal.value.healing * attackMagicalBeing.internHealthPoints) *
           100
       ) / 100;
-    attackWizard.energy =
+    attackMagicalBeing.energy =
       Math.round(
-        (attackWizard.energy +
-          this.animal.value.energyRecovery * attackWizard.internEnergy) *
+        (attackMagicalBeing.energy +
+          this.animal.value.energyRecovery * attackMagicalBeing.internEnergy) *
           100
       ) / 100;
   }
 
   checkIfDead() {
     return (
-      this.wizardsArray.filter(
+      this.magicalBeingsArray.filter(
         (v) =>
           v.klasse === 'Voldemort' &&
           v.healthPoints < 0 &&
-          this.wizardsArray[0] !== v
+          this.magicalBeingsArray[0] !== v
       ).length > 0
     );
   }
 
-  reduceProtection(defendWizard: HpWizard) {
-    if (defendWizard.stunnedProtection > 0) {
-      defendWizard.stunnedProtection = defendWizard.stunnedProtection - 1;
+  reduceProtection(defendMagicalBeing: HpMagicalBeing) {
+    if (defendMagicalBeing.stunnedProtection > 0) {
+      defendMagicalBeing.stunnedProtection = defendMagicalBeing.stunnedProtection - 1;
     }
-    if (defendWizard.confundedProtection > 0) {
-      defendWizard.confundedProtection = defendWizard.confundedProtection - 1;
+    if (defendMagicalBeing.confundedProtection > 0) {
+      defendMagicalBeing.confundedProtection = defendMagicalBeing.confundedProtection - 1;
     }
   }
 
-  halfLifeEffects(attackWizard: HpWizard) {
-    if (attackWizard.halfLife) {
-      attackWizard.additionalFactor =
+  halfLifeEffects(attackMagicalBeing: HpMagicalBeing) {
+    if (attackMagicalBeing.halfLife) {
+      attackMagicalBeing.additionalFactor =
         Math.round((Math.random() + 0.5) * 10) / 10;
-      attackWizard.healthPoints =
+      attackMagicalBeing.healthPoints =
         Math.round(
-          (attackWizard.healthPoints +
-            attackWizard.internHealthPoints * ((Math.random() - 0.5) * 0.2)) *
+          (attackMagicalBeing.healthPoints +
+            attackMagicalBeing.internHealthPoints * ((Math.random() - 0.5) * 0.2)) *
             100
         ) / 100;
     }
   }
 
-  stunned(defendWizard: HpWizard) {
+  stunned(defendMagicalBeing: HpMagicalBeing) {
     if (Math.random() > 0.5 && this.spell.value.stunned) {
-      if (defendWizard.stunnedProtection === 0) {
-        defendWizard.conditions[1].condition = true;
+      if (defendMagicalBeing.stunnedProtection === 0) {
+        defendMagicalBeing.conditions[1].condition = true;
         console.log('Stunned');
       } else {
         console.log('The stunning effect has been repelled');
@@ -432,10 +452,10 @@ export class BattleComponent implements OnInit {
     }
   }
 
-  confunded(defendWizard: HpWizard) {
+  confunded(defendMagicalBeing: HpMagicalBeing) {
     if (Math.random() > 0.5 && this.spell.value.confunded) {
-      if (defendWizard.confundedProtection === 0) {
-        defendWizard.conditions[0].condition = true;
+      if (defendMagicalBeing.confundedProtection === 0) {
+        defendMagicalBeing.conditions[0].condition = true;
         console.log('Confunded');
       } else {
         console.log('The confunded effect has been repelled');
@@ -454,11 +474,11 @@ export class BattleComponent implements OnInit {
   }
 
   updateVictories() {
-    this.wizardsArray.forEach((za) => {
-      let speicher: HpWizard;
-      this.hpService.getWizardById(za.id).subscribe((z) => {
-        speicher = z;
-        if (za.healthPoints > 0) {
+    this.magicalBeingsArray.forEach((mb) => {
+      let speicher: HpMagicalBeing;
+      this.mbService.getMagicalBeingById(mb.id).subscribe((m) => {
+        speicher = m;
+        if (mb.healthPoints > 0) {
           speicher.victories = speicher.victories + 1;
           if (speicher.victories < 400) {
             speicher.rank =
@@ -466,54 +486,54 @@ export class BattleComponent implements OnInit {
             //Math.floor((rank +2)/3 * rank)
           }
         }
-        this.hpService.updateVictories(speicher).subscribe();
+        this.mbService.updateVictories(speicher).subscribe();
       });
     });
   }
 
   victoryFormation() {
-    this.attackWizard2.next(false);
-    this.attackWizard1.next(false);
+    this.attackMagicalBeing2.next(false);
+    this.attackMagicalBeing1.next(false);
     this.showResult.next(true);
     this.showTable.next(false);
   }
 
-  gotoNextRound(defendWizard: HpWizard) {
-    this.attackWizard2.next(false);
-    this.attackWizard1.next(true);
-    if (this.wizard2 !== undefined) {
+  gotoNextRound(defendMagicalBeing: HpMagicalBeing) {
+    this.attackMagicalBeing2.next(false);
+    this.attackMagicalBeing1.next(true);
+    if (this.magicalBeing2 !== undefined) {
       alert(
-        defendWizard.name +
+        defendMagicalBeing.name +
           ' has been defeated, ' +
-          this.wizard2.name +
+          this.magicalBeing2.name +
           ' will carry on the attack'
       );
     }
   }
 
-  formattingStunnedAndConfunded(defendWizard: HpWizard) {
-    defendWizard.conditions[0].condition = false;
-    defendWizard.conditions[1].condition = false;
+  formattingStunnedAndConfunded(defendMagicalBeing: HpMagicalBeing) {
+    defendMagicalBeing.conditions[0].condition = false;
+    defendMagicalBeing.conditions[1].condition = false;
   }
 
-  resetAFandProtego(attackWizard: HpWizard, defendWizard: HpWizard) {
-    attackWizard.additionalFactor = 1;
-    defendWizard.protego = false;
+  resetAFandProtego(attackMagicalBeing: HpMagicalBeing, defendMagicalBeing: HpMagicalBeing) {
+    attackMagicalBeing.additionalFactor = 1;
+    defendMagicalBeing.protego = false;
   }
 
-  fiendfyreEffects(attackWizard: HpWizard) {
-    if (attackWizard.fiendfyre) {
+  fiendfyreEffects(attackMagicalBeing: HpMagicalBeing) {
+    if (attackMagicalBeing.fiendfyre) {
       if (this.spell.value.name === 'Anti Fiendfyre') {
-        attackWizard.fiendfyre = false;
+        attackMagicalBeing.fiendfyre = false;
       } else {
-        attackWizard.healthPoints = -100;
+        attackMagicalBeing.healthPoints = -100;
       }
     }
   }
 
-  preparation(attackWizard: HpWizard) {
+  preparation(attackMagicalBeing: HpMagicalBeing) {
     this.showStart.next(false);
-    attackWizard.energy = attackWizard.energy + 3;
+    attackMagicalBeing.energy = attackMagicalBeing.energy + 3;
   }
 
   gotoAttackDetail(attackId: number) {
@@ -539,13 +559,13 @@ export class BattleComponent implements OnInit {
     window.open('rules');
   }
 
-  strengthAndWeakness(wizard1: HpWizard, wizard2: HpWizard) {
+  strengthAndWeakness(magicalBeing1: HpMagicalBeing, magicalBeing2: HpMagicalBeing) {
     let indicator;
-    wizard1.strengthAndWeaknesses.forEach((saw) => {
-      if (saw.house === wizard2.klasse && saw.strength) {
+    magicalBeing1.strengthAndWeaknesses.forEach((saw) => {
+      if (saw.house === magicalBeing2.klasse && saw.strength) {
         indicator = true;
         console.log('check true');
-      } else if (saw.house === wizard2.klasse && !saw.strength) {
+      } else if (saw.house === magicalBeing2.klasse && !saw.strength) {
         indicator = false;
         console.log('check false');
       }
@@ -567,15 +587,15 @@ export class BattleComponent implements OnInit {
     this.showDetails.next(status);
   }
 
-  switchWizards(wizard: HpWizard | undefined) {
-    if (this.attackWizardNumber === 2) {
-      this.wizard3 = wizard;
+  switchMagicalBeings(magicalBeing: HpMagicalBeing | undefined) {
+    if (this.attackMagicalBeingNumber === 2) {
+      this.magicalBeing3 = magicalBeing;
     }
-    if (this.attackWizardNumber === 3) {
-      this.wizard4 = wizard;
+    if (this.attackMagicalBeingNumber === 3) {
+      this.magicalBeing4 = magicalBeing;
     }
-    if (this.attackWizardNumber === 4) {
-      this.wizard5 = wizard;
+    if (this.attackMagicalBeingNumber === 4) {
+      this.magicalBeing5 = magicalBeing;
     }
   }
 }

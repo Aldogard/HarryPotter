@@ -1,7 +1,7 @@
 package com.example.harrypotter.service.options;
 
 import com.example.harrypotter.entity.options.Potion;
-import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
+import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.repo.options.OptionsRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class PotionService {
     private OptionsRepo optionsRepo;
 
     //Potions
-    public void createAntiParalysis(Wizard wizard, Integer storage) {
+    public void createAntiParalysis(MagicalBeing magicalBeing, Integer storage) {
         optionsRepo.save(new Potion(
                 "Anti-Paralysis",
                 storage,
@@ -27,12 +27,12 @@ public class PotionService {
                 0.0,
                 1.0,
                 0,
-                wizard,
+                magicalBeing,
                 "A potion that heals paralysis."));
     }
 
 
-    public void createBrainElixir(Wizard wizard, Integer storage) {
+    public void createBrainElixir(MagicalBeing magicalBeing, Integer storage) {
         optionsRepo.save(new Potion(
                 "Baruffios Brain Elixir",
                 storage,
@@ -45,11 +45,11 @@ public class PotionService {
                 0.0,
                 1.5,
                 5,
-                wizard,
+                magicalBeing,
                 "A potion that apparently increases the taker's brain power."));
     }
 
-    public void createExplodingPotion(Wizard wizard, Integer storage) {
+    public void createExplodingPotion(MagicalBeing magicalBeing, Integer storage) {
         optionsRepo.save(new Potion(
                 "Exploding Potion",
                 storage,
@@ -62,11 +62,11 @@ public class PotionService {
                 10.0,
                 1.0,
                 5,
-                wizard,
+                magicalBeing,
                 "A very volatile potion, and when completed, can be used to create explosions."));
     }
 
-    public void createHealingPotion(Wizard wizard, Integer storage) {
+    public void createHealingPotion(MagicalBeing magicalBeing, Integer storage) {
         optionsRepo.save(new Potion(
                 "Healing Potion",
                 storage,
@@ -79,12 +79,12 @@ public class PotionService {
                 0.0,
                 1.0,
                 0,
-                wizard,
-                "This potion was extremely useful when duelling Dark Wizards or dark creatures " +
+                magicalBeing,
+                "This potion was extremely useful when duelling Dark MagicalBeings or dark creatures " +
                         "in Fortresses, making it an essential supply for all Aurors."));
     }
 
-    public void createInvogiration(Wizard wizard, Integer storage) {
+    public void createInvogiration(MagicalBeing magicalBeing, Integer storage) {
         optionsRepo.save(new Potion(
                 "Invigoration Draught",
                 storage,
@@ -97,11 +97,11 @@ public class PotionService {
                 0.0,
                 1.0,
                 0,
-                wizard,
+                magicalBeing,
                 "A potion that is presumed to give the taker an energy boost."));
     }
 
-    public void createUnicornBlood(Wizard wizard, Integer storage) {
+    public void createUnicornBlood(MagicalBeing magicalBeing, Integer storage) {
         optionsRepo.save(new Potion(
                 "Unicorn Blood",
                 storage,
@@ -114,14 +114,14 @@ public class PotionService {
                 0.0,
                 1.0,
                 10,
-                wizard,
+                magicalBeing,
                 "The blood of a unicorn could be drunk in order to keep a person alive. " +
                         "However, the act of slaying a unicorn would cause the drinker to suffer a cursed life."
 
         ));
     }
 
-    public void createRegenerationPotion(Wizard wizard, Integer storage) {
+    public void createRegenerationPotion(MagicalBeing magicalBeing, Integer storage) {
         optionsRepo.save((new Potion(
                 "Regeneration Potion",
                 storage,
@@ -134,13 +134,13 @@ public class PotionService {
                 0.0,
                 1.0,
                 15,
-                wizard,
-                "Helps restore non-corporeal wizards to their bodies. " +
+                magicalBeing,
+                "Helps restore non-corporeal magicalBeings to their bodies. " +
                         "Can only be used by Deatheaters to bring Voldemort back to life."
         )));
     }
 
-    public void createWitSharpeningPotion(Wizard wizard, Integer storage) {
+    public void createWitSharpeningPotion(MagicalBeing magicalBeing, Integer storage) {
         optionsRepo.save(new Potion(
                 "Wit-Sharpening Potion",
                 storage,
@@ -153,12 +153,12 @@ public class PotionService {
                 0.0,
                 1.0,
                 3,
-                wizard,
+                magicalBeing,
                 "Presumably enhances the clarity of thought of the drinker."
         ));
     }
 
-    public void createExtimuloPotion(Wizard wizard, Integer storage) {
+    public void createExtimuloPotion(MagicalBeing magicalBeing, Integer storage) {
         optionsRepo.save(new Potion(
                 "Extimulo Potion",
                 storage,
@@ -171,7 +171,7 @@ public class PotionService {
                 0.0,
                 1.25,
                 0,
-                wizard,
+                magicalBeing,
                 "Boosts the spell power of the drinker."));
     }
 

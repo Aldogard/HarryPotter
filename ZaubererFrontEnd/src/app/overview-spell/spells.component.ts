@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HarrypotterService } from '../harrypotter.service';
+import { WizardService } from '../wizard.service';
 import { HpSpell } from '../hp-spell';
 import { HpWizard } from '../hp-wizard';
 import { ExtraService } from '../extra.service';
+import { MagicalBeingService } from '../magical-being.service';
 
 @Component({
   selector: 'app-attacks',
@@ -14,12 +15,12 @@ export class OverviewSpellComponent implements OnInit {
   spells: HpSpell[] = [];
 
   constructor(
-    private hpService: HarrypotterService,
+    private mbService: MagicalBeingService,
     private extraService: ExtraService
   ) {}
 
   ngOnInit(): void {
-    this.hpService.getWizards().subscribe((ws) => {
+    this.mbService.getMagicalBeings().subscribe((ws) => {
       ws.forEach((w) =>
         w.spells.forEach((a) => {
           if (

@@ -8,7 +8,7 @@ import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
 import com.example.harrypotter.repo.magicalbeings.ConditionRepo;
-import com.example.harrypotter.repo.magicalbeings.giants.GiantRepo;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.magicalbeings.wizards.StrengthAndWeaknessRepo;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class GiantServiceTest {
 
     @Autowired
-    private GiantRepo giantRepo;
+    private MagicalBeingRepo magicalBeingRepo;
 
     @Autowired
     private GiantService giantService;
@@ -52,11 +52,11 @@ public class GiantServiceTest {
 
     @AfterEach
     public void deleteAll(){
-        giantRepo.deleteAll();
+        magicalBeingRepo.deleteAll();
     }
 
 
-//    @Test
+    @Test
     public void testCreateGiant(){
         Giant giant = new Giant("Testi1", BigDecimal.valueOf(10), "Test and more than 10");
         ResponseEntity<Giant> response = giantService.createGiant(giant);
@@ -70,7 +70,7 @@ public class GiantServiceTest {
 
         assertNotNull(mbResponse);
         assertNotNull(mbResponse.getName());
-        assertEquals(1, giantRepo.findAll().size());
+        assertEquals(1, magicalBeingRepo.findAll().size());
 
         List<Condition> conditions = conditionRepo.findAll();
         assertEquals(2, conditions.size());

@@ -1,8 +1,10 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, NgForm, Validators } from '@angular/forms';
-import { HarrypotterService } from '../harrypotter.service';
+import { WizardService } from '../wizard.service';
 import { HpWizard } from '../hp-wizard';
 import { ExtraService } from '../extra.service';
+import { MagicalBeingService } from '../magical-being.service';
+import { HpMagicalBeing } from '../hp-magical-being';
 
 @Component({
   selector: 'app-update-wizard',
@@ -11,40 +13,39 @@ import { ExtraService } from '../extra.service';
 })
 export class UpdateWizardComponent implements OnInit {
   show: boolean = false;
-  getWizardId: FormControl = new FormControl(0);
-  wizards: HpWizard[] = [];
-  wizardChoice?: HpWizard;
-  wizardId: number = 0;
+  getMagicalBeingId: FormControl = new FormControl(0);
+  magicalBeings: HpMagicalBeing[] = [];
+  magicalBeingChoice?: HpMagicalBeing;
+  magicalBeingId: number = 0;
 
   constructor(
-    private hpService: HarrypotterService,
-    private fb: FormBuilder,
+    private mbService: MagicalBeingService,
     private extraService: ExtraService
   ) {}
 
   ngOnInit(): void {
-    this.hpService.getWizards().subscribe((element) => {
-      this.wizards = element;
-      this.getWizardByName();
+    this.mbService.getMagicalBeings().subscribe((element) => {
+      this.magicalBeings = element;
+      this.getMagicalBeingByName();
     });
   }
 
-  getWizardByName() {
-    this.wizardId = (<HTMLInputElement>(
+  getMagicalBeingByName() {
+    this.magicalBeingId = (<HTMLInputElement>(
       document.getElementById('wizardUpdate')
     )).value as unknown as number;
 
-    if (!this.wizardId) {
-      this.wizardId = this.wizards[0].id;
+    if (!this.magicalBeingId) {
+      this.magicalBeingId = this.magicalBeings[0].id;
     }
 
-    this.hpService
-      .getWizardById(this.wizardId)
-      .subscribe((x) => (this.wizardChoice = x));
+    this.mbService
+      .getMagicalBeingById(this.magicalBeingId)
+      .subscribe((x) => (this.magicalBeingChoice = x));
   }
 
   update(form: NgForm) {
-    const response = this.hpService.updateWizard(form.value, this.wizardId);
+    const response = this.mbService.updateMagicalBeing(form.value, this.magicalBeingId);
     response.subscribe((x) => {
       this.show = true;
       this.extraService.redirectToWithTimeout('overview');

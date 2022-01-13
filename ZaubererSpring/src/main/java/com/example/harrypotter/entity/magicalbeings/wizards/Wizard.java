@@ -1,6 +1,7 @@
 package com.example.harrypotter.entity.magicalbeings.wizards;
 
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
+import com.example.harrypotter.entity.magicalbeings.StrengthAndWeakness;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
@@ -17,10 +18,6 @@ import java.util.List;
 
 
 public abstract class Wizard extends MagicalBeing {
-
-    @JsonManagedReference
-    @OneToMany(mappedBy = "wizard", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<StrengthAndWeakness> strengthAndWeaknesses;
 
     /**
      * Constructor that creates a wizard.

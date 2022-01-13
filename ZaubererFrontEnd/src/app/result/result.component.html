@@ -1,4 +1,4 @@
-<div id="search-component" *ngIf="wizardsResults.length > 0">
+<div id="search-component" *ngIf="magicalBeingsResults.length > 0">
   <div class="header gold pt-lg-3 sticky-top">
     <h1 class="headerresult headertext">Results for '{{ searchTerm }}'</h1>
   </div>
@@ -21,7 +21,7 @@
               <!-- <tr *ngFor="let z of wizardsResults">
         <td>{{ z | json}}</td>
       </tr> -->
-              <tr *ngFor="let z of wizardsResults">
+              <tr *ngFor="let z of magicalBeingsResults">
                 <td>{{ z.name }}</td>
                 <td>{{ z.klasse }}</td>
                 <td>
@@ -39,7 +39,7 @@
 </div>
   <div
     class="header gold pt-lg-3 sticky-top"
-    *ngIf="wizardsResults.length === 0"
+    *ngIf="magicalBeingsResults.length === 0"
   >
     <h1 class="headerresult headertext">No Results found!</h1>
   </div>

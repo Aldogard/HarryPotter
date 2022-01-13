@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ExtraService } from '../extra.service';
-import { HarrypotterService } from '../harrypotter.service';
+import { WizardService } from '../wizard.service';
 import { HpWizard } from '../hp-wizard';
 import { MessageService } from '../message.service';
+import { MagicalBeingService } from '../magical-being.service';
+import { HpMagicalBeing } from '../hp-magical-being';
 
 @Component({
   selector: 'app-search',
@@ -11,36 +13,36 @@ import { MessageService } from '../message.service';
   styleUrls: ['./result.component.css'],
 })
 export class ResultComponent implements OnInit {
-  wizards: HpWizard[] = [];
-  wizardsResults: HpWizard[] = [];
+  magicalBeings: HpMagicalBeing[] = [];
+  magicalBeingsResults: HpMagicalBeing[] = [];
   searchTerm: string = '';
 
   constructor(
-    private hpService: HarrypotterService,
+    private mbService: MagicalBeingService,
     private ms: MessageService,
     private extraService: ExtraService,
   ) {}
 
   ngOnInit(): void {
-    this.hpService
-      .getWizards()
-      .subscribe((element) => (this.wizards = element));
+    this.mbService
+      .getMagicalBeings()
+      .subscribe((element) => (this.magicalBeings = element));
       
     this.ms.word.subscribe((search) => {
       this.searchTerm = search;
-      this.hpService
-        .getWizardSearch(this.searchTerm)
-        .subscribe((results) => (this.wizardsResults = results));
-      if(this.wizardsResults.length===0){
-        this.hpService
-        .getWizardSearchKlasse(this.searchTerm)
-        .subscribe(results => this.wizardsResults = results);
+      this.mbService
+        .getMagicalBeingSearch(this.searchTerm)
+        .subscribe((results) => (this.magicalBeingsResults = results));
+      if(this.magicalBeingsResults.length===0){
+        this.mbService
+        .getMagicalBeingSearchKlasse(this.searchTerm)
+        .subscribe(results => this.magicalBeingsResults = results);
       }
     });
   }
 
   goToDetail(wizard: HpWizard) {
-    this.ms.sendWizard(wizard);
+    this.ms.sendMagicalBeing(wizard);
     this.extraService.redirectToWithTimeout('/detail')
   }
 

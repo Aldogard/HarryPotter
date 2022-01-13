@@ -5,29 +5,29 @@
 <div class="container">
   <div class="container-fluid padding mt-5">
     <div class="row padding">
-      <div class="col-md-12 col-lg-6" *ngIf="wizard !== undefined">
-        <h2 class="headertext gold">{{ wizard.name }}</h2>
+      <div class="col-md-12 col-lg-6" *ngIf="magicalBeing !== undefined">
+        <h2 class="headertext gold">{{ magicalBeing.name }}</h2>
         <ul>
-          <li>Healthpoints: {{ wizard.healthPoints }}</li>
-          <li>Factor: {{ wizard.faktor }}</li>
-          <li>Energy: {{ wizard.energy }}</li>
-          <li *ngIf="wizard.victories === 1">
-            Victory: {{ wizard.victories }}
+          <li>Healthpoints: {{ magicalBeing.healthPoints }}</li>
+          <li>Factor: {{ magicalBeing.faktor }}</li>
+          <li>Energy: {{ magicalBeing.energy }}</li>
+          <li *ngIf="magicalBeing.victories === 1">
+            Victory: {{ magicalBeing.victories }}
           </li>
-          <li *ngIf="wizard.victories !== 1">
-            Victories: {{ wizard.victories }}
+          <li *ngIf="magicalBeing.victories !== 1">
+            Victories: {{ magicalBeing.victories }}
           </li>
-          <li>Rank: {{ wizard.rank }}</li>
-          <li>Class: {{ wizard.klasse }}</li>
-          <li *ngIf="wizard.amount < 2">
-            Rating: {{ wizard.rating }} ({{ wizard.amount }} Review)
+          <li>Rank: {{ magicalBeing.rank }}</li>
+          <li>Class: {{ magicalBeing.klasse }}</li>
+          <li *ngIf="magicalBeing.amount < 2">
+            Rating: {{ magicalBeing.rating }} ({{ magicalBeing.amount }} Review)
           </li>
-          <li *ngIf="wizard.amount > 1">
-            Rating: {{ wizard.rating }} ({{ wizard.amount }} Reviews)
+          <li *ngIf="magicalBeing.amount > 1">
+            Rating: {{ magicalBeing.rating }} ({{ magicalBeing.amount }} Reviews)
           </li>
-          <li>Spells: {{ wizard.spells.length }}</li>
-          <li>Potions: {{ wizard.potions.length }}</li>
-          <li>Animals: {{ wizard.animals.length }}</li>
+          <li>Spells: {{ magicalBeing.spells.length }}</li>
+          <li>Potions: {{ magicalBeing.potions.length }}</li>
+          <li>Animals: {{ magicalBeing.animals.length }}</li>
         </ul>
       </div>
       <div class="col-lg-6">

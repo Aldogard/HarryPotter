@@ -1,5 +1,6 @@
 package com.example.harrypotter.service.options;
 
+import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.options.OptionsRepo;
@@ -12,7 +13,7 @@ public class AnimalService {
 
     private OptionsRepo optionsRepo;
 
-    public void createPhoenix(Wizard wizard) {
+    public void createPhoenix(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
                 "Fawkes",
                 10.0,
@@ -20,12 +21,12 @@ public class AnimalService {
                 25,
                 1.0,
                 0.0,
-                wizard,
+                magicalBeing,
                 "Fascinating creatures, phoenixes. They can carry immensely heavy loads, their tears have healing powers, and they make highly faithful pets."
         ));
     }
 
-    public void createFlobberworm(Wizard wizard) {
+    public void createFlobberworm(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
                 "Flobberworm",
                 0.0,
@@ -33,7 +34,7 @@ public class AnimalService {
                 0,
                 0.0,
                 0.1,
-                wizard,
+                magicalBeing,
                 "The Flobberworm was a herbivorous, ten-inch, toothless brown magical worm which ate mainly lettuce and cabbage."
 
         ));
