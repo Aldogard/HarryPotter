@@ -12,4 +12,5 @@ public interface MagicalBeingRepo extends CrudRepository<MagicalBeing, Integer> 
     List<MagicalBeing> findAll();
     List<MagicalBeing> findByName(String name);
     List<MagicalBeing> findByKlasse(String klasse);
+    List<MagicalBeing> findBySpecies(String species);
 }

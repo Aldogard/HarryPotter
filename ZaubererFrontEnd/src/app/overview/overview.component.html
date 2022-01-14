@@ -7,9 +7,18 @@
     <div class="row padding">
       <div>
         <div class="goto" *ngIf="showFilter.value">
-        <h2 class="headertext gold filter">Filter:</h2>
+          <h2 class="headertext gold filter">Filter:</h2>
+          <a *ngFor="let s of species">
+            <button class="formButton" (click)="getMagicalBeingBySpecies(s)">
+              {{ s }}
+            </button>
+          </a>
+          <br/>
+          <br/>
           <a *ngFor="let c of class">
-            <button class="formButton" (click)="getMagicalBeing(c)">{{ c }}</button>
+            <button class="formButton" (click)="getMagicalBeingByHouse(c)">
+              {{ c }}
+            </button>
           </a>
           <br />
           <br />
@@ -61,10 +70,18 @@
           <button class="formButton" (click)="deleteFilter()">
             Remove Filter
           </button>
-          <button class="formButton" (click)="showHideFilter(true)" *ngIf="!showFilter.value">
+          <button
+            class="formButton"
+            (click)="showHideFilter(true)"
+            *ngIf="!showFilter.value"
+          >
             Show Filter
           </button>
-          <button class="formButton" (click)="showHideFilter(false)" *ngIf="showFilter.value">
+          <button
+            class="formButton"
+            (click)="showHideFilter(false)"
+            *ngIf="showFilter.value"
+          >
             Hide Filter
           </button>
         </div>

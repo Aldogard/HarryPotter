@@ -11,7 +11,7 @@ import { GiantService } from '../giant.service';
   styleUrls: ['./create-wizard.component.css'],
 })
 export class CreateWizardComponent implements OnInit {
-  being = this.extraService.beingType;
+  being = this.extraService.species;
   wizardType = this.extraService.wizardType;
   createWizardNr = new FormControl('Headmaster', [Validators.required]);
   createBeing = new FormControl('Wizard', [Validators.required]);

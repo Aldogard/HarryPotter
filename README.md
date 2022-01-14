@@ -8,20 +8,26 @@ At the moment, the project includes:
 
 - Home Page
 - Overview for
-  - all Wizards
+  - all Magical Beings
   - Potions
   - Spells
   - Animals
+- Comparison between Magical Beings
 - Detailview for
-  - all Wizards
+  - all Magical Beings
   - Potions
   - Spells
   - Animals
 - Set up for the Battle
 - The Battle
-- Possibility to create a wizard
-- Possibility to update a wizard
+- Possibility to create a Magical Being
+- Possibility to update a Magical Being
 - Search bar
+- Overview about the ranks 
+
+- Will come soon:
+  - Training
+  - Wizard chess
 
 Furthermore the site includes 
 - overview about the rules of the battle

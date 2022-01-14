@@ -6,9 +6,7 @@ import com.example.harrypotter.entity.magicalbeings.wizards.*;
 
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import com.example.harrypotter.service.magicalbeings.wizards.UtilWizards;
-import com.example.harrypotter.service.magicalbeings.wizards.WizardService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,19 +121,22 @@ public class MagicalBeingServiceTest {
         Headmaster headmaster = new Headmaster("Headi", BigDecimal.valueOf(5), "Master and more than 10");
         magicalBeingRepo.save(alumni);
         magicalBeingRepo.save(headmaster);
-        ResponseEntity<List<MagicalBeing>> response = magicalBeingService.getAllMagicalBeings(null, null);
+        ResponseEntity<List<MagicalBeing>> response = magicalBeingService.getAllMagicalBeings(null, null, null);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(2, response.getBody().size());
 
-        ResponseEntity<List<MagicalBeing>> responseName = magicalBeingService.getAllMagicalBeings("Headi", null);
+        ResponseEntity<List<MagicalBeing>> responseName = magicalBeingService.getAllMagicalBeings("Headi", null, null);
         assertEquals(1, responseName.getBody().size());
         assertEquals("Headi", responseName.getBody().get(0).getName());
 
-        ResponseEntity<List<MagicalBeing>> responseClass = magicalBeingService.getAllMagicalBeings(null, "Alumni");
+        ResponseEntity<List<MagicalBeing>> responseClass = magicalBeingService.getAllMagicalBeings(null, "Alumni", null);
         assertEquals(1, responseClass.getBody().size());
         assertEquals("Testi", responseClass.getBody().get(0).getName());
 
+        ResponseEntity<List<MagicalBeing>> responseSpecies = magicalBeingService.getAllMagicalBeings(null, null, "Wizard");
+        assertEquals(1, responseClass.getBody().size());
+        assertEquals("Testi", responseClass.getBody().get(0).getName());
     }
 
     @Test
@@ -243,6 +244,32 @@ public class MagicalBeingServiceTest {
         assertNull(responseWrongId.getBody());
         assertNotEquals(alumni.getVictories(), alumniUpdateWrongId.getVictories());
 
+
+    }
+
+    @Test
+    public void testGetMagicalBeingByName(){
+        Alumni alumni = UtilWizards.createTesti();
+        magicalBeingRepo.save(alumni);
+
+        ResponseEntity<MagicalBeing> response = magicalBeingService.getMagicalBeingByName("Testi");
+        ResponseEntity<MagicalBeing> responseNull = magicalBeingService.getMagicalBeingByName("Güllmann");
+
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Testi", response.getBody().getName());
+        assertNull(responseNull.getBody());
+
+    }
+
+    @Test
+    public void testDeleteAllMagicalBeings(){
+        Alumni alumni = UtilWizards.createTesti();
+        magicalBeingRepo.save(alumni);
+
+        ResponseEntity<Void> response = magicalBeingService.deleteAllMagicalBeings();
+        assertEquals(0, magicalBeingRepo.findAll().size());
+        assertEquals(HttpStatus.ACCEPTED, response.getStatusCode());
 
     }
 

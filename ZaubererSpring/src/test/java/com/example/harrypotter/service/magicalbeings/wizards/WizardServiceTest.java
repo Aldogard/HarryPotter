@@ -53,6 +53,27 @@ public class WizardServiceTest {
 
     }
 
+    @Test
+    public void testGetAllWizards(){
+        Alumni alumni = UtilWizards.createTesti();
+        Headmaster headmaster = new Headmaster("Headi", BigDecimal.valueOf(5), "Master and more than 10");
+        wizardRepo.save(alumni);
+        wizardRepo.save(headmaster);
+        ResponseEntity<List<Wizard>> response = wizardService.getAllWizards(null, null);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(2, response.getBody().size());
+
+        ResponseEntity<List<Wizard>> responseName = wizardService.getAllWizards("Headi", null);
+        assertEquals(1, responseName.getBody().size());
+        assertEquals("Headi", responseName.getBody().get(0).getName());
+
+        ResponseEntity<List<Wizard>> responseClass = wizardService.getAllWizards(null, "Alumni");
+        assertEquals(1, responseClass.getBody().size());
+        assertEquals("Testi", responseClass.getBody().get(0).getName());
+
+    }
+
 
     @Test
     public void testCheckName(){

@@ -23,17 +23,22 @@ public class MagicalBeingService {
         return faker.harryPotter().quote();
     }
 
-    public ResponseEntity<List<MagicalBeing>> getAllMagicalBeings(String name, String klasse) {
-        if (name == null && klasse == null) {
+    public ResponseEntity<List<MagicalBeing>> getAllMagicalBeings(String name, String klasse, String species) {
+        if (name == null && klasse == null && species == null) {
             return new ResponseEntity<>(magicalBeingRepo.findAll(), HttpStatus.OK);
         } else if (name != null) {
             return new ResponseEntity<>(magicalBeingRepo.findByName(name), HttpStatus.OK);
-        } else {
+        } else if (klasse!=null) {
+            System.out.println("TestKlasse");
             return new ResponseEntity<>(magicalBeingRepo.findByKlasse(klasse), HttpStatus.OK);
+        } else {
+            System.out.println("Test");
+            return new ResponseEntity<>(magicalBeingRepo.findBySpecies(species), HttpStatus.OK);
+
         }
     }
 
-    public ResponseEntity<MagicalBeing> getMagicalBeingById(int id){
+    public ResponseEntity<MagicalBeing> getMagicalBeingById(int id) {
         return new ResponseEntity<>(magicalBeingRepo.findById(id).orElse(null), HttpStatus.OK);
     }
 
@@ -134,7 +139,7 @@ public class MagicalBeingService {
     }
 
 
-    public ResponseEntity<MagicalBeing> getMagicalBeingByName(String name){
+    public ResponseEntity<MagicalBeing> getMagicalBeingByName(String name) {
         for (MagicalBeing mb : magicalBeingRepo.findAll()) {
             if (mb.getName().equals(name)) {
                 return new ResponseEntity<>(magicalBeingRepo.findById(mb.getId()).orElse(null), HttpStatus.OK);
@@ -144,16 +149,10 @@ public class MagicalBeingService {
         return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
 
-    public ResponseEntity<Void> deleteAllMagicalBeings(){
+    public ResponseEntity<Void> deleteAllMagicalBeings() {
         magicalBeingRepo.deleteAll(magicalBeingRepo.findAll());
-        if (magicalBeingRepo.findAll().size() == 0) {
-            return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
-        }
+        return new ResponseEntity<>(null, HttpStatus.ACCEPTED);
     }
-
-
 
     public boolean checkName(MagicalBeing magicalBeing) {
         for (MagicalBeing mb : magicalBeingRepo.findAll()) {

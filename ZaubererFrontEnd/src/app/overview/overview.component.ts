@@ -24,6 +24,7 @@ export class OverviewComponent implements OnInit {
   animalAmount = new FormControl('');
   minVictories = new FormControl('');
   class: string[] = this.extraService.wizardType;
+  species: string[] = this.extraService.species;
 
   constructor(
     private mbService: MagicalBeingService,
@@ -41,10 +42,17 @@ export class OverviewComponent implements OnInit {
     });
   }
 
-  getMagicalBeing(house: string) {
+  getMagicalBeingByHouse(house: string) {
     console.log(house);
     this.mbService
       .getMagicalBeingSearchKlasse(house)
+      .subscribe((x) => (this.magicalBeings = x));
+  }
+
+  getMagicalBeingBySpecies(species: string) {
+    console.log(species);
+    this.mbService
+      .getMagicalBeingSearchSpecies(species)
       .subscribe((x) => (this.magicalBeings = x));
   }
 

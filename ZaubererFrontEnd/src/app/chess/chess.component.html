@@ -1,7 +1,123 @@
-<div class="pt-lg-3 sticky-top header gold">
-    <h1 class="headerchess headertext">Wizard Chess</h1>
-  <div class="container">
-      <br/>
-      <h2 class="gold">Coming soon...</h2>
+<div class="pt-lg-3 header gold">
+  <h1 class="headerchess headertext">Wizard Chess</h1>
+</div>
+
+<div class="container">
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-12">
+        <table class="tablechess">
+          <tr *ngFor="let number of rows">
+            <th class="gold">{{ number }} &nbsp; &nbsp;</th>
+            <ng-container
+              *ngIf="
+                number === '8' ||
+                number === '6' ||
+                number === '4' ||
+                number === '2'
+              "
+            >
+              <td *ngFor="let char of columns">
+                <ng-container
+                  *ngIf="
+                    char === 'A' || char === 'C' || char === 'E' || char === 'G'
+                  "
+                >
+                  <td class="white" *ngIf="firstPiece===''">
+                    <button
+                      class="gold"
+                      (click)="getPiece(number, char)"
+                    >{{showPiece(number, char)}}</button>
+                  </td>
+                  <td class="white" *ngIf="firstPiece!==''">
+                    <button
+                      class="gold"
+                      (click)="movePiece(number, char)"
+                    >{{showPiece(number, char)}}</button>
+                  </td>
+                  
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    char === 'B' || char === 'D' || char === 'F' || char === 'H'
+                  "
+                >
+                  <td *ngIf="firstPiece===''">
+                    <button
+                      class="dark gold"
+                      (click)="getPiece(number, char)"
+                    >{{showPiece(number, char)}}</button>
+                  </td>
+                  <td *ngIf="firstPiece!==''">
+                    <button
+                      class="dark gold"
+                      (click)="movePiece(number, char)"
+                    >{{showPiece(number, char)}}</button>
+                  </td>
+                </ng-container>
+              </td>
+            </ng-container>
+            <ng-container
+              *ngIf="
+                number === '7' ||
+                number === '5' ||
+                number === '3' ||
+                number === '1'
+              "
+            >
+              <td *ngFor="let char of columns">
+                <ng-container
+                  *ngIf="
+                    char === 'A' || char === 'C' || char === 'E' || char === 'G'
+                  "
+                >
+                  <td *ngIf="firstPiece===''">
+                    <button
+                      class="dark gold"
+                      (click)="getPiece(number, char)"
+                    >{{showPiece(number, char)}}</button>
+                  </td>
+                  <td *ngIf="firstPiece!==''">
+                    <button
+                      class="dark gold"
+                      (click)="movePiece(number, char)"
+                    >{{showPiece(number, char)}}</button>
+                  </td>
+                </ng-container>
+                <ng-container
+                  *ngIf="
+                    char === 'B' || char === 'D' || char === 'F' || char === 'H'
+                  "
+                >
+                  <td class="white" *ngIf="firstPiece===''">
+                    <button
+                      class=" gold"
+                      (click)="getPiece(number, char)"
+                    >{{showPiece(number, char)}}</button>
+                  </td>
+                  <td class="white" *ngIf="firstPiece!==''">
+                    <button
+                      class=" gold"
+                      (click)="movePiece(number, char)"
+                    >{{showPiece(number, char)}}</button>
+                  </td>
+                </ng-container>
+              </td>
+            </ng-container>
+          </tr>
+          <tr>
+            <th></th>
+            <th class="gold">A</th>
+            <th class="gold">B</th>
+            <th class="gold">C</th>
+            <th class="gold">D</th>
+            <th class="gold">E</th>
+            <th class="gold">F</th>
+            <th class="gold">G</th>
+            <th class="gold">H</th>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

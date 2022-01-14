@@ -78,7 +78,7 @@ Weitere Ideen:
 	Quiz und Login
 	Training
 	Login
-	Weitere Kreaturen
+	Weitere Kreaturen --> Grundstein gelegt
 	Schachspiel einbauen
 
 

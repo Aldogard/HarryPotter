@@ -26,8 +26,8 @@ public class MagicalBeingController {
 
     @GetMapping("")
     @ResponseBody
-    public ResponseEntity<List<MagicalBeing>> getAll(@RequestParam(required = false) String name, @RequestParam(required = false) String klasse) {
-        return magicalBeingService.getAllMagicalBeings(name, klasse);
+    public ResponseEntity<List<MagicalBeing>> getAll(@RequestParam(required = false) String name, @RequestParam(required = false) String klasse, @RequestParam(required = false) String species) {
+        return magicalBeingService.getAllMagicalBeings(name, klasse, species);
     }
 
 

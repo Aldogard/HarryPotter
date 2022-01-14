@@ -77,6 +77,12 @@ export class MagicalBeingService {
     return answer;
   }
 
+  getMagicalBeingSearchSpecies(species: string) {
+    let urlSearchSpecies = url + '/?species=' + species;
+    let answer = this.http.get<HpMagicalBeing[]>(urlSearchSpecies);
+    return answer;
+  }
+
 
   getHealthpointsMax(max: number) {
     let urlSearch = url + '/hp/?max=' + max;
