@@ -5,7 +5,7 @@
 <div class="container">
   <div class="container-fluid padding mt-5">
     <div class="row padding">
-      <div class="col-md-12 col-lg-12">
+      <div class="col-md-12 col-lg-10">
         <table class="tablechess">
           <tr *ngFor="let number of rows">
             <th class="gold">{{ number }} &nbsp; &nbsp;</th>
@@ -23,36 +23,31 @@
                     char === 'A' || char === 'C' || char === 'E' || char === 'G'
                   "
                 >
-                  <td class="white" *ngIf="firstPiece===''">
-                    <button
-                      class="gold"
-                      (click)="getPiece(number, char)"
-                    >{{showPiece(number, char)}}</button>
+                  <td class="white" *ngIf="firstPiece === ''">
+                    <button class="gold" (click)="getPiece(number, char)">
+                      {{ showPiece(number, char) }}
+                    </button>
                   </td>
-                  <td class="white" *ngIf="firstPiece!==''">
-                    <button
-                      class="gold"
-                      (click)="movePiece(number, char)"
-                    >{{showPiece(number, char)}}</button>
+                  <td class="white" *ngIf="firstPiece !== ''">
+                    <button class="gold" (click)="movePiece(number, char)">
+                      {{ showPiece(number, char) }}
+                    </button>
                   </td>
-                  
                 </ng-container>
                 <ng-container
                   *ngIf="
                     char === 'B' || char === 'D' || char === 'F' || char === 'H'
                   "
                 >
-                  <td *ngIf="firstPiece===''">
-                    <button
-                      class="dark gold"
-                      (click)="getPiece(number, char)"
-                    >{{showPiece(number, char)}}</button>
+                  <td *ngIf="firstPiece === ''">
+                    <button class="dark gold" (click)="getPiece(number, char)">
+                      {{ showPiece(number, char) }}
+                    </button>
                   </td>
-                  <td *ngIf="firstPiece!==''">
-                    <button
-                      class="dark gold"
-                      (click)="movePiece(number, char)"
-                    >{{showPiece(number, char)}}</button>
+                  <td *ngIf="firstPiece !== ''">
+                    <button class="dark gold" (click)="movePiece(number, char)">
+                      {{ showPiece(number, char) }}
+                    </button>
                   </td>
                 </ng-container>
               </td>
@@ -71,17 +66,15 @@
                     char === 'A' || char === 'C' || char === 'E' || char === 'G'
                   "
                 >
-                  <td *ngIf="firstPiece===''">
-                    <button
-                      class="dark gold"
-                      (click)="getPiece(number, char)"
-                    >{{showPiece(number, char)}}</button>
+                  <td *ngIf="firstPiece === ''">
+                    <button class="dark gold" (click)="getPiece(number, char)">
+                      {{ showPiece(number, char) }}
+                    </button>
                   </td>
-                  <td *ngIf="firstPiece!==''">
-                    <button
-                      class="dark gold"
-                      (click)="movePiece(number, char)"
-                    >{{showPiece(number, char)}}</button>
+                  <td *ngIf="firstPiece !== ''">
+                    <button class="dark gold" (click)="movePiece(number, char)">
+                      {{ showPiece(number, char) }}
+                    </button>
                   </td>
                 </ng-container>
                 <ng-container
@@ -89,17 +82,15 @@
                     char === 'B' || char === 'D' || char === 'F' || char === 'H'
                   "
                 >
-                  <td class="white" *ngIf="firstPiece===''">
-                    <button
-                      class=" gold"
-                      (click)="getPiece(number, char)"
-                    >{{showPiece(number, char)}}</button>
+                  <td class="white" *ngIf="firstPiece === ''">
+                    <button class="gold" (click)="getPiece(number, char)">
+                      {{ showPiece(number, char) }}
+                    </button>
                   </td>
-                  <td class="white" *ngIf="firstPiece!==''">
-                    <button
-                      class=" gold"
-                      (click)="movePiece(number, char)"
-                    >{{showPiece(number, char)}}</button>
+                  <td class="white" *ngIf="firstPiece !== ''">
+                    <button class="gold" (click)="movePiece(number, char)">
+                      {{ showPiece(number, char) }}
+                    </button>
                   </td>
                 </ng-container>
               </td>
@@ -117,6 +108,13 @@
             <th class="gold">H</th>
           </tr>
         </table>
+      </div>
+      <div class="col-lg-2">
+       <h2 class="gold">Moves</h2>
+            <p class="hint" *ngIf="moves.length === 0">No moves so far</p>
+            <ol>
+              <li *ngFor="let m of moves">{{ m }}</li>
+            </ol>
       </div>
     </div>
   </div>

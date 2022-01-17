@@ -46,3 +46,7 @@ button {
 .tablechess{
     justify-content: space-around;
 }
+
+.hint{
+    text-align: center;
+}
