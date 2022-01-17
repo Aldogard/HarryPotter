@@ -77,7 +77,7 @@ public class GiantServiceTest {
 
         List<Spell> spells = spellRepo.findAll();
         assertNotNull(spells);
-        assertEquals(0, spells.size());
+        assertEquals(1, spells.size());
 
         List<Potion> potions = potionsRepo.findAll();
         assertNotNull(potions);

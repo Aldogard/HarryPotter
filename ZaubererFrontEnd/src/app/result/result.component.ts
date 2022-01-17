@@ -38,6 +38,11 @@ export class ResultComponent implements OnInit {
         .getMagicalBeingSearchKlasse(this.searchTerm)
         .subscribe(results => this.magicalBeingsResults = results);
       }
+      if(this.magicalBeingsResults.length===0){
+        this.mbService
+        .getMagicalBeingSearchSpecies(this.searchTerm)
+        .subscribe(results => this.magicalBeingsResults = results);
+      }
     });
   }
 

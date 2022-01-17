@@ -570,7 +570,7 @@ export class ChessComponent implements OnInit {
       if (color === 'B') {
         return (
           (rookMove || bishopMove) &&
-          !this.checkIfWhiteKingMovesIntoCheck(row, column)
+          !this.checkIfBlackKingMovesIntoCheck(row, column)
         );
       }
     }
@@ -651,12 +651,13 @@ export class ChessComponent implements OnInit {
   }
 
   checkIfBlackKingMovesIntoCheck(row: number, column: number) {
+    console.log("TEST")
     if (
       this.board[this.getValueNumbers(row - 1, column + 1)] === 'PW' ||
       this.board[this.getValueNumbers(row - 1, column - 1)] === 'PW'
     ) {
       alert('Check');
-      this.checkWhiteKing.next(true);
+      this.checkBlackKing.next(true);
       return true;
     }
     return false;
