@@ -20,7 +20,8 @@
                     value="{{ z.id }}"
                     *ngFor="let z of magicalBeings"
                     [selected]="
-                    magicalBeingMs !== undefined && magicalBeingMs['id'] === z.id
+                      magicalBeingMs !== undefined &&
+                      magicalBeingMs['id'] === z.id
                     "
                   >
                     {{ z.name }}
@@ -87,6 +88,11 @@
               <td></td>
             </tr>
             <tr>
+              <td>Species</td>
+              <td>{{ magicalBeingChoiceA.species }}</td>
+              <td></td>
+            </tr>
+            <tr>
               <td>Class</td>
               <td>
                 {{ magicalBeingChoiceA.klasse }}
@@ -96,7 +102,9 @@
             <tr>
               <td>Rating</td>
               <td>
-                {{ magicalBeingChoiceA.rating }} ({{ magicalBeingChoiceA.amount }}
+                {{ magicalBeingChoiceA.rating }} ({{
+                  magicalBeingChoiceA.amount
+                }}
                 Ratings)
               </td>
               <td></td>

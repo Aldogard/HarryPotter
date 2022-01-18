@@ -1,9 +1,8 @@
 package com.example.harrypotter.service.magicalbeings.giants;
 
 import com.example.harrypotter.entity.magicalbeings.giants.Giant;
+import com.example.harrypotter.entity.magicalbeings.giants.Gurg;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
-import com.example.harrypotter.repo.magicalbeings.giants.GiantRepo;
-import com.example.harrypotter.repo.options.SpellRepo;
 import com.example.harrypotter.service.comments.ConditionService;
 import com.example.harrypotter.service.magicalbeings.MagicalBeingService;
 import com.example.harrypotter.service.options.SpellService;
@@ -12,32 +11,29 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
 @Service
 @AllArgsConstructor
-public class GiantService {
+public class GurgService {
     private MagicalBeingService magicalBeingService;
     private MagicalBeingRepo magicalBeingRepo;
     private ConditionService conditionService;
     private SpellService spellService;
 
 
-//    public ResponseEntity<Giant> createGiant(Giant giant){
-//        if (magicalBeingService.checkName(giant)) {
-//            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-//        }
-//
-//        Giant giantNew = new Giant(
-//                giant.getName(),
-//                giant.getHealthPoints(),
-//                giant.getDescription());
-//        magicalBeingRepo.save(giantNew);
-//        conditionService.addConditions(giantNew);
-//
-//        spellService.createCalvorio(giantNew);
-//
-//        return new ResponseEntity<>(giantNew, HttpStatus.OK);
-//    }
+        public ResponseEntity<Giant> createGurg(Gurg gurg){
+        if (magicalBeingService.checkName(gurg)) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
 
+        Gurg gurgNew = new Gurg(
+                gurg.getName(),
+                gurg.getHealthPoints(),
+                gurg.getDescription());
+        magicalBeingRepo.save(gurgNew);
+        conditionService.addConditions(gurgNew);
 
+        spellService.createCalvorio(gurgNew);
+
+        return new ResponseEntity<>(gurgNew, HttpStatus.OK);
+    }
 }

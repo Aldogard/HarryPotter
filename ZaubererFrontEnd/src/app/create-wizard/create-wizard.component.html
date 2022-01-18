@@ -28,6 +28,16 @@
             </select>
           </td>
         </tr>
+        <tr *ngIf="createBeing.value === 'Giant'">
+          <td><label required for="zauberer">Choose a giant type:</label></td>
+          <td>
+            <select class="formButton" [formControl]="createGiantNr">
+              <option *ngFor="let giant of giantType">
+                {{ giant }}
+              </option>
+            </select>
+          </td>
+        </tr>
         <tr>
           <td></td>
           <td> 
@@ -93,7 +103,8 @@
             >
               Submit
             </button>
-            <p *ngIf="show">A wizard was created</p>
+            <p *ngIf="showWizard">A wizard was created</p>
+            <p *ngIf="showGiant">A giant was created</p>
           </form>
           </td>
         </tr>

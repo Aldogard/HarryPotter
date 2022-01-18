@@ -11,7 +11,14 @@ export class GiantService {
 
   constructor(private http: HttpClient) {}
 
-  postGiant(body:HpMagicalBeing){
-    return this.http.post<HpMagicalBeing>(url, body);
+  postGiant(body:HpMagicalBeing, house: string){
+    if(house === 'Half Giant'){
+      house = 'halfGiant'
+    }
+    const stringLowercase = house.charAt(0).toLowerCase() + house.slice(1);
+    const urlGiant = url + '/' + stringLowercase;
+    return this.http.post<HpMagicalBeing>(urlGiant, body);
   }
+
+ 
 }

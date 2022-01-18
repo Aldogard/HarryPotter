@@ -2,6 +2,7 @@ package com.example.harrypotter.service.magicalbeings;
 
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.magicalbeings.giants.Giant;
+import com.example.harrypotter.entity.magicalbeings.giants.Gurg;
 import com.example.harrypotter.entity.magicalbeings.wizards.*;
 
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
@@ -36,8 +37,8 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testGetMagicalBeingById() {
-        Giant giant = new Giant("Testi1", BigDecimal.valueOf(10), "Test and more than 10");
-        magicalBeingRepo.save(giant);
+        Gurg gurg = new Gurg("Testi1", BigDecimal.valueOf(10), "Test and more than 10");
+        magicalBeingRepo.save(gurg);
 
         ResponseEntity<MagicalBeing> response = magicalBeingService.getMagicalBeingById(magicalBeingRepo.findAll().get(0).getId());
         ResponseEntity<MagicalBeing> responseNull = magicalBeingService.getMagicalBeingById(1000);

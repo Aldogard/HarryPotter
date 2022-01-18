@@ -16,7 +16,6 @@ import java.util.List;
 @DiscriminatorColumn(
         discriminatorType = DiscriminatorType.STRING)
 
-
 public abstract class Wizard extends MagicalBeing {
 
     /**

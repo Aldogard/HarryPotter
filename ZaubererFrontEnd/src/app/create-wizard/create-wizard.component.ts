@@ -13,9 +13,12 @@ import { GiantService } from '../giant.service';
 export class CreateWizardComponent implements OnInit {
   being = this.extraService.species;
   wizardType = this.extraService.wizardType;
+  giantType = this.extraService.GiantType;
   createWizardNr = new FormControl('Headmaster', [Validators.required]);
+  createGiantNr = new FormControl('Gurg', [Validators.required]);
   createBeing = new FormControl('Wizard', [Validators.required]);
-  show: boolean = false;
+  showWizard: boolean = false;
+  showGiant: boolean = false;
 
   constructor(
     private giantService: GiantService,
@@ -43,19 +46,18 @@ export class CreateWizardComponent implements OnInit {
   });
 
   submit() {
-    this.show = false;
     if(this.createBeing.value === 'Wizard'){
     this.hpService
       .postWizard(this.magicalBeingForm.value, this.createWizardNr.value)
       .subscribe((a) => {
-        this.show = true;
+        this.showWizard = true;
         this.extraService.redirectToWithTimeout('overview');
       });
     } else if(this.createBeing.value === 'Giant'){
       this.giantService
-        .postGiant(this.magicalBeingForm.value)
+        .postGiant(this.magicalBeingForm.value, this.createGiantNr.value)
         .subscribe((a) => {
-          this.show = true;
+          this.showGiant = true;
           this.extraService.redirectToWithTimeout('overview');
         });
       }

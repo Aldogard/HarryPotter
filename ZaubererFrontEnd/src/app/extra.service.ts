@@ -11,6 +11,22 @@ export class ExtraService {
     'Giant'
   ]
 
+  magicalBeingType: string[] = [
+    'Headmaster',
+    'Voldemort',
+    'Hufflepuff',
+    'Slytherin',
+    'Ravenclaw',
+    'Gryffindor',
+    'Deatheater',
+    'Alumni',
+    'Professor',
+    'Dumbledore',
+    'Potions Master',
+    'Gurg',
+    'Half Giant',
+  ];
+
   wizardType: string[] = [
     'Headmaster',
     'Voldemort',
@@ -23,6 +39,11 @@ export class ExtraService {
     'Professor',
     'Dumbledore',
     'Potions Master',
+  ];
+
+  GiantType: string[] = [
+    'Gurg',
+    'Half Giant',
   ];
 
   options: string[] = ['Spell', 'Potion', 'Animal'];

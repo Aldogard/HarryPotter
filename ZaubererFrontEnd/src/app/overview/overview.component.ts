@@ -23,7 +23,7 @@ export class OverviewComponent implements OnInit {
   potionAmount = new FormControl('');
   animalAmount = new FormControl('');
   minVictories = new FormControl('');
-  class: string[] = this.extraService.wizardType;
+  class: string[] = this.extraService.magicalBeingType;
   species: string[] = this.extraService.species;
 
   constructor(
