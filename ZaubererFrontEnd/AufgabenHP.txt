@@ -56,7 +56,7 @@ Weitere Aufgaben:
 	Abstand zum Überschrift Block
 	Sticky Top Navigation
 	Mehr Spalten für Details
-	Zwischenstand vom Kampf anders anzeigen
+	Zwischenstand vom Kampf anders anzeigen --> Erledigt
 	Create und Update Design ändern
 	Fotos?
 
@@ -79,8 +79,9 @@ Weitere Ideen:
 	Training
 	Login
 	Weitere Kreaturen --> Grundstein gelegt
-	Schachspiel einbauen
-
+	Schachspiel einbauen --> Erledigt
+	Kommentare von Zauberern einbauen
+ 
 
 
 

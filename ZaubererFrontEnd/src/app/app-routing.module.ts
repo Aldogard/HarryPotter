@@ -21,6 +21,8 @@ import { DetailsAnimalComponent } from './details-animal/details-animal.componen
 import { CompareComponent } from './compare/compare.component';
 import { ChessComponent } from './chess/chess.component';
 import { TrainingComponent } from './training/training.component';
+import { PreparationComponent } from './preparation/preparation.component';
+import { InformationComponent } from './information/information.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -48,6 +50,9 @@ const routes: Routes = [
   { path: 'compare', component: CompareComponent },
   { path: 'chess', component: ChessComponent },
   { path: 'training', component: TrainingComponent },
+  { path: 'preparation', component: PreparationComponent },
+  { path: 'information', component: InformationComponent },
+  
 ];
 
 @NgModule({

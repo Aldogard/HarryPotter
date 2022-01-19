@@ -218,7 +218,7 @@ export class PrologueComponent implements OnInit {
     }
   }
 
-  gotoRules(particitpants: HpWizard[]){
+  gotoRules(particitpants: HpMagicalBeing[]){
     this.ms.sendArray(particitpants);
     this.ms.sendShow(true);
     this.extraService.redirectTo('rules');

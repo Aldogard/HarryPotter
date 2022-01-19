@@ -1,0 +1,80 @@
+<div class="pt-lg-3 header gold">
+  <h1 class="headerpreparation headertext">Wizard Chess Preparation</h1>
+</div>
+
+<div class="container">
+  <div class="intro">
+    <p></p>
+  </div>
+
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-6 choice">
+        <div class="abstandeinsbutton">
+          <br />
+          <label required for="wizardUpdate"
+            >Choose the Wiazrd with the white pieces:</label
+          >
+          <select
+            class="formButton"
+            id="wizardUpdateA"
+            (change)="getMagicalBeingAByName()"
+          >
+            <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
+              {{ z.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-6 choice">
+        <br />
+        <label required for="wizardUpdate"
+          >Choose the Wiazrd with the black pieces:</label
+        >
+        <select
+          class="formButton"
+          id="wizardUpdateB"
+          (change)="getMagicalBeingBByName()"
+        >
+          <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
+            {{ z.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div
+    class="check gold"
+    *ngIf="
+      magicalBeingChoiceA !== undefined && magicalBeingChoiceB !== undefined
+    "
+  >
+    <br />
+    Do you want to start the battle with these Wizards:
+    <a>{{ magicalBeingChoiceA.name }} and </a>
+    <a>{{ magicalBeingChoiceB.name }}? </a> &nbsp; &nbsp;
+    <button
+      class="formButton"
+      (click)="send2()"
+      [disabled]="magicalBeingChoiceA.id === magicalBeingChoiceB.id"
+    >
+      Yes
+    </button>
+  </div>
+
+  <div class="hint">
+    <br />
+    <p>Note: Each wizard can compete only once!</p>
+    <a>
+      <a (click)="gotoDetails()" class="link"
+        >If you unsure which wizard to choose, you can examine all the wizards
+        in the Detail View.</a
+      >
+      <br />
+      <a (click)="gotoWiki()" class="link"
+        >Furthermore, the Harry Potter Wiki is an excellent source for even more
+        information.</a
+      >
+    </a>
+  </div>
+</div>
