@@ -1,8 +1,9 @@
+import { createCssSelector } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'app-chess',
+  selector: 'app-chess-test2',
   templateUrl: './chess.component.html',
   styleUrls: ['./chess.component.css'],
 })
@@ -17,6 +18,20 @@ export class ChessComponent implements OnInit {
   attackPiece: string = '';
   checkWhiteKing = new BehaviorSubject<boolean>(false);
   checkBlackKing = new BehaviorSubject<boolean>(false);
+
+  whiteKingMoved = false;
+  whiteRookMoved1 = false;
+  whiteRookMoved8 = false;
+  blackKingMoved = false;
+  blackRookMoved1 = false;
+  blackRookMoved8 = false;
+  castleWhiteGreat = false;
+  castleWhiteSmall = false;
+  castleBlackGreat = false;
+  castleBlackSmall = false;
+  enPassantWhite = false;
+  enPassantBlack = false;
+  enPassentValues: number[] = [];
 
   board: string[] = [
     'RW',
@@ -97,26 +112,44 @@ export class ChessComponent implements OnInit {
     }
   }
 
-  movePiece(row: string, column: string) {
-    const nameOfPiece =
-      this.board[this.getValue(this.rowOfFirstPiece, this.columnOfFirstPiece)];
-
-    const legal = this.checkLegality(
-      parseInt(row),
-      column.charCodeAt(0) - 64,
-      nameOfPiece
-    );
+  movePiece(rowString: string, columnString: string) {
+    let row = parseInt(rowString);
+    let column = columnString.charCodeAt(0) - 64;
+    this.board[this.getValue(this.rowOfFirstPiece, this.columnOfFirstPiece)] =
+      '';
+    const legal = this.checkLegality(row, column, this.firstPiece);
 
     if (this.firstPiece !== '' && legal) {
-      this.board[this.getValue(row, column)] = this.firstPiece;
-      this.firstPiece = '';
-      this.board[this.getValue(this.rowOfFirstPiece, this.columnOfFirstPiece)] =
-        '';
-      console.log(this.attackPiece);
-      this.nextMove.next(!this.nextMove.value);
-      this.moves.push(nameOfPiece + ' ' + column + row);
+      this.attackPiece = this.board[this.getValueNumbers(row, column)];
+      this.board[this.getValueNumbers(row, column)] = this.firstPiece;
+
+      const noCheck = this.checkIfCheck(this.nextMove.value);
+      console.log('Check: ' + noCheck);
+      if (this.firstPiece !== '' && !noCheck) {
+        this.moves.push(this.firstPiece + ' ' + columnString + rowString);
+        this.castle(this.columnOfFirstPiece);
+        this.performCastle();
+        this.performEnPassant(row, column);
+
+        this.nextMove.next(!this.nextMove.value);
+        this.changeEnPassant();
+        this.firstPiece = '';
+      } else {
+        console.log('This move is not legal');
+        this.board[
+          this.getValue(this.rowOfFirstPiece, this.columnOfFirstPiece)
+        ] = this.firstPiece;
+        this.board[this.getValueNumbers(row, column)] = this.attackPiece;
+        this.firstPiece = '';
+        this.castleBlackGreat = false;
+        this.castleWhiteGreat = false;
+        this.castleBlackSmall = false;
+        this.castleWhiteSmall = false;
+      }
     } else {
       console.log('This move is not legal');
+      this.board[this.getValue(this.rowOfFirstPiece, this.columnOfFirstPiece)] =
+        this.firstPiece;
       this.firstPiece = '';
     }
   }
@@ -130,9 +163,9 @@ export class ChessComponent implements OnInit {
 
   getValueNumbers(row: number, column: number) {
     const position = (row - 1) * 8 + column - 1;
-    console.log(row);
-    console.log(column);
-    console.log('P:' + position);
+    if (position < 0 || position > 63) {
+      console.log('Fehler fffffffffffffffffffff');
+    }
     return position;
   }
 
@@ -140,17 +173,73 @@ export class ChessComponent implements OnInit {
     return this.board[this.getValue(row, column)];
   }
 
+  castle(columnString: string) {
+    let column = columnString.charCodeAt(0) - 64;
+    if (this.firstPiece === 'KW') {
+      this.whiteKingMoved = true;
+    }
+    if (this.firstPiece === 'KB') {
+      this.blackKingMoved = true;
+    }
+    if (this.firstPiece === 'RW' && column === 1) {
+      this.whiteRookMoved8 = true;
+    }
+    if (this.firstPiece === 'RB' && column === 1) {
+      this.blackRookMoved8 = true;
+    }
+    if (this.firstPiece === 'RW' && column === 8) {
+      this.whiteRookMoved8 = true;
+    }
+    if (this.firstPiece === 'RB' && column === 8) {
+      this.blackRookMoved8 = true;
+    }
+  }
+
+  performCastle() {
+    if (this.castleWhiteGreat) {
+      this.board[0] = '';
+      this.board[3] = 'RW';
+      this.castleWhiteGreat = false;
+    }
+    if (this.castleWhiteSmall) {
+      this.board[7] = '';
+      this.board[5] = 'RW';
+      this.castleWhiteSmall = false;
+    }
+    if (this.castleBlackGreat) {
+      this.board[56] = '';
+      this.board[59] = 'RB';
+      this.castleBlackGreat = false;
+    }
+    if (this.castleBlackSmall) {
+      this.board[63] = '';
+      this.board[61] = 'RB';
+      this.castleBlackSmall = false;
+    }
+  }
+
+  changeEnPassant() {
+    if (this.nextMove.value) {
+      this.enPassantWhite = false;
+    } else {
+      this.enPassantBlack = false;
+    }
+  }
+
+  performEnPassant(row: number, column: number) {
+    if (this.nextMove.value && this.enPassantBlack) {
+      this.board[this.getValueNumbers(row - 1, column)] = '';
+    }
+
+    if (!this.nextMove.value && this.enPassantWhite) {
+      this.board[this.getValueNumbers(row + 1, column)] = '';
+    }
+  }
+
   checkLegality(row: number, column: number, nameOfPiece: string) {
+    console.log('E');
     const rowOfFirstPiece = parseInt(this.rowOfFirstPiece);
     const columnOfFirstPiece = this.columnOfFirstPiece.charCodeAt(0) - 64;
-
-    console.log('Test');
-    console.log(nameOfPiece);
-    console.log(rowOfFirstPiece);
-    console.log(columnOfFirstPiece);
-    console.log(row);
-    console.log(column);
-    console.log('TestEnde');
 
     if (nameOfPiece === 'PW' && this.nextMove.value) {
       return this.checkPW(row, rowOfFirstPiece, column, columnOfFirstPiece);
@@ -269,6 +358,7 @@ export class ChessComponent implements OnInit {
     column: number,
     columnOfFirstPiece: number
   ) {
+    console.log('F');
     if (
       row === rowOfFirstPiece + 1 &&
       column === columnOfFirstPiece &&
@@ -276,6 +366,7 @@ export class ChessComponent implements OnInit {
     ) {
       return true;
     }
+
     if (
       row === rowOfFirstPiece + 2 &&
       rowOfFirstPiece === 2 &&
@@ -283,6 +374,9 @@ export class ChessComponent implements OnInit {
       this.board[this.getValueNumbers(row - 1, column)] === '' &&
       this.board[this.getValueNumbers(row, column)] === ''
     ) {
+      this.enPassantWhite = true;
+      this.enPassentValues[0] = row;
+      this.enPassentValues[1] = column;
       return true;
     }
     if (
@@ -293,7 +387,25 @@ export class ChessComponent implements OnInit {
         column === columnOfFirstPiece - 1 &&
         this.board[this.getValueNumbers(row, column)].substring(1) === 'B')
     ) {
-      this.attackPiece = this.board[this.getValueNumbers(row, column)];
+      return true;
+    }
+
+    console.log('TestEP');
+    console.log(row);
+    console.log(Math.abs(column - columnOfFirstPiece));
+    console.log(this.enPassantBlack);
+    console.log(row === this.enPassentValues[0] + 1);
+    console.log(column === this.enPassentValues[1]);
+    console.log('TestEPEnde');
+
+    if (
+      row === rowOfFirstPiece + 1 &&
+      row === 6 &&
+      Math.abs(column - columnOfFirstPiece) === 1 &&
+      this.enPassantBlack &&
+      row === this.enPassentValues[0] + 1 &&
+      column === this.enPassentValues[1]
+    ) {
       return true;
     }
     return false;
@@ -319,17 +431,28 @@ export class ChessComponent implements OnInit {
       this.board[this.getValueNumbers(row + 1, column)] === '' &&
       this.board[this.getValueNumbers(row, column)] === ''
     ) {
+      this.enPassantBlack = true;
+      this.enPassentValues[0] = row;
+      this.enPassentValues[1] = column;
       return true;
     }
     if (
       (row === rowOfFirstPiece - 1 &&
         column === columnOfFirstPiece + 1 &&
         this.board[this.getValueNumbers(row, column)].substring(1) === 'W') ||
-      (row === rowOfFirstPiece - 1 &&
-        column === columnOfFirstPiece - 1 &&
-        this.board[this.getValueNumbers(row, column)].substring(1) === 'W')
+      (row === rowOfFirstPiece - 1 && column === columnOfFirstPiece - 1)
     ) {
-      this.attackPiece = this.board[this.getValueNumbers(row, column)];
+      return true;
+    }
+
+    if (
+      row === rowOfFirstPiece - 1 &&
+      row === 4 &&
+      Math.abs(column - columnOfFirstPiece) === 1 &&
+      this.enPassantWhite &&
+      row === this.enPassentValues[0] - 1 &&
+      column === this.enPassentValues[1]
+    ) {
       return true;
     }
     return false;
@@ -342,6 +465,13 @@ export class ChessComponent implements OnInit {
     columnOfFirstPiece: number,
     color: string
   ) {
+    let king;
+    if (color === 'W') {
+      king = 'KW';
+    } else if (color === 'B') {
+      king = 'KB';
+    }
+
     if (column === columnOfFirstPiece || row === rowOfFirstPiece) {
       for (var i = rowOfFirstPiece + 1; i <= row; i++) {
         if (this.board[this.getValueNumbers(i, column)] !== '' && i < row) {
@@ -356,11 +486,19 @@ export class ChessComponent implements OnInit {
           this.board[this.getValueNumbers(i, column)].substring(1) !== color &&
           i === row
         ) {
-          this.attackPiece = this.board[this.getValueNumbers(row, column)];
           return true;
         }
       }
       for (var i = rowOfFirstPiece - 1; i >= row; i--) {
+        // console.log('XTest');
+        // console.log(
+        //   this.board[this.getValueNumbers(i, column)].substring(1) !== color
+        // );
+        // console.log(i === row);
+        // console.log(rowOfFirstPiece);
+        // console.log(row);
+        // console.log(color);
+        // console.log('XtestEnde');
         if (this.board[this.getValueNumbers(i, column)] !== '' && i > row) {
           return false;
         }
@@ -373,7 +511,6 @@ export class ChessComponent implements OnInit {
           this.board[this.getValueNumbers(i, column)].substring(1) !== color &&
           i === row
         ) {
-          this.attackPiece = this.board[this.getValueNumbers(row, column)];
           return true;
         }
       }
@@ -390,7 +527,6 @@ export class ChessComponent implements OnInit {
           this.board[this.getValueNumbers(row, i)].substring(1) !== color &&
           i === column
         ) {
-          this.attackPiece = this.board[this.getValueNumbers(row, column)];
           return true;
         }
       }
@@ -407,7 +543,6 @@ export class ChessComponent implements OnInit {
           this.board[this.getValueNumbers(row, i)].substring(1) !== color &&
           i === column
         ) {
-          this.attackPiece = this.board[this.getValueNumbers(row, column)];
           return true;
         }
       }
@@ -422,14 +557,21 @@ export class ChessComponent implements OnInit {
     columnOfFirstPiece: number,
     color: string
   ) {
+    let king;
+    if (color === 'W') {
+      king = 'KW';
+    } else if (color === 'B') {
+      king = 'KB';
+    }
     if (
       (row === rowOfFirstPiece + 2 || row === rowOfFirstPiece - 2) &&
       (column === columnOfFirstPiece + 1 ||
         column === columnOfFirstPiece - 1) &&
       this.board[this.getValueNumbers(row, column)].substring(1) !== color
     ) {
-      this.attackPiece = this.board[this.getValueNumbers(row, column)];
-      return true;
+      {
+        return true;
+      }
     }
     if (
       (row === rowOfFirstPiece + 1 || row === rowOfFirstPiece - 1) &&
@@ -437,10 +579,8 @@ export class ChessComponent implements OnInit {
         column === columnOfFirstPiece - 2) &&
       this.board[this.getValueNumbers(row, column)].substring(1) !== color
     ) {
-      this.attackPiece = this.board[this.getValueNumbers(row, column)];
       return true;
     }
-
     return false;
   }
 
@@ -451,6 +591,12 @@ export class ChessComponent implements OnInit {
     columnOfFirstPiece: number,
     color: string
   ) {
+    let king;
+    if (color === 'W') {
+      king = 'KW';
+    } else if (color === 'B') {
+      king = 'KB';
+    }
     if (
       (row - column === rowOfFirstPiece - columnOfFirstPiece ||
         row + column === rowOfFirstPiece + columnOfFirstPiece) &&
@@ -475,7 +621,6 @@ export class ChessComponent implements OnInit {
           this.board[this.getValueNumbers(i, storage)].substring(1) !== color &&
           i === row
         ) {
-          this.attackPiece = this.board[this.getValueNumbers(row, column)];
           return true;
         }
       }
@@ -486,20 +631,17 @@ export class ChessComponent implements OnInit {
           storage = storage - 1;
         }
         if (this.board[this.getValueNumbers(i, storage)] !== '' && i > row) {
-          console.log('Test10');
           return false;
         }
         if (
           this.board[this.getValueNumbers(i, storage)].substring(1) === color &&
           i === row
         ) {
-          console.log('Test11');
           return false;
         } else if (
           this.board[this.getValueNumbers(i, storage)].substring(1) !== color &&
           i === row
         ) {
-          this.attackPiece = this.board[this.getValueNumbers(row, column)];
           return true;
         }
       }
@@ -561,114 +703,69 @@ export class ChessComponent implements OnInit {
         color
       );
 
-      if (color === 'W') {
-        return (
-          (rookMove || bishopMove) &&
-          !this.checkIfWhiteKingMovesIntoCheck(row, column)
-        );
+      return rookMove || bishopMove;
+    }
+
+    if (color === 'W') {
+      if (
+        !this.whiteKingMoved &&
+        !this.whiteRookMoved1 &&
+        this.board[1] === '' &&
+        this.board[2] === '' &&
+        this.board[3] === '' &&
+        row === 1 &&
+        column === 3
+      ) {
+        this.castleWhiteGreat = true;
+        return true;
       }
-      if (color === 'B') {
-        return (
-          (rookMove || bishopMove) &&
-          !this.checkIfBlackKingMovesIntoCheck(row, column)
-        );
+      if (
+        !this.whiteKingMoved &&
+        !this.whiteRookMoved8 &&
+        this.board[5] === '' &&
+        this.board[6] === '' &&
+        row === 1 &&
+        column === 7
+      ) {
+        this.castleWhiteSmall = true;
+        return true;
+      }
+    }
+    if (color === 'B') {
+      if (
+        !this.blackKingMoved &&
+        !this.blackRookMoved1 &&
+        this.board[57] === '' &&
+        this.board[58] === '' &&
+        this.board[59] === '' &&
+        row === 8 &&
+        column === 3
+      ) {
+        this.castleBlackGreat = true;
+        return true;
+      }
+      if (
+        !this.blackKingMoved &&
+        !this.blackRookMoved8 &&
+        this.board[61] === '' &&
+        this.board[62] === '' &&
+        row === 8 &&
+        column === 7
+      ) {
+        this.castleBlackSmall = true;
+        return true;
       }
     }
 
     return false;
   }
 
-  // checkIfCheckPawnWhite(row: number, column: number) {
-  //   if (this.board[this.getValueNumbers(row + 1, column + 1)] === 'KB') {
-  //     this.checkWhiteKing.next(true);
-  //     alert('Check');
-  //   }
-  //   if (this.board[this.getValueNumbers(row + 1, column - 1)] === 'KB') {
-  //     this.checkWhiteKing.next(true);
-  //     alert('Check');
-  //   }
-  // }
-
-  // checkIfCheckPawnBlack(row: number, column: number) {
-  //   if (this.board[this.getValueNumbers(row - 1, column - 1)] === 'KW') {
-  //     this.checkWhiteKing.next(true);
-  //     alert('Check');
-  //   }
-  //   if (this.board[this.getValueNumbers(row - 1, column + 1)] === 'KW') {
-  //     this.checkWhiteKing.next(true);
-  //     alert('Check');
-  //   }
-  // }
-
-  checkIfWhiteKingInCheck(row: number, column: number) {
-    let rowKing = this.findRowandColumn('KW')[0];
-    let columnKing = this.findRowandColumn('KW')[1];
-
-    console.log('Test123');
-    console.log(rowKing);
-    console.log(columnKing);
-    console.log('TestEnde');
-
-    if (
-      this.board[this.getValueNumbers(rowKing + 1, columnKing + 1)] === 'PB' ||
-      this.board[this.getValueNumbers(rowKing + 1, columnKing - 1)] === 'PB'
-    ) {
-      alert('Check');
-      this.checkWhiteKing.next(true);
-      return true;
-    }
-    return false;
-  }
-
-  checkIfWhiteKingMovesIntoCheck(row: number, column: number) {
-    if (
-      this.board[this.getValueNumbers(row + 1, column + 1)] === 'PB' ||
-      this.board[this.getValueNumbers(row + 1, column - 1)] === 'PB'
-    ) {
-      alert('Check');
-      return true;
-    }
-    return false;
-  }
-  checkIfBlackKingInCheck(row: number, column: number) {
-    let rowKing = this.findRowandColumn('KB')[0];
-    let columnKing = this.findRowandColumn('KB')[1];
-
-    console.log('Test123');
-    console.log(rowKing);
-    console.log(columnKing);
-    console.log('TestEnde');
-
-    if (
-      this.board[this.getValueNumbers(rowKing - 1, columnKing + 1)] === 'PW' ||
-      this.board[this.getValueNumbers(rowKing - 1, columnKing - 1)] === 'PW'
-    ) {
-      alert('Check');
-      this.checkWhiteKing.next(true);
-      return true;
-    }
-    return false;
-  }
-
-  checkIfBlackKingMovesIntoCheck(row: number, column: number) {
-    console.log("TEST")
-    if (
-      this.board[this.getValueNumbers(row - 1, column + 1)] === 'PW' ||
-      this.board[this.getValueNumbers(row - 1, column - 1)] === 'PW'
-    ) {
-      alert('Check');
-      this.checkBlackKing.next(true);
-      return true;
-    }
-    return false;
-  }
-
-  findRowandColumn(king: string) {
+  findRowandColumn(piece: string | undefined) {
     let place = 0;
     let row = 0;
     let column = 0;
     for (var i = 0; i < 64; i++) {
-      if (this.board[i] === king) {
+      if (this.board[i] === piece) {
         place = i + 1;
       }
     }
@@ -679,7 +776,362 @@ export class ChessComponent implements OnInit {
       column = place % 8;
       row = Math.ceil(place / 8);
     }
-
     return [row, column];
+  }
+
+  getRow(position: number) {
+    const positionPlusOne = position + 1;
+    if (positionPlusOne % 8 === 0) {
+      return positionPlusOne / 8;
+    } else {
+      return Math.ceil(positionPlusOne / 8);
+    }
+  }
+
+  getColumn(position: number) {
+    const positionPlusOne = position + 1;
+    if (positionPlusOne % 8 === 0) {
+      return 8;
+    } else {
+      return positionPlusOne % 8;
+    }
+  }
+
+  checkIfCheck(nextMove: boolean) {
+    let color = 'B';
+    let piece = 'KW';
+    if (!nextMove) {
+      color = 'W';
+      piece = 'KB';
+    }
+
+    const pawn = 'P' + color;
+    const rook = 'R' + color;
+    const knight = 'S' + color;
+    const bishop = 'B' + color;
+    const queen = 'Q' + color;
+    const king = 'K' + color;
+
+    console.log(rook, knight, bishop, queen, king, piece);
+
+    for (var i = 0; i < 64; i++) {
+      if (this.board[i] === pawn) {
+        if (nextMove) {
+          console.log('Check' + i);
+          console.log(
+            this.possibleCheckByPB(this.getRow(i), this.getColumn(i))
+          );
+          console.log(this.getRow(i));
+          console.log(this.getColumn(i));
+          if (
+            this.possibleCheckByPB(this.getRow(i + 1), this.getColumn(i + 1))
+          ) {
+            return true;
+          }
+        } else {
+          console.log('Check' + i);
+          console.log(
+            this.possibleCheckByPW(this.getRow(i), this.getColumn(i))
+          );
+          console.log(this.getRow(i));
+          console.log(this.getColumn(i));
+          if (this.possibleCheckByPW(this.getRow(i), this.getColumn(i))) {
+            return true;
+          }
+        }
+      }
+      if (this.board[i] === rook) {
+        console.log('Check' + i);
+        console.log(
+          this.possibleCheckByRook(this.getRow(i), this.getColumn(i), piece)
+        );
+        console.log(this.getRow(i));
+        console.log(this.getColumn(i));
+        if (
+          this.possibleCheckByRook(this.getRow(i), this.getColumn(i), piece)
+        ) {
+          return true;
+        }
+      }
+
+      if (this.board[i] === knight) {
+        console.log('Check' + i);
+        console.log(
+          this.possibleCheckByKnight(this.getRow(i), this.getColumn(i), piece)
+        );
+        console.log(this.getRow(i));
+        console.log(this.getColumn(i));
+        if (
+          this.possibleCheckByKnight(this.getRow(i), this.getColumn(i), piece)
+        ) {
+          return true;
+        }
+      }
+
+      if (this.board[i] === bishop) {
+        console.log('Check' + i);
+        console.log(
+          this.possibleCheckByBishop(this.getRow(i), this.getColumn(i), piece)
+        );
+        console.log(this.getRow(i));
+        console.log(this.getColumn(i));
+        if (
+          this.possibleCheckByBishop(this.getRow(i), this.getColumn(i), piece)
+        ) {
+          return true;
+        }
+      }
+
+      if (this.board[i] === queen) {
+        console.log('Check' + i);
+        console.log(
+          this.possibleCheckByQueen(this.getRow(i), this.getColumn(i), piece)
+        );
+        console.log(this.getRow(i));
+        console.log(this.getColumn(i));
+        if (
+          this.possibleCheckByQueen(this.getRow(i), this.getColumn(i), piece)
+        ) {
+          return true;
+        }
+      }
+
+      if (this.board[i] === king) {
+        console.log('Check' + i);
+        console.log(
+          this.possibleCheckByKing(this.getRow(i), this.getColumn(i), piece)
+        );
+        console.log(this.getRow(i));
+        console.log(this.getColumn(i));
+        if (
+          this.possibleCheckByKing(this.getRow(i), this.getColumn(i), piece)
+        ) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
+
+  possibleCheckByPW(row: number, column: number) {
+    if (
+      (column < 8 &&
+        row < 8 &&
+        this.board[this.getValueNumbers(row + 1, column + 1)] === 'KB') ||
+      (column > 1 &&
+        row < 8 &&
+        this.board[this.getValueNumbers(row + 1, column - 1)] === 'KB')
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  possibleCheckByPB(row: number, column: number) {
+    if (
+      (column < 8 &&
+        row > 1 &&
+        this.board[this.getValueNumbers(row - 1, column + 1)] === 'KW') ||
+      (column > 1 &&
+        row > 1 &&
+        this.board[this.getValueNumbers(row - 1, column - 1)] === 'KW')
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  possibleCheckByRook(row: number, column: number, piece: string) {
+    let noBlockade = true;
+    const rowKing = this.findRowandColumn(piece)[0];
+    const columnKing = this.findRowandColumn(piece)[1];
+
+    if (row !== rowKing && column !== columnKing) {
+      return false;
+    }
+
+    if (row === rowKing) {
+      if (column > columnKing) {
+        for (var i = column - 1; i > columnKing; i--) {
+          if (this.board[this.getValueNumbers(row, i)] !== '') {
+            noBlockade = false;
+          }
+        }
+      }
+      if (column < columnKing) {
+        for (var i = column + 1; i < columnKing; i++) {
+          if (this.board[this.getValueNumbers(row, i)] !== '') {
+            noBlockade = false;
+          }
+        }
+      }
+    }
+
+    if (column === columnKing) {
+      if (row > rowKing) {
+        for (var i = row - 1; i > rowKing; i--) {
+          if (this.board[this.getValueNumbers(i, column)] !== '') {
+            noBlockade = false;
+          }
+        }
+      }
+      if (row < rowKing) {
+        for (var i = row + 1; i < rowKing; i++) {
+          if (this.board[this.getValueNumbers(i, column)] !== '') {
+            noBlockade = false;
+          }
+        }
+      }
+    }
+    if (noBlockade) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  possibleCheckByKnight(row: number, column: number, piece: string) {
+    if (
+      (row < 7 &&
+        column < 8 &&
+        this.board[this.getValueNumbers(row + 2, column + 1)] === piece) ||
+      (row < 7 &&
+        column > 1 &&
+        this.board[this.getValueNumbers(row + 2, column - 1)] === piece) ||
+      (row < 8 &&
+        column < 7 &&
+        this.board[this.getValueNumbers(row + 1, column + 2)] === piece) ||
+      (row < 8 &&
+        column > 2 &&
+        this.board[this.getValueNumbers(row + 1, column - 2)] === piece) ||
+      (row > 1 &&
+        column < 7 &&
+        this.board[this.getValueNumbers(row - 1, column + 2)] === piece) ||
+      (row > 1 &&
+        column > 2 &&
+        this.board[this.getValueNumbers(row - 1, column - 2)] === piece) ||
+      (row > 2 &&
+        column < 8 &&
+        this.board[this.getValueNumbers(row - 2, column + 1)] === piece) ||
+      (row > 2 &&
+        column > 1 &&
+        this.board[this.getValueNumbers(row - 2, column - 1)] === piece)
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  possibleCheckByBishop(row: number, column: number, piece: string) {
+    let noBlockade = true;
+    const rowKing = this.findRowandColumn(piece)[0];
+    const columnKing = this.findRowandColumn(piece)[1];
+
+    if (
+      row - column !== rowKing - columnKing &&
+      row + column !== rowKing + columnKing
+    ) {
+      return false;
+    }
+
+    if (row - column === rowKing - columnKing) {
+      if (row > rowKing) {
+        let storage = column;
+        for (var i = row - 1; i > rowKing; i--) {
+          if (storage <= 1) {
+            noBlockade = false;
+            break;
+          }
+          storage = storage - 1;
+          if (this.board[this.getValueNumbers(i, storage)] !== '') {
+            noBlockade = false;
+          }
+        }
+      }
+
+      if (row < rowKing) {
+        let storage = column;
+        for (var i = row + 1; i < rowKing; i++) {
+          if (storage >= 8) {
+            noBlockade = false;
+            break;
+          }
+          storage = storage + 1;
+          if (this.board[this.getValueNumbers(i, storage)] !== '') {
+            noBlockade = false;
+          }
+        }
+      }
+    }
+
+    if (row + column === rowKing + columnKing) {
+      if (column > columnKing) {
+        let storage = row;
+        for (var i = column - 1; i > columnKing; i--) {
+          if (storage >= 8) {
+            noBlockade = false;
+            break;
+          }
+          storage = storage + 1;
+          if (this.board[this.getValueNumbers(storage, i)] !== '') {
+            noBlockade = false;
+          }
+        }
+      }
+      if (column < columnKing) {
+        let storage = row;
+        for (var i = column + 1; i < columnKing; i++) {
+          if (storage <= 1) {
+            noBlockade = false;
+            break;
+          }
+          storage = storage - 1;
+          if (this.board[this.getValueNumbers(storage, i)] !== '') {
+            noBlockade = false;
+          }
+        }
+      }
+    }
+    if (noBlockade) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  possibleCheckByQueen(row: number, column: number, piece: string) {
+    const checkBishop = this.possibleCheckByBishop(row, column, piece);
+    const checkRook = this.possibleCheckByRook(row, column, piece);
+    return checkBishop || checkRook;
+  }
+
+  possibleCheckByKing(row: number, column: number, piece: string) {
+    if (
+      (column < 8 &&
+        row > 1 &&
+        this.board[this.getValueNumbers(row - 1, column + 1)] === piece) ||
+      (column > 1 &&
+        row > 1 &&
+        this.board[this.getValueNumbers(row - 1, column - 1)] === piece) ||
+      (column < 8 &&
+        row < 8 &&
+        this.board[this.getValueNumbers(row + 1, column + 1)] === piece) ||
+      (column > 1 &&
+        row < 8 &&
+        this.board[this.getValueNumbers(row + 1, column - 1)] === piece) ||
+      (row < 8 &&
+        this.board[this.getValueNumbers(row + 1, column)] === piece) ||
+      (row > 1 &&
+        this.board[this.getValueNumbers(row - 1, column)] === piece) ||
+      (column < 8 &&
+        this.board[this.getValueNumbers(row, column + 1)] === piece) ||
+      (column > 1 &&
+        this.board[this.getValueNumbers(row, column - 1)] === piece)
+    ) {
+      return true;
+    }
+    return false;
   }
 }

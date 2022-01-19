@@ -23,37 +23,35 @@ import { ChessComponent } from './chess/chess.component';
 import { TrainingComponent } from './training/training.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'spelldetail', redirectTo: 'overview', pathMatch: 'full'},
-  { path: 'potiondetail', redirectTo: 'overview', pathMatch: 'full'},
-  { path: 'animaldetail', redirectTo: 'overview', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'spelldetail', redirectTo: 'overview', pathMatch: 'full' },
+  { path: 'potiondetail', redirectTo: 'overview', pathMatch: 'full' },
+  { path: 'animaldetail', redirectTo: 'overview', pathMatch: 'full' },
   { path: 'overview', component: OverviewComponent },
   { path: 'detail', component: DetailsComponent },
   { path: 'delete', component: DeleteWizardComponent },
   { path: 'create', component: CreateWizardComponent },
   { path: 'update', component: UpdateWizardComponent },
-  { path: 'prologue', component: PrologueComponent},
+  { path: 'prologue', component: PrologueComponent },
   // { path: 'credits', component: CreditsComponent},
-  { path: 'home', component: HomeComponent},
-  { path: 'result', component: ResultComponent},
-  { path: 'battle', component: BattleComponent},
-  { path: 'spells', component: OverviewSpellComponent},
-  { path: 'potions', component: OverviewPotionComponent},
-  { path: 'spelldetail/:id', component: DetailsSpellComponent},
-  { path: 'potiondetail/:id', component: DetailsPotionComponent},
-  { path: 'animaldetail/:id', component: DetailsAnimalComponent},
-  { path: 'rules', component: RulesComponent},
-  { path: 'ranks', component: RanksComponent},
-  { path: 'animals', component: OverviewAnimalComponent},
-  { path: 'compare', component: CompareComponent},
-  { path: 'chess', component: ChessComponent},
-  { path: 'training', component: TrainingComponent},
-
+  { path: 'home', component: HomeComponent },
+  { path: 'result', component: ResultComponent },
+  { path: 'battle', component: BattleComponent },
+  { path: 'spells', component: OverviewSpellComponent },
+  { path: 'potions', component: OverviewPotionComponent },
+  { path: 'spelldetail/:id', component: DetailsSpellComponent },
+  { path: 'potiondetail/:id', component: DetailsPotionComponent },
+  { path: 'animaldetail/:id', component: DetailsAnimalComponent },
+  { path: 'rules', component: RulesComponent },
+  { path: 'ranks', component: RanksComponent },
+  { path: 'animals', component: OverviewAnimalComponent },
+  { path: 'compare', component: CompareComponent },
+  { path: 'chess', component: ChessComponent },
+  { path: 'training', component: TrainingComponent },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
