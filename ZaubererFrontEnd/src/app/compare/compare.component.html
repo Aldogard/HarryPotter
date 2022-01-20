@@ -120,6 +120,20 @@
       </tr>
 
       <tr>
+        <td>Chess Victories</td>
+        <td>
+          <div *ngIf="magicalBeingChoiceA !== undefined && show1.value">
+            {{ magicalBeingChoiceA.victoriesChess }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="magicalBeingChoiceB !== undefined && show2.value">
+            {{ magicalBeingChoiceB.victoriesChess }}
+          </div>
+        </td>
+      </tr>
+
+      <tr>
         <td>Class</td>
         <td>
           <div *ngIf="magicalBeingChoiceA !== undefined && show1.value">

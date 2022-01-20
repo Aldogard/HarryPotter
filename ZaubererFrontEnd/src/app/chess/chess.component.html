@@ -3,250 +3,316 @@
 </div>
 
 <div class="container">
-  <div class="container-fluid padding mt-5">
-    <div class="row padding">
-      <div class="col-md-12 col-lg12">
-        <h1 class="gold" *ngIf="endOfGame && winner.value !== ''">
-          The Game is over. {{winner.value}} has won!
-        </h1>
-        <h1 class="gold" *ngIf="endOfGame && winner.value === ''">
-          The Game is over. Both players agreed to a draw!
-        </h1>
-        <br/>
-      </div>
-      <div class="col-md-12 col-lg-12">
-        <ng-container
-          *ngIf="magicalBeing1 !== undefined && magicalBeing2 !== undefined && !endOfGame"
-        >
-          <h2 class="advice">
-            <a class="gold advice">Useful advice from</a>
-            <a class="gold" *ngIf="nextMove.value">{{ magicalBeing1.name }}:</a>
-            <a class="gold" *ngIf="!nextMove.value"
-              >{{ magicalBeing2.name }}:</a
-            >
-            <a *ngIf="nextMove.value">
-              {{ adviceMb1.value }}
-            </a>
-            <a *ngIf="!nextMove.value">
-              {{ adviceMb2.value }}
-            </a>
-          </h2>
-        </ng-container>
-      </div>
-      <!-- <div class="col-md-12 col-lg-1">
+  <ng-container
+    *ngIf="magicalBeing1 !== undefined && magicalBeing2 !== undefined"
+  >
+    <div class="container-fluid padding mt-5">
+      <div class="row padding">
+        <div class="col-md-12 col-lg-12" *ngIf="endOfGame">
+          <h1 class="gold" *ngIf="endOfGame && winner.value !== ''">
+            The Game is over. {{ winner.value }} has won!
+          </h1>
+          <h1 class="gold" *ngIf="endOfGame && winner.value === ''">
+            The Game is over. Both players agreed to a draw!
+          </h1>
+          <br />
+        </div>
+        <!-- <div class="col-md-12 col-lg-1">
         <table class="numberchess">
           <tr *ngFor="let number of rows" class="number">
             <th class="gold">{{ number }} &nbsp; &nbsp;</th>
           </tr>
         </table>
       </div> -->
-      <div class="col-md-12 col-lg-10">
-        <table class="tablechess">
-          <tr *ngFor="let number of rows">
+        <div class="col-md-12 col-lg-9">
+          <table class="tablechess">
+            <tr *ngFor="let number of rows">
+              <ng-container
+                *ngIf="
+                  number === '8' ||
+                  number === '6' ||
+                  number === '4' ||
+                  number === '2'
+                "
+              >
+                <td *ngFor="let char of columns">
+                  <ng-container
+                    *ngIf="
+                      char === 'A' ||
+                      char === 'C' ||
+                      char === 'E' ||
+                      char === 'G'
+                    "
+                  >
+                    <td class="white" *ngIf="firstPiece === ''">
+                      <button
+                        class="gold button"
+                        (click)="getPiece(number, char)"
+                        [disabled]="endOfGame"
+                      >
+                        <a>
+                          <img
+                            src="{{ showPiece2(number, char) }}"
+                            height="50"
+                          />
+                        </a>
+                      </button>
+                    </td>
+                    <td class="white" *ngIf="firstPiece !== ''">
+                      <button
+                        class="gold button"
+                        (click)="movePiece(number, char)"
+                        [disabled]="endOfGame"
+                      >
+                        <a>
+                          <img
+                            src="{{ showPiece2(number, char) }}"
+                            height="50"
+                          />
+                        </a>
+                      </button>
+                    </td>
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      char === 'B' ||
+                      char === 'D' ||
+                      char === 'F' ||
+                      char === 'H'
+                    "
+                  >
+                    <td *ngIf="firstPiece === ''">
+                      <button
+                        class="dark gold button"
+                        (click)="getPiece(number, char)"
+                        [disabled]="endOfGame"
+                      >
+                        <a>
+                          <img
+                            src="{{ showPiece2(number, char) }}"
+                            height="50"
+                          />
+                        </a>
+                      </button>
+                    </td>
+                    <td *ngIf="firstPiece !== ''">
+                      <button
+                        class="dark gold button"
+                        (click)="movePiece(number, char)"
+                        [disabled]="endOfGame"
+                      >
+                        <a>
+                          <img
+                            src="{{ showPiece2(number, char) }}"
+                            height="50"
+                          />
+                        </a>
+                      </button>
+                    </td>
+                  </ng-container>
+                </td>
+              </ng-container>
+              <ng-container
+                *ngIf="
+                  number === '7' ||
+                  number === '5' ||
+                  number === '3' ||
+                  number === '1'
+                "
+              >
+                <td *ngFor="let char of columns">
+                  <ng-container
+                    *ngIf="
+                      char === 'A' ||
+                      char === 'C' ||
+                      char === 'E' ||
+                      char === 'G'
+                    "
+                  >
+                    <td *ngIf="firstPiece === ''">
+                      <button
+                        class="dark gold button"
+                        (click)="getPiece(number, char)"
+                        [disabled]="endOfGame"
+                      >
+                        <a>
+                          <img
+                            src="{{ showPiece2(number, char) }}"
+                            height="50"
+                          />
+                        </a>
+                      </button>
+                    </td>
+                    <td *ngIf="firstPiece !== ''">
+                      <button
+                        class="dark gold button"
+                        (click)="movePiece(number, char)"
+                        [disabled]="endOfGame"
+                      >
+                        <a>
+                          <img
+                            src="{{ showPiece2(number, char) }}"
+                            height="50"
+                          />
+                        </a>
+                      </button>
+                    </td>
+                  </ng-container>
+                  <ng-container
+                    *ngIf="
+                      char === 'B' ||
+                      char === 'D' ||
+                      char === 'F' ||
+                      char === 'H'
+                    "
+                  >
+                    <td class="white" *ngIf="firstPiece === ''">
+                      <button
+                        class="goldchess button"
+                        (click)="getPiece(number, char)"
+                        [disabled]="endOfGame"
+                      >
+                        <a>
+                          <img
+                            src="{{ showPiece2(number, char) }}"
+                            height="50"
+                          />
+                        </a>
+                      </button>
+                    </td>
+                    <td class="white" *ngIf="firstPiece !== ''">
+                      <button
+                        class="goldchess button"
+                        (click)="movePiece(number, char)"
+                        [disabled]="endOfGame"
+                      >
+                        <a>
+                          <img
+                            src="{{ showPiece2(number, char) }}"
+                            height="50"
+                          />
+                        </a>
+                      </button>
+                    </td>
+                  </ng-container>
+                </td>
+              </ng-container>
+            </tr>
+            <tr>
+              <th class="gold">A</th>
+              <th class="gold">B</th>
+              <th class="gold">C</th>
+              <th class="gold">D</th>
+              <th class="gold">E</th>
+              <th class="gold">F</th>
+              <th class="gold">G</th>
+              <th class="gold">H</th>
+            </tr>
+          </table>
+          <br />
+          <div class="">
             <ng-container
               *ngIf="
-                number === '8' ||
-                number === '6' ||
-                number === '4' ||
-                number === '2'
+                magicalBeing1 !== undefined &&
+                magicalBeing2 !== undefined &&
+                ((adviceMb1.value !== '' && nextMove.value) ||
+                  (adviceMb2.value !== '' && !nextMove.value))
               "
             >
-              <td *ngFor="let char of columns">
-                <ng-container
-                  *ngIf="
-                    char === 'A' || char === 'C' || char === 'E' || char === 'G'
-                  "
+              <h2 class="advice">
+                <a class="gold advice"></a>
+                <a class="gold" *ngIf="nextMove.value && adviceMb1.value !== ''"
+                  >Useful advice from{{ magicalBeing1.name }}:</a
                 >
-                  <td class="white" *ngIf="firstPiece === ''">
-                    <button
-                      class="gold button"
-                      (click)="getPiece(number, char)"
-                      [disabled]="endOfGame"
-                    >
-                      <a>
-                        <img src="{{ showPiece2(number, char) }}" height="50" />
-                      </a>
-                    </button>
-                  </td>
-                  <td class="white" *ngIf="firstPiece !== ''">
-                    <button
-                      class="gold button"
-                      (click)="movePiece(number, char)"
-                      [disabled]="endOfGame"
-                    >
-                      <a>
-                        <img src="{{ showPiece2(number, char) }}" height="50" />
-                      </a>
-                    </button>
-                  </td>
-                </ng-container>
-                <ng-container
-                  *ngIf="
-                    char === 'B' || char === 'D' || char === 'F' || char === 'H'
-                  "
+                <a
+                  class="gold"
+                  *ngIf="!nextMove.value && adviceMb2.value !== ''"
+                  >Useful advice from{{ magicalBeing2.name }}:</a
                 >
-                  <td *ngIf="firstPiece === ''">
-                    <button
-                      class="dark gold button"
-                      (click)="getPiece(number, char)"
-                      [disabled]="endOfGame"
-                    >
-                      <a>
-                        <img src="{{ showPiece2(number, char) }}" height="50" />
-                      </a>
-                    </button>
-                  </td>
-                  <td *ngIf="firstPiece !== ''">
-                    <button
-                      class="dark gold button"
-                      (click)="movePiece(number, char)"
-                      [disabled]="endOfGame"
-                    >
-                      <a>
-                        <img src="{{ showPiece2(number, char) }}" height="50" />
-                      </a>
-                    </button>
-                  </td>
-                </ng-container>
-              </td>
+                <a *ngIf="nextMove.value">
+                  {{ adviceMb1.value }}
+                </a>
+                <a *ngIf="!nextMove.value">
+                  {{ adviceMb2.value }}
+                </a>
+              </h2>
+              <br />
             </ng-container>
-            <ng-container
-              *ngIf="
-                number === '7' ||
-                number === '5' ||
-                number === '3' ||
-                number === '1'
-              "
+          </div>
+          <div
+            *ngIf="magicalBeing1 !== undefined && magicalBeing2 !== undefined"
+            class="centered"
+          >
+            <button
+              *ngIf="nextMove.value"
+              class="formButton"
+              (click)="resign(magicalBeing1, magicalBeing2)"
+              [disabled]="endOfGame"
             >
-              <td *ngFor="let char of columns">
-                <ng-container
-                  *ngIf="
-                    char === 'A' || char === 'C' || char === 'E' || char === 'G'
-                  "
-                >
-                  <td *ngIf="firstPiece === ''">
-                    <button
-                      class="dark gold button"
-                      (click)="getPiece(number, char)"
-                      [disabled]="endOfGame"
-                    >
-                      <a>
-                        <img src="{{ showPiece2(number, char) }}" height="50" />
-                      </a>
-                    </button>
-                  </td>
-                  <td *ngIf="firstPiece !== ''">
-                    <button
-                      class="dark gold button"
-                      (click)="movePiece(number, char)"
-                      [disabled]="endOfGame"
-                    >
-                      <a>
-                        <img src="{{ showPiece2(number, char) }}" height="50" />
-                      </a>
-                    </button>
-                  </td>
-                </ng-container>
-                <ng-container
-                  *ngIf="
-                    char === 'B' || char === 'D' || char === 'F' || char === 'H'
-                  "
-                >
-                  <td class="white" *ngIf="firstPiece === ''">
-                    <button
-                      class="goldchess button"
-                      (click)="getPiece(number, char)"
-                      [disabled]="endOfGame"
-                    >
-                      <a>
-                        <img src="{{ showPiece2(number, char) }}" height="50" />
-                      </a>
-                    </button>
-                  </td>
-                  <td class="white" *ngIf="firstPiece !== ''">
-                    <button
-                      class="goldchess button"
-                      (click)="movePiece(number, char)"
-                      [disabled]="endOfGame"
-                    >
-                      <a>
-                        <img src="{{ showPiece2(number, char) }}" height="50" />
-                      </a>
-                    </button>
-                  </td>
-                </ng-container>
-              </td>
-            </ng-container>
-          </tr>
-          <tr>
-            <th class="gold">A</th>
-            <th class="gold">B</th>
-            <th class="gold">C</th>
-            <th class="gold">D</th>
-            <th class="gold">E</th>
-            <th class="gold">F</th>
-            <th class="gold">G</th>
-            <th class="gold">H</th>
-          </tr>
-        </table>
-      </div>
-      <div class="col-lg-2">
-        <ng-container
-        *ngIf="magicalBeing1 !== undefined && magicalBeing2 !== undefined"
-      >
-        <button
-          *ngIf="nextMove.value"
-          class="formButton"
-          (click)="resign(magicalBeing1, magicalBeing2)"
-          [disabled]="endOfGame"
-        >
-          Resign
-        </button>
-        <button
-          *ngIf="!nextMove.value"
-          class="formButton"
-          (click)="resign(magicalBeing2, magicalBeing1)"
-          [disabled]="endOfGame"
-        >
-          Resign
-        </button>
-        <button
-        *ngIf="nextMove.value"
-        class="formButton"
-        (click)="draw(magicalBeing1, magicalBeing2)"
-        [disabled]="endOfGame"
-      >
-        <a *ngIf="!drawMb2">Offer Draw</a>
-        <a *ngIf="drawMb2">Accept Draw</a>
-      </button>
-      <button
-        *ngIf="!nextMove.value"
-        class="formButton"
-        (click)="draw(magicalBeing2, magicalBeing1)"
-        [disabled]="endOfGame"
-      >
-      <a *ngIf="!drawMb1">Offer Draw</a>
-      <a *ngIf="drawMb1">Accept Draw</a>
-      </button>	
-      </ng-container>
-      <div><br/></div>
-        <h2 class="gold">Moves</h2>
-        <div *ngIf="moves.length < 9">
-          <p class="hint" *ngIf="moves.length === 0">No moves so far</p>
-          <ol>
-            <li *ngFor="let m of moves">{{ m }}</li>
-          </ol>
+              Resign
+            </button>
+            <button
+              *ngIf="!nextMove.value"
+              class="formButton"
+              (click)="resign(magicalBeing2, magicalBeing1)"
+              [disabled]="endOfGame"
+            >
+              Resign
+            </button>
+            <button
+              *ngIf="nextMove.value"
+              class="formButton"
+              (click)="draw(magicalBeing1, magicalBeing2)"
+              [disabled]="endOfGame"
+            >
+              <a *ngIf="!drawMb2">Offer Draw</a>
+              <a *ngIf="drawMb2">Accept Draw</a>
+            </button>
+            <button
+              *ngIf="!nextMove.value"
+              class="formButton"
+              (click)="draw(magicalBeing2, magicalBeing1)"
+              [disabled]="endOfGame"
+            >
+              <a *ngIf="!drawMb1">Offer Draw</a>
+              <a *ngIf="drawMb1">Accept Draw</a>
+            </button>
+          </div>
+          <br />
         </div>
-        <div
-          style="overflow-y: scroll; height: 300px"
-          *ngIf="moves.length > 8"
-        >
-          <p class="hint" *ngIf="moves.length === 0">No moves so far</p>
-          <ol>
-            <li *ngFor="let m of moves">{{ m }}</li>
-          </ol>
+        <div class="col-lg-3">
+          <h2 class="gold">Moves</h2>
+          <div *ngIf="moves.length < 21">
+            <p class="hint" *ngIf="moves.length === 0">No moves so far</p>
+            <ul>
+              <ng-container *ngFor="let a of amountOfMoves">
+                <li *ngIf="(a + 1) % 2 === 0">
+                  {{ (a + 1) / 2 }}: {{ moves[a - 1] }}, {{ moves[a] }}
+                </li>
+              </ng-container>
+            </ul>
+          </div>
+          <div
+            style="overflow-y: scroll; height: 400px"
+            *ngIf="moves.length > 20"
+          >
+            <ul>
+              <ng-container *ngFor="let a of amountOfMoves">
+                <li *ngIf="(a + 1) % 2 === 0">
+                  {{ (a + 1) / 2 }}: {{ moves[a - 1] }}, {{ moves[a] }}
+                </li>
+              </ng-container>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
+  </ng-container>
+  <div class="link" *ngIf="magicalBeing1 === undefined">
+    <br />
+    <a href="preparation" class="link"
+      >No magicalBeings have been selected! Please go to Chess in order to set
+      up a Game
+    </a>
   </div>
 </div>

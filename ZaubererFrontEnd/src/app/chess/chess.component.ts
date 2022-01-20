@@ -1,4 +1,3 @@
-import { createCssSelector } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HpMagicalBeing } from '../hp-magical-being';
@@ -18,6 +17,7 @@ export class ChessComponent implements OnInit {
   columnOfFirstPiece: string = '';
   nextMove = new BehaviorSubject<boolean>(true);
   moves: string[] = [];
+  amountOfMoves: number[] = [];
   attackPiece: string = '';
   checkWhiteKing = new BehaviorSubject<boolean>(false);
   checkBlackKing = new BehaviorSubject<boolean>(false);
@@ -118,14 +118,14 @@ export class ChessComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.ms.magicalBeingArrayChess.subscribe((mb) => {
-    //   this.magicalBeing1 = mb[0];
-    //   this.magicalBeing2 = mb[1];
-    // });
-    this.mbService.getMagicalBeings().subscribe((mb) => {
+    this.ms.magicalBeingArrayChess.subscribe((mb) => {
       this.magicalBeing1 = mb[0];
       this.magicalBeing2 = mb[1];
     });
+    // this.mbService.getMagicalBeings().subscribe((mb) => {
+    //   this.magicalBeing1 = mb[0];
+    //   this.magicalBeing2 = mb[1];
+    // });
   }
 
   giveAdvice() {
@@ -217,6 +217,7 @@ export class ChessComponent implements OnInit {
       console.log('Check: ' + noCheck);
       if (this.firstPiece !== '' && !noCheck) {
         this.moves.push(this.firstPiece + ' ' + columnString + rowString);
+        this.amountOfMoves.push(this.moves.length);
         this.castle(this.columnOfFirstPiece);
         this.performCastle();
         this.performEnPassant(row, column);

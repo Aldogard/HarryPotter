@@ -69,6 +69,15 @@ td {
   text-align: center;
 }
 
-.advice {
+/* .advice {
   margin-left: 10%;
+} */
+
+.centered{
+  text-align: center;
+  justify-content: space-around;
+}
+
+li {
+  list-style-type: none;
 }
