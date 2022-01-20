@@ -1,17 +1,19 @@
 package com.example.harrypotter.service.magicalbeings.wizards;
 
+import com.example.harrypotter.entity.magicalbeings.Hint;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
 import com.example.harrypotter.entity.magicalbeings.Condition;
 import com.example.harrypotter.entity.magicalbeings.wizards.Headmaster;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
+import com.example.harrypotter.repo.magicalbeings.HintRepo;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
 import com.example.harrypotter.repo.options.SpellRepo;
 import com.example.harrypotter.repo.magicalbeings.ConditionRepo;
 import com.example.harrypotter.repo.magicalbeings.wizards.StrengthAndWeaknessRepo;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +33,7 @@ public class HeadmasterServiceTest {
     private HeadmasterService headmasterService;
 
     @Autowired
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
 
     @Autowired
     private SpellRepo spellRepo;
@@ -48,9 +50,12 @@ public class HeadmasterServiceTest {
     @Autowired
     private StrengthAndWeaknessRepo saWRepo;
 
+    @Autowired
+    private HintRepo hintRepo;
+
     @AfterEach
     public void deleteAll() {
-        wizardRepo.deleteAll();
+        magicalBeingRepo.deleteAll();
     }
 
     @Test
@@ -67,8 +72,8 @@ public class HeadmasterServiceTest {
 
         assertNotNull(wizardResponse);
         assertNotNull(wizardResponse.getName());
-        assertEquals(1, wizardRepo.findAll().size());
-        assertNotNull(wizardRepo.findByName("Test").get(0).getId());
+        assertEquals(1, magicalBeingRepo.findAll().size());
+        assertNotNull(magicalBeingRepo.findByName("Test").get(0).getId());
 
         List<Condition> conditions = conditionRepo.findAll();
         assertEquals(UtilWizards.numberOfConditions, conditions.size());
@@ -89,6 +94,10 @@ public class HeadmasterServiceTest {
         assertNotNull(saWRepo.findAll());
         assertEquals(7, UtilWizards.findStrength(saWRepo.findAll()).size());
         assertEquals(2, UtilWizards.findWeaknesses(saWRepo.findAll()).size());
+
+        List<Hint> hints = hintRepo.findAll();
+        assertNotNull(hints);
+        assertEquals(2, hints.size());
     }
 
 }

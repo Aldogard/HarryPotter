@@ -1,6 +1,7 @@
 package com.example.harrypotter.service.magicalbeings.giants;
 
 import com.example.harrypotter.entity.magicalbeings.Condition;
+import com.example.harrypotter.entity.magicalbeings.Hint;
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.magicalbeings.giants.Giant;
 import com.example.harrypotter.entity.magicalbeings.giants.Gurg;
@@ -9,6 +10,7 @@ import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
 import com.example.harrypotter.repo.magicalbeings.ConditionRepo;
+import com.example.harrypotter.repo.magicalbeings.HintRepo;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.magicalbeings.wizards.StrengthAndWeaknessRepo;
 import com.example.harrypotter.repo.options.AnimalRepo;
@@ -50,6 +52,9 @@ public class HalfGiantServiceTest {
     @Autowired
     private HalfGiantService halfGiantService;
 
+    @Autowired
+    private HintRepo hintRepo;
+
     @AfterEach
     public void deleteAll(){
         magicalBeingRepo.deleteAll();
@@ -88,6 +93,12 @@ public class HalfGiantServiceTest {
         assertEquals(0, animals.size());
 
         assertNotNull(saWRepo.findAll());
+
+        List<Hint> hints = hintRepo.findAll();
+        assertNotNull(hints);
+        assertEquals(2, hints.size());
+
+
 
     }
 }

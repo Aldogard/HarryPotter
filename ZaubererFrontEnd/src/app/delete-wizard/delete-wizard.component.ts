@@ -65,5 +65,6 @@ export class DeleteWizardComponent implements OnInit {
   deleteAll() {
     const response = this.mbService.deleteAllMagicalBeings();
     response.subscribe();
+    this.extraService.redirectToWithTimeout('create');
   }
 }

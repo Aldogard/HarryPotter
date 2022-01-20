@@ -1,15 +1,10 @@
 package com.example.harrypotter.service.magicalbeings.giants;
 
-import com.example.harrypotter.entity.magicalbeings.giants.Giant;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
-import com.example.harrypotter.repo.magicalbeings.giants.GiantRepo;
-import com.example.harrypotter.repo.options.SpellRepo;
-import com.example.harrypotter.service.comments.ConditionService;
+import com.example.harrypotter.service.magicalbeings.ConditionService;
 import com.example.harrypotter.service.magicalbeings.MagicalBeingService;
 import com.example.harrypotter.service.options.SpellService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 

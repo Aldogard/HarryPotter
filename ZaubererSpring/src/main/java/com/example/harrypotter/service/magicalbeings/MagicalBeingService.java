@@ -135,6 +135,18 @@ public class MagicalBeingService {
             }
         }
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    }
+
+    public ResponseEntity<MagicalBeing> updateVictoriesChess(Headmaster magicalBeing){
+        MagicalBeing updatedMb = null;
+        for (MagicalBeing mb:magicalBeingRepo.findAll()) {
+            if (mb.getId().equals(magicalBeing.getId())) {
+                mb.setVictoriesChess(magicalBeing.getVictoriesChess());
+                updatedMb = magicalBeingRepo.save(mb);
+                return new ResponseEntity<>(updatedMb, HttpStatus.OK);
+            }
+        }
+        return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
 
     }
 

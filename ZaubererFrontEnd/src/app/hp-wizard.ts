@@ -1,6 +1,7 @@
 import { HpAnimal } from "./hp-animal";
 import { HpComment } from "./hp-comment";
 import { HpCondition } from "./hp-condition";
+import { HpHint } from "./hp-hint";
 import { HpPotion } from "./hp-potion";
 import { HpSaw } from "./hp-saw";
 import { HpSpell } from "./hp-spell";
@@ -31,6 +32,8 @@ export interface HpWizard {
     animals: HpAnimal[],
     comments: HpComment[],
     strengthAndWeaknesses: HpSaw[],
+    hints: HpHint[],
     rating: number,
     amount: number,
+    victoriesChess: number,
 }

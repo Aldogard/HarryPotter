@@ -2,7 +2,7 @@ package com.example.harrypotter.controller;
 
 
 import com.example.harrypotter.entity.magicalbeings.Comments;
-import com.example.harrypotter.service.comments.CommentsService;
+import com.example.harrypotter.service.magicalbeings.CommentsService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

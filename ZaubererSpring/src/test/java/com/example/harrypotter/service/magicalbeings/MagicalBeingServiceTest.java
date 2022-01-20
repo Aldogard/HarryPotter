@@ -249,6 +249,33 @@ public class MagicalBeingServiceTest {
     }
 
     @Test
+    public void testUpdateVictoriesChess(){
+        Alumni alumni = UtilWizards.createTesti();
+        magicalBeingRepo.save(alumni);
+
+        Headmaster alumniUpdate = new Headmaster("Testi", BigDecimal.valueOf(10), "Test  and more than 10");
+        alumniUpdate.setId(alumni.getId());
+        alumniUpdate.setVictoriesChess(BigDecimal.valueOf(10));
+
+        ResponseEntity<MagicalBeing> response = magicalBeingService.updateVictoriesChess(alumniUpdate);
+
+        assertEquals(alumni, response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(alumni.getVictoriesChess(), alumniUpdate.getVictoriesChess());
+
+        Headmaster alumniUpdateWrongId = new Headmaster("Testi", BigDecimal.valueOf(10), "Test  and more than 10");
+        alumniUpdate.setId(1000);
+        alumniUpdate.setVictoriesChess(BigDecimal.valueOf(50));
+
+        ResponseEntity<MagicalBeing> responseWrongId = magicalBeingService.updateVictoriesChess(alumniUpdateWrongId);
+        assertEquals(HttpStatus.NO_CONTENT, responseWrongId.getStatusCode());
+        assertNull(responseWrongId.getBody());
+        assertNotEquals(alumni.getVictoriesChess(), alumniUpdateWrongId.getVictoriesChess());
+
+
+    }
+
+    @Test
     public void testGetMagicalBeingByName(){
         Alumni alumni = UtilWizards.createTesti();
         magicalBeingRepo.save(alumni);

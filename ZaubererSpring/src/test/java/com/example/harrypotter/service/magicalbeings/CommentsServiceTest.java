@@ -1,4 +1,4 @@
-package com.example.harrypotter.service.comments;
+package com.example.harrypotter.service.magicalbeings;
 
 import com.example.harrypotter.controller.CommentsController;
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;

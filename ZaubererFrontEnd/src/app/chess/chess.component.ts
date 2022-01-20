@@ -1,6 +1,9 @@
 import { createCssSelector } from '@angular/compiler/src/render3/view/template';
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { HpMagicalBeing } from '../hp-magical-being';
+import { MagicalBeingService } from '../magical-being.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-chess-test2',
@@ -18,6 +21,8 @@ export class ChessComponent implements OnInit {
   attackPiece: string = '';
   checkWhiteKing = new BehaviorSubject<boolean>(false);
   checkBlackKing = new BehaviorSubject<boolean>(false);
+  adviceMb1 = new BehaviorSubject<string>('');
+  adviceMb2 = new BehaviorSubject<string>('');
 
   whiteKingMoved = false;
   whiteRookMoved1 = false;
@@ -32,6 +37,10 @@ export class ChessComponent implements OnInit {
   enPassantWhite = false;
   enPassantBlack = false;
   enPassentValues: number[] = [];
+  endOfGame = false;
+  winner = new BehaviorSubject<string>('');
+  drawMb1 = false;
+  drawMb2 = false;
 
   board: string[] = [
     'RW',
@@ -100,15 +109,96 @@ export class ChessComponent implements OnInit {
     'RB',
   ];
 
-  constructor() {}
+  magicalBeing1?: HpMagicalBeing;
+  magicalBeing2?: HpMagicalBeing;
 
-  ngOnInit(): void {}
+  constructor(
+    private ms: MessageService,
+    private mbService: MagicalBeingService
+  ) {}
+
+  ngOnInit(): void {
+    // this.ms.magicalBeingArrayChess.subscribe((mb) => {
+    //   this.magicalBeing1 = mb[0];
+    //   this.magicalBeing2 = mb[1];
+    // });
+    this.mbService.getMagicalBeings().subscribe((mb) => {
+      this.magicalBeing1 = mb[0];
+      this.magicalBeing2 = mb[1];
+    });
+  }
+
+  giveAdvice() {
+    if (this.nextMove.value && this.magicalBeing1 !== undefined) {
+      if (Math.random() > 0.7) {
+        const hint =
+          this.magicalBeing1.hints[
+            Math.floor(Math.random() * this.magicalBeing1.hints.length)
+          ];
+        if (
+          this.magicalBeing1.name !== 'Ron' &&
+          !hint.ron &&
+          this.magicalBeing1.klasse !== 'Ravenclaw' &&
+          !hint.ravenlaw
+        ) {
+          this.adviceMb1.next(hint.content);
+          this.adviceMb2.next('');
+        }
+      } else {
+        this.adviceMb1.next('');
+        this.adviceMb2.next('');
+      }
+    }
+
+    if (!this.nextMove.value && this.magicalBeing2 !== undefined) {
+      if (Math.random() > 0.7) {
+        const hint =
+          this.magicalBeing2.hints[
+            Math.floor(Math.random() * this.magicalBeing2.hints.length)
+          ];
+        if (
+          !(this.magicalBeing2.name === 'Ron' && hint.ron) &&
+          !(this.magicalBeing2.klasse === 'Ravenclaw' && hint.ravenlaw)
+        ) {
+          this.adviceMb2.next(hint.content);
+          this.adviceMb1.next('');
+        }
+      } else {
+        this.adviceMb2.next('');
+        this.adviceMb1.next('');
+      }
+    }
+  }
+
+  resign(loser: HpMagicalBeing, winner: HpMagicalBeing) {
+    this.endOfGame = true;
+    this.winner.next(winner.name);
+    winner.victoriesChess = winner.victoriesChess + 1;
+    this.mbService.updateVictoriesChess(winner).subscribe();
+  }
+
+  draw(mb: HpMagicalBeing, mb2: HpMagicalBeing) {
+    if (mb === this.magicalBeing1) {
+      this.drawMb1 = true;
+    }
+    if (mb === this.magicalBeing2) {
+      this.drawMb2 = true;
+    }
+    if (this.drawMb1 && this.drawMb2) {
+      this.endOfGame = true;
+      mb.victoriesChess = mb.victoriesChess + 0.5;
+      mb2.victoriesChess = mb2.victoriesChess + 0.5;
+      this.mbService.updateVictoriesChess(mb).subscribe();
+      this.mbService.updateVictoriesChess(mb2).subscribe();
+    }
+  }
 
   getPiece(row: string, column: string) {
     if (this.firstPiece === '') {
       this.firstPiece = this.board[this.getValue(row, column)];
       this.rowOfFirstPiece = row;
       this.columnOfFirstPiece = column;
+      this.giveAdvice();
     }
   }
 
@@ -130,8 +220,10 @@ export class ChessComponent implements OnInit {
         this.castle(this.columnOfFirstPiece);
         this.performCastle();
         this.performEnPassant(row, column);
+        this.queening(row, column);
 
         this.nextMove.next(!this.nextMove.value);
+        this.resetDraw();
         this.changeEnPassant();
         this.firstPiece = '';
       } else {
@@ -169,8 +261,44 @@ export class ChessComponent implements OnInit {
     return position;
   }
 
-  showPiece(row: string, column: string) {
-    return this.board[this.getValue(row, column)];
+  showPiece2(row: string, column: string) {
+    if (this.board[this.getValue(row, column)] === 'PW') {
+      return 'assets/whitepawn.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'RW') {
+      return 'assets/whiterook.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'SW') {
+      return 'assets/whiteknight.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'BW') {
+      return 'assets/whitebishop.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'QW') {
+      return 'assets/whitequeen.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'KW') {
+      return 'assets/whiteking.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'PB') {
+      return 'assets/blackpawn.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'RB') {
+      return 'assets/blackrook.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'SB') {
+      return 'assets/blackknight.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'BB') {
+      return 'assets/blackbishop.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'QB') {
+      return 'assets/blackqueen.png';
+    }
+    if (this.board[this.getValue(row, column)] === 'KB') {
+      return 'assets/blackking.png';
+    }
+    return '';
   }
 
   castle(columnString: string) {
@@ -227,12 +355,37 @@ export class ChessComponent implements OnInit {
   }
 
   performEnPassant(row: number, column: number) {
-    if (this.nextMove.value && this.enPassantBlack) {
+    if (
+      this.nextMove.value &&
+      this.enPassantBlack &&
+      this.firstPiece === 'PW'
+    ) {
       this.board[this.getValueNumbers(row - 1, column)] = '';
     }
 
-    if (!this.nextMove.value && this.enPassantWhite) {
+    if (
+      !this.nextMove.value &&
+      this.enPassantWhite &&
+      this.firstPiece === 'PB'
+    ) {
       this.board[this.getValueNumbers(row + 1, column)] = '';
+    }
+  }
+
+  queening(row: number, column: number) {
+    if (this.firstPiece === 'PW' && row === 8) {
+      this.board[this.getValueNumbers(row, column)] = 'QW';
+    }
+    if (this.firstPiece === 'PB' && row === 1) {
+      this.board[this.getValueNumbers(row, column)] = 'QB';
+    }
+  }
+
+  resetDraw() {
+    if (this.nextMove.value) {
+      this.drawMb1 = false;
+    } else {
+      this.drawMb2 = false;
     }
   }
 
@@ -390,13 +543,13 @@ export class ChessComponent implements OnInit {
       return true;
     }
 
-    console.log('TestEP');
-    console.log(row);
-    console.log(Math.abs(column - columnOfFirstPiece));
-    console.log(this.enPassantBlack);
-    console.log(row === this.enPassentValues[0] + 1);
-    console.log(column === this.enPassentValues[1]);
-    console.log('TestEPEnde');
+    // console.log('TestEP');
+    // console.log(row);
+    // console.log(Math.abs(column - columnOfFirstPiece));
+    // console.log(this.enPassantBlack);
+    // console.log(row === this.enPassentValues[0] + 1);
+    // console.log(column === this.enPassentValues[1]);
+    // console.log('TestEPEnde');
 
     if (
       row === rowOfFirstPiece + 1 &&
@@ -823,9 +976,7 @@ export class ChessComponent implements OnInit {
           );
           console.log(this.getRow(i));
           console.log(this.getColumn(i));
-          if (
-            this.possibleCheckByPB(this.getRow(i + 1), this.getColumn(i + 1))
-          ) {
+          if (this.possibleCheckByPB(this.getRow(i), this.getColumn(i))) {
             return true;
           }
         } else {

@@ -1,4 +1,4 @@
-package com.example.harrypotter.service.comments;
+package com.example.harrypotter.service.magicalbeings;
 
 import com.example.harrypotter.entity.magicalbeings.Comments;
 import com.example.harrypotter.repo.magicalbeings.CommentsRepo;

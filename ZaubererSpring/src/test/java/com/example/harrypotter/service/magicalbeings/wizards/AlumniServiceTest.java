@@ -8,12 +8,12 @@ import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 
 import com.example.harrypotter.entity.magicalbeings.Condition;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
 import com.example.harrypotter.repo.options.SpellRepo;
 import com.example.harrypotter.repo.magicalbeings.ConditionRepo;
 import com.example.harrypotter.repo.magicalbeings.wizards.StrengthAndWeaknessRepo;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ class AlumniServiceTest {
     private AlumniService alumniService;
 
     @Autowired
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
 
     @Autowired
     private SpellRepo spellRepo;
@@ -52,7 +52,7 @@ class AlumniServiceTest {
 
     @AfterEach
     public void deleteAll(){
-        wizardRepo.deleteAll();
+        magicalBeingRepo.deleteAll();
     }
 
     @Test
@@ -69,8 +69,8 @@ class AlumniServiceTest {
 
         assertNotNull(wizardResponse);
         assertNotNull(wizardResponse.getName());
-        assertEquals(1, wizardRepo.findAll().size());
-        assertNotNull(wizardRepo.findByName("Testi").get(0).getId());
+        assertEquals(1, magicalBeingRepo.findAll().size());
+        assertNotNull(magicalBeingRepo.findByName("Testi").get(0).getId());
 
         List<Condition> conditions = conditionRepo.findAll();
         assertEquals(UtilWizards.numberOfConditions, conditions.size());

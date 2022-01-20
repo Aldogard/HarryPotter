@@ -3,7 +3,7 @@ package com.example.harrypotter.service.magicalbeings.wizards;
 import com.example.harrypotter.entity.magicalbeings.wizards.Dumbledore;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
-import com.example.harrypotter.service.comments.ConditionService;
+import com.example.harrypotter.service.magicalbeings.ConditionService;
 import com.example.harrypotter.service.options.AnimalService;
 import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;

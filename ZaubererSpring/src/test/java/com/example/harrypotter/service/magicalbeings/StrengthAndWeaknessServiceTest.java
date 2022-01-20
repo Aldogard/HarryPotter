@@ -1,4 +1,4 @@
-package com.example.harrypotter.service.strenghtAndWeaknessService;
+package com.example.harrypotter.service.magicalbeings;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 import com.example.harrypotter.repo.magicalbeings.wizards.StrengthAndWeaknessRepo;

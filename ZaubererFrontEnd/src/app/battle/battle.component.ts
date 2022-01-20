@@ -480,7 +480,7 @@ export class BattleComponent implements OnInit {
         speicher = m;
         if (mb.healthPoints > 0) {
           speicher.victories = speicher.victories + 1;
-          if (speicher.victories < 400) {
+          if (speicher.victories < 100) {
             speicher.rank =
               this.extraService.ranking[Math.floor(speicher.victories / 5)];
             //Math.floor((rank +2)/3 * rank)

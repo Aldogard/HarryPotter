@@ -1,4 +1,4 @@
-package com.example.harrypotter.entity.magicalbeings.wizards;
+package com.example.harrypotter.entity.magicalbeings;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 import com.example.harrypotter.entity.magicalbeings.Condition;

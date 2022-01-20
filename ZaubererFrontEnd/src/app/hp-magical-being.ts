@@ -4,6 +4,7 @@ import { HpCondition } from "./hp-condition";
 import { HpPotion } from "./hp-potion";
 import { HpAnimal } from "./hp-animal";
 import { HpSaw } from "./hp-saw";
+import { HpHint } from "./hp-hint";
 
 export interface HpMagicalBeing {
     id: number,
@@ -31,6 +32,9 @@ export interface HpMagicalBeing {
     animals: HpAnimal[],
     comments: HpComment[],
     strengthAndWeaknesses: HpSaw[],
+    hints: HpHint[],
     rating: number,
     amount: number,
+    victoriesChess: number,
+
 }

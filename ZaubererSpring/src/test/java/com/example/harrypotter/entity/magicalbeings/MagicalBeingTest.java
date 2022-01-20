@@ -31,6 +31,7 @@ public class MagicalBeingTest {
         assertFalse(test.getFiendfyre());
         assertEquals(0, test.getPtCounter());
         assertEquals(0, test.getVictories());
+        assertEquals(BigDecimal.valueOf(0), test.getVictoriesChess());
         assertEquals(0, test.getAmount());
         assertEquals("Vernon Dursley", test.getRank());
         assertEquals(BigDecimal.valueOf(0.0), test.getRating());

@@ -3,7 +3,7 @@ package com.example.harrypotter.service.magicalbeings.giants;
 import com.example.harrypotter.entity.magicalbeings.giants.Giant;
 import com.example.harrypotter.entity.magicalbeings.giants.Gurg;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
-import com.example.harrypotter.service.comments.ConditionService;
+import com.example.harrypotter.service.magicalbeings.ConditionService;
 import com.example.harrypotter.service.magicalbeings.MagicalBeingService;
 import com.example.harrypotter.service.options.SpellService;
 import lombok.AllArgsConstructor;

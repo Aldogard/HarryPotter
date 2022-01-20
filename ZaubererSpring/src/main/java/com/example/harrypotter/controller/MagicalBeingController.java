@@ -91,6 +91,11 @@ public class MagicalBeingController {
         return magicalBeingService.updateVictories(magicalBeing);
     }
 
+    @PutMapping("/victorychess")
+    public ResponseEntity<MagicalBeing> updateChesVictories(@RequestBody @Validated Headmaster magicalBeing){
+        return magicalBeingService.updateVictoriesChess(magicalBeing);
+    }
+
 
 
 }

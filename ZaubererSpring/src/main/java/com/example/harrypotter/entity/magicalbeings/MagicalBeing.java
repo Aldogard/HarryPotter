@@ -124,6 +124,9 @@ public abstract class MagicalBeing {
     @Column(name = "victories")
     private Integer victories;
 
+    @Column(name = "victories_chess")
+    private BigDecimal victoriesChess;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "magicalBeing", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comments> comments;
@@ -148,6 +151,10 @@ public abstract class MagicalBeing {
     @OneToMany(mappedBy = "magicalBeing", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<StrengthAndWeakness> strengthAndWeaknesses;
 
+    @JsonManagedReference
+    @OneToMany(mappedBy = "magicalBeing", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Hint> hints;
+
 
     public MagicalBeing(String name, BigDecimal healthPoints, String description, String species) {
         this.name = name;
@@ -155,6 +162,7 @@ public abstract class MagicalBeing {
         this.description = description;
         this.species = species;
         this.victories = 0;
+        this.victoriesChess = BigDecimal.valueOf(0.0);
         this.amount = 0;
         this.rank = "Vernon Dursley";
         this.rating = BigDecimal.valueOf(0.0);

@@ -113,6 +113,13 @@ export class MagicalBeingService {
     return this.http.put<HpMagicalBeing>(urlVictory, body);
   }
 
+  updateVictoriesChess(body: HpMagicalBeing){
+    console.log("Check")
+    console.log(body.victoriesChess);
+    const urlVictoryChess = url + '/victorychess';
+    return this.http.put<HpMagicalBeing>(urlVictoryChess, body);
+  }
+
   getPotionById(id: number){
     const urlPotionId = url + '/potion/' + id;
     return this.http.get<HpPotion>(urlPotionId);

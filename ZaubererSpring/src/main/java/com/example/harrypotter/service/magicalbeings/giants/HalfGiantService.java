@@ -3,7 +3,8 @@ package com.example.harrypotter.service.magicalbeings.giants;
 import com.example.harrypotter.entity.magicalbeings.giants.Giant;
 import com.example.harrypotter.entity.magicalbeings.giants.HalfGiant;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
-import com.example.harrypotter.service.comments.ConditionService;
+import com.example.harrypotter.service.magicalbeings.ConditionService;
+import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.magicalbeings.MagicalBeingService;
 import com.example.harrypotter.service.options.SpellService;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ public class HalfGiantService {
     private MagicalBeingRepo magicalBeingRepo;
     private ConditionService conditionService;
     private SpellService spellService;
+    private HintService hintService;
 
 
     public ResponseEntity<Giant> createHalfGiant(HalfGiant halfGiant){
@@ -34,6 +36,9 @@ public class HalfGiantService {
         conditionService.addConditions(hgNew);
 
         spellService.createCalvorio(hgNew);
+
+        hintService.createDontMoveThisPiece(hgNew);
+        hintService.createBetterAskRon(hgNew);
 
         return new ResponseEntity<>(hgNew, HttpStatus.OK);
     }
