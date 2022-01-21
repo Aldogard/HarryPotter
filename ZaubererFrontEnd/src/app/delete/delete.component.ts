@@ -7,10 +7,10 @@ import { HpMagicalBeing } from '../hp-magical-being';
 
 @Component({
   selector: 'app-delete-wizard',
-  templateUrl: './delete-wizard.component.html',
-  styleUrls: ['./delete-wizard.component.css'],
+  templateUrl: './delete.component.html',
+  styleUrls: ['./delete.component.css'],
 })
-export class DeleteWizardComponent implements OnInit {
+export class DeleteComponent implements OnInit {
   show: boolean = false;
   magicalBeings: HpMagicalBeing[] = [];
   choice2: FormControl = new FormControl(0);

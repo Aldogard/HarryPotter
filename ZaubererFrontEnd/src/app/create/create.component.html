@@ -5,10 +5,10 @@
 <div class="container">
 <div class="container-fluid padding mt-5">
   <div class="row padding">
-    <div class="col-md-12 col-lg-4">
-      <table>
+    <div class="col-md-12 col-lg-6">
+      <table style="width: 100%">
         <tr>
-          <td><label required for="zauberer">Choose a being type:</label></td>
+          <td style="width: 30%"><label required for="zauberer">Choose a being type:</label></td>
           <td>
             <select class="formButton" [formControl]="createBeing">
               <option *ngFor="let b of being">
@@ -110,7 +110,7 @@
         </tr>
       </table>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-6">
       <h2 class="gold">Rules for the Creation of a wizard:</h2>
       <ol>
         <li>There can be only one Voldemort</li>

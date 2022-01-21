@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OverviewSpellComponent } from './overview-spell/spells.component';
 import { BattleComponent } from './battle/battle.component';
-import { CreateWizardComponent } from './create-wizard/create-wizard.component';
+import { CreateComponent } from './create/create.component';
 import { CreditsComponent } from './credits/credits.component';
-import { DeleteWizardComponent } from './delete-wizard/delete-wizard.component';
+import { DeleteComponent } from './delete/delete.component';
 import { DetailsSpellComponent } from './details-spell/details-spell.component';
 import { DetailsPotionComponent } from './details-potion/details-potion.component';
 import { DetailsComponent } from './details/details.component';
@@ -14,7 +14,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { OverviewPotionComponent } from './overview-potion/potions.component';
 import { RulesComponent } from './rules/rules.component';
 import { ResultComponent } from './result/result.component';
-import { UpdateWizardComponent } from './update-wizard/update-wizard.component';
+import { UpdateComponent } from './update/update.component';
 import { RanksComponent } from './ranks/ranks.component';
 import { OverviewAnimalComponent } from './overview-animal/overview-animal.component';
 import { DetailsAnimalComponent } from './details-animal/details-animal.component';
@@ -31,9 +31,9 @@ const routes: Routes = [
   { path: 'animaldetail', redirectTo: 'overview', pathMatch: 'full' },
   { path: 'overview', component: OverviewComponent },
   { path: 'detail', component: DetailsComponent },
-  { path: 'delete', component: DeleteWizardComponent },
-  { path: 'create', component: CreateWizardComponent },
-  { path: 'update', component: UpdateWizardComponent },
+  { path: 'delete', component: DeleteComponent },
+  { path: 'create', component: CreateComponent },
+  { path: 'update', component: UpdateComponent },
   { path: 'prologue', component: PrologueComponent },
   // { path: 'credits', component: CreditsComponent},
   { path: 'home', component: HomeComponent },

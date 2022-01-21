@@ -7,10 +7,10 @@ import { GiantService } from '../giant.service';
 
 @Component({
   selector: 'app-create-wizard',
-  templateUrl: './create-wizard.component.html',
-  styleUrls: ['./create-wizard.component.css'],
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.css'],
 })
-export class CreateWizardComponent implements OnInit {
+export class CreateComponent implements OnInit {
   being = this.extraService.species;
   wizardType = this.extraService.wizardType;
   giantType = this.extraService.GiantType;

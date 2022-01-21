@@ -4,9 +4,11 @@
 <div class="container">
   <div class="container-fluid padding mt-5">
     <div class="row padding">
-      <div class="col-md-12 col-lg-4">
+      <div class="col-md-12 col-lg-2">
         <label required for="wizardUpdate2">Please choose a wizard:</label
-        ><br />
+        >
+      </div>
+      <div class="col-lg-4">
         <select
           class="formButton"
           id="wizardUpdate"
@@ -61,9 +63,10 @@
             Submit
           </button>
         </form>
+        <br/>
         <p *ngIf="show">The wizard has been updated</p>
       </div>
-      <div class="col-lg-8">
+      <div class="col-lg-6">
         <h2 class="gold">Rules for the Update of a wizard:</h2>
         <ol>
           <li>Every name can be used only once</li>

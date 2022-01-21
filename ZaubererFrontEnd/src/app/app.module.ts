@@ -7,9 +7,9 @@ import { OverviewComponent } from './overview/overview.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { DetailsComponent } from './details/details.component';
-import { DeleteWizardComponent } from './delete-wizard/delete-wizard.component';
-import { UpdateWizardComponent } from './update-wizard/update-wizard.component';
-import { CreateWizardComponent } from './create-wizard/create-wizard.component';
+import { DeleteComponent } from './delete/delete.component';
+import { UpdateComponent } from './update/update.component';
+import { CreateComponent } from './create/create.component';
 import { PrologueComponent } from './prologue/prologue.component';
 import { CreditsComponent } from './credits/credits.component';
 import { HomeComponent } from './home/home.component';
@@ -35,9 +35,9 @@ import { InformationComponent } from './information/information.component';
     AppComponent,
     OverviewComponent,
     DetailsComponent,
-    DeleteWizardComponent,
-    UpdateWizardComponent,
-    CreateWizardComponent,
+    DeleteComponent,
+    UpdateComponent,
+    CreateComponent,
     PrologueComponent,
     CreditsComponent,
     HomeComponent,

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateWizardComponent } from './create-wizard.component';
+import { UpdateComponent } from './update.component';
 
-describe('CreateWizardComponent', () => {
-  let component: CreateWizardComponent;
-  let fixture: ComponentFixture<CreateWizardComponent>;
+describe('UpdateWizardComponent', () => {
+  let component: UpdateComponent;
+  let fixture: ComponentFixture<UpdateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateWizardComponent ]
+      declarations: [ UpdateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateWizardComponent);
+    fixture = TestBed.createComponent(UpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

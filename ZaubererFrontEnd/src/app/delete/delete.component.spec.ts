@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteWizardComponent } from './delete-wizard.component';
+import { DeleteComponent } from './delete.component';
 
 describe('DeleteWizardComponent', () => {
-  let component: DeleteWizardComponent;
-  let fixture: ComponentFixture<DeleteWizardComponent>;
+  let component: DeleteComponent;
+  let fixture: ComponentFixture<DeleteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteWizardComponent ]
+      declarations: [ DeleteComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeleteWizardComponent);
+    fixture = TestBed.createComponent(DeleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -8,10 +8,10 @@ import { HpMagicalBeing } from '../hp-magical-being';
 
 @Component({
   selector: 'app-update-wizard',
-  templateUrl: './update-wizard.component.html',
-  styleUrls: ['./update-wizard.component.css'],
+  templateUrl: './update.component.html',
+  styleUrls: ['./update.component.css'],
 })
-export class UpdateWizardComponent implements OnInit {
+export class UpdateComponent implements OnInit {
   show: boolean = false;
   getMagicalBeingId: FormControl = new FormControl(0);
   magicalBeings: HpMagicalBeing[] = [];
