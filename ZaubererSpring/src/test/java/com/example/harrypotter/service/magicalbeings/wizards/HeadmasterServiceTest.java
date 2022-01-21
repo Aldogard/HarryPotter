@@ -97,7 +97,7 @@ public class HeadmasterServiceTest {
 
         List<Hint> hints = hintRepo.findAll();
         assertNotNull(hints);
-        assertEquals(2, hints.size());
+        assertEquals(16, hints.size());
     }
 
 }

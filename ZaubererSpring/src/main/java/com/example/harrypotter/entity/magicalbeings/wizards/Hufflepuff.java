@@ -24,6 +24,8 @@ public class Hufflepuff extends Wizard {
         this.setKlasse("Hufflepuff");
         this.setFaktor(BigDecimal.valueOf(1.1));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(45);
+
 
     }
 

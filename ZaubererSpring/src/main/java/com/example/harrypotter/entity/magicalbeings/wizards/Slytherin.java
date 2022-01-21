@@ -23,6 +23,7 @@ public class Slytherin extends Wizard {
         this.setKlasse("Slytherin");
         this.setFaktor(BigDecimal.valueOf(1.0));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(45);
 
     }
 

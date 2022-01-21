@@ -19,5 +19,6 @@ public class AlumniTest {
         assertEquals("Alumni", test.getKlasse());
         assertEquals(BigDecimal.valueOf(1.2), test.getFaktor());
         assertEquals(test.getHealthPoints(), test.getInternHealthPoints());
+        assertEquals(55, test.getIntelligence());
     }
 }

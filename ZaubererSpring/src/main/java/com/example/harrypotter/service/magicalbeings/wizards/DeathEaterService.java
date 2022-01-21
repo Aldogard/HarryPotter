@@ -2,8 +2,9 @@ package com.example.harrypotter.service.magicalbeings.wizards;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.DeathEater;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
+import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.options.AnimalService;
 import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;
@@ -16,20 +17,21 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class DeathEaterService {
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
     private PotionService potionService;
     private SpellService spellService;
     private AnimalService animalService;
     private ConditionService conditionService;
     private StrengthAndWeaknessService sawService;
     private WizardService wizardService;
+    private HintService hintService;
 
     public ResponseEntity<Wizard> createDeathEater(DeathEater deathEater) {
         if (wizardService.checkName(deathEater)) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
         DeathEater de = new DeathEater(deathEater.getName(), deathEater.getHealthPoints(), deathEater.getDescription());
-        wizardRepo.save(de);
+        magicalBeingRepo.save(de);
         conditionService.addConditions(de);
 
         spellService.createExpelliarmus(de);
@@ -59,6 +61,13 @@ public class DeathEaterService {
         sawService.weaknessProfessor(de);
         sawService.weaknessPotionsMaster(de);
 
+        hintService.createBasicHints(de);
+
+        hintService.createTwoTypes(de);
+        hintService.createPureblood(de);
+        hintService.createFriendshipAndBravery(de);
+        hintService.createTimeIsGalleons(de);
+        hintService.createKeepingABishop(de);
 
         return new ResponseEntity<>(de, HttpStatus.OK);
     }

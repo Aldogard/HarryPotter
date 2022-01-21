@@ -1,7 +1,6 @@
 package com.example.harrypotter.service.magicalbeings;
 
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
-import com.example.harrypotter.entity.magicalbeings.giants.Giant;
 import com.example.harrypotter.entity.magicalbeings.giants.Gurg;
 import com.example.harrypotter.entity.magicalbeings.wizards.*;
 

@@ -1,11 +1,13 @@
 package com.example.harrypotter.service.magicalbeings.wizards;
 
+import com.example.harrypotter.entity.magicalbeings.Hint;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
 import com.example.harrypotter.entity.magicalbeings.Condition;
 import com.example.harrypotter.entity.magicalbeings.wizards.DeathEater;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
+import com.example.harrypotter.repo.magicalbeings.HintRepo;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.options.AnimalRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
@@ -46,6 +48,9 @@ public class DeathEaterServiceTest {
 
     @Autowired
     private StrengthAndWeaknessRepo saWRepo;
+
+    @Autowired
+    private HintRepo hintRepo;
 
     @AfterEach
     public void deleteAll() {
@@ -89,6 +94,10 @@ public class DeathEaterServiceTest {
         assertNotNull(saWRepo.findAll());
         assertEquals(4, UtilWizards.findStrength(saWRepo.findAll()).size());
         assertEquals(6, UtilWizards.findWeaknesses(saWRepo.findAll()).size());
+
+        List<Hint> hints = hintRepo.findAll();
+        assertNotNull(hints);
+        assertEquals(13, hints.size());
     }
 
 

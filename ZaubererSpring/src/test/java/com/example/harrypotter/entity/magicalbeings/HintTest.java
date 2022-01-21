@@ -18,11 +18,12 @@ public class HintTest {
     public void testHintsConstructor(){
         Alumni test = new Alumni("Testi", BigDecimal.valueOf(10), "Test and more than 10");
 
-        Hint hint = new Hint("I would move another piece", false, false, test);
+        Hint hint = new Hint("I would move another piece", false, false, false, test);
         assertNotNull(hint);
         assertEquals("I would move another piece", hint.getContent());
         assertFalse(hint.getRavenclaw());
         assertFalse(hint.getRon());
+        assertFalse(hint.getLuna());
         assertEquals(test, hint.getMagicalBeing());
     }
 }

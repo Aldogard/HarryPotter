@@ -5,6 +5,7 @@ import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
+import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.options.AnimalService;
 import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;
@@ -14,17 +15,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
+
 
 @Service
 @AllArgsConstructor
 public class AlumniService {
-    private WizardRepo wizardRepo;
     private PotionService potionService;
     private SpellService spellService;
     private AnimalService animalService;
     private ConditionService conditionService;
     private StrengthAndWeaknessService sawService;
     private WizardService wizardService;
+    private HintService hintService;
     private MagicalBeingRepo magicalBeingRepo;
 
     public ResponseEntity<Wizard> createAlumni(Alumni alumni) {
@@ -61,6 +64,18 @@ public class AlumniService {
         sawService.weaknessProfessor(a);
         sawService.weaknessHeadmaster(a);
         sawService.weaknessPotionsMaster(a);
+
+        hintService.createBasicHints(a);
+
+        hintService.createDecision(a);
+        hintService.createUnknown(a);
+        hintService.createTwoTypes(a);
+        hintService.createPawnPush(a);
+        hintService.createSendToAzkaban(a);
+        hintService.createEveryPawn(a);
+        hintService.createNotAGoodSign(a);
+
+
 
         return new ResponseEntity<>(a, HttpStatus.OK);
     }

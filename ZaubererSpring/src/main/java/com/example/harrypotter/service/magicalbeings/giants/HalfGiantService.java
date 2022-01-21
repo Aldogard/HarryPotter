@@ -37,8 +37,9 @@ public class HalfGiantService {
 
         spellService.createCalvorio(hgNew);
 
-        hintService.createDontMoveThisPiece(hgNew);
-        hintService.createBetterAskRon(hgNew);
+        hintService.createBasicHints(hgNew);
+        hintService.createKeepingABishop(hgNew);
+        hintService.createLikeWizardChess(hgNew);
 
         return new ResponseEntity<>(hgNew, HttpStatus.OK);
     }

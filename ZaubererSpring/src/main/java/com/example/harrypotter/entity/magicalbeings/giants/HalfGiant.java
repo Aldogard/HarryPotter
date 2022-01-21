@@ -16,6 +16,8 @@ public class HalfGiant extends Giant {
         this.setKlasse("Half Giant");
         this.setFaktor(BigDecimal.valueOf(0.75));
         this.setStunnedProtection(10);
+        this.setIntelligence(30);
+
 
 
     }

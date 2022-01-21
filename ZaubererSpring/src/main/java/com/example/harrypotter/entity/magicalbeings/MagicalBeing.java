@@ -127,6 +127,9 @@ public abstract class MagicalBeing {
     @Column(name = "victories_chess")
     private BigDecimal victoriesChess;
 
+    @Column(name = "intelligence")
+    private Integer intelligence;
+
     @JsonManagedReference
     @OneToMany(mappedBy = "magicalBeing", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comments> comments;

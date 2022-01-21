@@ -16,6 +16,7 @@ public class Gurg extends Giant {
         this.setKlasse("Gurg");
         this.setFaktor(BigDecimal.valueOf(0.5));
         this.setStunnedProtection(100);
+        this.setIntelligence(10);
     }
 
     public Gurg(){

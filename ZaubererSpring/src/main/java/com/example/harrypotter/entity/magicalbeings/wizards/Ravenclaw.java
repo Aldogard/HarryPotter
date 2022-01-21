@@ -23,6 +23,8 @@ public class Ravenclaw extends Wizard {
         this.setKlasse("Ravenclaw");
         this.setFaktor(BigDecimal.valueOf(1.0));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(50);
+
 
     }
 

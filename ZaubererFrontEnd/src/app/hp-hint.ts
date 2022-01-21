@@ -3,5 +3,6 @@ export interface HpHint {
     content: string,
     ravenlaw: boolean,
     ron: boolean,
+    luna: boolean,
 
 }

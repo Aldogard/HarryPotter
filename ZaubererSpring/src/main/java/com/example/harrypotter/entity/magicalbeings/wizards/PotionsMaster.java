@@ -24,6 +24,8 @@ public class PotionsMaster extends Wizard {
         this.setKlasse("Potions Master");
         this.setFaktor(BigDecimal.valueOf(1.25));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(60);
+
 
     }
 

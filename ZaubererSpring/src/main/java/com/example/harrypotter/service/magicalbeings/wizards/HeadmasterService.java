@@ -2,7 +2,7 @@ package com.example.harrypotter.service.magicalbeings.wizards;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Headmaster;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
 import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.options.AnimalService;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class HeadmasterService {
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
     private PotionService potionService;
     private SpellService spellService;
     private AnimalService animalService;
@@ -33,7 +33,7 @@ public class HeadmasterService {
         }
 
         Headmaster hm = new Headmaster(headmaster.getName(), headmaster.getHealthPoints(), headmaster.getDescription());
-        wizardRepo.save(hm);
+        magicalBeingRepo.save(hm);
         conditionService.addConditions(hm);
 
         spellService.createExpelliarmus(hm);
@@ -63,8 +63,16 @@ public class HeadmasterService {
         sawService.weaknessHeadmaster(hm);
         sawService.weaknessDumbledore(hm);
 
-        hintService.createDontMoveThisPiece(hm);
-        hintService.createBetterAskRon(hm);
+        hintService.createBasicHints(hm);
+
+        hintService.createNotARavenclaw(hm);
+        hintService.createDecision(hm);
+        hintService.createChoices(hm);
+        hintService.createTwoTypes(hm);
+        hintService.createKeepingABishop(hm);
+        hintService.createPawnPush(hm);
+        hintService.createInaccuraciesAndMistakes(hm);
+        hintService.createEveryPawn(hm);
 
         return new ResponseEntity<>(hm, HttpStatus.OK);
     }

@@ -96,7 +96,7 @@ public class HalfGiantServiceTest {
 
         List<Hint> hints = hintRepo.findAll();
         assertNotNull(hints);
-        assertEquals(2, hints.size());
+        assertEquals(10, hints.size());
 
 
 

@@ -1,8 +1,8 @@
 package com.example.harrypotter.service.magicalbeings;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.magicalbeings.wizards.StrengthAndWeaknessRepo;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import com.example.harrypotter.service.options.UtilOptions;
 import com.example.harrypotter.service.strengthAndWeaknessService.StrengthAndWeaknessService;
 import org.junit.jupiter.api.AfterEach;
@@ -18,20 +18,20 @@ public class StrengthAndWeaknessServiceTest {
     private StrengthAndWeaknessService sawService;
 
     @Autowired
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
 
     @Autowired
     private StrengthAndWeaknessRepo sawRepo;
 
     @AfterEach
     public void deleteAll(){
-        wizardRepo.deleteAll();
+        magicalBeingRepo.deleteAll();
         sawRepo.deleteAll();
     }
 
     private Alumni createAndSaveAlumni(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         return alumni;
     }
 

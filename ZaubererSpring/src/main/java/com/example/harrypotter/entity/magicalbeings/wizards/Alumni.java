@@ -24,6 +24,8 @@ public class Alumni extends Wizard {
         this.setKlasse("Alumni");
         this.setFaktor(BigDecimal.valueOf(1.2));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(55);
+
 
     }
 

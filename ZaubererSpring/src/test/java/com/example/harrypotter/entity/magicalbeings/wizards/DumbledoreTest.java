@@ -19,5 +19,6 @@ public class DumbledoreTest {
         assertEquals("Dumbledore", test.getKlasse());
         assertEquals(BigDecimal.valueOf(2.0), test.getFaktor());
         assertEquals(test.getHealthPoints(), test.getInternHealthPoints());
+        assertEquals(70, test.getIntelligence());
     }
 }

@@ -19,5 +19,6 @@ public class VoldemortTest {
         assertEquals("Voldemort", test.getKlasse());
         assertEquals(BigDecimal.valueOf(1.5), test.getFaktor());
         assertEquals(test.getHealthPoints(), test.getInternHealthPoints());
+        assertEquals(65, test.getIntelligence());
     }
 }

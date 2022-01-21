@@ -22,5 +22,6 @@ public class GurgTest {
         assertEquals("Gurg", gurg.getKlasse());
         assertEquals(BigDecimal.valueOf(0.5), gurg.getFaktor());
         assertEquals(100, gurg.getStunnedProtection());
+        assertEquals(10, gurg.getIntelligence());
     }
 }

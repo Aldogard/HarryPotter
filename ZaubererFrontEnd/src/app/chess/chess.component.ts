@@ -130,16 +130,15 @@ export class ChessComponent implements OnInit {
 
   giveAdvice() {
     if (this.nextMove.value && this.magicalBeing1 !== undefined) {
-      if (Math.random() > 0.7) {
+      if (Math.random() < this.magicalBeing1.intelligence / 100) {
         const hint =
           this.magicalBeing1.hints[
             Math.floor(Math.random() * this.magicalBeing1.hints.length)
           ];
         if (
-          this.magicalBeing1.name !== 'Ron' &&
-          !hint.ron &&
-          this.magicalBeing1.klasse !== 'Ravenclaw' &&
-          !hint.ravenlaw
+          !(this.magicalBeing1.name === 'Ron' && hint.ron) &&
+          !(this.magicalBeing1.klasse === 'Ravenclaw' && hint.ravenlaw) &&
+          !(this.magicalBeing1.name !== 'Luna' && hint.luna)
         ) {
           this.adviceMb1.next(hint.content);
           this.adviceMb2.next('');
@@ -151,14 +150,15 @@ export class ChessComponent implements OnInit {
     }
 
     if (!this.nextMove.value && this.magicalBeing2 !== undefined) {
-      if (Math.random() > 0.7) {
+      if (Math.random() < this.magicalBeing2.intelligence / 100) {
         const hint =
           this.magicalBeing2.hints[
             Math.floor(Math.random() * this.magicalBeing2.hints.length)
           ];
         if (
           !(this.magicalBeing2.name === 'Ron' && hint.ron) &&
-          !(this.magicalBeing2.klasse === 'Ravenclaw' && hint.ravenlaw)
+          !(this.magicalBeing2.klasse === 'Ravenclaw' && hint.ravenlaw) &&
+          !(this.magicalBeing2.name !== 'Luna' && hint.luna)
         ) {
           this.adviceMb2.next(hint.content);
           this.adviceMb1.next('');

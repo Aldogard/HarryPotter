@@ -23,5 +23,6 @@ public class HalfGiantTest {
         assertEquals("Half Giant", hg.getKlasse());
         assertEquals(BigDecimal.valueOf(0.75), hg.getFaktor());
         assertEquals(10, hg.getStunnedProtection());
+        assertEquals(30, hg.getIntelligence());
     }
 }

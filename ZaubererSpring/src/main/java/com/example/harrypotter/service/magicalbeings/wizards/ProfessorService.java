@@ -3,8 +3,9 @@ package com.example.harrypotter.service.magicalbeings.wizards;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Professor;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
+import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.options.AnimalService;
 import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;
@@ -17,13 +18,14 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class ProfessorService {
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
     private PotionService potionService;
     private SpellService spellService;
     private AnimalService animalService;
     private ConditionService conditionService;
     private StrengthAndWeaknessService sawService;
     private WizardService wizardService;
+    private HintService hintService;
 
     public ResponseEntity<Wizard> createProfessor(Professor professor) {
         if (wizardService.checkName(professor)) {
@@ -31,7 +33,7 @@ public class ProfessorService {
         }
 
         Professor prof = new Professor(professor.getName(), professor.getHealthPoints(), professor.getDescription());
-        wizardRepo.save(prof);
+        magicalBeingRepo.save(prof);
         conditionService.addConditions(prof);
 
         spellService.createExpelliarmus(prof);
@@ -59,6 +61,16 @@ public class ProfessorService {
         sawService.weaknessVoldmort(prof);
         sawService.weaknessProfessor(prof);
         sawService.weaknessDeathEater(prof);
+
+        hintService.createBasicHints(prof);
+
+        hintService.createNotARavenclaw(prof);
+        hintService.createDecision(prof);
+        hintService.createTwoTypes(prof);
+        hintService.createTimeIsGalleons(prof);
+        hintService.createPawnPush(prof);
+        hintService.createInaccuraciesAndMistakes(prof);
+        hintService.createDwellOnTactics(prof);
 
         return new ResponseEntity<>(prof, HttpStatus.OK);
     }

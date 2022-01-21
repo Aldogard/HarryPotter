@@ -36,4 +36,5 @@ export interface HpWizard {
     rating: number,
     amount: number,
     victoriesChess: number,
+    intelligence: number,
 }

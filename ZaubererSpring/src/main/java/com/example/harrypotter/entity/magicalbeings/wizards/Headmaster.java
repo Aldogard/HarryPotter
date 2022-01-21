@@ -23,6 +23,8 @@ public class Headmaster extends Wizard {
         this.setKlasse("Headmaster");
         this.setFaktor(BigDecimal.valueOf(1.25));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(65);
+
 
     }
 

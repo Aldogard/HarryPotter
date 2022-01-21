@@ -19,5 +19,6 @@ public class SlytherinTest {
         assertEquals("Slytherin", test.getKlasse());
         assertEquals(BigDecimal.valueOf(1.0), test.getFaktor());
         assertEquals(test.getHealthPoints(), test.getInternHealthPoints());
+        assertEquals(45, test.getIntelligence());
     }
 }

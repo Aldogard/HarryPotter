@@ -25,6 +25,8 @@ public class Voldemort extends Wizard {
         this.setKlasse("Voldemort");
         this.setFaktor(BigDecimal.valueOf(1.5));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(65);
+
 
     }
 

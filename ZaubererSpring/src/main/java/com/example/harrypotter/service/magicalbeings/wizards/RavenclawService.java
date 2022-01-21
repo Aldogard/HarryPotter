@@ -2,8 +2,9 @@ package com.example.harrypotter.service.magicalbeings.wizards;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Ravenclaw;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
+import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.options.AnimalService;
 import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;
@@ -16,13 +17,14 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class RavenclawService {
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
     private PotionService potionService;
     private SpellService spellService;
     private AnimalService animalService;
     private ConditionService conditionService;
     private WizardService wizardService;
     private StrengthAndWeaknessService sawService;
+    private HintService hintService;
 
 
     public ResponseEntity<Wizard> createRavenclaw(Ravenclaw raven) {
@@ -31,7 +33,7 @@ public class RavenclawService {
         }
 
         Ravenclaw rc = new Ravenclaw(raven.getName(), raven.getHealthPoints(), raven.getDescription());
-        wizardRepo.save(rc);
+        magicalBeingRepo.save(rc);
         conditionService.addConditions(rc);
 
         spellService.createExpelliarmus(rc);
@@ -62,6 +64,13 @@ public class RavenclawService {
         sawService.weaknessRavenclaw(rc);
         sawService.weaknessPotionsMaster(rc);
 
+        hintService.createBasicHints(rc);
+
+        hintService.createUnknown(rc);
+        hintService.createKnockOutKing(rc);
+        hintService.createLikeWizardChess(rc);
+        hintService.createPawnPush(rc);
+        hintService.createNotAGoodSign(rc);
 
         return new ResponseEntity<>(rc, HttpStatus.OK);
     }

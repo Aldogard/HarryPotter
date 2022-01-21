@@ -23,15 +23,19 @@ public class Hint {
     @Column(name = "ron")
     private Boolean ron;
 
+    @Column(name = "luna")
+    private Boolean luna;
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "magicalBeing_id")
     private MagicalBeing magicalBeing;
 
-    public Hint(String content, Boolean ravenclaw, Boolean ron, MagicalBeing magicalBeing) {
+    public Hint(String content, Boolean ravenclaw, Boolean ron, Boolean luna, MagicalBeing magicalBeing) {
         this.content = content;
         this.ravenclaw = ravenclaw;
         this.ron = ron;
+        this.luna = luna;
         this.magicalBeing = magicalBeing;
     }
 

@@ -2,8 +2,9 @@ package com.example.harrypotter.service.magicalbeings.wizards;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Dumbledore;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
+import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.options.AnimalService;
 import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;
@@ -16,13 +17,14 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class DumbledoreService {
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
     private PotionService potionService;
     private SpellService spellService;
     private AnimalService animalService;
     private ConditionService conditionService;
     private WizardService wizardService;
     private StrengthAndWeaknessService sawService;
+    private HintService hintService;
 
 
     public ResponseEntity<Wizard> createDumbledore(Dumbledore dumbledore) {
@@ -31,7 +33,7 @@ public class DumbledoreService {
         }
         Dumbledore d = new Dumbledore(dumbledore.getName(), dumbledore.getHealthPoints(), dumbledore.getDescription());
 
-        wizardRepo.save(d);
+        magicalBeingRepo.save(d);
 
         conditionService.addConditions(d);
 
@@ -65,6 +67,19 @@ public class DumbledoreService {
 
         sawService.weaknessDumbledore(d);
         sawService.weaknessPotionsMaster(d);
+
+        hintService.createBasicHints(d);
+
+        hintService.createDecision(d);
+        hintService.createChoices(d);
+        hintService.createUnknown(d);
+        hintService.createQueenSacrifice(d);
+        hintService.createPawnPush(d);
+        hintService.createBlunderingPieces(d);
+        hintService.createQueensCanBeFound(d);
+        hintService.createDwellOnTactics(d);
+        hintService.createInaccuraciesAndMistakes(d);
+        hintService.createEveryPawn(d);
 
         return new ResponseEntity<>(d, HttpStatus.OK);
     }

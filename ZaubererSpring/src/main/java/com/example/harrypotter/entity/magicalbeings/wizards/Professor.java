@@ -24,6 +24,7 @@ public class Professor extends Wizard {
         this.setKlasse("Professor");
         this.setFaktor(BigDecimal.valueOf(1.25));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(60);
 
     }
 

@@ -19,5 +19,6 @@ public class HeadmasterTest {
         assertEquals("Headmaster", test.getKlasse());
         assertEquals(BigDecimal.valueOf(1.25), test.getFaktor());
         assertEquals(test.getHealthPoints(), test.getInternHealthPoints());
+        assertEquals(65, test.getIntelligence());
     }
 }

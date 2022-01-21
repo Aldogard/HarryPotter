@@ -23,6 +23,8 @@ public class  Gryffindor extends Wizard {
         this.setKlasse("Gryffindor");
         this.setFaktor(BigDecimal.valueOf(1.0));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(45);
+
 
     }
 

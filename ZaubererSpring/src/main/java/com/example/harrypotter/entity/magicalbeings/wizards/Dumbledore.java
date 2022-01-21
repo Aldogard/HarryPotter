@@ -24,6 +24,8 @@ public class Dumbledore extends Wizard {
         this.setKlasse("Dumbledore");
         this.setFaktor(BigDecimal.valueOf(2.0));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(70);
+
 
     }
 

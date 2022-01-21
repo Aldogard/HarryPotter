@@ -4,6 +4,7 @@ import com.example.harrypotter.entity.magicalbeings.giants.Giant;
 import com.example.harrypotter.entity.magicalbeings.giants.Gurg;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
+import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.magicalbeings.MagicalBeingService;
 import com.example.harrypotter.service.options.SpellService;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,7 @@ public class GurgService {
     private MagicalBeingRepo magicalBeingRepo;
     private ConditionService conditionService;
     private SpellService spellService;
+    private HintService hintService;
 
 
         public ResponseEntity<Giant> createGurg(Gurg gurg){
@@ -33,6 +35,9 @@ public class GurgService {
         conditionService.addConditions(gurgNew);
 
         spellService.createCalvorio(gurgNew);
+
+        hintService.createBasicHints(gurgNew);
+
 
         return new ResponseEntity<>(gurgNew, HttpStatus.OK);
     }

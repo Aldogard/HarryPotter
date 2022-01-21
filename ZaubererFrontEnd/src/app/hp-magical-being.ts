@@ -36,5 +36,7 @@ export interface HpMagicalBeing {
     rating: number,
     amount: number,
     victoriesChess: number,
+    intelligence: number,
+
 
 }

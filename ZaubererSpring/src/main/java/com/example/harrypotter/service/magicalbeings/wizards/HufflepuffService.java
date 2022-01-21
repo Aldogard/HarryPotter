@@ -2,8 +2,9 @@ package com.example.harrypotter.service.magicalbeings.wizards;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Hufflepuff;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
+import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.options.AnimalService;
 import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;
@@ -17,13 +18,14 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class HufflepuffService {
 
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
     private PotionService potionService;
     private SpellService spellService;
     private AnimalService animalService;
     private ConditionService conditionService;
     private WizardService wizardService;
     private StrengthAndWeaknessService sawService;
+    private HintService hintService;
 
 
     public ResponseEntity<Wizard> createHufflepuff(Hufflepuff hufflepuff) {
@@ -32,7 +34,7 @@ public class HufflepuffService {
         }
 
         Hufflepuff hp = new Hufflepuff(hufflepuff.getName(), hufflepuff.getHealthPoints(), hufflepuff.getDescription());
-        wizardRepo.save(hp);
+        magicalBeingRepo.save(hp);
         conditionService.addConditions(hp);
 
         spellService.createExpelliarmus(hp);
@@ -59,6 +61,16 @@ public class HufflepuffService {
         sawService.weaknessDeathEater(hp);
         sawService.weaknessHufflepuff(hp);
         sawService.weaknessPotionsMaster(hp);
+
+        hintService.createBasicHints(hp);
+
+        hintService.createDecision(hp);
+        hintService.createChoices(hp);
+        hintService.createTwoTypes(hp);
+        hintService.createKnockOutKing(hp);
+        hintService.createLikeWizardChess(hp);
+        hintService.createInaccuraciesAndMistakes(hp);
+        hintService.createNotAGoodSign(hp);
 
         return new ResponseEntity<>(hp, HttpStatus.OK);
     }

@@ -19,6 +19,8 @@ public class DeathEaterTest {
         assertEquals("DeathEater", test.getKlasse());
         assertEquals(BigDecimal.valueOf(1.25), test.getFaktor());
         assertEquals(test.getHealthPoints(), test.getInternHealthPoints());
+        assertEquals(50, test.getIntelligence());
+
     }
 }
 

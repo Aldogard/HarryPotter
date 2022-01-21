@@ -19,5 +19,6 @@ public class HufflepuffTest {
         assertEquals("Hufflepuff", test.getKlasse());
         assertEquals(BigDecimal.valueOf(1.1), test.getFaktor());
         assertEquals(test.getHealthPoints(), test.getInternHealthPoints());
+        assertEquals(45, test.getIntelligence());
     }
 }

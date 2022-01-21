@@ -4,7 +4,7 @@ import com.example.harrypotter.controller.CommentsController;
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 import com.example.harrypotter.entity.magicalbeings.Comments;
 import com.example.harrypotter.repo.magicalbeings.CommentsRepo;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class CommentsServiceTest {
     private CommentsRepo commentsRepo;
 
     @Autowired
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
 
     @Autowired
     private CommentsService commentsService;
@@ -33,14 +33,14 @@ public class CommentsServiceTest {
 
     @AfterEach
     public void deleteAll(){
-        wizardRepo.deleteAll();
+        magicalBeingRepo.deleteAll();
         commentsRepo.deleteAll();
     }
 
     @Test
     public void testCreateComment() {
         Alumni test = new Alumni("test", BigDecimal.valueOf(25), "Test  and more than 10");
-        wizardRepo.save(test);
+        magicalBeingRepo.save(test);
         Comments comment = new Comments("Test and more than 10", test);
 
         ResponseEntity<Comments> response = commentsService.createComment(comment, test.getId());
@@ -56,7 +56,7 @@ public class CommentsServiceTest {
     @Test
     public void testPostComment(){
         Alumni test = new Alumni("test", BigDecimal.valueOf(25), "Test  and more than 10");
-        wizardRepo.save(test);
+        magicalBeingRepo.save(test);
         Comments comment = new Comments("Test and more than 10", test);
 
         ResponseEntity<Comments> response = commentsController.createComment(comment, test.getId());

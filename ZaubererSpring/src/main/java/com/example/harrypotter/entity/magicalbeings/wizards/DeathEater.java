@@ -24,6 +24,8 @@ public class DeathEater extends Wizard {
         this.setKlasse("DeathEater");
         this.setFaktor(BigDecimal.valueOf(1.25));
         setInternHealthPoints(healthPoints);
+        this.setIntelligence(50);
+
 
     }
 
