@@ -14,3 +14,7 @@
     text-align: center;
     border-radius: 0.25rem;
   }
+
+  th {
+    font-size: 2rem;
+  }

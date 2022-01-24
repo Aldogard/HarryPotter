@@ -11,22 +11,22 @@
     <div class="container-fluid padding mt-5">
       <div class="row padding">
         <div class="col-md-12 col-lg-12">
-          <h2 class="gold headertable" *ngIf="showTable.value">
+          <!-- <h2 class="gold headertable" *ngIf="showTable.value">
             Wizards participating in the Battle
-          </h2>
+          </h2> -->
           <table class="table" *ngIf="showTable.value" style="width: 100%;">
             <thead>
               <tr>
-                <th></th>
-                <th>{{ magicalBeing1.name }}</th>
-                <th>{{ magicalBeing2.name }}</th>
-                <th *ngIf="magicalBeing3 !== undefined">
+                <th class="largeheader">Wizards participating in the Battle:</th>
+                <th class="largeheader">{{ magicalBeing1.name }}</th>
+                <th class="largeheader">{{ magicalBeing2.name }}</th>
+                <th *ngIf="magicalBeing3 !== undefined"  class="largeheader">
                   {{ magicalBeing3.name }}
                 </th>
-                <th *ngIf="magicalBeing4 !== undefined">
+                <th *ngIf="magicalBeing4 !== undefined" class="largeheader">
                   {{ magicalBeing4.name }}
                 </th>
-                <th *ngIf="magicalBeing5 !== undefined">
+                <th *ngIf="magicalBeing5 !== undefined" class="largeheader">
                   {{ magicalBeing5.name }}
                 </th>
               </tr>
@@ -354,6 +354,11 @@
             >
               Show Details
             </button>
+            <button
+              class="formButton"
+              (click)="gotoPrologue()"
+              *ngIf="showResult.value">
+            Start another Fight</button>
           </div>
           <ng-container *ngIf="attackMagicalBeing2.value">
             <div class="fs">
@@ -552,7 +557,7 @@
                 <p *ngIf="validateAnimal.value && chosenOption === 'Animal'">
                   Do you want to send {{ animal.value.name }} into the Fight?
                   <button
-                    class="formButtonColumn"
+                    class="formButton"
                     (click)="useAnimal(magicalBeing2, magicalBeing1, false)"
                   >
                     Yes
@@ -759,7 +764,7 @@
                 <p *ngIf="validateAnimal.value && chosenOption === 'Animal'">
                   Do you want to send {{ animal.value.name }} into the Fight?
                   <button
-                    class="formButtonColumn"
+                    class="formButton"
                     (click)="useAnimal(magicalBeing1, magicalBeing2, true)"
                   >
                     Yes
@@ -793,7 +798,7 @@
   <br />
   <div class="link" *ngIf="magicalBeing1 === undefined">
     <br/>
-    <a href="prologue"
+    <a (click)="gotoPrologue()" class="link"
       >No magicalBeings have been selected! Please go to Battle in order to set up a
       Battle
     </a>

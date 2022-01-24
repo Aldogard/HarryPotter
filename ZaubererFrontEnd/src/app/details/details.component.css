@@ -37,9 +37,22 @@ input.radio {
 
 th {
   text-align: left;
+  font-size: 2rem;
 }
 
 .subheader{
   text-align: center;
 }
+
+.positioned {
+  position: sticky;
+  top: 1px;
+}
+
+.table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 

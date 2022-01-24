@@ -57,7 +57,6 @@ export class BattleComponent implements OnInit {
       if (za.length > 3) {
         this.magicalBeing4 = za[3];
       }
-
     });
     this.determineStarter();
   }
@@ -238,6 +237,14 @@ export class BattleComponent implements OnInit {
         this.magicalBeingsArray[this.attackMagicalBeingNumber];
       this.switchMagicalBeings(tempStorage);
       this.gotoNextRound(defendMagicalBeing);
+      if (
+        this.magicalBeing2 !== undefined &&
+        this.magicalBeing1 !== undefined
+      ) {
+        if (this.magicalBeing2.healthPoints < 0) {
+          this.nextRound(this.magicalBeing2, defender, this.magicalBeing1);
+        }
+      }
     } else if (
       ((defendMagicalBeing.healthPoints <= -100 &&
         defendMagicalBeing.halfLife) ||
@@ -252,6 +259,14 @@ export class BattleComponent implements OnInit {
         this.magicalBeingsArray[this.attackMagicalBeingNumber];
       this.switchMagicalBeings(tempStorage);
       this.gotoNextRound(defendMagicalBeing);
+      if (
+        this.magicalBeing2 !== undefined &&
+        this.magicalBeing1 !== undefined
+      ) {
+        if (this.magicalBeing2.healthPoints < 0) {
+          this.nextRound(this.magicalBeing2, defender, this.magicalBeing1);
+        }
+      }
     } else {
       this.attackMagicalBeing2.next(!this.attackMagicalBeing2.value);
       this.attackMagicalBeing1.next(!this.attackMagicalBeing1.value);
@@ -349,37 +364,78 @@ export class BattleComponent implements OnInit {
     }
   }
 
-  spellEffects(defendMagicalBeing: HpMagicalBeing, attackMagicalBeing: HpMagicalBeing) {
+  spellEffects(
+    defendMagicalBeing: HpMagicalBeing,
+    attackMagicalBeing: HpMagicalBeing
+  ) {
     if (this.spell.value.imperio) {
       if (
         attackMagicalBeing.id === this.magicalBeingsArray[0].id &&
-        attackMagicalBeing.id !==
-          this.magicalBeingsArray[this.magicalBeingsArray.length - 1].id
-      )
-        if (defendMagicalBeing.additionalFactor < 1.5) {
-          {
-            const choice = Math.floor(
-              Math.random() *
-                (this.magicalBeingsArray.length -
-                  this.attackMagicalBeingNumber) +
-                this.attackMagicalBeingNumber +
-                1
-            );
-            this.getDamage(
-              defendMagicalBeing,
-              this.magicalBeingsArray[choice - 1],
-              defendMagicalBeing.spells[
-                Math.floor(Math.random() * defendMagicalBeing.spells.length)
-              ].maxDamage,
-              true
-            );
-          }
-        } else {
-          alert('Brain Elixir prevented Imperio');
-        }
+        defendMagicalBeing.additionalFactor < 1.5
+      ) {
+        const choice = Math.floor(
+          Math.random() *
+            (this.magicalBeingsArray.length - this.attackMagicalBeingNumber) +
+            this.attackMagicalBeingNumber
+        );
 
+        this.getDamage(
+          defendMagicalBeing,
+          this.magicalBeingsArray[choice],
+          defendMagicalBeing.spells[
+            Math.floor(Math.random() * defendMagicalBeing.spells.length)
+          ].maxDamage,
+          true
+        );
+      } else if (
+        attackMagicalBeing.id !== this.magicalBeingsArray[0].id &&
+        defendMagicalBeing.additionalFactor < 1.5
+      ) {
+        this.getDamage(
+          defendMagicalBeing,
+          attackMagicalBeing,
+          defendMagicalBeing.spells[
+            Math.floor(Math.random() * defendMagicalBeing.spells.length)
+          ].maxDamage,
+          true
+        );
+      } else {
+        alert('Brain Elixir prevented Imperio');
+      }
       this.confunded(defendMagicalBeing);
-    } else {
+    }
+
+    // if (this.spell.value.imperio) {
+    //   if (
+    //     attackMagicalBeing.id === this.magicalBeingsArray[0].id &&
+    //     attackMagicalBeing.id !==
+    //       this.magicalBeingsArray[this.magicalBeingsArray.length - 1].id
+    //   )
+    //     if (defendMagicalBeing.additionalFactor < 1.5) {
+    //       {
+    //         const choice = Math.floor(
+    //           Math.random() *
+    //             (this.magicalBeingsArray.length -
+    //               this.attackMagicalBeingNumber) +
+    //             this.attackMagicalBeingNumber +
+    //             1
+    //         );
+    //         this.getDamage(
+    //           defendMagicalBeing,
+    //           this.magicalBeingsArray[choice - 1],
+    //           defendMagicalBeing.spells[
+    //             Math.floor(Math.random() * defendMagicalBeing.spells.length)
+    //           ].maxDamage,
+    //           true
+    //         );
+    //       }
+    //     } else {
+    //       alert('Brain Elixir prevented Imperio');
+    //     }
+
+    //   this.confunded(defendMagicalBeing);
+    // }
+    else {
       if (this.spell.value.protego) {
         attackMagicalBeing.protego = true;
       }
@@ -393,7 +449,10 @@ export class BattleComponent implements OnInit {
     }
   }
 
-  animalEffects(defendMagicalBeing: HpMagicalBeing, attackMagicalBeing: HpMagicalBeing) {
+  animalEffects(
+    defendMagicalBeing: HpMagicalBeing,
+    attackMagicalBeing: HpMagicalBeing
+  ) {
     attackMagicalBeing.healthPoints =
       Math.round(
         (attackMagicalBeing.healthPoints +
@@ -421,10 +480,12 @@ export class BattleComponent implements OnInit {
 
   reduceProtection(defendMagicalBeing: HpMagicalBeing) {
     if (defendMagicalBeing.stunnedProtection > 0) {
-      defendMagicalBeing.stunnedProtection = defendMagicalBeing.stunnedProtection - 1;
+      defendMagicalBeing.stunnedProtection =
+        defendMagicalBeing.stunnedProtection - 1;
     }
     if (defendMagicalBeing.confundedProtection > 0) {
-      defendMagicalBeing.confundedProtection = defendMagicalBeing.confundedProtection - 1;
+      defendMagicalBeing.confundedProtection =
+        defendMagicalBeing.confundedProtection - 1;
     }
   }
 
@@ -435,7 +496,8 @@ export class BattleComponent implements OnInit {
       attackMagicalBeing.healthPoints =
         Math.round(
           (attackMagicalBeing.healthPoints +
-            attackMagicalBeing.internHealthPoints * ((Math.random() - 0.5) * 0.2)) *
+            attackMagicalBeing.internHealthPoints *
+              ((Math.random() - 0.5) * 0.2)) *
             100
         ) / 100;
     }
@@ -516,7 +578,10 @@ export class BattleComponent implements OnInit {
     defendMagicalBeing.conditions[1].condition = false;
   }
 
-  resetAFandProtego(attackMagicalBeing: HpMagicalBeing, defendMagicalBeing: HpMagicalBeing) {
+  resetAFandProtego(
+    attackMagicalBeing: HpMagicalBeing,
+    defendMagicalBeing: HpMagicalBeing
+  ) {
     attackMagicalBeing.additionalFactor = 1;
     defendMagicalBeing.protego = false;
   }
@@ -559,15 +624,20 @@ export class BattleComponent implements OnInit {
     window.open('rules');
   }
 
-  strengthAndWeakness(magicalBeing1: HpMagicalBeing, magicalBeing2: HpMagicalBeing) {
+  gotoPrologue() {
+    this.extraService.redirectTo('prologue');
+  }
+
+  strengthAndWeakness(
+    magicalBeing1: HpMagicalBeing,
+    magicalBeing2: HpMagicalBeing
+  ) {
     let indicator;
     magicalBeing1.strengthAndWeaknesses.forEach((saw) => {
       if (saw.house === magicalBeing2.klasse && saw.strength) {
         indicator = true;
-        console.log('check true');
       } else if (saw.house === magicalBeing2.klasse && !saw.strength) {
         indicator = false;
-        console.log('check false');
       }
     });
     if (indicator === true) {

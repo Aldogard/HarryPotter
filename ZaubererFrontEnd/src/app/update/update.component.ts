@@ -1,7 +1,5 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, NgForm, Validators } from '@angular/forms';
-import { WizardService } from '../wizard.service';
-import { HpWizard } from '../hp-wizard';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, NgForm } from '@angular/forms';
 import { ExtraService } from '../extra.service';
 import { MagicalBeingService } from '../magical-being.service';
 import { HpMagicalBeing } from '../hp-magical-being';

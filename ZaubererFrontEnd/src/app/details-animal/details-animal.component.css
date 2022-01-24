@@ -15,7 +15,11 @@ a {
   color: white;
 }
 
-.link{
-    text-align: center;
-    color: white;
-  }
+.link {
+  text-align: center;
+  color: white;
+}
+
+th {
+  font-size: 2rem;
+}

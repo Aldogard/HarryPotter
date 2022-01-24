@@ -30,9 +30,9 @@ input.radio {
   display: inline-block;
 }
 
-
-
-
+.link {
+  color: white;
+}
 
 .buttons{
   text-align: center;
@@ -41,3 +41,8 @@ input.radio {
 .headertable{
   text-align: center;
 }
+
+.largeheader {
+  font-size: 2rem;
+}
+

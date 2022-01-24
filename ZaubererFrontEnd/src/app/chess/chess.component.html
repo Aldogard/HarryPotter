@@ -209,34 +209,36 @@
               <th class="gold">H</th>
             </tr>
           </table>
-          <div class="">
+          <div>
             <ng-container
               *ngIf="
                 magicalBeing1 !== undefined &&
-                magicalBeing2 !== undefined &&
-                ((adviceMb1.value !== '' && nextMove.value) ||
-                  (adviceMb2.value !== '' && !nextMove.value))
+                magicalBeing2 !== undefined
               "
             >
               <h2 class="advice">
                 <a class="gold advice"></a>
-                <a class="gold" *ngIf="nextMove.value && adviceMb1.value !== ''"
-                  >Useful advice from{{ magicalBeing1.name }}:</a
+                <a class="gold" *ngIf="advice.value !== ''">
+                  Useful advice from {{advisor.value}}
+                </a>
+                <a>{{advice.value}}</a>
+                <!-- <a class="gold" *ngIf="nextMove.value && adviceMb1.value !== ''"
+                  >Useful advice from{{ advisor.value }}:</a
                 >
                 <a
                   class="gold"
                   *ngIf="!nextMove.value && adviceMb2.value !== ''"
-                  >Useful advice from{{ magicalBeing2.name }}:</a
-                >
-                <a *ngIf="nextMove.value">
+                  >Useful advice from{{ advisor.value }}:</a
+                > -->
+                <!-- <a *ngIf="nextMove.value">
                   {{ adviceMb1.value }}
                 </a>
                 <a *ngIf="!nextMove.value">
                   {{ adviceMb2.value }}
-                </a>
+                </a> -->
               </h2>
             </ng-container>
-            <br/>
+            <br />
           </div>
           <div
             *ngIf="magicalBeing1 !== undefined && magicalBeing2 !== undefined"

@@ -5,7 +5,7 @@
   <div class="container-fluid padding mt-5">
     <div class="row padding">
       <div class="col-md-12 col-lg-2">
-        <label required for="wizardUpdate2">Please choose a wizard:</label
+        <label required for="wizardUpdate2">Please choose a being:</label
         >
       </div>
       <div class="col-lg-4">
@@ -22,7 +22,7 @@
           <div *ngIf="magicalBeingChoice !== undefined">
             <label for="name"></label>
             <input
-              class="formFelder"
+              class="formFelderUpdate"
               id="name"
               type="text"
               [(ngModel)]="magicalBeingChoice.name"
@@ -34,7 +34,7 @@
           <div *ngIf="magicalBeingChoice !== undefined">
             <label for="hp"></label>
             <input
-              class="formFelder"
+              class="formFelderUpdate"
               id="hp"
               type="number"
               [(ngModel)]="magicalBeingChoice.healthPoints"
@@ -48,7 +48,7 @@
           <div *ngIf="magicalBeingChoice !== undefined">
             <label for="hp"></label>
             <input
-              class="formFelder"
+              class="formFelderUpdate"
               id="hp"
               type="text"
               [(ngModel)]="magicalBeingChoice.description"

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { AdviceService } from '../advice.service';
 import { HpMagicalBeing } from '../hp-magical-being';
 import { MagicalBeingService } from '../magical-being.service';
 import { MessageService } from '../message.service';
@@ -23,6 +24,8 @@ export class ChessComponent implements OnInit {
   checkBlackKing = new BehaviorSubject<boolean>(false);
   adviceMb1 = new BehaviorSubject<string>('');
   adviceMb2 = new BehaviorSubject<string>('');
+  advisor = new BehaviorSubject<string>('');
+  advice = new BehaviorSubject<string>('');
 
   whiteKingMoved = false;
   whiteRookMoved1 = false;
@@ -114,7 +117,8 @@ export class ChessComponent implements OnInit {
 
   constructor(
     private ms: MessageService,
-    private mbService: MagicalBeingService
+    private mbService: MagicalBeingService,
+    private as: AdviceService
   ) {}
 
   ngOnInit(): void {
@@ -129,44 +133,71 @@ export class ChessComponent implements OnInit {
   }
 
   giveAdvice() {
-    if (this.nextMove.value && this.magicalBeing1 !== undefined) {
-      if (Math.random() < this.magicalBeing1.intelligence / 100) {
-        const hint =
-          this.magicalBeing1.hints[
-            Math.floor(Math.random() * this.magicalBeing1.hints.length)
-          ];
+    if (this.magicalBeing1 !== undefined && this.magicalBeing2 !== undefined) {
+      let mb = this.magicalBeing2;
+      if (this.nextMove.value) {
+        mb = this.magicalBeing1;
+      }
+      if (Math.random() < mb.intelligence / 100) {
+        const hint = mb.hints[Math.floor(Math.random() * mb.hints.length)];
         if (
-          !(this.magicalBeing1.name === 'Ron' && hint.ron) &&
-          !(this.magicalBeing1.klasse === 'Ravenclaw' && hint.ravenlaw) &&
-          !(this.magicalBeing1.name !== 'Luna' && hint.luna)
+          !(mb.name === 'Ron' && hint.ron) &&
+          !(mb.klasse === 'Ravenclaw' && hint.ravenlaw) &&
+          !(mb.name !== 'Luna' && hint.luna)
         ) {
-          this.adviceMb1.next(hint.content);
-          this.adviceMb2.next('');
+          this.advice.next(hint.content);
+          this.advisor.next(mb.name);
         }
+      } else if (Math.random() < 0.5 && this.nextMove.value) {
+        this.giveAdvicePiece('W');
+      } else if (Math.random() < 0.5 && !this.nextMove.value) {
+        this.giveAdvicePiece('B');
       } else {
-        this.adviceMb1.next('');
-        this.adviceMb2.next('');
+        this.advice.next('');
       }
     }
+  }
 
-    if (!this.nextMove.value && this.magicalBeing2 !== undefined) {
-      if (Math.random() < this.magicalBeing2.intelligence / 100) {
-        const hint =
-          this.magicalBeing2.hints[
-            Math.floor(Math.random() * this.magicalBeing2.hints.length)
-          ];
-        if (
-          !(this.magicalBeing2.name === 'Ron' && hint.ron) &&
-          !(this.magicalBeing2.klasse === 'Ravenclaw' && hint.ravenlaw) &&
-          !(this.magicalBeing2.name !== 'Luna' && hint.luna)
-        ) {
-          this.adviceMb2.next(hint.content);
-          this.adviceMb1.next('');
-        }
-      } else {
-        this.adviceMb2.next('');
-        this.adviceMb1.next('');
-      }
+  giveAdvicePiece(color: string) {
+    if (this.firstPiece === 'R' + color) {
+      this.advice.next(
+        this.as.adviceRook[
+          Math.floor(Math.random() * this.as.adviceRook.length)
+        ]
+      );
+      this.advisor.next('a Rook');
+    }
+    if (this.firstPiece === 'B' + color) {
+      this.advice.next(
+        this.as.adviceBishop[
+          Math.floor(Math.random() * this.as.adviceBishop.length)
+        ]
+      );
+      this.advisor.next('a Bishop');
+    }
+    if (this.firstPiece === 'S' + color) {
+      this.advice.next(
+        this.as.adviceKnight[
+          Math.floor(Math.random() * this.as.adviceKnight.length)
+        ]
+      );
+      this.advisor.next('a Knight');
+    }
+    if (this.firstPiece === 'Q' + color) {
+      this.advice.next(
+        this.as.adviceQueen[
+          Math.floor(Math.random() * this.as.adviceQueen.length)
+        ]
+      );
+      this.advisor.next('the Queen');
+    }
+    if (this.firstPiece === 'K' + color) {
+      this.advice.next(
+        this.as.adviceKing[
+          Math.floor(Math.random() * this.as.adviceKing.length)
+        ]
+      );
+      this.advisor.next('a King');
     }
   }
 
@@ -226,6 +257,7 @@ export class ChessComponent implements OnInit {
         this.nextMove.next(!this.nextMove.value);
         this.resetDraw();
         this.changeEnPassant();
+        this.advice.next('');
         this.firstPiece = '';
       } else {
         console.log('This move is not legal');
@@ -359,6 +391,7 @@ export class ChessComponent implements OnInit {
     if (
       this.nextMove.value &&
       this.enPassantBlack &&
+      row === 6 &&
       this.firstPiece === 'PW'
     ) {
       this.board[this.getValueNumbers(row - 1, column)] = '';
@@ -367,6 +400,7 @@ export class ChessComponent implements OnInit {
     if (
       !this.nextMove.value &&
       this.enPassantWhite &&
+      row === 3 &&
       this.firstPiece === 'PB'
     ) {
       this.board[this.getValueNumbers(row + 1, column)] = '';

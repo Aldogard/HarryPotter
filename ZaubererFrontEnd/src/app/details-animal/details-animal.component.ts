@@ -25,6 +25,7 @@ export class DetailsAnimalComponent implements OnInit {
       if (!a) {
         this.extraService.redirectTo('overview');
       } else {
+        console.log("Check")
         this.animal = a;
       }
     });

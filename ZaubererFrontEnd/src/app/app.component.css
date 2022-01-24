@@ -1,7 +1,7 @@
 li {
   margin: 10px;
   border: 1px solid rgb(255, 255, 255);
-  padding: 10px 50px;
+  padding: 10px 40px;
   border-radius: 0.25rem;
   list-style-type: none;
 }
@@ -21,4 +21,11 @@ p {
 .navElement{
   cursor: pointer;
 }
+
+.positioned {
+  position: sticky;
+  top: 1px;
+  left: 30px;
+}
+
 
