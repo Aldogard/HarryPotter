@@ -116,6 +116,16 @@ public class MagicalBeingServiceTest {
     }
 
     @Test
+    public void testDeleteDummy(){
+        Alumni alumni = new Alumni("Dummy", BigDecimal.valueOf(25), "Test and more than 10");
+        magicalBeingRepo.save(alumni);
+
+        assertEquals(1, magicalBeingRepo.findAll().size());
+        magicalBeingService.deleteDummy();
+        assertEquals(0, magicalBeingRepo.findAll().size());
+    }
+
+    @Test
     public void testGetAllMagicalBeings(){
         Alumni alumni = UtilWizards.createTesti();
         Headmaster headmaster = new Headmaster("Headi", BigDecimal.valueOf(5), "Master and more than 10");

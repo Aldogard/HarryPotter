@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AdviceService } from '../advice.service';
+import { ExtraService } from '../extra.service';
 import { HpMagicalBeing } from '../hp-magical-being';
 import { MagicalBeingService } from '../magical-being.service';
 import { MessageService } from '../message.service';
@@ -118,7 +119,8 @@ export class ChessComponent implements OnInit {
   constructor(
     private ms: MessageService,
     private mbService: MagicalBeingService,
-    private as: AdviceService
+    private as: AdviceService,
+    private extraService: ExtraService,
   ) {}
 
   ngOnInit(): void {
@@ -1319,5 +1321,9 @@ export class ChessComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  gotoPreparation(){
+    this.extraService.redirectTo('preparation');
   }
 }

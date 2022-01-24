@@ -135,6 +135,11 @@ export class MagicalBeingService {
     return this.http.get<HpAnimal>(urlAnimalId);
   }
 
+  deleteDummy(){
+    const urlDeleteDummy = url + '/deletedummy';
+    return this.http.delete(urlDeleteDummy);
+  }
+
 
 
 

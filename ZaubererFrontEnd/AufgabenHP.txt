@@ -6,7 +6,6 @@ Backend --> Erledigt
 	Weitere Attacks und Potion --> Erledigt
 	Voldemort updaten --> Erledigt
 
-
 Frontend --> Erledigt
 	Vergleich (Yikes) --> Erstmal wieder auf zwei Tabellen umgestellt
 	Automatische Erstellung im Frontend? -->  Ja
@@ -60,6 +59,29 @@ Weitere Aufgaben: --> Erledigt
 	Create und Update Design ändern --> Erledigt
 	Fotos? --> Nein
 
+Weitere Ideen:
+	Training
+		Gegner besiegen abhängig von Rank --> Je höher der Rank desto weniger Versuche.
+		Nach ein paar Siegen einen Victory Mehr
+		Gegner besiegen nur mit bestimmten Spells
+		
+
+		Einsatzgebiete von Potions
+		Bspw. Zwei Potions kombinieren oder Spell und Potion kombinieren
+
+
+
+	Weitere Kreaturen --> Erledigt
+	Schachspiel einbauen --> Erledigt
+	Kommentare von Zauberern einbauen --> Erledigt
+	Kommentare von Figuren einbauen --> Erledigt
+
+Weitere Aufgaben:
+	Weitere Aktionen bspw. Tiere agieren lassen. Basilisk, Phoenix etc.
+	Effekte für Umgebungen
+	Weitere Kreaturen
+	Nummerierung des Schachbretts
+	Sondereffekt für Riesen!
 
 
 Nice to have:
@@ -72,19 +94,8 @@ Nice to have:
 	updateVictories und updateRating nochmal angucken --> Erledigt --> aufpassen falls update erweitert wird
 	Tests für Controller
 	Wizard zu Magical Being umändern
-
-Weitere Ideen:
-	Quiz und Login
-	Training
-	Weitere Kreaturen --> Erledigt
-	Schachspiel einbauen --> Erledigt
-	Kommentare von Zauberern einbauen --> Erledigt
-	Kommentare von Figuren einbauen
-
-Weitere Aufgaben:
-	Weitere Aktionen bspw. Tiere agieren lassen. Basilisk, Phoenix etc.
-	Effekte für Umgebungen
-	Weitere Kreaturen
+	Quiz
+	Login
 
  
 

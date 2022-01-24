@@ -69,6 +69,11 @@ public class MagicalBeingController {
         return magicalBeingService.deleteAllMagicalBeings();
     }
 
+    @DeleteMapping("/deletedummy")
+    public ResponseEntity<Void> deleteDummy(){
+        System.out.println("Dummy");
+        return magicalBeingService.deleteDummy();
+    }
 
     @GetMapping("/pin")
     public ResponseEntity<Integer> getNumber() {

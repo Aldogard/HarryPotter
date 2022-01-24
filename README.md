@@ -20,6 +20,8 @@ At the moment, the project includes:
   - Animals
 - Set up for the Battle
 - The Battle
+- Set up for the chess game
+- the chess game
 - Possibility to create a Magical Being
 - Possibility to update a Magical Being
 - Search bar
@@ -27,7 +29,6 @@ At the moment, the project includes:
 
 - Will come soon:
   - Training
-  - Wizard chess
 
 Furthermore the site includes 
 - overview about the rules of the battle

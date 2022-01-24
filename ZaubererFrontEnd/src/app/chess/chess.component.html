@@ -11,9 +11,13 @@
         <div class="col-md-12 col-lg-12" *ngIf="endOfGame">
           <h1 class="gold" *ngIf="endOfGame && winner.value !== ''">
             The Game is over. {{ winner.value }} has won!
+            <button class="formButton" (click)="gotoPreparation()">New Game</button>
+
           </h1>
           <h1 class="gold" *ngIf="endOfGame && winner.value === ''">
             The Game is over. Both players agreed to a draw!
+            <button class="formButton" (click)="gotoPreparation()">New Game</button>
+
           </h1>
           <br />
         </div>
@@ -217,31 +221,16 @@
               "
             >
               <h2 class="advice">
-                <a class="gold advice"></a>
                 <a class="gold" *ngIf="advice.value !== ''">
-                  Useful advice from {{advisor.value}}
+                  Useful advice from {{advisor.value}}:&nbsp;
                 </a>
                 <a>{{advice.value}}</a>
-                <!-- <a class="gold" *ngIf="nextMove.value && adviceMb1.value !== ''"
-                  >Useful advice from{{ advisor.value }}:</a
-                >
-                <a
-                  class="gold"
-                  *ngIf="!nextMove.value && adviceMb2.value !== ''"
-                  >Useful advice from{{ advisor.value }}:</a
-                > -->
-                <!-- <a *ngIf="nextMove.value">
-                  {{ adviceMb1.value }}
-                </a>
-                <a *ngIf="!nextMove.value">
-                  {{ adviceMb2.value }}
-                </a> -->
               </h2>
             </ng-container>
             <br />
           </div>
           <div
-            *ngIf="magicalBeing1 !== undefined && magicalBeing2 !== undefined"
+            *ngIf="magicalBeing1 !== undefined && magicalBeing2 !== undefined &&!endOfGame"
             class="centered"
           >
             <button
