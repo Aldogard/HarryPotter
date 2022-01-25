@@ -29,6 +29,7 @@ import { ChessComponent } from './chess/chess.component';
 import { TrainingComponent } from './training/training.component';
 import { PreparationComponent } from './preparation/preparation.component';
 import { InformationComponent } from './information/information.component';
+import { SelectionComponent } from './selection/selection.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { InformationComponent } from './information/information.component';
     TrainingComponent,
     PreparationComponent,
     InformationComponent,
+    SelectionComponent,
   ],
   imports: [
     BrowserModule,

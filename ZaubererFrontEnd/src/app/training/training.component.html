@@ -1,11 +1,275 @@
 <div class="pt-lg-3 sticky-top header gold">
-    <h1 class="headertraining headertext">Training</h1>
-  <div class="container">
-      <br/>
-      <h2 class="gold">Coming soon...</h2>
-  </div>
-</div>
-<div *ngIf="show">
-  
+  <h1 class="headertraining headertext">Training</h1>
 </div>
 
+<div
+  *ngIf="show && dummy !== undefined && magicalBeing1 !== undefined"
+  class="container"
+>
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-12 centered">
+        <p>Please choose the area the wizard will train:</p>
+        <button class="formButton" (click)="showSpell()">Spells</button>
+        <button class="formButton" (click)="showPotion()">Potions</button>
+
+      </div>
+
+      <div
+        class="col-md-12 col-lg-12 centered gold"
+        *ngIf="showSucces.value && magicalBeing1 !== undefined"
+      >
+        <br />
+        {{ magicalBeing1.name }} trained succesful and gained 1 experience
+      </div>
+
+      <div class="col-md-12 col-lg-12">
+        <ng-container *ngIf="chosenOption === 'spell'">
+          <br/>
+          <h2 class="centered gold">
+            {{ magicalBeing1.name }} is fighting against the Dummy and has
+            {{ remainingSpells }}
+            <a *ngIf="remainingSpells !== 1">spells </a>
+            <a *ngIf="remainingSpells === 1">spell </a>
+            remaining to defeat the Dummy.
+          </h2>
+
+          <table class="table" *ngIf="showTable.value" style="width: 100%">
+            <thead>
+              <tr>
+                <th class="largeheader">
+                  Wizards participating in the Training:
+                </th>
+                <th class="largeheader">{{ magicalBeing1.name }}</th>
+                <th class="largeheader">{{ dummy.name }}</th>
+              </tr>
+              <tr>
+                <th class="largeheader">Number of Training Victories:</th>
+                <th>{{ trainingVictories }}</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr>
+              <td></td>
+            </tr>
+            <tbody *ngIf="showTable.value">
+              <tr>
+                <td>Status</td>
+                <td>
+                  <a
+                    *ngIf="
+                      magicalBeing1.healthPoints >= 10 &&
+                      !magicalBeing1.halfLife
+                    "
+                    >Alive</a
+                  >
+                  <a
+                    *ngIf="
+                      (magicalBeing1.healthPoints < 10 &&
+                        magicalBeing1.healthPoints > 0) ||
+                      (magicalBeing1.halfLife &&
+                        magicalBeing1.healthPoints > -100)
+                    "
+                  >
+                    Barely Alive
+                  </a>
+                  <a
+                    *ngIf="
+                      magicalBeing1.healthPoints <= 0 && !magicalBeing1.halfLife
+                    "
+                    >Defeated</a
+                  >
+                  <a
+                    *ngIf="
+                      magicalBeing1.healthPoints <= -100 &&
+                      magicalBeing1.halfLife
+                    "
+                  >
+                    Defeated
+                  </a>
+                </td>
+
+                <td>
+                  <a *ngIf="dummy.healthPoints >= 10">Alive</a>
+                  <a *ngIf="dummy.healthPoints < 10 && dummy.healthPoints > 0">
+                    Barely Alive
+                  </a>
+                  <a *ngIf="dummy.healthPoints <= 0">Defeated</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Healthpoints</td>
+                <td>{{ magicalBeing1.healthPoints }}</td>
+                <td>{{ dummy.healthPoints }}</td>
+              </tr>
+              <tr>
+                <td>Energy</td>
+                <td>{{ magicalBeing1.energy }}</td>
+                <td>{{ dummy.energy }}</td>
+              </tr>
+              <ng-container *ngIf="showDetails.value">
+                <tr>
+                  <td>Factor</td>
+                  <td>{{ magicalBeing1.faktor }}</td>
+                  <td>{{ dummy.faktor }}</td>
+                </tr>
+                <tr>
+                  <td>Experience</td>
+                  <td>{{ magicalBeing1.victories }}</td>
+                  <td>{{ dummy.victories }}</td>
+                </tr>
+                <tr>
+                  <td>Class</td>
+                  <td>{{ magicalBeing1.klasse }}</td>
+                  <td>{{ dummy.klasse }}</td>
+                </tr>
+                <tr>
+                  <td>Abilities vs other magicalBeing</td>
+                  <td>{{ strengthAndWeakness(magicalBeing1, dummy) }}</td>
+                  <td>{{ strengthAndWeakness(dummy, magicalBeing1) }}</td>
+                </tr>
+                <tr>
+                  <td>Additional Factor</td>
+                  <td>{{ magicalBeing1.additionalFactor }}</td>
+                  <td>{{ dummy.additionalFactor }}</td>
+                </tr>
+                <tr>
+                  <td>Impact Stunned</td>
+                  <td>{{ magicalBeing1.stunnedProtection }}</td>
+                  <td>{{ dummy.stunnedProtection }}</td>
+                </tr>
+                <tr>
+                  <td>Impact Confunded</td>
+                  <td>{{ magicalBeing1.confundedProtection }}</td>
+                  <td>{{ dummy.confundedProtection }}</td>
+                </tr>
+                <tr>
+                  <td>Protego</td>
+                  <td>{{ magicalBeing1.protego }}</td>
+                  <td>{{ dummy.protego }}</td>
+                </tr>
+                <tr>
+                  <td>Fiendfyre cast</td>
+                  <td>{{ magicalBeing1.fiendfyre }}</td>
+                  <td>{{ dummy.fiendfyre }}</td>
+                </tr>
+                <tr>
+                  <td>Confunded</td>
+                  <td>{{ magicalBeing1.conditions[0].condition }}</td>
+                  <td>{{ dummy.conditions[0].condition }}</td>
+                </tr>
+                <tr>
+                  <td>Stunned</td>
+                  <td>{{ magicalBeing1.conditions[1].condition }}</td>
+                  <td>{{ dummy.conditions[1].condition }}</td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+          <div class="centered">
+            <button class="formButton">Rules</button>
+            <button
+              class="formButton"
+              (click)="showHideTable(true)"
+              *ngIf="!showTable.value"
+            >
+              Show Table
+            </button>
+            <button
+              class="formButton"
+              (click)="showHideTable(false)"
+              *ngIf="showTable.value"
+            >
+              Hide Table
+            </button>
+            <button
+              class="formButton"
+              (click)="showHideDetails(false)"
+              *ngIf="showDetails.value && showTable.value"
+            >
+              Hide Details
+            </button>
+            <button
+              class="formButton"
+              (click)="showHideDetails(true)"
+              *ngIf="!showDetails.value && showTable.value"
+            >
+              Show Details
+            </button>
+            <!-- <button
+              class="formButton"
+              (click)="gotoPrologue()"
+              *ngIf="showResult.value">
+            Start another Fight</button> -->
+          </div>
+          <br />
+          <h2 class="gold">Please choose a spell:</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Energy Usage</th>
+                <th>Max Damage</th>
+                <th>Stunned</th>
+                <th>Confound</th>
+                <th>Experience</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr>
+              <td></td>
+            </tr>
+            <tbody>
+              <tr *ngFor="let spell of magicalBeing1.spells">
+                <td>{{ spell.name }}</td>
+                <td>{{ spell.energyUsage }}</td>
+                <td>{{ spell.maxDamage }}</td>
+                <td>{{ spell.stunned }}</td>
+                <td>{{ spell.confunded }}</td>
+                <td>{{ spell.requiredExperience }}</td>
+                <td>
+                  <button
+                    class="formButtonColumn"
+                    (click)="getSpell(spell)"
+                    [disabled]="
+                      magicalBeing1.energy - spell.energyUsage < 0 ||
+                      magicalBeing1.victories < spell.requiredExperience
+                    "
+                  >
+                    Select
+                  </button>
+                  <button
+                    class="formButtonColumn"
+                    (click)="gotoAttackDetail(spell.id)"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p
+            *ngIf="validateSpell.value && chosenOption === 'spell'"
+            class="centered"
+          >
+            Do you want to use {{ spell.value.name }} to attack
+            {{ dummy.name }}?
+            <button
+              class="formButton"
+              (click)="executeAttack(magicalBeing1, dummy, true)"
+            >
+              Yes
+            </button>
+          </p>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="link container" *ngIf="magicalBeing1 === undefined">
+  <br/> 
+  <a (click)="gotoSelection()" class="link"
+    >No magical Being has been selected! Please go to Training in order to set up a
+    Training
+  </a>
+</div>

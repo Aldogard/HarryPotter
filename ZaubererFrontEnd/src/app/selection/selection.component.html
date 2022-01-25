@@ -1,0 +1,47 @@
+<div class="pt-lg-3 sticky-top header gold">
+  <h1 class="headerselection headertext">Selection</h1>
+</div>
+<div class="container">
+  <br />
+  <div class="intro">Hier muss noch ein Text hin</div>
+
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-6 hint">
+        <label required for="wizardUpdate">Choose an advisor:</label>
+        <select
+          class="formButton"
+          id="wizardUpdateA"
+          (change)="getMagicalBeingAByName()"
+        >
+          <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
+            {{ z.name }}
+          </option>
+        </select>
+      </div>
+      <div
+        class="check gold col-lg-6 hint"
+        *ngIf="magicalBeingChoiceA !== undefined"
+      >
+        Do you want to train
+        <a>{{ magicalBeingChoiceA.name }}?</a> &nbsp; &nbsp;
+        <button class="formButton" (click)="send()">Yes</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint">
+    <br />
+    <a>
+      <a (click)="gotoDetails()" class="link"
+        >If you unsure which wizard to choose, you can examine all the wizards
+        in the Detail View.</a
+      >
+      <br />
+      <a (click)="gotoWiki()" class="link"
+        >Furthermore, the Harry Potter Wiki is an excellent source for even more
+        information.</a
+      >
+    </a>
+  </div>
+</div>

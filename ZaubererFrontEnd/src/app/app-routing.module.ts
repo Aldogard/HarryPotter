@@ -23,6 +23,7 @@ import { ChessComponent } from './chess/chess.component';
 import { TrainingComponent } from './training/training.component';
 import { PreparationComponent } from './preparation/preparation.component';
 import { InformationComponent } from './information/information.component';
+import { SelectionComponent } from './selection/selection.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -52,7 +53,8 @@ const routes: Routes = [
   { path: 'training', component: TrainingComponent },
   { path: 'preparation', component: PreparationComponent },
   { path: 'information', component: InformationComponent },
-  
+  { path: 'selection', component: SelectionComponent },
+
 ];
 
 @NgModule({

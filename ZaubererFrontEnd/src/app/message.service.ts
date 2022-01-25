@@ -17,6 +17,8 @@ export class MessageService  {
   showChess = new BehaviorSubject<boolean>(false);
   environment = new BehaviorSubject<string>('');
   magicalBeing?: HpMagicalBeing;
+  participants = new BehaviorSubject<HpMagicalBeing[]>([]);
+  showTraining = new BehaviorSubject<boolean>(false);
   
 
   constructor() { }
@@ -59,6 +61,14 @@ export class MessageService  {
 
   sendMagicalBeing(mb: HpMagicalBeing | undefined){
     this.magicalBeing = mb;
+  }
+
+  sendArrayTraining(array: HpMagicalBeing[]){
+    this.participants.next(array);
+  }
+
+  sendShowTraining(show: boolean){
+    this.showTraining.next(show);
   }
 
 
