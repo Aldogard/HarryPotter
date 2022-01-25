@@ -18,12 +18,15 @@
             Victories: {{ magicalBeing.victories }}
           </li>
           <li>Rank: {{ magicalBeing.rank }}</li>
+          <li>Chess Victories: {{ magicalBeing.victoriesChess }}</li>
           <li>Class: {{ magicalBeing.klasse }}</li>
+          <li>Species: {{ magicalBeing.species }}</li>
           <li *ngIf="magicalBeing.amount < 2">
             Rating: {{ magicalBeing.rating }} ({{ magicalBeing.amount }} Review)
           </li>
           <li *ngIf="magicalBeing.amount > 1">
-            Rating: {{ magicalBeing.rating }} ({{ magicalBeing.amount }} Reviews)
+            Rating: {{ magicalBeing.rating }} ({{ magicalBeing.amount }}
+            Reviews)
           </li>
           <li>Spells: {{ magicalBeing.spells.length }}</li>
           <li>Potions: {{ magicalBeing.potions.length }}</li>

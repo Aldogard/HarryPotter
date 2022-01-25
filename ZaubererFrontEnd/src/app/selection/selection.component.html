@@ -1,9 +1,9 @@
 <div class="pt-lg-3 sticky-top header gold">
-  <h1 class="headerselection headertext">Selection</h1>
+  <h1 class="headerselection headertext">Training Selection</h1>
 </div>
 <div class="container">
   <br />
-  <div class="intro">Hier muss noch ein Text hin</div>
+  <div class="intro hint">Hier muss noch ein Text hin</div>
 
   <div class="container-fluid padding mt-5">
     <div class="row padding">
@@ -20,17 +20,28 @@
         </select>
       </div>
       <div
-        class="check gold col-lg-6 hint"
+        class="check gold col-lg-3 hint"
         *ngIf="magicalBeingChoiceA !== undefined"
       >
-        Do you want to train
-        <a>{{ magicalBeingChoiceA.name }}?</a> &nbsp; &nbsp;
+        Do you want to train <a>{{ magicalBeingChoiceA.name }}?</a> &nbsp;
+      </div>
+      <div class="col-lg-3 hint">
         <button class="formButton" (click)="send()">Yes</button>
       </div>
+        <!-- <table class="tablecentered" style="width: 80%">
+          <tr>
+            <td class="gold" style="width: 60%">
+              Do you want to train <a>{{ magicalBeingChoiceA.name }}?</a> &nbsp;
+              &nbsp;
+            </td>
+            <td><button class="formButton" (click)="send()">Yes</button></td>
+          </tr>
+        </table> -->
+      </div>
     </div>
-  </div>
 
   <div class="hint">
+    <br />
     <br />
     <a>
       <a (click)="gotoDetails()" class="link"

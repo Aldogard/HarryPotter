@@ -11,9 +11,7 @@
   text-align: center;
 }
 
-.abstandeinsbutton {
-  margin: 0px 0px 0px 4px;
-}
+
 
 .choice {
   text-align: center;
@@ -30,4 +28,9 @@
 
 .hint {
   text-align: center;
+}
+
+.tablecentered {
+  margin-left: auto;
+  margin-right: auto;
 }

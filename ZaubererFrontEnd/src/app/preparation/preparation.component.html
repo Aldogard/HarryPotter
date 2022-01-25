@@ -3,18 +3,14 @@
 </div>
 
 <div class="container">
-  <br/>
-  <div class="intro">
-    Hier muss noch ein Text hin
-  </div>
+  <br />
+  <div class="intro">Hier muss noch ein Text hin</div>
 
   <div class="container-fluid padding mt-5">
     <div class="row padding">
       <div class="col-md-12 col-lg-6 choice">
         <div class="abstandeinsbutton">
-          <label required for="wizardUpdate"
-            >Choose an advisor:</label
-          >
+          <label required for="wizardUpdate">Choose an advisor:</label>
           <select
             class="formButton"
             id="wizardUpdateA"
@@ -27,9 +23,7 @@
         </div>
       </div>
       <div class="col-lg-6 choice">
-        <label required for="wizardUpdate"
-          >Choose an advisor:</label
-        >
+        <label required for="wizardUpdate">Choose an advisor:</label>
         <select
           class="formButton"
           id="wizardUpdateB"
@@ -40,25 +34,30 @@
           </option>
         </select>
       </div>
+      <br/>
+      <ng-container
+        *ngIf="
+          magicalBeingChoiceA !== undefined && magicalBeingChoiceB !== undefined
+        "
+      >
+        <div class="col-md-12 col-lg-7 check gold">
+          <br/>
+          Do you want to start the game with these advisors:
+          <a>{{ magicalBeingChoiceA.name }} and</a>
+          <a>{{ magicalBeingChoiceB.name }}? </a> &nbsp; &nbsp;
+        </div>
+        <div class="col-lg-5 check">
+          <br/>
+          <button
+            class="formButton"
+            (click)="send2()"
+            [disabled]="magicalBeingChoiceA.id === magicalBeingChoiceB.id"
+          >
+            Yes
+          </button>
+        </div>
+      </ng-container>
     </div>
-  </div>
-  <div
-    class="check gold"
-    *ngIf="
-      magicalBeingChoiceA !== undefined && magicalBeingChoiceB !== undefined
-    "
-  >
-    <br />
-    Do you want to start the game with these advisors:
-    <a>{{ magicalBeingChoiceA.name }} and</a>
-    <a>{{ magicalBeingChoiceB.name }}? </a> &nbsp; &nbsp;
-    <button
-      class="formButton"
-      (click)="send2()"
-      [disabled]="magicalBeingChoiceA.id === magicalBeingChoiceB.id"
-    >
-      Yes
-    </button>
   </div>
 
   <div class="hint">

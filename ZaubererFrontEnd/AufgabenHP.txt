@@ -64,10 +64,11 @@ Weitere Ideen:
 		Gegner besiegen abhängig von Rank --> Je höher der Rank desto weniger Versuche.
 		Nach ein paar Siegen einen Victory Mehr
 		Gegner besiegen nur mit bestimmten Spells
-		
+
 
 		Einsatzgebiete von Potions
 		Bspw. Zwei Potions kombinieren oder Spell und Potion kombinieren
+		Extra Klasse für Dummy erstellen
 
 
 

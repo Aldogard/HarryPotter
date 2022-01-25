@@ -18,3 +18,32 @@
   .link {
     color: white;
   }
+
+  input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+  
+    border: 2px solid white;
+    transition: 0.2s all linear;
+    margin-right: 5px;
+  
+    position: relative;
+    top: 4px;
+  }
+  
+  input:checked {
+    border: 8px solid rgb(211, 166, 37);
+  }
+
+  .nodots{
+    list-style-type: none;
+  }
+
+  .title{
+      text-align: left;
+  }

@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { ExtraService } from '../extra.service';
+import { HpAnimal } from '../hp-animal';
 import { HpMagicalBeing } from '../hp-magical-being';
 import { HpSpell } from '../hp-spell';
 import { MagicalBeingService } from '../magical-being.service';
 import { MessageService } from '../message.service';
+import { PotionService } from '../potion.service';
 import { WizardService } from '../wizard.service';
 
 @Component({
@@ -20,14 +22,22 @@ export class TrainingComponent implements OnInit {
   chosenOption: string = '';
   validateSpell = new BehaviorSubject<boolean>(false);
   spell = new FormControl('');
+  validateAnimal = new BehaviorSubject<boolean>(false);
+  animal = new FormControl('');
   showStart = new BehaviorSubject<boolean>(true);
-  remainingSpells = 0;
-  amountOfSpells = -1;
+  remainingMoves = 0;
+  amountOfMoves = -1;
   showTable = new BehaviorSubject<boolean>(true);
   showDetails = new BehaviorSubject<boolean>(false);
+  showVictory = new BehaviorSubject<boolean>(false);
   showSucces = new BehaviorSubject<boolean>(false);
   showFailure = new BehaviorSubject<boolean>(false);
   trainingVictories = 0;
+  potion = this.ps.potions[Math.floor(Math.random() * this.ps.potions.length)];
+  ingridients = this.ps.ingridients;
+  ingridient = '';
+  ingridientsForPotion: string[] = [];
+  disable = false;
 
   magicalBeingForm = this.fb.group({
     name: new FormControl('Dummy'),
@@ -40,7 +50,8 @@ export class TrainingComponent implements OnInit {
     private extraService: ExtraService,
     private fb: FormBuilder,
     private ws: WizardService,
-    private ms: MessageService
+    private ms: MessageService,
+    private ps: PotionService
   ) {}
 
   ngOnInit(): void {
@@ -59,19 +70,23 @@ export class TrainingComponent implements OnInit {
       this.mbService.deleteDummy().subscribe();
     }, 500);
 
+    this.show = true;
+    this.remainingMoves = 0;
+    this.amountOfMoves = 0;
+
     // this.magicalBeing1 = this.ms.participants.value[0];
     // this.show = this.ms.showTraining.value;
+    // this.magicalBeing1.energy = 15;
+    // this.getAmount();
 
     this.mbService.getMagicalBeings().subscribe((mb) => {
       mb[0].energy = 15;
       this.magicalBeing1 = mb[0];
       this.getAmount();
     });
-    this.show = true;
-    this.remainingSpells = 0;
-    this.amountOfSpells = 0;
+
     if (this.trainingVictories >= 3 && this.magicalBeing1 !== undefined) {
-      this.showSucces.next(true);
+      this.showVictory.next(true);
       this.magicalBeing1.victories = this.magicalBeing1.victories + 1;
       if (this.magicalBeing1.victories < 100) {
         this.magicalBeing1.rank =
@@ -84,7 +99,8 @@ export class TrainingComponent implements OnInit {
           this.chosenOption = '';
           this.spell = new FormControl('');
           this.showDetails.next(false);
-          this.showSucces.next(true);
+          this.showSucces.next(false);
+          this.showVictory.next(true);
         });
       }
     }
@@ -92,10 +108,17 @@ export class TrainingComponent implements OnInit {
 
   showSpell() {
     this.chosenOption = 'spell';
+    this.showFailureAndSuccess();
   }
 
   showPotion() {
     this.chosenOption = 'potion';
+    this.showFailureAndSuccess();
+  }
+
+  showAnimal() {
+    this.chosenOption = 'animal';
+    this.showFailureAndSuccess();
   }
 
   getAmount() {
@@ -104,24 +127,40 @@ export class TrainingComponent implements OnInit {
       if (startAmount < 3) {
         startAmount = 3;
       }
-      this.remainingSpells = startAmount - this.amountOfSpells;
-      this.amountOfSpells = this.amountOfSpells + 1;
+      this.remainingMoves = startAmount - this.amountOfMoves;
+      this.amountOfMoves = this.amountOfMoves + 1;
     }
   }
 
   getSpell(spell: HpSpell) {
     this.spell = new FormControl(spell);
     this.validateSpell.next(true);
-    this.showSucces.next(false);
+    this.showFailureAndSuccess();
+  }
+  getAnimal(animal: HpAnimal) {
+    this.animal = new FormControl(animal);
+    this.validateAnimal.next(true);
   }
 
-  gotoAttackDetail(attackId: number) {
+  gotoSpellDetail(attackId: number) {
     this.ms.sendAttackId(attackId);
     const url = 'spelldetail/' + attackId;
     window.open(url);
   }
 
-  executeAttack(
+  gotoPotionDetail(potionId: number) {
+    this.ms.sendPotionId(potionId);
+    const url = 'potiondetail/' + potionId;
+    window.open(url);
+  }
+
+  gotoAnimalDetail(animalId: number) {
+    this.ms.sendAnimalId(animalId);
+    const url = 'animaldetail/' + animalId;
+    window.open(url);
+  }
+
+  executeSpell(
     attackMagicalBeing: HpMagicalBeing,
     defendMagicalBeing: HpMagicalBeing,
     defender: boolean
@@ -149,17 +188,39 @@ export class TrainingComponent implements OnInit {
           ' has been stunned and cannot attack this round!'
       );
     }
-    this.getAmount();
-    if (this.remainingSpells < 0) {
-      this.showFailure.next(true);
-      this.beforeStart();
-    } else if (defendMagicalBeing.healthPoints < 0) {
-      this.trainingVictories = this.trainingVictories + 1;
-      this.chosenOption = '';
-      this.spell = new FormControl('');
-      this.showDetails.next(false);
-      this.beforeStart();
+
+    this.checkWinOrLoss(defendMagicalBeing);
+  }
+
+  useAnimal(
+    attackMagicalBeing: HpMagicalBeing,
+    defendMagicalBeing: HpMagicalBeing,
+    defender: boolean
+  ) {
+    this.preparation(attackMagicalBeing);
+    this.fiendfyreEffects(attackMagicalBeing);
+    if (!attackMagicalBeing.conditions[1].condition) {
+      attackMagicalBeing.energy =
+        attackMagicalBeing.energy - this.animal.value.energyUsage;
+      this.animalEffects(defendMagicalBeing, attackMagicalBeing);
+      this.fiendfyreEffects(attackMagicalBeing);
+      this.getDamage(
+        attackMagicalBeing,
+        defendMagicalBeing,
+        this.animal.value.maxDamage,
+        false
+      );
+
+      this.formattingStunnedAndConfunded(defendMagicalBeing);
+    } else {
+      alert(
+        attackMagicalBeing.name +
+          ' has been stunned and cannot use a Potion this round!'
+      );
     }
+
+    this.checkWinOrLoss(defendMagicalBeing);
+    attackMagicalBeing.energy = Math.round(attackMagicalBeing.energy * 10) / 10;
   }
 
   preparation(attackMagicalBeing: HpMagicalBeing) {
@@ -196,6 +257,24 @@ export class TrainingComponent implements OnInit {
       }
       this.confunded(defendMagicalBeing);
     }
+  }
+
+  animalEffects(
+    defendMagicalBeing: HpMagicalBeing,
+    attackMagicalBeing: HpMagicalBeing
+  ) {
+    attackMagicalBeing.healthPoints =
+      Math.round(
+        (attackMagicalBeing.healthPoints +
+          this.animal.value.healing * attackMagicalBeing.internHealthPoints) *
+          100
+      ) / 100;
+    attackMagicalBeing.energy =
+      Math.round(
+        (attackMagicalBeing.energy +
+          this.animal.value.energyRecovery * attackMagicalBeing.internEnergy) *
+          100
+      ) / 100;
   }
 
   getDamage(
@@ -242,6 +321,22 @@ export class TrainingComponent implements OnInit {
       alert(defendMagicalBeing.name + ' received ' + damage + ' damage');
     }
     return Math.round(damage * 100) / 100;
+  }
+
+  checkWinOrLoss(defendMagicalBeing: HpMagicalBeing) {
+    this.getAmount();
+    if (defendMagicalBeing.healthPoints < 0) {
+      this.trainingVictories = this.trainingVictories + 1;
+      this.chosenOption = '';
+      this.spell = new FormControl('');
+      this.showDetails.next(false);
+      this.showSucces.next(true);
+      this.beforeStart();
+    } else if (this.remainingMoves <= 0) {
+      this.chosenOption = '';
+      this.showFailure.next(true);
+      this.beforeStart();
+    }
   }
 
   formattingStunnedAndConfunded(defendMagicalBeing: HpMagicalBeing) {
@@ -304,4 +399,38 @@ export class TrainingComponent implements OnInit {
   gotoSelection() {
     this.extraService.redirectTo('selection');
   }
+
+  showFailureAndSuccess() {
+    this.showVictory.next(false);
+    this.showSucces.next(false);
+    this.showFailure.next(false);
+  }
+
+  addIngridient(){
+      let present = false;
+      this.ingridientsForPotion.forEach(ifp => {
+        if (ifp === this.ingridient){
+          present = true;
+        }
+      })
+      if(!present){
+      this.ingridientsForPotion.push(this.ingridient);
+      this.disable = true;
+      }
+  }
+
+  checkDouble(option: string){
+    this.disable = false;
+    this.ingridientsForPotion.forEach(ifp => {
+      if (ifp === option){
+        console.log("check")
+        this.disable = true;
+      }
+    })
+  }
+
+  checkIngridient(){
+    
+  }
+
 }

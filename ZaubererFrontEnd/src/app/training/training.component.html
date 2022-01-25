@@ -12,28 +12,63 @@
         <p>Please choose the area the wizard will train:</p>
         <button class="formButton" (click)="showSpell()">Spells</button>
         <button class="formButton" (click)="showPotion()">Potions</button>
-
+        <button class="formButton" (click)="showAnimal()">Animals</button>
       </div>
 
+      <div
+        class="col-md-12 col-lg-12 centered gold"
+        *ngIf="showVictory.value && magicalBeing1 !== undefined"
+      >
+        <br />
+        {{ magicalBeing1.name }} trained succesfully and gained 1 experience
+      </div>
       <div
         class="col-md-12 col-lg-12 centered gold"
         *ngIf="showSucces.value && magicalBeing1 !== undefined"
       >
         <br />
-        {{ magicalBeing1.name }} trained succesful and gained 1 experience
+        {{ magicalBeing1.name }} trained succesfully and gained 1 training
+        victory
+      </div>
+      <div
+        class="col-md-12 col-lg-12 centered gold"
+        *ngIf="showFailure.value && magicalBeing1 !== undefined"
+      >
+        <br />
+        {{ magicalBeing1.name }} did not train succesfully and did not gain a
+        training victory
       </div>
 
       <div class="col-md-12 col-lg-12">
         <ng-container *ngIf="chosenOption === 'spell'">
-          <br/>
+          <br />
           <h2 class="centered gold">
             {{ magicalBeing1.name }} is fighting against the Dummy and has
-            {{ remainingSpells }}
-            <a *ngIf="remainingSpells !== 1">spells </a>
-            <a *ngIf="remainingSpells === 1">spell </a>
+            {{ remainingMoves }}
+            <a *ngIf="remainingMoves !== 1">spells </a>
+            <a *ngIf="remainingMoves === 1">spell </a>
             remaining to defeat the Dummy.
           </h2>
-
+        </ng-container>
+        <ng-container *ngIf="chosenOption === 'potion'">
+          <br />
+          <h2 class="centered gold">
+            The potion storage is nearly depleted.
+            {{ magicalBeing1.name }} wants to help and starts brewing
+            {{ potion }}
+          </h2>
+        </ng-container>
+        <ng-container *ngIf="chosenOption === 'animal'">
+          <br />
+          <h2 class="centered gold">
+            {{ magicalBeing1.name }} is fighting against the Dummy and has
+            {{ remainingMoves }}
+            <a *ngIf="remainingMoves !== 1">Animal deployments </a>
+            <a *ngIf="remainingMoves === 1">Animal deployment </a>
+            remaining to defeat the Dummy.
+          </h2>
+        </ng-container>
+        <ng-container *ngIf="chosenOption !== '' && chosenOption !== 'potion'">
           <table class="table" *ngIf="showTable.value" style="width: 100%">
             <thead>
               <tr>
@@ -202,7 +237,12 @@
               *ngIf="showResult.value">
             Start another Fight</button> -->
           </div>
-          <br />
+        </ng-container>
+        <br />
+      </div>
+      <br />
+      <ng-container *ngIf="chosenOption === 'spell'">
+        <div class="col-md-12 col-lg-12">
           <h2 class="gold">Please choose a spell:</h2>
           <table class="table">
             <thead>
@@ -240,7 +280,7 @@
                   </button>
                   <button
                     class="formButtonColumn"
-                    (click)="gotoAttackDetail(spell.id)"
+                    (click)="gotoSpellDetail(spell.id)"
                   >
                     Details
                   </button>
@@ -256,20 +296,121 @@
             {{ dummy.name }}?
             <button
               class="formButton"
-              (click)="executeAttack(magicalBeing1, dummy, true)"
+              (click)="executeSpell(magicalBeing1, dummy, true)"
             >
               Yes
             </button>
           </p>
-        </ng-container>
-      </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="chosenOption === 'potion'">
+        <div class="col-md-12 col-lg-4">
+          <ul>
+            <p class="gold title">Available ingridients</p>
+            <li class="nodots" *ngFor="let option of ingridients">
+              <input
+                id="rate_{{ option }}"
+                value="{{ option }}"
+                type="radio"
+                name="radio"
+                (change)="checkDouble(option)"
+                [(ngModel)]="ingridient"
+              />
+              &nbsp;&nbsp;{{ option }}&nbsp;&nbsp;
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <ol>
+            <p class="gold title">Chosen ingridients</p>
+            <li *ngFor="let i of ingridientsForPotion">{{ i }}</li>
+          </ol>
+        </div>
+        <div class="col-lg-4 centered">
+          <ng-container *ngIf="ingridient !== ''">
+            <p class="gold centered">Do you want to add {{ ingridient }}?</p>
+            <button (click)="addIngridient()" [disabled]="disable" class="formButton">
+              Confirm
+            </button>
+          </ng-container>
+          <ng-container *ngIf="ingridientsForPotion.length > 0">
+            <p class="gold centered"><br/>Do you want to start brewing?</p>
+            <button (click)="checkIngridient()" class="formButton">
+              Confirm
+            </button>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <br />
+      <ng-container *ngIf="chosenOption === 'animal'">
+        <div class="col-md-12 col-lg-12">
+          <h2 class="gold">Please choose an animal:</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Energy Usage</th>
+                <th>Healing</th>
+                <th>Recovery</th>
+                <th>Max Damage</th>
+                <th>Experience</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr>
+              <td></td>
+            </tr>
+            <tbody>
+              <tr *ngFor="let animal of magicalBeing1.animals">
+                <td>{{ animal.name }}</td>
+                <td>{{ animal.energyUsage }}</td>
+                <td>{{ animal.healing }}</td>
+                <td>{{ animal.energyRecovery }}</td>
+                <td>{{ animal.maxDamage }}</td>
+                <td>{{ animal.requiredExperience }}</td>
+                <td>
+                  <button
+                    class="formButtonColumn"
+                    (click)="getAnimal(animal)"
+                    [disabled]="
+                      magicalBeing1.victories < animal.requiredExperience
+                    "
+                  >
+                    Select
+                  </button>
+                  <button
+                    class="formButtonColumn"
+                    (click)="gotoAnimalDetail(animal.id)"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p
+            *ngIf="validateAnimal.value && chosenOption === 'animal'"
+            class="centered"
+          >
+            Do you want to send {{ animal.value.name }} into the Fight?
+            <button
+              class="formButton"
+              (click)="useAnimal(magicalBeing1, dummy, true)"
+            >
+              Yes
+            </button>
+          </p>
+        </div>
+      </ng-container>
     </div>
   </div>
-</div>
-<div class="link container" *ngIf="magicalBeing1 === undefined">
-  <br/> 
-  <a (click)="gotoSelection()" class="link"
-    >No magical Being has been selected! Please go to Training in order to set up a
-    Training
-  </a>
+  <div class="link container" *ngIf="magicalBeing1 === undefined">
+    <br />
+    <a (click)="gotoSelection()" class="link"
+      >No magical Being has been selected! Please go to Training in order to set
+      up a Training
+    </a>
+  </div>
 </div>
