@@ -176,9 +176,9 @@
                   <td>{{ dummy.klasse }}</td>
                 </tr>
                 <tr>
-                  <td>Abilities vs other magicalBeing</td>
-                  <td>{{ strengthAndWeakness(magicalBeing1, dummy) }}</td>
-                  <td>{{ strengthAndWeakness(dummy, magicalBeing1) }}</td>
+                  <td>Abilities vs dummy</td>
+                  <td>None</td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td>Additional Factor</td>
@@ -327,14 +327,14 @@
             <p class="gold title">Available ingridients</p>
             <li class="nodots" *ngFor="let option of ingredients">
               <input
+                class="link"
                 id="rate_{{ option }}"
                 value="{{ option }}"
                 type="radio"
                 name="radio"
                 (change)="checkDouble(option)"
                 [(ngModel)]="ingredient"
-              />
-              &nbsp;&nbsp;{{ option }}&nbsp;&nbsp;
+              /><label for="rate_{{option}}" class="link"> &nbsp;&nbsp;{{ option }}&nbsp;&nbsp;</label>
             </li>
           </ul>
         </div>

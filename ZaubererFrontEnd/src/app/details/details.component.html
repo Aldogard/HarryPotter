@@ -392,14 +392,16 @@
               <form [formGroup]="ratingForm" (ngSubmit)="passOnRating()">
                 <a *ngFor="let star of availableStars">
                   <input
-                    class="formFelderRadio radioAbstand"
+                    class="link"
                     id="rate_{{ star }}"
                     value="{{ star }}"
                     type="radio"
                     name="rate"
                     [formControl]="stars"
                     (change)="getRating()"
-                  />{{ star }}
+                  /><label for="rate_{{ star }}" class="link">
+                    &nbsp;{{ star }} </label
+                  >&nbsp;
                 </a>
               </form>
             </td>

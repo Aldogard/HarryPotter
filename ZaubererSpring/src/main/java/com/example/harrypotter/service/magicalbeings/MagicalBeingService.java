@@ -77,12 +77,6 @@ public class MagicalBeingService {
         return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
     }
 
-    public ResponseEntity<Void> deleteDummy(){
-        Integer id = magicalBeingRepo.findByName("Dummy").get(0).getId();
-        magicalBeingRepo.deleteById(id);
-        return new ResponseEntity<>(null, HttpStatus.OK);
-    }
-
     public ResponseEntity<MagicalBeing> getVoldemort(String voldemort) {
         if (magicalBeingRepo.findByKlasse(voldemort).size() > 0) {
             MagicalBeing lv = magicalBeingRepo.findByKlasse(voldemort).get(0);

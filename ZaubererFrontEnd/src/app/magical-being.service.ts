@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HpAnimal } from './hp-animal';
 import { HpMagicalBeing } from './hp-magical-being';
 import { HpPotion } from './hp-potion';
@@ -134,16 +133,5 @@ export class MagicalBeingService {
     const urlAnimalId = url + '/animal/' + id;
     return this.http.get<HpAnimal>(urlAnimalId);
   }
-
-  deleteDummy(){
-    const urlDeleteDummy = url + '/deletedummy';
-    return this.http.delete(urlDeleteDummy);
-  }
-
-
-
-
-
-
-  
+ 
 }

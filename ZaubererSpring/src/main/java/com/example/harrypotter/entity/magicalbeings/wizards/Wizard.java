@@ -11,11 +11,6 @@ import java.util.List;
 
 @Data
 @Entity(name = "wizard")
-@DiscriminatorValue("wizard")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-        discriminatorType = DiscriminatorType.STRING)
-
 public abstract class Wizard extends MagicalBeing {
 
     /**

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+import { DummyService } from '../dummy.service';
 import { ExtraService } from '../extra.service';
 import { HpAnimal } from '../hp-animal';
 import { HpMagicalBeing } from '../hp-magical-being';
@@ -55,6 +56,7 @@ export class TrainingComponent implements OnInit {
     private ws: WizardService,
     private ms: MessageService,
     private ps: PotionService,
+    private ds: DummyService,
   ) {}
 
   ngOnInit(): void {
@@ -62,15 +64,15 @@ export class TrainingComponent implements OnInit {
   }
 
   beforeStart() {
-    this.ws
+    this.ds
       .postDummy(this.magicalBeingForm.value)
       .subscribe((post) => {
-        this.mbService.getMagicalBeingByName('Dummy').subscribe((mb) => {
+        this.ds.getDummyByName('Dummy').subscribe((mb) => {
           this.dummy = mb;
         });
       });
     setTimeout(() => {
-      this.mbService.deleteDummy().subscribe();
+      this.ds.deleteDummy().subscribe();
     }, 500);
 
     this.show = true;
@@ -147,7 +149,7 @@ export class TrainingComponent implements OnInit {
   getSpell(spell: HpSpell) {
     this.spell = new FormControl(spell);
     this.validateSpell.next(true);
-    
+
   }
   getAnimal(animal: HpAnimal) {
     this.animal = new FormControl(animal);

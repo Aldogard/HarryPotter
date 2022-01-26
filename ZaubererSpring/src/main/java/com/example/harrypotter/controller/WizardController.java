@@ -1,5 +1,6 @@
 package com.example.harrypotter.controller;
 
+import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.magicalbeings.wizards.*;
 import com.example.harrypotter.repo.options.OptionsRepo;
 import com.example.harrypotter.repo.magicalbeings.ConditionRepo;
@@ -18,8 +19,6 @@ import java.util.List;
 @RequestMapping("/wizard")
 @AllArgsConstructor
 public class WizardController {
-
-
     private WizardRepo wizardRepo;
     private ConditionRepo conditionRepo;
     private OptionsRepo optionsRepo;
@@ -35,7 +34,6 @@ public class WizardController {
     private ProfessorService professorService;
     private DumbledoreService dumbledoreService;
     private PotionsMasterService potionsMasterService;
-    private DummyService dummyService;
 
 
     @GetMapping("")
@@ -104,10 +102,4 @@ public class WizardController {
     public ResponseEntity<Wizard> createPotionsMaster(@RequestBody @Validated PotionsMaster potionsMaster){
         return potionsMasterService.createPotionsMaster(potionsMaster);
     }
-
-    @PostMapping("/dummy")
-    public ResponseEntity<Wizard> createDummy(@RequestBody @Validated Dummy dummy){
-        return dummyService.createDummy(dummy);
-    }
-
 }

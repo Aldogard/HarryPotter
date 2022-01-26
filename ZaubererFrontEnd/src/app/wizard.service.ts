@@ -7,18 +7,12 @@ import { HpMagicalBeing } from './hp-magical-being';
 import { HpAnimal } from './hp-animal';
 import { HpWizard } from './hp-wizard';
 const url: string = 'http://localhost:8080/wizard';
-const urlMb: string = 'http://localhost:8080/mb';
-const urlGiant: string = 'http://localhost:8080/giant';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WizardService {
   constructor(private http: HttpClient) {}
-
-  getMagicalBeings(){
-    return this.http.get<HpMagicalBeing[]>(urlMb);
-  }
 
   getWizards() {
     return this.http.get<HpWizard[]>(url);
@@ -47,10 +41,6 @@ export class WizardService {
   postDummy(body: HpWizard){
     const urlDummy = url + '/dummy'
     return this.http.post<HpWizard>(urlDummy, body);
-  }
-
-  postGiant(body:HpMagicalBeing){
-    return this.http.post<HpMagicalBeing>(urlGiant, body);
   }
 
   deleteWizard(id: number): Observable<unknown> {

@@ -14,10 +14,6 @@
   margin:0px 0px 0px 4px;
 }
 
-input.radio {
-  display: inline-block;
-}
-
 .intro{
   text-align: center;
 }
@@ -49,6 +45,7 @@ input.radio {
   text-align: center;
   justify-content: space-around;
 }
+
 
 
 

@@ -8,10 +8,6 @@ import java.math.BigDecimal;
 
 @Data
 @Entity(name = "giant")
-@DiscriminatorValue("giant")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-        discriminatorType = DiscriminatorType.STRING)
 
 public abstract class Giant extends MagicalBeing {
 

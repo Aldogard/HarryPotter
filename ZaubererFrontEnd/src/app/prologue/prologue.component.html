@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="intro">
-    <br/>
+    <br />
     <p>
       The Wizarding World is in great turmoil once again. Just as in the Great
       Fight, Hogwarts is the last remaining outpost of the Resistance. According
@@ -22,13 +22,14 @@
     <br />
     <a *ngFor="let star of battleSize">
       <input
-        class="formFelderRadio radioAbstand white"
+        class="white link"
         id="rate_{{ star }}"
         value="{{ star }}"
         type="radio"
         name="radio"
         [formControl]="numberOfParticipants"
-      />{{ star }}
+      /><label for="rate_{{ star }}" class="link">&nbsp;{{ star }}</label>
+      &nbsp;
     </a>
   </div>
 
@@ -62,16 +63,16 @@
             numberOfParticipants.value === '3'
           "
         >
-            <label required for="wizardUpdate">Choose an Attacker: </label>
-            <select
-              class="formButton"
-              id="wizardUpdateC"
-              (change)="getMagicalBeingCByName()"
-            >
-              <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
-                {{ z.name }}
-              </option>
-            </select>
+          <label required for="wizardUpdate">Choose an Attacker: </label>
+          <select
+            class="formButton"
+            id="wizardUpdateC"
+            (change)="getMagicalBeingCByName()"
+          >
+            <option value="{{ z.id }}" *ngFor="let z of magicalBeings">
+              {{ z.name }}
+            </option>
+          </select>
         </ng-container>
       </div>
       <div class="col-lg-6 choice">
@@ -118,8 +119,8 @@
   <div
     class="check"
     *ngIf="
-    magicalBeingChoiceA !== undefined &&
-    magicalBeingChoiceB !== undefined &&
+      magicalBeingChoiceA !== undefined &&
+      magicalBeingChoiceB !== undefined &&
       numberOfParticipants.value === '1'
     "
   >
@@ -141,9 +142,9 @@
   <div
     class="check"
     *ngIf="
-    magicalBeingChoiceA !== undefined &&
-    magicalBeingChoiceB !== undefined &&
-    magicalBeingChoiceC !== undefined &&
+      magicalBeingChoiceA !== undefined &&
+      magicalBeingChoiceB !== undefined &&
+      magicalBeingChoiceC !== undefined &&
       numberOfParticipants.value === '2'
     "
   >
@@ -166,10 +167,10 @@
   <div
     class="check"
     *ngIf="
-    magicalBeingChoiceA !== undefined &&
-    magicalBeingChoiceB !== undefined &&
-    magicalBeingChoiceC !== undefined &&
-    magicalBeingChoiceD !== undefined &&
+      magicalBeingChoiceA !== undefined &&
+      magicalBeingChoiceB !== undefined &&
+      magicalBeingChoiceC !== undefined &&
+      magicalBeingChoiceD !== undefined &&
       numberOfParticipants.value === '3'
     "
   >

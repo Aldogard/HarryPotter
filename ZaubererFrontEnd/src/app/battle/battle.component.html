@@ -437,17 +437,19 @@
               Now, {{ magicalBeing2.name }} will attack
             </h2>
             <label required for="options"
-              >Please chose an Option for the Attack: &nbsp;&nbsp;</label
+              >Please chose an Option for the Attack: &nbsp;</label
             >
             <a *ngFor="let option of options">
               <input
+              class="link"
+
                 id="rate_{{ option }}"
                 value="{{ option }}"
                 type="radio"
                 name="radio"
                 [(ngModel)]="chosenOption"
               />
-              &nbsp;&nbsp;{{ option }}&nbsp;&nbsp;
+              <label for="rate_{{option}}" class="link">{{ option }}</label>&nbsp;&nbsp;
             </a>
           </div>
         </ng-container>
@@ -645,16 +647,19 @@
               Now {{ magicalBeing1.name }} will mount an attack
             </h2>
             <label required for="options"
-              >Please chose an Option for the Attack: &nbsp;&nbsp;</label
+              >Please chose an Option for the Attack: &nbsp;</label
             >
             <a *ngFor="let option of options">
               <input
+                class="link"
                 id="rate_{{ option }}"
                 value="{{ option }}"
                 type="radio"
                 name="radio"
                 [(ngModel)]="chosenOption"
-              />&nbsp;&nbsp;{{ option }}&nbsp;&nbsp;
+              /><label for="rate_{{option}}"  class="link">{{ option }}</label>&nbsp;&nbsp;
+              
+              
             </a>
           </div>
         </ng-container>

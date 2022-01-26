@@ -29,11 +29,6 @@ body {
   color: rgb(255, 255, 255);
 }
 
-#compare,
-#about {
-  padding-top: 100px;
-}
-
 a {
   text-decoration: none;
 }
@@ -50,38 +45,16 @@ a:hover {
   clear: both;
 }
 
-.form-text {
-  font-size: 1rem;
-  color: darkgray;
-}
-
 .abstandLinks {
   margin-left: 10px;
 }
 
-.hinweis {
-  font-size: 1.1rem;
-  color: limegreen;
-}
 
 /*Navigation*/
 .nav-link {
   cursor: pointer;
 }
 
-.nav-link:active,
-.nav-link:hover {
-  color: limegreen !important;
-}
-
-.abstand-icon {
-  margin: 0px 0px;
-}
-
-.icon-link:active svg,
-.icon-link:hover svg {
-  color: limegreen;
-}
 
 details[open] {
   margin-bottom: 1em;
@@ -89,30 +62,9 @@ details[open] {
 
 /*slider*/
 
-.slider-image {
-  width: 100vw;
-  height: 70vh;
-  background-position: center;
-  background-size: cover;
-}
-
 tr,
 td {
   color: white;
-}
-
-/*vergleich*/
-.card-image {
-  height: 500px;
-  background-position: center;
-  background-size: cover;
-}
-
-@media (max-width: 800px) {
-  .card-group {
-    display: flex;
-    flex-flow: column wrap;
-  }
 }
 
 .sticky-top{
@@ -120,70 +72,11 @@ td {
   height: 110px;
 }
 
-/*über uns*/
-.about-image {
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  background-position: center;
-  background-size: cover;
-}
 
-.footer {
-  font-family: sans-serif;
-  font-size: 1rem;
-  text-align: center;
-  border-top: 1px solid #888;
-}
-
-.button-abstand {
-  margin: 20px;
-  padding: 5px 10px;
-  border-radius: 3px;
-}
-
-.button-abstand:hover {
-  margin: 20px;
-  padding: 5px 10px;
-  border-radius: 3px;
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white;
-}
-
-.auswahl {
-  margin-left: 15px;
-  padding: 8px 10px;
-  border-radius: 3px;
-}
-
-.auswahl:hover {
-  margin-left: 15px;
-  padding: 8px 10px;
-  border-radius: 3px;
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white;
-}
 /*für Tabelle*/
 
 thead {
   font-weight: 300 !important;
-}
-
-.button-abstand {
-  margin: 20px;
-  padding: 5px 10px;
-  border-radius: 3px;
-}
-
-.button-abstand:hover {
-  margin: 20px;
-  padding: 5px 10px;
-  border-radius: 3px;
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white;
 }
 
 .formButton {
@@ -273,22 +166,6 @@ thead {
   border: 1px solid rgb(211, 166, 37);
 }
 
-
-.auswahl {
-  margin-left: 15px;
-  padding: 8px 10px;
-  border-radius: 3px;
-}
-
-.auswahl:hover {
-  margin-left: 15px;
-  padding: 8px 10px;
-  border-radius: 3px;
-  background-color: limegreen;
-  border: 1px solid limegreen;
-  color: white;
-}
-
 .formFelder {
   width: 150px;
   height: 50px;
@@ -313,59 +190,27 @@ thead {
   border: 1px solid white;
 }
 
-
-
-.ergebnis {
-  padding: 0.375rem 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #212529;
-  background-color: #fff;
-  border-radius: 0.25rem;
-  border: 1px solid white;
-  width: 100px;
-  margin-left: 0.7rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.update {
-  margin: 0 0.5rem;
-  border: 1px solid green;
-  width: 40px;
-}
-
 .radioAbstand {
   padding: 0 0.5rem;
 }
 
-/*folgende nur zum Testen*/
-.warn {
-  color: red;
-  font-size: 44px;
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid white;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+
+  position: relative;
+  top: 4px;
 }
 
-.gelb {
-  border: 2px solid yellow;
-}
-
-.orange {
-  border: 2px solid rgb(255, 153, 0);
-  height: 40px;
-}
-
-.blau {
-  border: 2px solid rgb(69, 227, 248);
-}
-
-.grun {
-  border: 2px solid rgb(28, 172, 88);
-}
-
-.pink {
-  border: 2px solid rgb(172, 28, 136);
-}
-
-.kleiner {
-  height: 550px;
+input:checked {
+  border: 8px solid rgb(211, 166, 37);
 }
