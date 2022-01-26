@@ -21,14 +21,16 @@ At the moment, the project includes:
 - Set up for the Battle
 - The Battle
 - Set up for the chess game
-- the chess game
+- The chess game
+- Set up for training
+- Training including
+  - Spell training
+  - Potion brewing
+  - Animal training
 - Possibility to create a Magical Being
 - Possibility to update a Magical Being
 - Search bar
 - Overview about the ranks 
-
-- Will come soon:
-  - Training
 
 Furthermore the site includes 
 - overview about the rules of the battle
