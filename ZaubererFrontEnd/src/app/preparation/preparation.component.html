@@ -4,7 +4,10 @@
 
 <div class="container">
   <br />
-  <div class="intro">Hier muss noch ein Text hin</div>
+  <div class="intro">
+    The exhaustive and brutal fighting within the Hogwarts grounds is paused for
+    a few hours. Both sides try to heal their wounded and rest. 
+  </div>
 
   <div class="container-fluid padding mt-5">
     <div class="row padding">
@@ -34,20 +37,20 @@
           </option>
         </select>
       </div>
-      <br/>
+      <br />
       <ng-container
         *ngIf="
           magicalBeingChoiceA !== undefined && magicalBeingChoiceB !== undefined
         "
       >
         <div class="col-md-12 col-lg-7 check gold">
-          <br/>
+          <br />
           Do you want to start the game with these advisors:
           <a>{{ magicalBeingChoiceA.name }} and</a>
           <a>{{ magicalBeingChoiceB.name }}? </a> &nbsp; &nbsp;
         </div>
         <div class="col-lg-5 check">
-          <br/>
+          <br />
           <button
             class="formButton"
             (click)="send2()"

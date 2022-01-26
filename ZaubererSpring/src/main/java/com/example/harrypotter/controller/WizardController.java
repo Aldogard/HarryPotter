@@ -35,6 +35,7 @@ public class WizardController {
     private ProfessorService professorService;
     private DumbledoreService dumbledoreService;
     private PotionsMasterService potionsMasterService;
+    private DummyService dummyService;
 
 
     @GetMapping("")
@@ -102,6 +103,11 @@ public class WizardController {
     @PostMapping("/potionsmaster")
     public ResponseEntity<Wizard> createPotionsMaster(@RequestBody @Validated PotionsMaster potionsMaster){
         return potionsMasterService.createPotionsMaster(potionsMaster);
+    }
+
+    @PostMapping("/dummy")
+    public ResponseEntity<Wizard> createDummy(@RequestBody @Validated Dummy dummy){
+        return dummyService.createDummy(dummy);
     }
 
 }

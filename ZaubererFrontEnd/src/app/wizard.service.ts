@@ -44,6 +44,11 @@ export class WizardService {
     return this.http.post<HpWizard>(urlWizard, body);
   }
 
+  postDummy(body: HpWizard){
+    const urlDummy = url + '/dummy'
+    return this.http.post<HpWizard>(urlDummy, body);
+  }
+
   postGiant(body:HpMagicalBeing){
     return this.http.post<HpMagicalBeing>(urlGiant, body);
   }

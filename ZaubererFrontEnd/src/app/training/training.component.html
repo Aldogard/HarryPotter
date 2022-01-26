@@ -24,7 +24,7 @@
       </div>
       <div
         class="col-md-12 col-lg-12 centered gold"
-        *ngIf="showSucces.value && magicalBeing1 !== undefined"
+        *ngIf="showSuccesDuell.value && magicalBeing1 !== undefined"
       >
         <br />
         {{ magicalBeing1.name }} trained succesfully and gained 1 training
@@ -32,10 +32,27 @@
       </div>
       <div
         class="col-md-12 col-lg-12 centered gold"
-        *ngIf="showFailure.value && magicalBeing1 !== undefined"
+        *ngIf="showFailureDuell.value && magicalBeing1 !== undefined"
       >
         <br />
         {{ magicalBeing1.name }} did not train succesfully and did not gain a
+        training victory
+      </div>
+
+      <div
+        class="col-md-12 col-lg-12 centered gold"
+        *ngIf="showSuccesPotion.value && magicalBeing1 !== undefined"
+      >
+        <br />
+        {{ magicalBeing1.name }} brewed a Potion succesfully and gained 1
+        training victory
+      </div>
+      <div
+        class="col-md-12 col-lg-12 centered gold"
+        *ngIf="showFailurePotion.value && magicalBeing1 !== undefined"
+      >
+        <br />
+        {{ magicalBeing1.name }} did not brew succesfully and did not gain a
         training victory
       </div>
 
@@ -308,14 +325,14 @@
         <div class="col-md-12 col-lg-4">
           <ul>
             <p class="gold title">Available ingridients</p>
-            <li class="nodots" *ngFor="let option of ingridients">
+            <li class="nodots" *ngFor="let option of ingredients">
               <input
                 id="rate_{{ option }}"
                 value="{{ option }}"
                 type="radio"
                 name="radio"
                 (change)="checkDouble(option)"
-                [(ngModel)]="ingridient"
+                [(ngModel)]="ingredient"
               />
               &nbsp;&nbsp;{{ option }}&nbsp;&nbsp;
             </li>
@@ -324,22 +341,43 @@
         <div class="col-lg-4">
           <ol>
             <p class="gold title">Chosen ingridients</p>
-            <li *ngFor="let i of ingridientsForPotion">{{ i }}</li>
+            <li *ngFor="let i of ingredientsForPotion">{{ i }}</li>
           </ol>
         </div>
         <div class="col-lg-4 centered">
-          <ng-container *ngIf="ingridient !== ''">
-            <p class="gold centered">Do you want to add {{ ingridient }}?</p>
-            <button (click)="addIngridient()" [disabled]="disable" class="formButton">
+          <ng-container *ngIf="ingredient !== ''">
+            <p class="gold centered">Do you want to add {{ ingredient }}?</p>
+            <button
+              (click)="addIngredient()"
+              [disabled]="disable"
+              class="formButton"
+            >
+              Confirm
+            </button>
+            <br />
+            <button
+              class="formButton"
+              (click)="deleteIngredient()"
+              [disabled]="ingredientsForPotion.length === 0"
+            >
+              Delete ingredient
+            </button>
+          </ng-container>
+          <ng-container *ngIf="ingredientsForPotion.length > 0">
+            <p class="gold centered"><br />Do you want to start brewing?</p>
+            <button (click)="checkIngredient()" class="formButton">
               Confirm
             </button>
           </ng-container>
-          <ng-container *ngIf="ingridientsForPotion.length > 0">
-            <p class="gold centered"><br/>Do you want to start brewing?</p>
-            <button (click)="checkIngridient()" class="formButton">
-              Confirm
-            </button>
-          </ng-container>
+          <div (click)="gotoWiki()" class="link">
+            <ng-container *ngIf="ingredient !== ''"><br /></ng-container>
+            An overview about all potions can be found at the wonderful Harry
+            Potter Wiki!
+          </div>
+          <div (click)="gotoWiki2()" class="link">
+            An overview about all ingredients can be found at the Harry Potter
+            Wiki as well!
+          </div>
         </div>
       </ng-container>
 
@@ -406,11 +444,11 @@
       </ng-container>
     </div>
   </div>
-  <div class="link container" *ngIf="magicalBeing1 === undefined">
-    <br />
-    <a (click)="gotoSelection()" class="link"
-      >No magical Being has been selected! Please go to Training in order to set
-      up a Training
-    </a>
-  </div>
+</div>
+<div class="link container" *ngIf="magicalBeing1 === undefined">
+  <br />
+  <a (click)="gotoSelection()" class="link"
+    >No magical Being has been selected! Please go to Training in order to set
+    up a Training
+  </a>
 </div>

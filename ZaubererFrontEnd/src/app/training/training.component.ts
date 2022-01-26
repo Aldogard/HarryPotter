@@ -30,13 +30,16 @@ export class TrainingComponent implements OnInit {
   showTable = new BehaviorSubject<boolean>(true);
   showDetails = new BehaviorSubject<boolean>(false);
   showVictory = new BehaviorSubject<boolean>(false);
-  showSucces = new BehaviorSubject<boolean>(false);
-  showFailure = new BehaviorSubject<boolean>(false);
+  showSuccesDuell = new BehaviorSubject<boolean>(false);
+  showFailureDuell = new BehaviorSubject<boolean>(false);
+  showSuccesPotion = new BehaviorSubject<boolean>(false);
+  showFailurePotion = new BehaviorSubject<boolean>(false);
   trainingVictories = 0;
-  potion = this.ps.potions[Math.floor(Math.random() * this.ps.potions.length)];
-  ingridients = this.ps.ingridients;
-  ingridient = '';
-  ingridientsForPotion: string[] = [];
+  randomChoice = new BehaviorSubject<number>(0);
+  potion = this.ps.potions[this.randomChoice.value];
+  ingredients = this.ps.ingredients;
+  ingredient = '';
+  ingredientsForPotion: string[] = [];
   disable = false;
 
   magicalBeingForm = this.fb.group({
@@ -51,7 +54,7 @@ export class TrainingComponent implements OnInit {
     private fb: FormBuilder,
     private ws: WizardService,
     private ms: MessageService,
-    private ps: PotionService
+    private ps: PotionService,
   ) {}
 
   ngOnInit(): void {
@@ -60,7 +63,7 @@ export class TrainingComponent implements OnInit {
 
   beforeStart() {
     this.ws
-      .postWizard(this.magicalBeingForm.value, 'Alumni')
+      .postDummy(this.magicalBeingForm.value)
       .subscribe((post) => {
         this.mbService.getMagicalBeingByName('Dummy').subscribe((mb) => {
           this.dummy = mb;
@@ -74,16 +77,24 @@ export class TrainingComponent implements OnInit {
     this.remainingMoves = 0;
     this.amountOfMoves = 0;
 
-    // this.magicalBeing1 = this.ms.participants.value[0];
-    // this.show = this.ms.showTraining.value;
-    // this.magicalBeing1.energy = 15;
-    // this.getAmount();
+    this.magicalBeing1 = this.ms.participants.value[0];
+    this.show = this.ms.showTraining.value;
+    if (this.magicalBeing1 !== undefined) {
+      this.magicalBeing1.energy = 15;
+    }
+    this.getAmount();
 
-    this.mbService.getMagicalBeings().subscribe((mb) => {
-      mb[0].energy = 15;
-      this.magicalBeing1 = mb[0];
-      this.getAmount();
-    });
+    this.randomChoice.next(Math.floor(Math.random() * this.ps.potions.length));
+    this.potion = this.ps.potions[this.randomChoice.value];
+
+    this.ingredient = '';
+    this.ingredientsForPotion = [];
+
+    // this.mbService.getMagicalBeings().subscribe((mb) => {
+    //   mb[0].energy = 15;
+    //   this.magicalBeing1 = mb[0];
+    //   this.getAmount();
+    // });
 
     if (this.trainingVictories >= 3 && this.magicalBeing1 !== undefined) {
       this.showVictory.next(true);
@@ -99,7 +110,8 @@ export class TrainingComponent implements OnInit {
           this.chosenOption = '';
           this.spell = new FormControl('');
           this.showDetails.next(false);
-          this.showSucces.next(false);
+          this.showSuccesDuell.next(false);
+          this.showSuccesPotion.next(false);
           this.showVictory.next(true);
         });
       }
@@ -135,7 +147,7 @@ export class TrainingComponent implements OnInit {
   getSpell(spell: HpSpell) {
     this.spell = new FormControl(spell);
     this.validateSpell.next(true);
-    this.showFailureAndSuccess();
+    
   }
   getAnimal(animal: HpAnimal) {
     this.animal = new FormControl(animal);
@@ -330,11 +342,11 @@ export class TrainingComponent implements OnInit {
       this.chosenOption = '';
       this.spell = new FormControl('');
       this.showDetails.next(false);
-      this.showSucces.next(true);
+      this.showSuccesDuell.next(true);
       this.beforeStart();
     } else if (this.remainingMoves <= 0) {
       this.chosenOption = '';
-      this.showFailure.next(true);
+      this.showFailureDuell.next(true);
       this.beforeStart();
     }
   }
@@ -402,35 +414,78 @@ export class TrainingComponent implements OnInit {
 
   showFailureAndSuccess() {
     this.showVictory.next(false);
-    this.showSucces.next(false);
-    this.showFailure.next(false);
+    this.showSuccesDuell.next(false);
+    this.showFailureDuell.next(false);
+    this.showSuccesPotion.next(false);
+    this.showFailurePotion.next(false);
   }
 
-  addIngridient(){
-      let present = false;
-      this.ingridientsForPotion.forEach(ifp => {
-        if (ifp === this.ingridient){
-          present = true;
-        }
-      })
-      if(!present){
-      this.ingridientsForPotion.push(this.ingridient);
-      this.disable = true;
+  addIngredient() {
+    let present = false;
+    this.ingredientsForPotion.forEach((ifp) => {
+      if (ifp === this.ingredient) {
+        present = true;
       }
+    });
+    if (!present) {
+      this.ingredientsForPotion.push(this.ingredient);
+      this.disable = true;
+    }
   }
 
-  checkDouble(option: string){
+  checkDouble(option: string) {
     this.disable = false;
-    this.ingridientsForPotion.forEach(ifp => {
-      if (ifp === option){
-        console.log("check")
+    this.ingredientsForPotion.forEach((ifp) => {
+      if (ifp === option) {
+        console.log('check');
         this.disable = true;
       }
-    })
+    });
   }
 
-  checkIngridient(){
-    
+  checkIngredient() {
+    const rightIngridients: string[] = this.ps.test[this.randomChoice.value];
+
+    if (rightIngridients.length !== this.ingredientsForPotion.length) {
+      this.chosenOption = '';
+      this.showFailureDuell.next(true);
+      this.beforeStart();
+    } else {
+      rightIngridients.forEach((ri) => {
+        for (var i = 0; i < this.ingredientsForPotion.length; i++) {
+          if (ri === this.ingredientsForPotion[i]) {
+            console.log('test' + i);
+            this.ingredientsForPotion.splice(i, 1);
+          }
+        }
+      });
+      console.log(this.ingredientsForPotion.length);
+      if (this.ingredientsForPotion.length === 0) {
+        this.trainingVictories = this.trainingVictories + 1;
+        this.chosenOption = '';
+        this.showDetails.next(false);
+        this.showSuccesPotion.next(true);
+        this.beforeStart();
+      } else {
+        this.chosenOption = '';
+        this.showFailureDuell.next(true);
+        this.beforeStart();
+      }
+    }
   }
 
+  deleteIngredient() {
+    this.ingredientsForPotion.splice(this.ingredientsForPotion.length - 1, 1);
+    this.checkDouble(this.ingredient);
+  }
+
+  gotoWiki() {
+    window.open('https://harrypotter.fandom.com/wiki/List_of_potions');
+  }
+
+  gotoWiki2() {
+    window.open(
+      'https://harrypotter.fandom.com/wiki/List_of_potion_ingredients'
+    );
+  }
 }

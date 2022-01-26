@@ -4,7 +4,7 @@ import { MagicalBeingService } from './magical-being.service';
 import { MessageService } from './message.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PotionService {
   potions: string[] = [
@@ -15,44 +15,62 @@ export class PotionService {
     'Wit-Sharpening Potion',
   ];
 
-  ingridients: string[] = [
+  test: string[][] = [
+    [
+      'Leaping Toadstools',
+      'Frog Brains',
+      'Runespoor eggs',
+      'Powdered dragon claw',
+    ],
+    ['Ice pop', 'Red spider', 'Flowers'],
+    [
+      'Alihotsy leaves',
+      'Dried billywig stings',
+      'Peppermint',
+      'Stewed Mandrake',
+      'Infusion of Wormwood',
+      'Honeywater',
+      'Vervain infusion',
+      'Scurvy grass',
+      'Lovage',
+    ],
+    [
+      'Ground scarab beetles',
+      'Cut ginger roots',
+      'Armandillo bile',
+      'Newt spleens',
+    ],
+  ];
 
-    'Leaping Toadstools',
-    'Frog Brains',
-    'Runespoor eggs',
-    'Powdered dragon claw',
-
-    'Ice pop',
-    'Red spider',
-    'Flowers',
-
-    'Wormwood',
+  ingredients: string[] = [
     'Bubotuber pus',
-    'Dittany',
-    'Dragon liver',
-
-    'Alihotsy leaves',
-    'Dried billywig stings',
-    'Peppermint',
+    'Runespoor eggs',
     'Stewed Mandrake',
-    'Infusion of Wormwood',
+    'Ground scarab beetles',
     'Honeywater',
+    'Red spider',
     'Vervain infusion',
     'Scurvy grass',
     'Lovage',
+    'Wormwood',
+    'Dittany',
+    'Dragon liver',
+    'Ice pop',
+  // ];
 
-    'Ground scarab beetles',
-    'Cut ginger roots',
+  // ingredients2: string[] = [
+    'Leaping Toadstools',
+    'Infusion of Wormwood',
+    'Alihotsy leaves',
+    'Frog Brains',
     'Armandillo bile',
+    'Peppermint',
     'Newt spleens',
-
+    'Cut ginger roots',
+    'Flowers',
+    'Dried billywig stings',
+    'Powdered dragon claw',
   ];
 
-
-  constructor(
-    private mb: MagicalBeingService,
-    private extraService: ExtraService,
-    private ms: MessageService,
-  ) { }
-
+  constructor() {}
 }

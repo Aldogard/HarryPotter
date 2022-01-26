@@ -1,12 +1,13 @@
 package com.example.harrypotter.entity.options;
 
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
-import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Entity(name = "potion")
@@ -43,7 +44,9 @@ public class Potion extends Options{
     @JoinColumn(name = "magicalBeing_id")
     private MagicalBeing magicalBeing;
 
-
+    @JsonManagedReference
+    @OneToMany(mappedBy = "potion", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ingredient> ingredient;
 
     /**
      * Constructor that creates a potion.
