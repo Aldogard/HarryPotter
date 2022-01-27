@@ -1,10 +1,6 @@
 package com.example.harrypotter.entity.dummy;
 
-import com.example.harrypotter.entity.magicalbeings.Condition;
-import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 import org.junit.jupiter.api.Test;
-
-import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 

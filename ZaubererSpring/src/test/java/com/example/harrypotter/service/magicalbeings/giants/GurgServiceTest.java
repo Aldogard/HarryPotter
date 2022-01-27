@@ -87,14 +87,13 @@ public class GurgServiceTest {
 
         List<Potion> potions = potionsRepo.findAll();
         assertNotNull(potions);
-        assertEquals(0, potions.size());
+        assertEquals(3, potions.size());
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(0, animals.size());
+        assertEquals(4, animals.size());
 
         assertNotNull(saWRepo.findAll());
-
 
         List<Hint> hints = hintRepo.findAll();
         assertNotNull(hints);

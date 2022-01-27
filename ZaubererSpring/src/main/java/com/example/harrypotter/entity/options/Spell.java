@@ -2,7 +2,6 @@ package com.example.harrypotter.entity.options;
 
 
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
-import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 

@@ -51,6 +51,8 @@ public class DeathEaterService {
         potionService.createExtimuloPotion(de, 2);
 
         animalService.createFlobberworm(de);
+        animalService.createPoisonousDuck(de);
+        animalService.createTroll(de);
 
         sawService.strengthHogwartsHouse(de);
 

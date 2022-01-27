@@ -45,7 +45,7 @@ public class GryffindorService {
         potionService.createBrainElixir(gd, 1);
         potionService.createExtimuloPotion(gd, 5);
 
-        animalService.createFlobberworm(gd);
+        animalService.basicAnimals(gd);
 
         sawService.strengthDeathEater(gd);
         sawService.strengthHufflepuff(gd);

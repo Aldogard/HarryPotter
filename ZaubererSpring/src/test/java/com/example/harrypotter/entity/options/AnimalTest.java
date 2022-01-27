@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AnimalTest {
 
@@ -14,7 +13,7 @@ public class AnimalTest {
     public void testAnimal() {
         Dumbledore test = new Dumbledore("TestW", BigDecimal.valueOf(4), "Neutral");
         Animal animal = new Animal("testAnimal", 1.0, 1.0,
-                1, 1.0, 0.1, test, "Strong" );
+                1, 1.0, 0.1, false, test, "Strong" );
 
         assertNotNull(animal);
         assertEquals("testAnimal", animal.getName());
@@ -25,6 +24,7 @@ public class AnimalTest {
         assertEquals(BigDecimal.valueOf(1.0), animal.getHealing());
         assertEquals(BigDecimal.valueOf(0.1), animal.getEnergyRecovery());
         assertEquals(test, animal.getMagicalBeing());
+        assertFalse(animal.getNiffler());
 
     }
 }

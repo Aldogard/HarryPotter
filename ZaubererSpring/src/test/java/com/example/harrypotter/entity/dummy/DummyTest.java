@@ -1,6 +1,5 @@
 package com.example.harrypotter.entity.dummy;
 
-import com.example.harrypotter.entity.dummy.Dummy;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

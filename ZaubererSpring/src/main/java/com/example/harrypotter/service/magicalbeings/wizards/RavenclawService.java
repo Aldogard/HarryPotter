@@ -52,7 +52,7 @@ public class RavenclawService {
         potionService.createInvogiration(rc, 1);
         potionService.createExtimuloPotion(rc, 2);
 
-        animalService.createFlobberworm(rc);
+        animalService.basicAnimals(rc);
 
         sawService.strengthGryffindor(rc);
         sawService.strengthSlytherin(rc);

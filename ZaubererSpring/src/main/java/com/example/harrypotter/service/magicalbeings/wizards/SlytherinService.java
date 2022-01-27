@@ -51,7 +51,7 @@ public class SlytherinService {
         potionService.createWitSharpeningPotion(sl ,1);
         potionService.createExtimuloPotion(sl, 2);
 
-        animalService.createFlobberworm(sl);
+        animalService.basicAnimals(sl);
 
         sawService.strengthAlumni(sl);
         sawService.strengthHufflepuff(sl);

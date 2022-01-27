@@ -15,8 +15,8 @@ public class DummyController {
 
 
     @PostMapping("")
-    public ResponseEntity<Dummy> createDummy(@RequestBody @Validated Dummy dummy){
-        return dummyService.createDummy(dummy);
+    public ResponseEntity<Dummy> createDummy(){
+        return dummyService.createDummy();
     }
 
     @GetMapping("/name/{name}")

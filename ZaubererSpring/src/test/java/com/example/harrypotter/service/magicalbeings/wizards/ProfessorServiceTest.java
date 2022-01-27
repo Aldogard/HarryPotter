@@ -59,7 +59,7 @@ public class ProfessorServiceTest {
     }
 
     @Test
-    public void testHufflepuffService() {
+    public void testProfessorService() {
         Professor professor = new Professor("Test", BigDecimal.valueOf(10), "test and more than 10");
         ResponseEntity<Wizard> response = professorService.createProfessor(professor);
 
@@ -89,7 +89,7 @@ public class ProfessorServiceTest {
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(1, animals.size());
+        assertEquals(5, animals.size());
 
         assertNotNull(saWRepo.findAll());
         assertEquals(4, UtilWizards.findStrength(saWRepo.findAll()).size());

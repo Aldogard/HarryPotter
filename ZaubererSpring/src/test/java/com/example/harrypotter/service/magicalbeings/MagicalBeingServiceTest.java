@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,7 +45,7 @@ public class MagicalBeingServiceTest {
 
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Testi1", response.getBody().getName());
+        assertEquals("Testi1", Objects.requireNonNull(response.getBody()).getName());
         assertNull(responseNull.getBody());
 
     }
@@ -124,14 +125,14 @@ public class MagicalBeingServiceTest {
         ResponseEntity<List<MagicalBeing>> response = magicalBeingService.getAllMagicalBeings(null, null, null);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(2, response.getBody().size());
+        assertEquals(2, Objects.requireNonNull(response.getBody()).size());
 
         ResponseEntity<List<MagicalBeing>> responseName = magicalBeingService.getAllMagicalBeings("Headi", null, null);
-        assertEquals(1, responseName.getBody().size());
+        assertEquals(1, Objects.requireNonNull(responseName.getBody()).size());
         assertEquals("Headi", responseName.getBody().get(0).getName());
 
         ResponseEntity<List<MagicalBeing>> responseClass = magicalBeingService.getAllMagicalBeings(null, "Alumni", null);
-        assertEquals(1, responseClass.getBody().size());
+        assertEquals(1, Objects.requireNonNull(responseClass.getBody()).size());
         assertEquals("Testi", responseClass.getBody().get(0).getName());
 
         ResponseEntity<List<MagicalBeing>> responseSpecies = magicalBeingService.getAllMagicalBeings(null, null, "Wizard");
@@ -163,11 +164,11 @@ public class MagicalBeingServiceTest {
             magicalBeingRepo.save(new Alumni(number, BigDecimal.valueOf(i+1), "Test  and more than 10"));
         }
         ResponseEntity<List<MagicalBeing>> responseMax= magicalBeingService.getAllMagicalBeingHp(3.5, null);
-        assertEquals(2, responseMax.getBody().size());
+        assertEquals(2, Objects.requireNonNull(responseMax.getBody()).size());
         assertEquals(HttpStatus.OK, responseMax.getStatusCode());
 
         ResponseEntity<List<MagicalBeing>> responseMin= magicalBeingService.getAllMagicalBeingHp(null, 3.5);
-        assertEquals(3, responseMin.getBody().size());
+        assertEquals(3, Objects.requireNonNull(responseMin.getBody()).size());
         assertEquals(HttpStatus.OK, responseMin.getStatusCode());
     }
 
@@ -182,13 +183,13 @@ public class MagicalBeingServiceTest {
         magicalBeingRepo.save(alumni100Victories);
 
         ResponseEntity<List<MagicalBeing>> response10= magicalBeingService.getAllMagicalBeingsVictories(10);
-        assertEquals(2, response10.getBody().size());
+        assertEquals(2, Objects.requireNonNull(response10.getBody()).size());
 
         ResponseEntity<List<MagicalBeing>> response15= magicalBeingService.getAllMagicalBeingsVictories(15);
-        assertEquals(1, response15.getBody().size());
+        assertEquals(1, Objects.requireNonNull(response15.getBody()).size());
 
         ResponseEntity<List<MagicalBeing>> response101= magicalBeingService.getAllMagicalBeingsVictories(101);
-        assertEquals(0, response101.getBody().size());
+        assertEquals(0, Objects.requireNonNull(response101.getBody()).size());
 
     }
 
@@ -284,7 +285,7 @@ public class MagicalBeingServiceTest {
 
         assertNotNull(response);
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Testi", response.getBody().getName());
+        assertEquals("Testi", Objects.requireNonNull(response.getBody()).getName());
         assertNull(responseNull.getBody());
 
     }

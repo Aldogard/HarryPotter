@@ -1,6 +1,5 @@
 package com.example.harrypotter.entity.magicalbeings.wizards;
 
-import com.example.harrypotter.entity.magicalbeings.wizards.PotionsMaster;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

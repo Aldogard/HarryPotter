@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -62,14 +63,14 @@ public class WizardServiceTest {
         ResponseEntity<List<Wizard>> response = wizardService.getAllWizards(null, null);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(2, response.getBody().size());
+        assertEquals(2, Objects.requireNonNull(response.getBody()).size());
 
         ResponseEntity<List<Wizard>> responseName = wizardService.getAllWizards("Headi", null);
-        assertEquals(1, responseName.getBody().size());
+        assertEquals(1, Objects.requireNonNull(responseName.getBody()).size());
         assertEquals("Headi", responseName.getBody().get(0).getName());
 
         ResponseEntity<List<Wizard>> responseClass = wizardService.getAllWizards(null, "Alumni");
-        assertEquals(1, responseClass.getBody().size());
+        assertEquals(1, Objects.requireNonNull(responseClass.getBody()).size());
         assertEquals("Testi", responseClass.getBody().get(0).getName());
 
     }

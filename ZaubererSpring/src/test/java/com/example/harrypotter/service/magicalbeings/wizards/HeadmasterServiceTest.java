@@ -89,7 +89,7 @@ public class HeadmasterServiceTest {
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(1, animals.size());
+        assertEquals(6, animals.size());
 
         assertNotNull(saWRepo.findAll());
         assertEquals(7, UtilWizards.findStrength(saWRepo.findAll()).size());

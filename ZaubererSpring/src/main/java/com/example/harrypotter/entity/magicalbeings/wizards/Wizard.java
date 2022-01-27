@@ -1,13 +1,10 @@
 package com.example.harrypotter.entity.magicalbeings.wizards;
 
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
-import com.example.harrypotter.entity.magicalbeings.StrengthAndWeakness;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Data
 @Entity(name = "wizard")

@@ -50,6 +50,10 @@ public class PotionsMasterService {
         potionService.createExtimuloPotion(pm, 5);
 
         animalService.createFlobberworm(pm);
+        animalService.createPoisonousDuck(pm);
+        animalService.createGriffin(pm);
+        animalService.createHippogriff(pm);
+        animalService.createTroll(pm);
 
         sawService.strengthHogwartsHouse(pm);
 

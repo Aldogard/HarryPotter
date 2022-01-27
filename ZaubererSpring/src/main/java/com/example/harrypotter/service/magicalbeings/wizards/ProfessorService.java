@@ -54,6 +54,11 @@ public class ProfessorService {
         potionService.createExtimuloPotion(prof, 3);
 
         animalService.createFlobberworm(prof);
+        animalService.createPoisonousDuck(prof);
+        animalService.createBowtuckle(prof);
+        animalService.createHippogriff(prof);
+        animalService.createNiffler(prof);
+
 
         sawService.strengthHogwartsHouse(prof);
 

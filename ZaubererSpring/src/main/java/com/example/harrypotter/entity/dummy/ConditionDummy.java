@@ -1,6 +1,5 @@
 package com.example.harrypotter.entity.dummy;
 
-import com.example.harrypotter.entity.dummy.Dummy;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 

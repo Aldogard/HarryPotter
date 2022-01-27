@@ -58,7 +58,13 @@ public class DumbledoreService {
         potionService.createWitSharpeningPotion(d, 2);
         potionService.createExtimuloPotion(d,3);
 
-        animalService.createFlobberworm(d);
+        animalService.createPhoenix(d);
+        animalService.createBowtuckle(d);
+        animalService.createHungarianHorntail(d);
+        animalService.createGriffin(d);
+        animalService.createHippogriff(d);
+        animalService.createNiffler(d);
+        animalService.createThreeHeadedDog(d);
 
         sawService.strengthAlumni(d);
         sawService.strengthDeathEater(d);

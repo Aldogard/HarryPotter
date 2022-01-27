@@ -4,7 +4,6 @@ import com.example.harrypotter.entity.magicalbeings.Condition;
 import com.example.harrypotter.entity.magicalbeings.Hint;
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.magicalbeings.giants.Giant;
-import com.example.harrypotter.entity.magicalbeings.giants.Gurg;
 import com.example.harrypotter.entity.magicalbeings.giants.HalfGiant;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Potion;
@@ -82,15 +81,15 @@ public class HalfGiantServiceTest {
 
         List<Spell> spells = spellRepo.findAll();
         assertNotNull(spells);
-        assertEquals(1, spells.size());
+        assertEquals(4, spells.size());
 
         List<Potion> potions = potionsRepo.findAll();
         assertNotNull(potions);
-        assertEquals(0, potions.size());
+        assertEquals(4, potions.size());
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(0, animals.size());
+        assertEquals(9, animals.size());
 
         assertNotNull(saWRepo.findAll());
 

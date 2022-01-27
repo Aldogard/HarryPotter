@@ -37,8 +37,7 @@ public class DummyServiceTest {
 
     @Test
     public void testCreateDummy() {
-        Dummy dummy = new Dummy();
-        ResponseEntity<Dummy> response = dummyService.createDummy(dummy);
+        ResponseEntity<Dummy> response = dummyService.createDummy();
 
         Dummy dummyResponse = response.getBody();
         HttpStatus httpStatusResponse = response.getStatusCode();
@@ -57,7 +56,7 @@ public class DummyServiceTest {
     @Test
     public void testGetDummyByName() {
         Dummy dummy = new Dummy();
-        dummyService.createDummy(dummy);
+        dummyService.createDummy();
 
         ResponseEntity<Dummy> response = dummyService.getDummyByName("Dummy");
         Dummy dummyResponse = response.getBody();
@@ -73,8 +72,7 @@ public class DummyServiceTest {
     @Test
     @Tag("deleteAll")
     public void testDeleteAllDummy(){
-        Dummy dummy = new Dummy();
-        dummyService.createDummy(dummy);
+        dummyService.createDummy();
 
         ResponseEntity<Void> response = dummyService.deleteAllDummy();
         HttpStatus httpStatusResponse = response.getStatusCode();

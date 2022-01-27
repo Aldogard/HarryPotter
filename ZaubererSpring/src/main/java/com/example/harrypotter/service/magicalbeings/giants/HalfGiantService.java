@@ -6,6 +6,8 @@ import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
 import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.magicalbeings.MagicalBeingService;
+import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,8 @@ public class HalfGiantService {
     private MagicalBeingRepo magicalBeingRepo;
     private ConditionService conditionService;
     private SpellService spellService;
+    private PotionService potionService;
+    private AnimalService animalService;
     private HintService hintService;
 
 
@@ -32,10 +36,26 @@ public class HalfGiantService {
                 halfGiant.getName(),
                 halfGiant.getHealthPoints(),
                 halfGiant.getDescription());
+
         magicalBeingRepo.save(hgNew);
         conditionService.addConditions(hgNew);
 
         spellService.createCalvorio(hgNew);
+        spellService.createLevicorpus(hgNew);
+        spellService.createConfundo(hgNew);
+        spellService.createEpiskey(hgNew);
+
+        potionService.createExtimuloPotion(hgNew, 2);
+        potionService.createHealingPotion(hgNew, 1);
+        potionService.createInvogiration(hgNew, 1);
+        potionService.createExtimuloPotion(hgNew, 2);
+
+        animalService.basicAnimals(hgNew);
+        animalService.createHungarianHorntail(hgNew);
+        animalService.createGriffin(hgNew);
+        animalService.createHippogriff(hgNew);
+        animalService.createThreeHeadedDog(hgNew);
+
 
         hintService.createBasicHints(hgNew);
         hintService.createKeepingABishop(hgNew);

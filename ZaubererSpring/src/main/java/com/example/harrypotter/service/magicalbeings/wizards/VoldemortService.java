@@ -53,6 +53,9 @@ public class VoldemortService {
         potionService.createUnicornBlood(v, 1);
 
         animalService.createFlobberworm(v);
+        animalService.createBasilisk(v);
+        animalService.createPoisonousDuck(v);
+        animalService.createTroll(v);
 
         sawService.strengthHogwartsHouse(v);
         sawService.strengthHeadmaster(v);

@@ -3,7 +3,6 @@ package com.example.harrypotter.service.magicalbeings.wizards;
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
 import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.options.AnimalService;
@@ -14,8 +13,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.awt.*;
 
 
 @Service
@@ -55,6 +52,12 @@ public class AlumniService {
         potionService.createExtimuloPotion(a, 3);
 
         animalService.createFlobberworm(a);
+        animalService.createPoisonousDuck(a);
+        animalService.createBowtuckle(a);
+        animalService.createHungarianHorntail(a);
+        animalService.createHippogriff(a);
+        animalService.createNiffler(a);
+        animalService.createTroll(a);
 
         sawService.strengthHogwartsHouse(a);
 
@@ -74,8 +77,6 @@ public class AlumniService {
         hintService.createSendToAzkaban(a);
         hintService.createEveryPawn(a);
         hintService.createNotAGoodSign(a);
-
-
 
         return new ResponseEntity<>(a, HttpStatus.OK);
     }

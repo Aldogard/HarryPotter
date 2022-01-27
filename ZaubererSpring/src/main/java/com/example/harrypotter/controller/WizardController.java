@@ -1,6 +1,5 @@
 package com.example.harrypotter.controller;
 
-import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.magicalbeings.wizards.*;
 import com.example.harrypotter.repo.options.OptionsRepo;
 import com.example.harrypotter.repo.magicalbeings.ConditionRepo;
@@ -8,7 +7,6 @@ import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import com.example.harrypotter.service.magicalbeings.wizards.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

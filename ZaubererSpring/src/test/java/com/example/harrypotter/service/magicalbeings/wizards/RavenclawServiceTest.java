@@ -89,7 +89,7 @@ public class RavenclawServiceTest {
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(1, animals.size());
+        assertEquals(5, animals.size());
 
         assertNotNull(saWRepo.findAll());
         assertEquals(3, UtilWizards.findStrength(saWRepo.findAll()).size());

@@ -1,6 +1,5 @@
 package com.example.harrypotter.entity.magicalbeings;
 
-import com.example.harrypotter.entity.magicalbeings.StrengthAndWeakness;
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
 import org.junit.jupiter.api.Test;
 

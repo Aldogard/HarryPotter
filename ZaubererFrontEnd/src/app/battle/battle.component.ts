@@ -298,6 +298,9 @@ export class BattleComponent implements OnInit {
         }
       });
     }
+    if (defendMagicalBeing.species === 'Giant') {
+      randomFactor = randomFactor * Math.random() * 0.5;
+    }
     const magicalBeingFactor = attackMagicalBeing.faktor;
     const maxDamage = damageFromAction;
     const damage =
@@ -368,7 +371,7 @@ export class BattleComponent implements OnInit {
     defendMagicalBeing: HpMagicalBeing,
     attackMagicalBeing: HpMagicalBeing
   ) {
-    if (this.spell.value.imperio) {
+    if (this.spell.value.imperio && defendMagicalBeing.species !== 'Giant') {
       if (
         attackMagicalBeing.id === this.magicalBeingsArray[0].id &&
         defendMagicalBeing.additionalFactor < 1.5
@@ -465,6 +468,28 @@ export class BattleComponent implements OnInit {
           this.animal.value.energyRecovery * attackMagicalBeing.internEnergy) *
           100
       ) / 100;
+
+    if (this.animal.value.niffler && Math.random() > 0.5) {
+      let availablePotions: HpPotion[] = [];
+      let chosenPotion: HpPotion;
+      defendMagicalBeing.potions.forEach((p) => {
+        if (p.storage > 0) {
+          availablePotions.push(p);
+        }
+      });
+      chosenPotion =
+        availablePotions[Math.floor(Math.random() * availablePotions.length)];
+      defendMagicalBeing.potions.forEach((p) => {
+        if (chosenPotion === p) {
+          p.storage = p.storage - 1;
+        }
+      });
+      attackMagicalBeing.potions.forEach((p) => {
+        if (chosenPotion.name === p.name) {
+          p.storage = p.storage + 1;
+        }
+      });
+    }
   }
 
   checkIfDead() {
@@ -504,7 +529,11 @@ export class BattleComponent implements OnInit {
   }
 
   stunned(defendMagicalBeing: HpMagicalBeing) {
-    if (Math.random() > 0.5 && this.spell.value.stunned) {
+    if (
+      Math.random() > 0.5 &&
+      this.spell.value.stunned &&
+      defendMagicalBeing.species !== 'Giant'
+    ) {
       if (defendMagicalBeing.stunnedProtection === 0) {
         defendMagicalBeing.conditions[1].condition = true;
         console.log('Stunned');
@@ -515,7 +544,11 @@ export class BattleComponent implements OnInit {
   }
 
   confunded(defendMagicalBeing: HpMagicalBeing) {
-    if (Math.random() > 0.5 && this.spell.value.confunded) {
+    if (
+      Math.random() > 0.5 &&
+      this.spell.value.confunded &&
+      defendMagicalBeing.species !== 'Giant'
+    ) {
       if (defendMagicalBeing.confundedProtection === 0) {
         defendMagicalBeing.conditions[0].condition = true;
         console.log('Confunded');

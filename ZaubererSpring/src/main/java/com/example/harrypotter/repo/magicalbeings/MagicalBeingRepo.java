@@ -1,7 +1,6 @@
 package com.example.harrypotter.repo.magicalbeings;
 
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
-import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

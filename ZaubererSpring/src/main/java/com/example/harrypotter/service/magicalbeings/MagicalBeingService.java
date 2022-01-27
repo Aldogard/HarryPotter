@@ -110,7 +110,7 @@ public class MagicalBeingService {
     }
 
     public ResponseEntity<MagicalBeing> updateRating(Headmaster magicalBeing, int id) {
-        MagicalBeing updatedMb = null;
+        MagicalBeing updatedMb;
         for (MagicalBeing mb : magicalBeingRepo.findAll()) {
             if (mb.getId().equals(id)) {
                 mb.setAmount(magicalBeing.getAmount());
@@ -124,7 +124,7 @@ public class MagicalBeingService {
     }
 
     public ResponseEntity<MagicalBeing> updateVictories(Headmaster magicalBeing) {
-        MagicalBeing updatedMb = null;
+        MagicalBeing updatedMb;
         for (MagicalBeing mb : magicalBeingRepo.findAll()) {
             if (mb.getId().equals(magicalBeing.getId())) {
                 mb.setVictories(magicalBeing.getVictories());
@@ -137,7 +137,7 @@ public class MagicalBeingService {
     }
 
     public ResponseEntity<MagicalBeing> updateVictoriesChess(Headmaster magicalBeing){
-        MagicalBeing updatedMb = null;
+        MagicalBeing updatedMb;
         for (MagicalBeing mb:magicalBeingRepo.findAll()) {
             if (mb.getId().equals(magicalBeing.getId())) {
                 mb.setVictoriesChess(magicalBeing.getVictoriesChess());

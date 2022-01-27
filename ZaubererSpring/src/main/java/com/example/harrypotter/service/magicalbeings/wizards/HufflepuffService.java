@@ -49,7 +49,7 @@ public class HufflepuffService {
         potionService.createHealingPotion(hp, 1);
         potionService.createExtimuloPotion(hp, 3);
 
-        animalService.createFlobberworm(hp);
+        animalService.basicAnimals(hp);
 
         sawService.strengthSlytherin(hp);
         sawService.strengthGryffindor(hp);

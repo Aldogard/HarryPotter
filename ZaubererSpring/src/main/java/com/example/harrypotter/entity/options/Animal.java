@@ -1,7 +1,6 @@
 package com.example.harrypotter.entity.options;
 
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
-import com.example.harrypotter.entity.magicalbeings.wizards.Wizard;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
@@ -22,6 +21,9 @@ public class Animal extends Options{
 
     @Column(name = "energy_recovery")
     private BigDecimal energyRecovery;
+
+    @Column(name = "niffler")
+    private Boolean niffler;
 
     @JsonBackReference
     @ManyToOne
@@ -48,6 +50,7 @@ public class Animal extends Options{
             Integer requiredExperience,
             Double healing,
             Double recovery,
+            Boolean niffler,
             MagicalBeing magicalBeing,
             String description
     ){
@@ -55,6 +58,7 @@ public class Animal extends Options{
         this.energyUsage = BigDecimal.valueOf(energyUsage);
         this.energyRecovery = BigDecimal.valueOf(recovery);
         this.magicalBeing = magicalBeing;
+        this.niffler = niffler;
     }
 
 

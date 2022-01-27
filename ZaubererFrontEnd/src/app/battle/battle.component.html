@@ -441,15 +441,15 @@
             >
             <a *ngFor="let option of options">
               <input
-              class="link"
-
+                class="link"
                 id="rate_{{ option }}"
                 value="{{ option }}"
                 type="radio"
                 name="radio"
                 [(ngModel)]="chosenOption"
               />
-              <label for="rate_{{option}}" class="link">{{ option }}</label>&nbsp;&nbsp;
+              <label for="rate_{{ option }}" class="link">{{ option }}</label
+              >&nbsp;&nbsp;
             </a>
           </div>
         </ng-container>
@@ -525,6 +525,7 @@
                     <th>Healing</th>
                     <th>Recovery</th>
                     <th>Anti-Paralysis</th>
+                    <th>Anti-Confounded</th>
                     <th>Max Damage</th>
                     <th>Add. Factor</th>
                     <th>Experience</th>
@@ -541,6 +542,7 @@
                     <td>{{ potion.healing }}</td>
                     <td>{{ potion.energyRecovery }}</td>
                     <td>{{ potion.antiParalysis }}</td>
+                    <td>{{ potion.antiConfunded }}</td>
                     <td>{{ potion.maxDamage }}</td>
                     <td>{{ potion.additionalFactor }}</td>
                     <td>{{ potion.requiredExperience }}</td>
@@ -657,9 +659,8 @@
                 type="radio"
                 name="radio"
                 [(ngModel)]="chosenOption"
-              /><label for="rate_{{option}}"  class="link">{{ option }}</label>&nbsp;&nbsp;
-              
-              
+              /><label for="rate_{{ option }}" class="link">{{ option }}</label
+              >&nbsp;&nbsp;
             </a>
           </div>
         </ng-container>
@@ -735,6 +736,7 @@
                     <th>Healing</th>
                     <th>Recovery</th>
                     <th>Anti-Paralysis</th>
+                    <th>Anti-Confounded</th>
                     <th>Max Damage</th>
                     <th>Add. Factor</th>
                     <th>Experience</th>
@@ -751,6 +753,7 @@
                     <td>{{ potion.healing }}</td>
                     <td>{{ potion.energyRecovery }}</td>
                     <td>{{ potion.antiParalysis }}</td>
+                    <td>{{ potion.antiConfunded }}</td>
                     <td>{{ potion.maxDamage }}</td>
                     <td>{{ potion.additionalFactor }}</td>
                     <td>{{ potion.requiredExperience }}</td>

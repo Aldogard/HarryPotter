@@ -3,7 +3,6 @@ package com.example.harrypotter.controller;
 import com.example.harrypotter.entity.magicalbeings.giants.Giant;
 import com.example.harrypotter.entity.magicalbeings.giants.Gurg;
 import com.example.harrypotter.entity.magicalbeings.giants.HalfGiant;
-import com.example.harrypotter.service.magicalbeings.giants.GiantService;
 import com.example.harrypotter.service.magicalbeings.giants.GurgService;
 import com.example.harrypotter.service.magicalbeings.giants.HalfGiantService;
 import lombok.AllArgsConstructor;

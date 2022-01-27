@@ -1,7 +1,6 @@
 package com.example.harrypotter.repo.options;
 
 import com.example.harrypotter.entity.options.Animal;
-import com.example.harrypotter.entity.options.Options;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -54,6 +54,11 @@ public class HeadmasterService {
         potionService.createExtimuloPotion(hm, 2);
 
         animalService.createFlobberworm(hm);
+        animalService.createBowtuckle(hm);
+        animalService.createHungarianHorntail(hm);
+        animalService.createGriffin(hm);
+        animalService.createHippogriff(hm);
+        animalService.createNiffler(hm);
 
         sawService.strengthPotionsMaster(hm);
         sawService.strengthHogwartsHouse(hm);

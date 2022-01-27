@@ -1,13 +1,11 @@
 package com.example.harrypotter.service.options;
 
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
-import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Ingredient;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.options.IngredientRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
-import com.example.harrypotter.service.magicalbeings.wizards.UtilWizards;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

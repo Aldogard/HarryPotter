@@ -15,7 +15,7 @@ public class DummyService {
     private ConditionService conditionService;
 
 
-    public ResponseEntity<Dummy> createDummy(Dummy dummy) {
+    public ResponseEntity<Dummy> createDummy() {
         Dummy d = new Dummy();
         dummyRepo.save(d);
         conditionService.addConditionsDummy(d);

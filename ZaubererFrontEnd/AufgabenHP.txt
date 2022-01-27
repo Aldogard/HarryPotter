@@ -59,30 +59,29 @@ Weitere Aufgaben: --> Erledigt
 	Create und Update Design ändern --> Erledigt
 	Fotos? --> Nein
 
-Weitere Ideen:
-	Training
+Weitere Ideen: --> Erledigt
+	Training --> Erledigt
 		Gegner besiegen abhängig von Rank --> Je höher der Rank desto weniger Versuche.
-		Nach ein paar Siegen einen Victory Mehr
-		Gegner besiegen nur mit bestimmten Spells
+		Nach ein paar Siegen einen Victory Mehr --> Erledigt
+		Gegner besiegen nur mit bestimmten Spells --> Erstmal nicht
 
-
-		Einsatzgebiete von Potions
-		Bspw. Zwei Potions kombinieren oder Spell und Potion kombinieren
-		Extra Klasse für Dummy erstellen
-
-
-
+		Bspw. Zwei Potions kombinieren oder Spell und Potion kombinieren --> macht keinen Sinn
+		Extra Klasse für Dummy erstellen --> Erledigt
 	Weitere Kreaturen --> Erledigt
 	Schachspiel einbauen --> Erledigt
 	Kommentare von Zauberern einbauen --> Erledigt
 	Kommentare von Figuren einbauen --> Erledigt
 
 Weitere Aufgaben:
-	Weitere Aktionen bspw. Tiere agieren lassen. Basilisk, Phoenix etc.
+	Weitere Aktionen bspw. Tiere agieren lassen. Basilisk, Phoenix etc. --> Erledigt
 	Effekte für Umgebungen
 	Weitere Kreaturen
 	Nummerierung des Schachbretts
-	Sondereffekt für Riesen!
+	Sondereffekt für Riesen! --> Erledigt --> Immun gegen Spell Effekte 
+	Commtent und Rating Ansicht verbessern (Buttons)
+	
+
+Angular Testing!
 
 
 Nice to have:
@@ -97,6 +96,9 @@ Nice to have:
 	Wizard zu Magical Being umändern
 	Quiz
 	Login
+	Training: Gegner besiegen nur mit bestimmten Spells
+	Ansicht search button
+
 
  
 

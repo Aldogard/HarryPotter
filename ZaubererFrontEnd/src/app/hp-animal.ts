@@ -7,4 +7,5 @@ export interface HpAnimal {
     requiredExperience: number,
     healing: number,
     energyRecovery: number,
+    niffler: boolean,
 }

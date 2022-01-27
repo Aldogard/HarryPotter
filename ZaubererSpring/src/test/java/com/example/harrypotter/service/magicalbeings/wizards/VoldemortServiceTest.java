@@ -89,7 +89,7 @@ public class VoldemortServiceTest {
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(1, animals.size());
+        assertEquals(4, animals.size());
 
         assertNotNull(saWRepo.findAll());
         assertEquals(9, UtilWizards.findStrength(saWRepo.findAll()).size());

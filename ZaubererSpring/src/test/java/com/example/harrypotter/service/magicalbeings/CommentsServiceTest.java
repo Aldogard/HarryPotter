@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -46,7 +47,7 @@ public class CommentsServiceTest {
         ResponseEntity<Comments> response = commentsService.createComment(comment, test.getId());
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(comment.getClass(), response.getBody().getClass());
+        assertEquals(comment.getClass(), Objects.requireNonNull(response.getBody()).getClass());
         assertNotNull(commentsRepo.findAll());
         assertNotNull(response.getBody().getId());
 
@@ -62,7 +63,7 @@ public class CommentsServiceTest {
         ResponseEntity<Comments> response = commentsController.createComment(comment, test.getId());
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(comment.getClass(), response.getBody().getClass());
+        assertEquals(comment.getClass(), Objects.requireNonNull(response.getBody()).getClass());
         assertNotNull(commentsRepo.findAll());
         assertNotNull(response.getBody().getId());
     }
