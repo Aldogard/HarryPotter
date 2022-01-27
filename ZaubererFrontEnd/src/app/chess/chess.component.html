@@ -11,13 +11,15 @@
         <div class="col-md-12 col-lg-12" *ngIf="endOfGame">
           <h1 class="gold" *ngIf="endOfGame && winner.value !== ''">
             The Game is over. {{ winner.value }} has won!
-            <button class="formButton" (click)="gotoPreparation()">New Game</button>
-
+            <button class="formButton" (click)="gotoPreparation()">
+              New Game
+            </button>
           </h1>
           <h1 class="gold" *ngIf="endOfGame && winner.value === ''">
             The Game is over. Both players agreed to a draw!
-            <button class="formButton" (click)="gotoPreparation()">New Game</button>
-
+            <button class="formButton" (click)="gotoPreparation()">
+              New Game
+            </button>
           </h1>
           <br />
         </div>
@@ -30,6 +32,18 @@
       </div> -->
         <div class="col-md-12 col-lg-9">
           <table class="tablechess">
+            <tr>
+              <td></td>
+              <td class="bottom"></td>
+              <td class="bottom"></td>
+              <td class="bottom"></td>
+              <td class="bottom"></td>
+              <td class="bottom"></td>
+              <td class="bottom"></td>
+              <td class="bottom"></td>
+              <td class="bottom"></td>
+              <td></td>            
+            </tr>
             <tr *ngFor="let number of rows">
               <ng-container
                 *ngIf="
@@ -39,6 +53,7 @@
                   number === '2'
                 "
               >
+                <th class="numbermargin gold rightBorder">{{ number }}&nbsp;&nbsp;</th>
                 <td *ngFor="let char of columns">
                   <ng-container
                     *ngIf="
@@ -85,6 +100,7 @@
                       char === 'H'
                     "
                   >
+                    <td></td>
                     <td *ngIf="firstPiece === ''">
                       <button
                         class="dark gold button"
@@ -115,6 +131,7 @@
                     </td>
                   </ng-container>
                 </td>
+                <td class="left"></td>
               </ng-container>
               <ng-container
                 *ngIf="
@@ -124,7 +141,8 @@
                   number === '1'
                 "
               >
-                <td *ngFor="let char of columns">
+              <th class="numbermargin gold right">{{ number }}&nbsp;&nbsp;</th>
+              <td *ngFor="let char of columns">
                   <ng-container
                     *ngIf="
                       char === 'A' ||
@@ -200,37 +218,41 @@
                     </td>
                   </ng-container>
                 </td>
+                <td class="left"></td>
               </ng-container>
             </tr>
             <tr>
-              <th class="gold">A</th>
-              <th class="gold">B</th>
-              <th class="gold">C</th>
-              <th class="gold">D</th>
-              <th class="gold">E</th>
-              <th class="gold">F</th>
-              <th class="gold">G</th>
-              <th class="gold">H</th>
+              <td></td>
+              <th class="gold top">A</th>
+              <th class="gold top">B</th>
+              <th class="gold top">C</th>
+              <th class="gold top">D</th>
+              <th class="gold top">E</th>
+              <th class="gold top">F</th>
+              <th class="gold top">G</th>
+              <th class="gold top">H</th>
+              <td></td>
             </tr>
           </table>
           <div>
             <ng-container
-              *ngIf="
-                magicalBeing1 !== undefined &&
-                magicalBeing2 !== undefined
-              "
+              *ngIf="magicalBeing1 !== undefined && magicalBeing2 !== undefined"
             >
               <h2 class="advice">
                 <a class="gold" *ngIf="advice.value !== ''">
-                  Useful advice from {{advisor.value}}:&nbsp;
+                  Useful advice from {{ advisor.value }}:&nbsp;
                 </a>
-                <a>{{advice.value}}</a>
+                <a>{{ advice.value }}</a>
               </h2>
             </ng-container>
             <br />
           </div>
           <div
-            *ngIf="magicalBeing1 !== undefined && magicalBeing2 !== undefined &&!endOfGame"
+            *ngIf="
+              magicalBeing1 !== undefined &&
+              magicalBeing2 !== undefined &&
+              !endOfGame
+            "
             class="centered"
           >
             <button

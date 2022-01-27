@@ -609,7 +609,12 @@
                         class="formButtonColumn"
                         (click)="getAnimal(animal)"
                         [disabled]="
-                          magicalBeing2.victories < animal.requiredExperience
+                          magicalBeing2.victories < animal.requiredExperience ||
+                          (animal.water &&
+                            !(
+                              environment === 'Great Lake' ||
+                              environment === 'Boat House'
+                            ))
                         "
                       >
                         Select

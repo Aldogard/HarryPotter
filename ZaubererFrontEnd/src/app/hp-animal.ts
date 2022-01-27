@@ -8,4 +8,5 @@ export interface HpAnimal {
     healing: number,
     energyRecovery: number,
     niffler: boolean,
+    water: boolean,
 }

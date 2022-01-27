@@ -25,6 +25,9 @@ public class Animal extends Options{
     @Column(name = "niffler")
     private Boolean niffler;
 
+    @Column(name = "water")
+    private Boolean water;
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "magicalBeing_id")
@@ -51,6 +54,7 @@ public class Animal extends Options{
             Double healing,
             Double recovery,
             Boolean niffler,
+            Boolean water,
             MagicalBeing magicalBeing,
             String description
     ){
@@ -59,6 +63,7 @@ public class Animal extends Options{
         this.energyRecovery = BigDecimal.valueOf(recovery);
         this.magicalBeing = magicalBeing;
         this.niffler = niffler;
+        this.water = water;
     }
 
 

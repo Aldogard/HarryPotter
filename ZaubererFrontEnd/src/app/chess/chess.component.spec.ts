@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ChessComponent } from './chess.component';
 
 describe('ChessComponent', () => {
@@ -22,4 +21,9 @@ describe('ChessComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it("Should find a piece", () => {
+    const getColumn = component.getColumn(0);
+    expect(getColumn).toBe(1);
+  })
 });

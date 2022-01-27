@@ -51,6 +51,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(25, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -68,6 +69,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.1), animal.getEnergyRecovery());
         assertEquals(0, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -85,6 +87,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(30, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -102,6 +105,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(0, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -119,6 +123,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(0, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -136,6 +141,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(25, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -153,6 +159,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(15, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -170,6 +177,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(10, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -187,6 +195,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(15, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -204,6 +213,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(10, animal.getRequiredExperience());
         assertTrue(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -221,6 +231,7 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(20, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 
     @Test
@@ -238,5 +249,6 @@ public class AnimalServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
         assertEquals(3, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
+        assertFalse(animal.getWater());
     }
 }

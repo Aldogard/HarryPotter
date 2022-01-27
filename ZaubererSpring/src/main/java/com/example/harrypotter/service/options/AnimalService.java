@@ -12,7 +12,7 @@ public class AnimalService {
 
     private OptionsRepo optionsRepo;
 
-    public void basicAnimals(MagicalBeing magicalBeing){
+    public void basicAnimals(MagicalBeing magicalBeing) {
         createFlobberworm(magicalBeing);
         createPoisonousDuck(magicalBeing);
         createBowtuckle(magicalBeing);
@@ -29,6 +29,7 @@ public class AnimalService {
                 1.0,
                 0.0,
                 false,
+                false,
                 magicalBeing,
                 "Fascinating creatures, phoenixes. They can carry immensely heavy loads, " +
                         "their tears have healing powers, and they make highly faithful pets."
@@ -43,6 +44,7 @@ public class AnimalService {
                 0,
                 0.0,
                 0.1,
+                false,
                 false,
                 magicalBeing,
                 "The Flobberworm was a herbivorous, ten-inch, toothless brown magical " +
@@ -60,6 +62,7 @@ public class AnimalService {
                 0.0,
                 0.0,
                 false,
+                false,
                 magicalBeing,
                 "Of the many fearsome beasts and monsters that roam our land, " +
                         "there is none more curious or more deadly than the Basilisk, " +
@@ -67,7 +70,7 @@ public class AnimalService {
         ));
     }
 
-    public void createPoisonousDuck(MagicalBeing magicalBeing){
+    public void createPoisonousDuck(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
                 "Poisonous duck",
                 2.0,
@@ -76,12 +79,13 @@ public class AnimalService {
                 0.0,
                 0.0,
                 false,
+                false,
                 magicalBeing,
                 "A poisonous duck is some sort of magical creature bred at the British Ministry of Magic."
         ));
     }
 
-    public void createBowtuckle(MagicalBeing magicalBeing){
+    public void createBowtuckle(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
                 "Bowtuckle",
                 1.0,
@@ -90,13 +94,14 @@ public class AnimalService {
                 0.0,
                 0.0,
                 false,
+                false,
                 magicalBeing,
                 "The Bowtruckle, which eats insects, is a peaceable and intensely shy creature."
 
         ));
     }
 
-    public void createHungarianHorntail(MagicalBeing magicalBeing){
+    public void createHungarianHorntail(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
                 "Hungarian Horntail",
                 25.0,
@@ -105,13 +110,14 @@ public class AnimalService {
                 0.0,
                 0.0,
                 false,
+                false,
                 magicalBeing,
                 "Supposedly the most dangerous of all dragon breeds, " +
                         "the Hungarian Horntail has black scales and is lizard-like in appearance."
         ));
     }
 
-    public void createFireCrabs(MagicalBeing magicalBeing){
+    public void createFireCrabs(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
                 "Fire crab",
                 5.0,
@@ -120,12 +126,13 @@ public class AnimalService {
                 0.0,
                 0.0,
                 false,
+                false,
                 magicalBeing,
                 "Despite its name, the Fire Crab greatly resembles a large tortoise with a heavily jewelled shell."
         ));
     }
 
-    public void createGriffin(MagicalBeing magicalBeing){
+    public void createGriffin(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
                 "Griffin",
                 10.0,
@@ -134,6 +141,7 @@ public class AnimalService {
                 0.0,
                 0.0,
                 false,
+                false,
                 magicalBeing,
                 "The Griffin is a magical beast which originated from Greece. " +
                         "It has the front legs, wings and head of a giant eagle, " +
@@ -141,7 +149,7 @@ public class AnimalService {
         ));
     }
 
-    public void createHippogriff(MagicalBeing magicalBeing){
+    public void createHippogriff(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
                 "Hippogriff",
                 12.0,
@@ -150,12 +158,13 @@ public class AnimalService {
                 0.0,
                 0.0,
                 false,
+                false,
                 magicalBeing,
                 "Half horse, half eagle creatures, immensely proud and extremely dangerous."
         ));
     }
 
-    public void createNiffler(MagicalBeing magicalBeing){
+    public void createNiffler(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
                 "Niffler",
                 5.0,
@@ -164,28 +173,30 @@ public class AnimalService {
                 0.0,
                 0.0,
                 true,
+                false,
                 magicalBeing,
                 "Long-snouted, burrowing creatures native to Britain with a penchant for anything shiny."
         ));
     }
 
-    public void createThreeHeadedDog(MagicalBeing magicalBeing){
+    public void createThreeHeadedDog(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
-           "Fluffy",
-           15.0,
-           25.0,
-           20,
-           0.0,
-           0.0,
-           false,
-           magicalBeing,
-           "It has three heads. Three pairs of rolling, mad eyes; three noses, " +
-                   "twitching and quivering in their direction; three drooling mouths, " +
-                   "saliva hanging in slippery ropes from yellowish fangs."
+                "Fluffy",
+                15.0,
+                25.0,
+                20,
+                0.0,
+                0.0,
+                false,
+                false,
+                magicalBeing,
+                "It has three heads. Three pairs of rolling, mad eyes; three noses, " +
+                        "twitching and quivering in their direction; three drooling mouths, " +
+                        "saliva hanging in slippery ropes from yellowish fangs."
         ));
     }
 
-    public void createTroll(MagicalBeing magicalBeing){
+    public void createTroll(MagicalBeing magicalBeing) {
         optionsRepo.save(new Animal(
                 "Troll",
                 3.0,
@@ -194,16 +205,13 @@ public class AnimalService {
                 0.0,
                 0.0,
                 false,
+                false,
                 magicalBeing,
                 "A troll is a magical beast of prodigious strength and immense stupidity. " +
                         "In fact, they are so synonymous with stupidity that they actually " +
                         "had a wizarding exam failing grade named after them."
         ));
     }
-
-
-
-
 
 
     //Weitere Tiere:
