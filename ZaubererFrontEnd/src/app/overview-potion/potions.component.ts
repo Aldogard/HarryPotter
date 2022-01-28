@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WizardService } from '../wizard.service';
-import { HpPotion } from '../hp-potion';
-import { HpWizard } from '../hp-wizard';
-import { ExtraService } from '../extra.service';
-import { MagicalBeingService } from '../magical-being.service';
+import { HpPotion } from '../interfaces/hp-potion';
+import { HpWizard } from '../interfaces/hp-wizard';
+import { ExtraService } from '../services/extra.service';
+import { MagicalBeingService } from '../services/magical-being.service';
 
 @Component({
   selector: 'app-potions',
@@ -22,7 +21,7 @@ export class OverviewPotionComponent implements OnInit {
   ngOnInit(): void {
     this.mbService.getMagicalBeings().subscribe((ws) => {
       ws.forEach((w) =>
-        w.potions.forEach((p) => {
+        w.potions.forEach((p: HpPotion) => {
           if (
             this.potions.find((potion) => potion.name === p.name) === undefined
           ) {

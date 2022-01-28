@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { ExtraService } from '../extra.service';
-import { WizardService } from '../wizard.service';
-import { HpWizard } from '../hp-wizard';
-import { MessageService } from '../message.service';
-import { MagicalBeingService } from '../magical-being.service';
-import { HpMagicalBeing } from '../hp-magical-being';
+import { ExtraService } from '../services/extra.service';
+import { MessageService } from '../services/message.service';
+import { MagicalBeingService } from '../services/magical-being.service';
+import { HpMagicalBeing } from '../services/hp-magical-being';
 
 @Component({
   selector: 'app-details',

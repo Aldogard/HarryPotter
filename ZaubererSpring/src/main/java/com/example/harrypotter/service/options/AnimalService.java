@@ -213,20 +213,18 @@ public class AnimalService {
         ));
     }
 
-
-    //Weitere Tiere:
-    // Basilisk
-    // Poisonous Duck
-    // Bowtuckle
-    // Dragon --> Hungarian Horntail
-    // Fire Crabs
-    // Griffin
-    // Hippogriff
-    // Niffler --> könnte dem Gegner einen Trank stehlen
-    // Three-headed Dog
-    // Troll
-    // möglicherweise noch Wasserwesen, die nur an Wasserorten genutzt werden können
+    // Weitere Tiere
     // Acrumantula für Deatheater
+
+    // möglicherweise noch Wasserwesen, die nur an Wasserorten genutzt werden können
+    // Grindelow
+    // Hippocampus
+    // Kappa
+    // Kelpie
+    // Merpeople
+    // Sea serpent
+    // Selma
+    // 
 
 
 }

@@ -1,10 +1,10 @@
-import { HpSpell } from "./hp-spell";
-import { HpComment } from "./hp-comment";
-import { HpCondition } from "./hp-condition";
-import { HpPotion } from "./hp-potion";
-import { HpAnimal } from "./hp-animal";
-import { HpSaw } from "./hp-saw";
-import { HpHint } from "./hp-hint";
+import { HpAnimal } from "../interfaces/hp-animal";
+import { HpComment } from "../interfaces/hp-comment";
+import { HpCondition } from "../interfaces/hp-condition";
+import { HpHint } from "../interfaces/hp-hint";
+import { HpPotion } from "../interfaces/hp-potion";
+import { HpSaw } from "../interfaces/hp-saw";
+import { HpSpell } from "../interfaces/hp-spell";
 
 export interface HpMagicalBeing {
     id: number,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../message.service';
-import { ExtraService } from '../extra.service';
+import { MessageService } from '../services/message.service';
+import { ExtraService } from '../services/extra.service';
 
 @Component({
   selector: 'app-rules',

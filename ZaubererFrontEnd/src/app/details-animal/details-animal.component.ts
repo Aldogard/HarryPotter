@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ExtraService } from '../extra.service';
-import { WizardService } from '../wizard.service';
-import { HpAnimal } from '../hp-animal';
-import { MagicalBeingService } from '../magical-being.service';
+import { HpAnimal } from '../interfaces/hp-animal';
+import { ExtraService } from '../services/extra.service';
+import { MagicalBeingService } from '../services/magical-being.service';
 
 @Component({
   selector: 'app-details-animal',

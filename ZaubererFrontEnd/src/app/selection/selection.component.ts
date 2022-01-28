@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ExtraService } from '../extra.service';
-import { HpMagicalBeing } from '../hp-magical-being';
-import { MagicalBeingService } from '../magical-being.service';
-import { MessageService } from '../message.service';
+import { ExtraService } from '../services/extra.service';
+import { HpMagicalBeing } from '../services/hp-magical-being';
+import { MagicalBeingService } from '../services/magical-being.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-selection',

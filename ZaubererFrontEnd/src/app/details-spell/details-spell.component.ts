@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WizardService } from '../wizard.service';
-import { HpSpell } from '../hp-spell';
-import { MessageService } from '../message.service';
-import { ExtraService } from '../extra.service';
-import { MagicalBeingService } from '../magical-being.service';
+import { HpSpell } from '../interfaces/hp-spell';
+import { ExtraService } from '../services/extra.service';
+import { MagicalBeingService } from '../services/magical-being.service';
 
 @Component({
   selector: 'app-details-spell',

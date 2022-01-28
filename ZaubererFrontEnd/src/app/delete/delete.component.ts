@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { WizardService } from '../wizard.service';
-import { ExtraService } from '../extra.service';
-import { MagicalBeingService } from '../magical-being.service';
-import { HpMagicalBeing } from '../hp-magical-being';
+import { WizardService } from '../services/wizard.service';
+import { ExtraService } from '../services/extra.service';
+import { MagicalBeingService } from '../services/magical-being.service';
+import { HpMagicalBeing } from '../services/hp-magical-being';
 
 @Component({
   selector: 'app-delete-wizard',

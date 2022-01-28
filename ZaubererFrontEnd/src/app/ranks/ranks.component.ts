@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExtraService } from '../extra.service';
+import { ExtraService } from '../services/extra.service';
 
 @Component({
   selector: 'app-ranks',

@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { ExtraService } from '../extra.service';
-import { WizardService } from '../wizard.service';
-import { HpWizard } from '../hp-wizard';
-import { MessageService } from '../message.service';
-import { MagicalBeingService } from '../magical-being.service';
-import { HpMagicalBeing } from '../hp-magical-being';
+import { ExtraService } from '../services/extra.service';
+import { MessageService } from '../services/message.service';
+import { MagicalBeingService } from '../services/magical-being.service';
+import { HpMagicalBeing } from '../services/hp-magical-being';
 
 @Component({
   selector: 'app-search',
@@ -46,7 +43,7 @@ export class ResultComponent implements OnInit {
     });
   }
 
-  goToDetail(wizard: HpWizard) {
+  goToDetail(wizard: HpMagicalBeing) {
     this.ms.sendMagicalBeing(wizard);
     this.extraService.redirectToWithTimeout('/detail')
   }

@@ -1,7 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ExtraService } from './extra.service';
-import { MagicalBeingService } from './magical-being.service';
-import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { MessageService } from '../message.service';
-import { ExtraService } from '../extra.service';
+import { MessageService } from '../services/message.service';
+import { ExtraService } from '../services/extra.service';
 
 @Component({
   selector: 'app-search-connection',

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { WizardService } from '../wizard.service';
-import { HpWizard } from '../hp-wizard';
-import { ExtraService } from '../extra.service';
-import { HpMagicalBeing } from '../hp-magical-being';
-import { MagicalBeingService } from '../magical-being.service';
+import { WizardService } from '../services/wizard.service';
+import { ExtraService } from '../services/extra.service';
+import { MagicalBeingService } from '../services/magical-being.service';
+import { HpMagicalBeing } from '../services/hp-magical-being';
+import { HpWizard } from '../interfaces/hp-wizard';
 
 @Component({
   selector: 'app-harrypotter',

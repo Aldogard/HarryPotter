@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WizardService } from '../wizard.service';
-import { HpSpell } from '../hp-spell';
-import { HpWizard } from '../hp-wizard';
-import { ExtraService } from '../extra.service';
-import { MagicalBeingService } from '../magical-being.service';
+import { HpSpell } from '../interfaces/hp-spell';
+import { HpWizard } from '../interfaces/hp-wizard';
+import { ExtraService } from '../services/extra.service';
+import { MagicalBeingService } from '../services/magical-being.service';
 
 @Component({
   selector: 'app-attacks',
@@ -22,7 +21,7 @@ export class OverviewSpellComponent implements OnInit {
   ngOnInit(): void {
     this.mbService.getMagicalBeings().subscribe((ws) => {
       ws.forEach((w) =>
-        w.spells.forEach((a) => {
+        w.spells.forEach((a: HpSpell) => {
           if (
             this.spells.find((attack) => attack.name === a.name) === undefined
           ) {

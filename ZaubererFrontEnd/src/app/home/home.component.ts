@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { WizardService } from '../wizard.service';
-import { HpSpell } from '../hp-spell';
-import { HpPotion } from '../hp-potion';
-import { HpWizard } from '../hp-wizard';
-import { MagicalBeingService } from '../magical-being.service';
-import { HpMagicalBeing } from '../hp-magical-being';
+import { HpPotion } from '../interfaces/hp-potion';
+import { HpSpell } from '../interfaces/hp-spell';
+import { HpMagicalBeing } from '../services/hp-magical-being';
+import { MagicalBeingService } from '../services/magical-being.service';
+
 
 @Component({
   selector: 'app-home',

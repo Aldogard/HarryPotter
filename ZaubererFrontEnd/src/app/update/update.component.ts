@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
-import { ExtraService } from '../extra.service';
-import { MagicalBeingService } from '../magical-being.service';
-import { HpMagicalBeing } from '../hp-magical-being';
+import { ExtraService } from '../services/extra.service';
+import { HpMagicalBeing } from '../services/hp-magical-being';
+import { MagicalBeingService } from '../services/magical-being.service';
 
 @Component({
   selector: 'app-update-wizard',

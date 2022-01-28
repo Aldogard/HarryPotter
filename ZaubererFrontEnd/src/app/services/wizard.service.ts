@@ -1,45 +1,58 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HpAnimal } from './hp-animal';
-import { HpMagicalBeing } from './hp-magical-being';
-import { HpPotion } from './hp-potion';
-import { HpSpell } from './hp-spell';
-
-const url: string = 'http://localhost:8080/mb';
+import { Observable, of } from 'rxjs';
+import { HpAnimal } from '../interfaces/hp-animal';
+import { HpPotion } from '../interfaces/hp-potion';
+import { HpSpell } from '../interfaces/hp-spell';
+import { HpWizard } from '../interfaces/hp-wizard';
+const url: string = 'http://localhost:8080/wizard';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class MagicalBeingService {
-
+export class WizardService {
   constructor(private http: HttpClient) {}
 
-
-  getMagicalBeings(){
-    return this.http.get<HpMagicalBeing[]>(url);
+  getWizards() {
+    return this.http.get<HpWizard[]>(url);
   }
 
-  getMagicalBeingById(id: number) {
+  getWizardById(id: number) {
     const urlId: string = url + '/' + id;
-    return this.http.get<HpMagicalBeing>(urlId);
+    return this.http.get<HpWizard>(urlId);
   }
 
-  getMagicalBeingByName(name: string) {
+  getWizardByName(name: string) {
     const urlName: string = url + '/name/' + name;
-    return this.http.get<HpMagicalBeing>(urlName);
+    return this.http.get<HpWizard>(urlName);
   }
 
-  deleteMagicalBeing(id: number) {
+  postWizard(body: HpWizard, house: string){
+    if(house === 'Potions Master'){
+      house = 'potionsmaster'
+    }
+    const stringLowercase = house.charAt(0).toLowerCase() + house.slice(1);
+    const urlWizard = url + '/' + stringLowercase;
+    console.log(urlWizard);
+    return this.http.post<HpWizard>(urlWizard, body);
+  }
+
+  postDummy(body: HpWizard){
+    const urlDummy = url + '/dummy'
+    return this.http.post<HpWizard>(urlDummy, body);
+  }
+
+  deleteWizard(id: number): Observable<unknown> {
     const urlId: string = url + '/' + id;
     return this.http.delete(urlId);
   }
 
-  updateMagicalBeing(body: HpMagicalBeing, id: number) {
+  updateWizard(body: HpWizard, id: number) {
     const urlUpdate = url + '/' + id 
-    return this.http.put<HpMagicalBeing>(urlUpdate, body);
+    return this.http.put<HpWizard>(urlUpdate, body);
   }
 
-  deleteAllMagicalBeings() {
+  deleteAllWizards() {
     const urlDelAll = url + '/deleteall';
     return this.http.delete(urlDelAll);
   }
@@ -59,64 +72,51 @@ export class MagicalBeingService {
     return this.http.get(urlQuote, { responseType: 'text' });
   }
 
-  postRating(body: HpMagicalBeing, id: number) {
+  postRating(body: HpWizard, id: number) {
     const urlRating = url + '/rating/' + id;
-    return this.http.put<HpMagicalBeing>(urlRating, body);
+    return this.http.put<HpWizard>(urlRating, body);
   }
 
-  getMagicalBeingSearch(search: string) {
+  getWizardSearch(search: string) {
     let urlSearch = url + '/?name=' + search;
-    let answer = this.http.get<HpMagicalBeing[]>(urlSearch);
+    let answer = this.http.get<HpWizard[]>(urlSearch);
     return answer;
   }
 
-  getMagicalBeingSearchKlasse(search: string) {
+  getWizardSearchKlasse(search: string) {
     let urlSearch = url + '/?klasse=' + search;
-    let answer = this.http.get<HpMagicalBeing[]>(urlSearch);
-    return answer;
-  }
-
-  getMagicalBeingSearchSpecies(species: string) {
-    let urlSearchSpecies = url + '/?species=' + species;
-    let answer = this.http.get<HpMagicalBeing[]>(urlSearchSpecies);
+    let answer = this.http.get<HpWizard[]>(urlSearch);
     return answer;
   }
 
 
   getHealthpointsMax(max: number) {
     let urlSearch = url + '/hp/?max=' + max;
-    let answer = this.http.get<HpMagicalBeing[]>(urlSearch);
+    let answer = this.http.get<HpWizard[]>(urlSearch);
     return answer;
   }
 
 
   getHealthpointsMin(min: number) {
     let urlSearch = url + '/hp/?min=' + min;
-    let answer = this.http.get<HpMagicalBeing[]>(urlSearch);
+    let answer = this.http.get<HpWizard[]>(urlSearch);
     return answer;
   }
 
   getVictoriesMin(min: number){
     let urlSearch = url + '/victory/?victories=' + min;
-    let answer = this.http.get<HpMagicalBeing[]>(urlSearch);
+    let answer = this.http.get<HpWizard[]>(urlSearch);
     return answer;
   }
 
   getVoldemort(){
     const urlVoldemort = url + '/voldemort';
-    return this.http.get<HpMagicalBeing>(urlVoldemort);
+    return this.http.get<HpWizard>(urlVoldemort);
   }
 
-  updateVictories(body: HpMagicalBeing){
+  updateVictories(body: HpWizard){
     const urlVictory = url + '/victory';
-    return this.http.put<HpMagicalBeing>(urlVictory, body);
-  }
-
-  updateVictoriesChess(body: HpMagicalBeing){
-    console.log("Check")
-    console.log(body.victoriesChess);
-    const urlVictoryChess = url + '/victorychess';
-    return this.http.put<HpMagicalBeing>(urlVictoryChess, body);
+    return this.http.put<HpWizard>(urlVictory, body);
   }
 
   getPotionById(id: number){
@@ -133,5 +133,6 @@ export class MagicalBeingService {
     const urlAnimalId = url + '/animal/' + id;
     return this.http.get<HpAnimal>(urlAnimalId);
   }
- 
+
+
 }

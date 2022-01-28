@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { MessageService } from '../message.service';
-import { ExtraService } from '../extra.service';
-import { HpSpell } from '../hp-spell';
-import { HpPotion } from '../hp-potion';
-import { HpAnimal } from '../hp-animal';
-import { MagicalBeingService } from '../magical-being.service';
-import { HpMagicalBeing } from '../hp-magical-being';
+import { MessageService } from '../services/message.service';
+import { ExtraService } from '../services/extra.service';
+import { MagicalBeingService } from '../services/magical-being.service';
+import { HpPotion } from '../interfaces/hp-potion';
+import { HpSpell } from '../interfaces/hp-spell';
+import { HpAnimal } from '../interfaces/hp-animal';
+import { HpMagicalBeing } from '../services/hp-magical-being';
 
 @Component({
   selector: 'app-battle',
@@ -358,7 +358,7 @@ export class BattleComponent implements OnInit {
           v.name = v.name + ' (resurected)';
           v.healthPoints =
             Math.round(v.internHealthPoints * Math.random() * 100) / 100;
-          v.potions.forEach((p) => (p.storage = 0));
+          v.potions.forEach((p: { storage: number; }) => (p.storage = 0));
           this.magicalBeingsArray.push(v);
           this.magicalBeing5 = v;
           alert('Voldemort has been resurected and rejoins the Fight!');

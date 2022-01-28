@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { HpWizard } from './hp-wizard';
+import { HpMagicalBeing } from './services/hp-magical-being';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +9,7 @@ import { HpWizard } from './hp-wizard';
 })
 export class AppComponent implements OnInit {
   title = 'Harry Potter';
-  zaubererArray: HpWizard[] = [];
+  zaubererArray: HpMagicalBeing[] = [];
 
   public constructor(private titleService: Title) {}
   ngOnInit(): void {

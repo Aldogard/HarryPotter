@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ExtraService } from '../extra.service';
-import { WizardService } from '../wizard.service';
-import { HpAnimal } from '../hp-animal';
-import { HpWizard } from '../hp-wizard';
-import { MagicalBeingService } from '../magical-being.service';
+import { HpAnimal } from '../interfaces/hp-animal';
+import { HpWizard } from '../interfaces/hp-wizard';
+import { ExtraService } from '../services/extra.service';
+import { MagicalBeingService } from '../services/magical-being.service';
 
 @Component({
   selector: 'app-overview-animal',
@@ -22,7 +21,7 @@ export class OverviewAnimalComponent implements OnInit {
   ngOnInit(): void {
     this.mbService.getMagicalBeings().subscribe((ws) => {
       ws.forEach((w) =>
-        w.animals.forEach((p) => {
+        w.animals.forEach((p: HpAnimal) => {
           if (
             this.animals.find((animal) => animal.name === p.name) === undefined
           ) {

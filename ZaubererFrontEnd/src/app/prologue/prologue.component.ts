@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { HpWizard } from '../hp-wizard';
-import { MessageService } from '../message.service';
-import { ExtraService } from '../extra.service';
-import { HpMagicalBeing } from '../hp-magical-being';
-import { MagicalBeingService } from '../magical-being.service';
+import { MessageService } from '../services/message.service';
+import { ExtraService } from '../services/extra.service';
+import { MagicalBeingService } from '../services/magical-being.service';
+import { HpMagicalBeing } from '../services/hp-magical-being';
 
 @Component({
   selector: 'app-fight',

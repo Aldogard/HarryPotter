@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
-import { DummyService } from '../dummy.service';
-import { ExtraService } from '../extra.service';
-import { HpAnimal } from '../hp-animal';
-import { HpMagicalBeing } from '../hp-magical-being';
-import { HpSpell } from '../hp-spell';
-import { MagicalBeingService } from '../magical-being.service';
-import { MessageService } from '../message.service';
-import { PotionService } from '../potion.service';
-import { WizardService } from '../wizard.service';
+import { HpAnimal } from '../interfaces/hp-animal';
+import { HpSpell } from '../interfaces/hp-spell';
+import { DummyService } from '../services/dummy.service';
+import { ExtraService } from '../services/extra.service';
+import { HpMagicalBeing } from '../services/hp-magical-being';
+import { MagicalBeingService } from '../services/magical-being.service';
+import { MessageService } from '../services/message.service';
+import { PotionService } from '../services/potion.service';
+import { WizardService } from '../services/wizard.service';
 
 @Component({
   selector: 'app-training',

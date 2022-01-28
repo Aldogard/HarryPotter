@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { WizardService } from '../wizard.service';
-import { ExtraService } from '../extra.service';
-import { MagicalBeingService } from '../magical-being.service';
-import { GiantService } from '../giant.service';
+import { WizardService } from '../services/wizard.service';
+import { ExtraService } from '../services/extra.service';
+import { GiantService } from '../services/giant.service';
 
 @Component({
   selector: 'app-create-wizard',

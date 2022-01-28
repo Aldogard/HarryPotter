@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ExtraService } from '../extra.service';
-import { MessageService } from '../message.service';
+import { ExtraService } from '../services/extra.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-rules-chess',

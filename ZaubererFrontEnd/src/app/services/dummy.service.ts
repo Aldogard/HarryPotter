@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HpDummy } from './hp-dummy';
+import { HpDummy } from '../interfaces/hp-dummy';
 
 const url: string = 'http://localhost:8080/dummy';
 
