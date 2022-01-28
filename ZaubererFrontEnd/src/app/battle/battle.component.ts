@@ -8,6 +8,7 @@ import { HpPotion } from '../interfaces/hp-potion';
 import { HpSpell } from '../interfaces/hp-spell';
 import { HpAnimal } from '../interfaces/hp-animal';
 import { HpMagicalBeing } from '../interfaces/hp-magical-being';
+import { HpMelee } from '../interfaces/hp-melee';
 
 @Component({
   selector: 'app-battle',
@@ -26,9 +27,11 @@ export class BattleComponent implements OnInit {
   validateSpell = new BehaviorSubject<boolean>(false);
   validatePotion = new BehaviorSubject<boolean>(false);
   validateAnimal = new BehaviorSubject<boolean>(false);
+  validateMelee = new BehaviorSubject<boolean>(false);
   spell = new FormControl('');
   potion = new FormControl('');
   animal = new FormControl('');
+  melee = new FormControl('');
   attackMagicalBeing1 = new BehaviorSubject<boolean>(false);
   attackMagicalBeing2 = new BehaviorSubject<boolean>(true);
   showResult = new BehaviorSubject<boolean>(false);
@@ -88,7 +91,12 @@ export class BattleComponent implements OnInit {
     this.validateAnimal.next(true);
   }
 
-  executeAttack(
+  getMelee(melee: HpMelee){
+    this.melee = new FormControl(melee);
+    this.validateMelee.next(true);
+  }
+
+  executeSpell(
     attackMagicalBeing: HpMagicalBeing,
     defendMagicalBeing: HpMagicalBeing,
     defender: boolean
@@ -159,6 +167,8 @@ export class BattleComponent implements OnInit {
 
     attackMagicalBeing.energy = Math.round(attackMagicalBeing.energy * 10) / 10;
     this.reduceProtection(defendMagicalBeing);
+    this.resetAFandProtego(attackMagicalBeing, defendMagicalBeing);
+    this.halfLifeEffects(attackMagicalBeing);
     this.nextRound(defendMagicalBeing, defender, attackMagicalBeing);
     this.formattingOfKeyVariables();
   }
@@ -174,7 +184,6 @@ export class BattleComponent implements OnInit {
       attackMagicalBeing.energy =
         attackMagicalBeing.energy - this.animal.value.energyUsage;
       this.animalEffects(defendMagicalBeing, attackMagicalBeing);
-      this.fiendfyreEffects(attackMagicalBeing);
       this.getDamage(
         attackMagicalBeing,
         defendMagicalBeing,
@@ -192,6 +201,45 @@ export class BattleComponent implements OnInit {
 
     attackMagicalBeing.energy = Math.round(attackMagicalBeing.energy * 10) / 10;
     this.reduceProtection(defendMagicalBeing);
+    this.resetAFandProtego(attackMagicalBeing, defendMagicalBeing);
+    this.halfLifeEffects(attackMagicalBeing);
+    this.nextRound(defendMagicalBeing, defender, attackMagicalBeing);
+    this.formattingOfKeyVariables();
+  }
+
+  executeMelee(
+    attackMagicalBeing: HpMagicalBeing,
+    defendMagicalBeing: HpMagicalBeing,
+    defender: boolean
+  ) {
+    this.preparation(attackMagicalBeing);
+    this.fiendfyreEffects(attackMagicalBeing);
+    if (!attackMagicalBeing.conditions[1].condition) {
+      attackMagicalBeing.energy =
+        attackMagicalBeing.energy - this.melee.value.energyUsage;
+      // this.spellEffects(defendMagicalBeing, attackMagicalBeing);
+
+      this.getDamage(
+        attackMagicalBeing,
+        defendMagicalBeing,
+        this.melee.value.maxDamage,
+        true
+      );
+
+      this.formattingStunnedAndConfunded(defendMagicalBeing);
+      this.confunded(defendMagicalBeing);
+      this.stunned(defendMagicalBeing);
+    } else {
+      alert(
+        attackMagicalBeing.name +
+          ' has been stunned and cannot attack this round!'
+      );
+    }
+
+    attackMagicalBeing.energy = Math.round(attackMagicalBeing.energy * 10) / 10;
+    this.resetAFandProtego(attackMagicalBeing, defendMagicalBeing);
+    this.reduceProtection(defendMagicalBeing);
+    this.halfLifeEffects(attackMagicalBeing);
     this.nextRound(defendMagicalBeing, defender, attackMagicalBeing);
     this.formattingOfKeyVariables();
   }
@@ -531,7 +579,7 @@ export class BattleComponent implements OnInit {
   stunned(defendMagicalBeing: HpMagicalBeing) {
     if (
       Math.random() > 0.5 &&
-      this.spell.value.stunned &&
+      (this.spell.value.stunned || this.melee.value.stunned) &&
       defendMagicalBeing.species !== 'Giant'
     ) {
       if (defendMagicalBeing.stunnedProtection === 0) {
@@ -546,12 +594,14 @@ export class BattleComponent implements OnInit {
   confunded(defendMagicalBeing: HpMagicalBeing) {
     if (
       Math.random() > 0.5 &&
-      this.spell.value.confunded &&
+      (this.spell.value.confunded || this.melee.value.confunded) &&
       defendMagicalBeing.species !== 'Giant'
     ) {
       if (defendMagicalBeing.confundedProtection === 0) {
         defendMagicalBeing.conditions[0].condition = true;
         console.log('Confunded');
+        console.log(defendMagicalBeing.conditions[0].condition)
+        console.log(defendMagicalBeing.conditions[1].condition)        
       } else {
         console.log('The confunded effect has been repelled');
       }
@@ -562,9 +612,11 @@ export class BattleComponent implements OnInit {
     this.spell = new FormControl('');
     this.potion = new FormControl('');
     this.animal = new FormControl('');
+    this.melee = new FormControl('');
     this.validateSpell.next(false);
     this.validatePotion.next(false);
     this.validateAnimal.next(false);
+    this.validateMelee.next(false);
     this.chosenOption = '';
   }
 
@@ -634,7 +686,7 @@ export class BattleComponent implements OnInit {
     attackMagicalBeing.energy = attackMagicalBeing.energy + 3;
   }
 
-  gotoAttackDetail(attackId: number) {
+  gotoSpellDetail(attackId: number) {
     this.ms.sendAttackId(attackId);
     const url = 'spelldetail/' + attackId;
     window.open(url);
@@ -650,6 +702,10 @@ export class BattleComponent implements OnInit {
     this.ms.sendAnimalId(animalId);
     const url = 'animaldetail/' + animalId;
     window.open(url);
+  }
+
+  gotoMeleeDetail(meleeId: number){
+
   }
 
   gotoRules() {

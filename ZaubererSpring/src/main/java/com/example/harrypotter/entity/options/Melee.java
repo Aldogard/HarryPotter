@@ -35,8 +35,8 @@ public class Melee extends Options{
             Double energyUsage,
             Double maxDamage,
             Integer requiredExperience,
-            Boolean confunded,
             Boolean stunned,
+            Boolean confunded,
             MagicalBeing magicalBeing,
             String description
     ){

@@ -502,7 +502,7 @@
                       </button>
                       <button
                         class="formButtonColumn"
-                        (click)="gotoAttackDetail(spell.id)"
+                        (click)="gotoSpellDetail(spell.id)"
                       >
                         Details
                       </button>
@@ -515,7 +515,7 @@
                 {{ magicalBeing1.name }}?
                 <button
                   class="formButton"
-                  (click)="executeAttack(magicalBeing2, magicalBeing1, false)"
+                  (click)="executeSpell(magicalBeing2, magicalBeing1, false)"
                 >
                   Yes
                 </button>
@@ -645,6 +645,64 @@
                 </button>
               </p>
             </ng-container>
+
+            <ng-container *ngIf="chosenOption === 'Melee'">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Energy Usage</th>
+                    <th>Max Damage</th>
+                    <th>Stunned</th>
+                    <th>Confound</th>
+                    <th>Experience</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td></td>
+                </tr>
+                <tbody>
+                  <tr *ngFor="let melee of magicalBeing2.melees">
+                    <td>{{ melee.name }}</td>
+                    <td>{{ melee.energyUsage }}</td>
+                    <td>{{ melee.maxDamage }}</td>
+                    <td>{{ melee.stunned }}</td>
+                    <td>{{ melee.confunded }}</td>
+                    <td>{{ melee.requiredExperience }}</td>
+                    <td>
+                      <button
+                        class="formButtonColumn"
+                        (click)="getMelee(melee)"
+                        [disabled]="
+                          magicalBeing2.energy - melee.energyUsage < 0 ||
+                          magicalBeing2.victories < melee.requiredExperience
+                        "
+                      >
+                        Select
+                      </button>
+                      <button
+                        class="formButtonColumn"
+                        (click)="gotoMeleeDetail(melee.id)"
+                      >
+                        Details
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p *ngIf="validateMelee.value && chosenOption === 'Melee'">
+                Do you want to use {{ spell.value.name }} to attack
+                {{ magicalBeing1.name }}?
+                <button
+                  class="formButton"
+                  (click)="executeMelee(magicalBeing2, magicalBeing1, false)"
+                >
+                  Yes
+                </button>
+              </p>
+            </ng-container>
+
           </div>
         </ng-container>
 
@@ -726,7 +784,7 @@
                       </button>
                       <button
                         class="formButtonColumn"
-                        (click)="gotoAttackDetail(spell.id)"
+                        (click)="gotoSpellDetail(spell.id)"
                       >
                         Details
                       </button>
@@ -739,7 +797,7 @@
                 {{ magicalBeing2.name }}?
                 <button
                   class="formButton"
-                  (click)="executeAttack(magicalBeing1, magicalBeing2, true)"
+                  (click)="executeSpell(magicalBeing1, magicalBeing2, true)"
                 >
                   Yes
                 </button>
@@ -859,6 +917,63 @@
                 <button
                   class="formButton"
                   (click)="useAnimal(magicalBeing1, magicalBeing2, true)"
+                >
+                  Yes
+                </button>
+              </p>
+            </ng-container>
+
+            <ng-container *ngIf="chosenOption === 'Melee'">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Energy Usage</th>
+                    <th>Max Damage</th>
+                    <th>Stunned</th>
+                    <th>Confound</th>
+                    <th>Experience</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr>
+                  <td></td>
+                </tr>
+                <tbody>
+                  <tr *ngFor="let melee of magicalBeing1.melees">
+                    <td>{{ melee.name }}</td>
+                    <td>{{ melee.energyUsage }}</td>
+                    <td>{{ melee.maxDamage }}</td>
+                    <td>{{ melee.stunned }}</td>
+                    <td>{{ melee.confunded }}</td>
+                    <td>{{ melee.requiredExperience }}</td>
+                    <td>
+                      <button
+                        class="formButtonColumn"
+                        (click)="getMelee(melee)"
+                        [disabled]="
+                          magicalBeing1.energy - melee.energyUsage < 0 ||
+                          magicalBeing1.victories < melee.requiredExperience
+                        "
+                      >
+                        Select
+                      </button>
+                      <button
+                        class="formButtonColumn"
+                        (click)="gotoMeleeDetail(melee.id)"
+                      >
+                        Details
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <p *ngIf="validateMelee.value && chosenOption === 'Melee'">
+                Do you want to use {{ spell.value.name }} to attack
+                {{ magicalBeing2.name }}?
+                <button
+                  class="formButton"
+                  (click)="executeMelee(magicalBeing1, magicalBeing2, true)"
                 >
                   Yes
                 </button>

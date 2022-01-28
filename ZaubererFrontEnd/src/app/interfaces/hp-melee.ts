@@ -7,5 +7,5 @@ export interface HpMelee {
     requiredExperience: number,
     energyRecovery: number,
     stunned: boolean,
-    confounded: boolean,
+    confunded: boolean,
 }

@@ -17,8 +17,8 @@ public class MeleeService {
                 25.0,
                 40.0,
                 5,
-                false,
                 true,
+                false,
                 magicalBeing,
                 "Powerful punch with overwhelming raw strength. Knocks out the recipient"
         ));
@@ -30,8 +30,8 @@ public class MeleeService {
                 10.0,
                 15.0,
                 0,
-                true,
                 false,
+                true,
                 magicalBeing,
                 "Powerful punch that harms and confounds the opponent"
         ));
