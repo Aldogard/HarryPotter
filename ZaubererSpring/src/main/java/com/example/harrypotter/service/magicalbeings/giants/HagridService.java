@@ -1,7 +1,7 @@
 package com.example.harrypotter.service.magicalbeings.giants;
 
 import com.example.harrypotter.entity.magicalbeings.giants.Giant;
-import com.example.harrypotter.entity.magicalbeings.giants.HalfGiant;
+import com.example.harrypotter.entity.magicalbeings.giants.Hagrid;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.service.magicalbeings.ConditionService;
 import com.example.harrypotter.service.magicalbeings.HintService;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class HalfGiantService {
+public class HagridService {
 
     private MagicalBeingService magicalBeingService;
     private MagicalBeingRepo magicalBeingRepo;
@@ -27,14 +27,18 @@ public class HalfGiantService {
     private AnimalService animalService;
     private HintService hintService;
     private MeleeService meleeService;
+    private GiantService giantService;
 
 
-    public ResponseEntity<Giant> createHalfGiant(HalfGiant halfGiant){
+    public ResponseEntity<Giant> createHalfGiant(Giant halfGiant){
         if (magicalBeingService.checkName(halfGiant)) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
+        if (giantService.checkHouse(halfGiant)) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
 
-        HalfGiant hgNew = new HalfGiant(
+        Hagrid hgNew = new Hagrid(
                 halfGiant.getName(),
                 halfGiant.getHealthPoints(),
                 halfGiant.getDescription());
@@ -57,6 +61,11 @@ public class HalfGiantService {
         animalService.createGriffin(hgNew);
         animalService.createHippogriff(hgNew);
         animalService.createThreeHeadedDog(hgNew);
+        animalService.createAcromantula(hgNew);
+        animalService.createGrindelow(hgNew);
+        animalService.createKappa(hgNew);
+        animalService.createKelpie(hgNew);
+        animalService.createSelma(hgNew);
 
         meleeService.createPunch(hgNew);
 

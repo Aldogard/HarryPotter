@@ -58,6 +58,9 @@ public class ProfessorService {
         animalService.createBowtuckle(prof);
         animalService.createHippogriff(prof);
         animalService.createNiffler(prof);
+        animalService.createGrindelow(prof);
+        animalService.createKappa(prof);
+
 
 
         sawService.strengthHogwartsHouse(prof);

@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UtilWizards {
+public class UtilWizard {
     public static final int numberOfConditions = 2;
 
     public static Alumni createTesti(){

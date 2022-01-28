@@ -52,6 +52,7 @@ public class GurgService {
         animalService.createFireCrabs(gurgNew);
         animalService.createThreeHeadedDog(gurgNew);
 
+
         meleeService.createGurgAttack(gurgNew);
         meleeService.createPunch(gurgNew);
 

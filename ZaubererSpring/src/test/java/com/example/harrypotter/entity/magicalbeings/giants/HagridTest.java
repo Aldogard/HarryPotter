@@ -9,18 +9,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @DataJpaTest
-public class HalfGiantTest {
+public class HagridTest {
 
     @Test
-    public void testHalfGiantConstructor(){
-        HalfGiant hg = new HalfGiant("Rubeus", BigDecimal.valueOf(15), "Test and more than 10");
+    public void testHagridConstructor(){
+        Hagrid hg = new Hagrid("Rubeus", BigDecimal.valueOf(15), "Test and more than 10");
 
         assertNotNull(hg);
         assertEquals("Rubeus", hg.getName());
         assertEquals(BigDecimal.valueOf(15), hg.getHealthPoints());
         assertEquals("Test and more than 10", hg.getDescription());
 
-        assertEquals("Half Giant", hg.getKlasse());
+        assertEquals("Hagrid", hg.getKlasse());
         assertEquals(BigDecimal.valueOf(0.75), hg.getFaktor());
         assertEquals(10, hg.getStunnedProtection());
         assertEquals(30, hg.getIntelligence());

@@ -69,8 +69,10 @@ public class DumbledoreServiceTest {
         assertEquals(HttpStatus.OK, httpStatusResponse);
 
 
-        Dumbledore dumbledore1 = new Dumbledore("Different Name", BigDecimal.valueOf(20), "test");
-        HttpStatus httpStatus1 = dumbledoreService.createDumbledore(dumbledore1).getStatusCode();
+        HttpStatus httpStatus = dumbledoreService.createDumbledore(dumbledore).getStatusCode();
+        assertEquals(HttpStatus.BAD_REQUEST, httpStatus);
+
+        HttpStatus httpStatus1 = dumbledoreService.createDumbledore(new Dumbledore("Different Name", BigDecimal.valueOf(20), "test")).getStatusCode();
         assertEquals(HttpStatus.BAD_REQUEST, httpStatus1);
 
         assertNotNull(wizardResponse);
@@ -79,12 +81,12 @@ public class DumbledoreServiceTest {
         assertNotNull(magicalBeingRepo.findByName("Test").get(0).getId());
 
         List<Condition> conditions = conditionRepo.findAll();
-        assertEquals(UtilWizards.numberOfConditions, conditions.size());
+        assertEquals(UtilWizard.numberOfConditions, conditions.size());
 
         List<Spell> spells = spellRepo.findAll();
         assertNotNull(spells);
         assertEquals(12, spells.size());
-        assertTrue(UtilWizards.checkFiendfyre(spells));
+        assertTrue(UtilWizard.checkFiendfyre(spells));
 
         List<Potion> potions = potionsRepo.findAll();
         assertNotNull(potions);
@@ -92,11 +94,11 @@ public class DumbledoreServiceTest {
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(7, animals.size());
+        assertEquals(10, animals.size());
 
         assertNotNull(saWRepo.findAll());
-        assertEquals(7, UtilWizards.findStrength(saWRepo.findAll()).size());
-        assertEquals(2, UtilWizards.findWeaknesses(saWRepo.findAll()).size());
+        assertEquals(7, UtilWizard.findStrength(saWRepo.findAll()).size());
+        assertEquals(2, UtilWizard.findWeaknesses(saWRepo.findAll()).size());
 
         List<Hint> hints = hintRepo.findAll();
         assertNotNull(hints);

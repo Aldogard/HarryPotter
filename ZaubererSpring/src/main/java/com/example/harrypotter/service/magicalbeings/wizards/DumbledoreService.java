@@ -28,6 +28,9 @@ public class DumbledoreService {
 
 
     public ResponseEntity<Wizard> createDumbledore(Dumbledore dumbledore) {
+        if(wizardService.checkName(dumbledore)){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
         if(wizardService.checkHouse(dumbledore)){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
@@ -65,6 +68,9 @@ public class DumbledoreService {
         animalService.createHippogriff(d);
         animalService.createNiffler(d);
         animalService.createThreeHeadedDog(d);
+        animalService.createGrindelow(d);
+        animalService.createKappa(d);
+        animalService.createMerpeople(d);
 
         sawService.strengthAlumni(d);
         sawService.strengthDeathEater(d);

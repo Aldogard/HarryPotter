@@ -58,6 +58,7 @@ public class AlumniService {
         animalService.createHippogriff(a);
         animalService.createNiffler(a);
         animalService.createTroll(a);
+        animalService.createKelpie(a);
 
         sawService.strengthHogwartsHouse(a);
 

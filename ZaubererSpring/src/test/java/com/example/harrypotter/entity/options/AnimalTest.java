@@ -13,7 +13,7 @@ public class AnimalTest {
     public void testAnimal() {
         Dumbledore test = new Dumbledore("TestW", BigDecimal.valueOf(4), "Neutral");
         Animal animal = new Animal("testAnimal", 1.0, 1.0,
-                1, 1.0, 0.1, false, false, test, "Strong" );
+                1, 1.0, 0.1, false, false, false, test, "Strong" );
 
         assertNotNull(animal);
         assertEquals("testAnimal", animal.getName());
@@ -26,5 +26,6 @@ public class AnimalTest {
         assertEquals(test, animal.getMagicalBeing());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 }

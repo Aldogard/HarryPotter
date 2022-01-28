@@ -620,7 +620,9 @@
                             !(
                               environment === 'Great Lake' ||
                               environment === 'Boat House'
-                            ))
+                            )) ||
+                          (animal.forest &&
+                            environment !== 'Egde of the Forbidden Forest')
                         "
                       >
                         Select
@@ -702,7 +704,6 @@
                 </button>
               </p>
             </ng-container>
-
           </div>
         </ng-container>
 

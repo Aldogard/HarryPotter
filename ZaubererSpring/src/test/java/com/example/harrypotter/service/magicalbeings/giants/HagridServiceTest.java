@@ -4,7 +4,8 @@ import com.example.harrypotter.entity.magicalbeings.Condition;
 import com.example.harrypotter.entity.magicalbeings.Hint;
 import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.magicalbeings.giants.Giant;
-import com.example.harrypotter.entity.magicalbeings.giants.HalfGiant;
+import com.example.harrypotter.entity.magicalbeings.giants.Gurg;
+import com.example.harrypotter.entity.magicalbeings.giants.Hagrid;
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.options.Melee;
 import com.example.harrypotter.entity.options.Potion;
@@ -21,17 +22,17 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.jpa.domain.QAbstractAuditable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
-public class HalfGiantServiceTest {
+public class HagridServiceTest {
     @Autowired
     private MagicalBeingRepo magicalBeingRepo;
 
@@ -51,7 +52,7 @@ public class HalfGiantServiceTest {
     private StrengthAndWeaknessRepo saWRepo;
 
     @Autowired
-    private HalfGiantService halfGiantService;
+    private HagridService halfGiantService;
 
     @Autowired
     private HintRepo hintRepo;
@@ -64,10 +65,31 @@ public class HalfGiantServiceTest {
         magicalBeingRepo.deleteAll();
     }
 
+    @Test
+    public void testCheckHalfGiant(){
+        Hagrid hagrid = UtilGiant.createHagrid();
+        magicalBeingRepo.save(hagrid);
+
+        ResponseEntity<Giant> response = halfGiantService.createHalfGiant(hagrid);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertNull(response.getBody());
+    }
 
     @Test
-    public void testCreateGiant(){
-        HalfGiant halfGiant = new HalfGiant("Testi11", BigDecimal.valueOf(10), "Test and more than 10");
+    public void testCheckName(){
+        Hagrid hagrid = UtilGiant.createHagrid();
+        Hagrid gurg = new Hagrid("Gurg", BigDecimal.valueOf(10), "Test and more than 10");
+        magicalBeingRepo.save(hagrid);
+
+        ResponseEntity<Giant> response = halfGiantService.createHalfGiant(gurg);
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        assertNull(response.getBody());
+    }
+
+
+    @Test
+    public void testCreateHagrid(){
+        Hagrid halfGiant = new Hagrid("Testi11", BigDecimal.valueOf(10), "Test and more than 10");
         ResponseEntity<Giant> response = halfGiantService.createHalfGiant(halfGiant);
 
         MagicalBeing mbResponse = response.getBody();
@@ -94,7 +116,7 @@ public class HalfGiantServiceTest {
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(9, animals.size());
+        assertEquals(15, animals.size());
 
         assertNotNull(saWRepo.findAll());
 

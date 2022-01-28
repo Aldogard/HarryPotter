@@ -76,12 +76,12 @@ public class PotionsMasterServiceTest {
         assertNotNull(magicalBeingRepo.findByName("Test").get(0).getId());
 
         List<Condition> conditions = conditionRepo.findAll();
-        assertEquals(UtilWizards.numberOfConditions, conditions.size());
+        assertEquals(UtilWizard.numberOfConditions, conditions.size());
 
         List<Spell> spells = spellRepo.findAll();
         assertNotNull(spells);
         assertEquals(5, spells.size());
-        assertTrue(UtilWizards.checkFiendfyre(spells));
+        assertTrue(UtilWizard.checkFiendfyre(spells));
 
         List<Potion> potions = potionsRepo.findAll();
         assertNotNull(potions);
@@ -89,11 +89,11 @@ public class PotionsMasterServiceTest {
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(5, animals.size());
+        assertEquals(6, animals.size());
 
         assertNotNull(saWRepo.findAll());
-        assertEquals(4, UtilWizards.findStrength(saWRepo.findAll()).size());
-        assertEquals(5, UtilWizards.findWeaknesses(saWRepo.findAll()).size());
+        assertEquals(4, UtilWizard.findStrength(saWRepo.findAll()).size());
+        assertEquals(5, UtilWizard.findWeaknesses(saWRepo.findAll()).size());
 
         List<Hint> hints = hintRepo.findAll();
         assertNotNull(hints);

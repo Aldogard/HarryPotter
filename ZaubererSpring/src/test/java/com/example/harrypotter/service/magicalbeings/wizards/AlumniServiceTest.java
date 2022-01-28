@@ -62,7 +62,7 @@ class AlumniServiceTest {
 
     @Test
     public void testAlumniService() {
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         ResponseEntity<Wizard> response = alumniService.createAlumni(alumni);
 
         Wizard wizardResponse =response.getBody();
@@ -78,12 +78,12 @@ class AlumniServiceTest {
         assertNotNull(magicalBeingRepo.findByName("Testi").get(0).getId());
 
         List<Condition> conditions = conditionRepo.findAll();
-        assertEquals(UtilWizards.numberOfConditions, conditions.size());
+        assertEquals(UtilWizard.numberOfConditions, conditions.size());
 
         List<Spell> spells = spellRepo.findAll();
         assertNotNull(spells);
         assertEquals(7, spells.size());
-        assertTrue(UtilWizards.checkFiendfyre(spells));
+        assertTrue(UtilWizard.checkFiendfyre(spells));
 
         List<Potion> potions = potionsRepo.findAll();
         assertNotNull(potions);
@@ -91,11 +91,11 @@ class AlumniServiceTest {
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(7, animals.size());
+        assertEquals(8, animals.size());
 
         assertNotNull(saWRepo.findAll());
-        assertEquals(4, UtilWizards.findStrength(saWRepo.findAll()).size());
-        assertEquals(6, UtilWizards.findWeaknesses(saWRepo.findAll()).size());
+        assertEquals(4, UtilWizard.findStrength(saWRepo.findAll()).size());
+        assertEquals(6, UtilWizard.findWeaknesses(saWRepo.findAll()).size());
 
         List<Hint> hints = hintRepo.findAll();
         assertNotNull(hints);

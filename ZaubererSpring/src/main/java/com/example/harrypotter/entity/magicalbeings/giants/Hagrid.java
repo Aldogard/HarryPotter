@@ -7,13 +7,13 @@ import javax.persistence.Entity;
 import java.math.BigDecimal;
 
 @Data
-@Entity(name = "half_giant")
-@DiscriminatorValue("half_giant")
-public class HalfGiant extends Giant {
+@Entity(name = "hagrid")
+@DiscriminatorValue("hagrid")
+public class Hagrid extends Giant {
 
-    public HalfGiant(String name, BigDecimal healthPoints, String description){
+    public Hagrid(String name, BigDecimal healthPoints, String description){
         super(name, healthPoints, description);
-        this.setKlasse("Half Giant");
+        this.setKlasse("Hagrid");
         this.setFaktor(BigDecimal.valueOf(0.75));
         this.setStunnedProtection(10);
         this.setIntelligence(30);
@@ -22,7 +22,7 @@ public class HalfGiant extends Giant {
 
     }
 
-    public HalfGiant(){
+    public Hagrid(){
 
     }
 

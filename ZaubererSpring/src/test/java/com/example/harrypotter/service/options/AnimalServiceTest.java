@@ -52,6 +52,7 @@ public class AnimalServiceTest {
         assertEquals(25, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -70,6 +71,7 @@ public class AnimalServiceTest {
         assertEquals(0, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -88,6 +90,7 @@ public class AnimalServiceTest {
         assertEquals(30, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -106,6 +109,7 @@ public class AnimalServiceTest {
         assertEquals(0, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -124,6 +128,7 @@ public class AnimalServiceTest {
         assertEquals(0, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -142,6 +147,7 @@ public class AnimalServiceTest {
         assertEquals(25, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -160,6 +166,7 @@ public class AnimalServiceTest {
         assertEquals(15, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -178,6 +185,7 @@ public class AnimalServiceTest {
         assertEquals(10, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -196,6 +204,7 @@ public class AnimalServiceTest {
         assertEquals(15, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -214,6 +223,7 @@ public class AnimalServiceTest {
         assertEquals(10, animal.getRequiredExperience());
         assertTrue(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -232,6 +242,7 @@ public class AnimalServiceTest {
         assertEquals(20, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
     }
 
     @Test
@@ -250,5 +261,120 @@ public class AnimalServiceTest {
         assertEquals(3, animal.getRequiredExperience());
         assertFalse(animal.getNiffler());
         assertFalse(animal.getWater());
+        assertFalse(animal.getForest());
+    }
+
+    @Test
+    public void testCreateAcromantula(){
+        Alumni alumni = UtilOptions.createTesti();
+        magicalBeingRepo.save(alumni);
+        animalService.createAcromantula(alumni);
+
+        Animal animal = checkSavingOfAnimal();
+
+        assertEquals("Aragog", animal.getName());
+        assertEquals(BigDecimal.valueOf(15.0), animal.getEnergyUsage());
+        assertEquals(BigDecimal.valueOf(20.0), animal.getMaxDamage());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getHealing());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
+        assertEquals(15, animal.getRequiredExperience());
+        assertFalse(animal.getNiffler());
+        assertTrue(animal.getForest());
+        assertFalse(animal.getWater());
+    }
+
+    @Test
+    public void testCreateGrindelow(){
+        Alumni alumni = UtilOptions.createTesti();
+        magicalBeingRepo.save(alumni);
+        animalService.createGrindelow(alumni);
+
+        Animal animal = checkSavingOfAnimal();
+
+        assertEquals("Grindelow", animal.getName());
+        assertEquals(BigDecimal.valueOf(2.0), animal.getEnergyUsage());
+        assertEquals(BigDecimal.valueOf(6.0), animal.getMaxDamage());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getHealing());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
+        assertEquals(7, animal.getRequiredExperience());
+        assertFalse(animal.getNiffler());
+        assertTrue(animal.getWater());
+        assertFalse(animal.getForest());
+    }
+
+    @Test
+    public void testCreateKappa(){
+        Alumni alumni = UtilOptions.createTesti();
+        magicalBeingRepo.save(alumni);
+        animalService.createKappa(alumni);
+
+        Animal animal = checkSavingOfAnimal();
+
+        assertEquals("Kappa", animal.getName());
+        assertEquals(BigDecimal.valueOf(5.0), animal.getEnergyUsage());
+        assertEquals(BigDecimal.valueOf(10.0), animal.getMaxDamage());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getHealing());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
+        assertEquals(7, animal.getRequiredExperience());
+        assertFalse(animal.getNiffler());
+        assertTrue(animal.getWater());
+        assertFalse(animal.getForest());
+    }
+
+    @Test
+    public void testCreateKelpie(){
+        Alumni alumni = UtilOptions.createTesti();
+        magicalBeingRepo.save(alumni);
+        animalService.createKelpie(alumni);
+
+        Animal animal = checkSavingOfAnimal();
+
+        assertEquals("Kelpie", animal.getName());
+        assertEquals(BigDecimal.valueOf(3.0), animal.getEnergyUsage());
+        assertEquals(BigDecimal.valueOf(7.0), animal.getMaxDamage());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getHealing());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
+        assertEquals(5, animal.getRequiredExperience());
+        assertFalse(animal.getNiffler());
+        assertTrue(animal.getWater());
+        assertFalse(animal.getForest());
+    }
+
+    @Test
+    public void testCreateMerpeople(){
+        Alumni alumni = UtilOptions.createTesti();
+        magicalBeingRepo.save(alumni);
+        animalService.createMerpeople(alumni);
+
+        Animal animal = checkSavingOfAnimal();
+
+        assertEquals("Merpeople", animal.getName());
+        assertEquals(BigDecimal.valueOf(10.0), animal.getEnergyUsage());
+        assertEquals(BigDecimal.valueOf(17.0), animal.getMaxDamage());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getHealing());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
+        assertEquals(25, animal.getRequiredExperience());
+        assertFalse(animal.getNiffler());
+        assertTrue(animal.getWater());
+        assertFalse(animal.getForest());
+    }
+
+    @Test
+    public void testCreateSelma(){
+        Alumni alumni = UtilOptions.createTesti();
+        magicalBeingRepo.save(alumni);
+        animalService.createSelma(alumni);
+
+        Animal animal = checkSavingOfAnimal();
+
+        assertEquals("Selma", animal.getName());
+        assertEquals(BigDecimal.valueOf(15.0), animal.getEnergyUsage());
+        assertEquals(BigDecimal.valueOf(25.0), animal.getMaxDamage());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getHealing());
+        assertEquals(BigDecimal.valueOf(0.0), animal.getEnergyRecovery());
+        assertEquals(20, animal.getRequiredExperience());
+        assertFalse(animal.getNiffler());
+        assertTrue(animal.getWater());
+        assertFalse(animal.getForest());
     }
 }

@@ -59,6 +59,8 @@ public class HeadmasterService {
         animalService.createGriffin(hm);
         animalService.createHippogriff(hm);
         animalService.createNiffler(hm);
+        animalService.createGrindelow(hm);
+        animalService.createKappa(hm);
 
         sawService.strengthPotionsMaster(hm);
         sawService.strengthHogwartsHouse(hm);

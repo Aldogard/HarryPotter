@@ -28,6 +28,9 @@ public class VoldemortService {
 
 
     public ResponseEntity<Wizard> createVoldemort(Voldemort voldemort) {
+        if(wizardService.checkName(voldemort)){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
         if(wizardService.checkHouse(voldemort)){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
@@ -56,6 +59,8 @@ public class VoldemortService {
         animalService.createBasilisk(v);
         animalService.createPoisonousDuck(v);
         animalService.createTroll(v);
+        animalService.createAcromantula(v);
+        animalService.createSelma(v);
 
         sawService.strengthHogwartsHouse(v);
         sawService.strengthHeadmaster(v);

@@ -54,6 +54,7 @@ public class PotionsMasterService {
         animalService.createGriffin(pm);
         animalService.createHippogriff(pm);
         animalService.createTroll(pm);
+        animalService.createSelma(pm);
 
         sawService.strengthHogwartsHouse(pm);
 

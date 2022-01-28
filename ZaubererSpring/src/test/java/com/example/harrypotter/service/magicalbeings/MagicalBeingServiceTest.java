@@ -6,7 +6,7 @@ import com.example.harrypotter.entity.magicalbeings.wizards.*;
 
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 
-import com.example.harrypotter.service.magicalbeings.wizards.UtilWizards;
+import com.example.harrypotter.service.magicalbeings.wizards.UtilWizard;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +59,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testMagicalBeingRepo() {
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         magicalBeingRepo.save(alumni);
         assertNotNull(alumni);
         assertEquals(1, magicalBeingRepo.findAll().size());
@@ -68,7 +68,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testUpdateMagicalBeing(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         magicalBeingRepo.save(alumni);
 
         ResponseEntity<MagicalBeing> responseTest = magicalBeingService.updateMagicalBeing(
@@ -91,7 +91,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testDeleteMagicalBeing(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         magicalBeingRepo.save(alumni);
         assertEquals(1, magicalBeingRepo.findAll().size());
         ResponseEntity<Void> responseTestLessThanFive = magicalBeingService.deleteMagicalBeing(alumni.getId());
@@ -118,7 +118,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testGetAllMagicalBeings(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         Headmaster headmaster = new Headmaster("Headi", BigDecimal.valueOf(5), "Master and more than 10");
         magicalBeingRepo.save(alumni);
         magicalBeingRepo.save(headmaster);
@@ -142,7 +142,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testGetVoldemort(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         magicalBeingRepo.save(alumni);
 
         ResponseEntity<MagicalBeing> responseNoVoldemort = magicalBeingService.getVoldemort("Voldemort");
@@ -174,7 +174,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testGetAllMagicalBeingsVictories(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         alumni.setVictories(10);
         Alumni alumni100Victories = new Alumni("Test100", BigDecimal.valueOf(100), "Test100  and more than 10");
         alumni.setVictories(10);
@@ -195,7 +195,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testUpdateRating(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         magicalBeingRepo.save(alumni);
 
         Headmaster alumniUpdate = new Headmaster("Testi", BigDecimal.valueOf(10), "Test  and more than 10");
@@ -223,7 +223,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testUpdateVictories(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         magicalBeingRepo.save(alumni);
 
         Headmaster alumniUpdate = new Headmaster("Testi", BigDecimal.valueOf(10), "Test  and more than 10");
@@ -250,7 +250,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testUpdateVictoriesChess(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         magicalBeingRepo.save(alumni);
 
         Headmaster alumniUpdate = new Headmaster("Testi", BigDecimal.valueOf(10), "Test  and more than 10");
@@ -277,7 +277,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testGetMagicalBeingByName(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         magicalBeingRepo.save(alumni);
 
         ResponseEntity<MagicalBeing> response = magicalBeingService.getMagicalBeingByName("Testi");
@@ -292,7 +292,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testDeleteAllMagicalBeings(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         magicalBeingRepo.save(alumni);
 
         ResponseEntity<Void> response = magicalBeingService.deleteAllMagicalBeings();
@@ -303,7 +303,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testCheckName(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         Alumni alumni2 = new Alumni("Test2", BigDecimal.valueOf(10), "Test  and more than 10");
         magicalBeingRepo.save(alumni);
 
@@ -317,7 +317,7 @@ public class MagicalBeingServiceTest {
 
     @Test
     public void testCheckHouse(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         Professor professor = new Professor("Test2", BigDecimal.valueOf(10), "Test  and more than 10");
         magicalBeingRepo.save(alumni);
 

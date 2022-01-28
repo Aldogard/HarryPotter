@@ -9,4 +9,5 @@ export interface HpAnimal {
     energyRecovery: number,
     niffler: boolean,
     water: boolean,
+    forest: boolean,
 }

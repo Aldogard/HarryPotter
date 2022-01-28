@@ -28,6 +28,9 @@ public class Animal extends Options{
     @Column(name = "water")
     private Boolean water;
 
+    @Column(name = "forest")
+    private Boolean forest;
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "magicalBeing_id")
@@ -55,6 +58,7 @@ public class Animal extends Options{
             Double recovery,
             Boolean niffler,
             Boolean water,
+            Boolean forest,
             MagicalBeing magicalBeing,
             String description
     ){
@@ -64,6 +68,7 @@ public class Animal extends Options{
         this.magicalBeing = magicalBeing;
         this.niffler = niffler;
         this.water = water;
+        this.forest = forest;
     }
 
 

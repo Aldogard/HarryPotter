@@ -37,7 +37,7 @@ public class WizardServiceTest {
 
     @Test
     public void testWizardRepo() {
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         wizardRepo.save(alumni);
         assertNotNull(alumni);
         assertEquals(1, wizardRepo.findAll().size());
@@ -45,7 +45,7 @@ public class WizardServiceTest {
 
     @Test
     public void testGetWizardById() {
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         wizardRepo.save(alumni);
         ResponseEntity<Wizard> response= wizardService.getWizardById(alumni.getId());
         assertNotNull(response);
@@ -56,7 +56,7 @@ public class WizardServiceTest {
 
     @Test
     public void testGetAllWizards(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         Headmaster headmaster = new Headmaster("Headi", BigDecimal.valueOf(5), "Master and more than 10");
         wizardRepo.save(alumni);
         wizardRepo.save(headmaster);
@@ -78,7 +78,7 @@ public class WizardServiceTest {
 
     @Test
     public void testCheckName(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         Alumni alumni2 = new Alumni("Test2", BigDecimal.valueOf(10), "Test  and more than 10");
         wizardRepo.save(alumni);
 
@@ -92,7 +92,7 @@ public class WizardServiceTest {
 
     @Test
     public void testCheckHouse(){
-        Alumni alumni = UtilWizards.createTesti();
+        Alumni alumni = UtilWizard.createTesti();
         Professor professor = new Professor("Test2", BigDecimal.valueOf(10), "Test  and more than 10");
         wizardRepo.save(alumni);
 

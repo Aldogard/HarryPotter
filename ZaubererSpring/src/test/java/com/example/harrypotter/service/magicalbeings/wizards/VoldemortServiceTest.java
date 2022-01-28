@@ -70,18 +70,21 @@ public class VoldemortServiceTest {
         HttpStatus httpStatus = voldemortService.createVoldemort(voldemort).getStatusCode();
         assertEquals(HttpStatus.BAD_REQUEST, httpStatus);
 
+        HttpStatus httpStatus1 = voldemortService.createVoldemort(new Voldemort("Testi", BigDecimal.valueOf(10), "Test and more than 10")).getStatusCode();
+        assertEquals(HttpStatus.BAD_REQUEST, httpStatus1);
+
         assertNotNull(wizardResponse);
         assertNotNull(wizardResponse.getName());
         assertEquals(1, magicalBeingRepo.findAll().size());
         assertNotNull(magicalBeingRepo.findByName("Test").get(0).getId());
 
         List<Condition> conditions = conditionRepo.findAll();
-        assertEquals(UtilWizards.numberOfConditions, conditions.size());
+        assertEquals(UtilWizard.numberOfConditions, conditions.size());
 
         List<Spell> spells = spellRepo.findAll();
         assertNotNull(spells);
         assertEquals(12, spells.size());
-        assertTrue(UtilWizards.checkFiendfyre(spells));
+        assertTrue(UtilWizard.checkFiendfyre(spells));
 
         List<Potion> potions = potionsRepo.findAll();
         assertNotNull(potions);
@@ -89,11 +92,11 @@ public class VoldemortServiceTest {
 
         List<Animal> animals = animalRepo.findAll();
         assertNotNull(animals);
-        assertEquals(4, animals.size());
+        assertEquals(6, animals.size());
 
         assertNotNull(saWRepo.findAll());
-        assertEquals(9, UtilWizards.findStrength(saWRepo.findAll()).size());
-        assertEquals(2, UtilWizards.findWeaknesses(saWRepo.findAll()).size());
+        assertEquals(9, UtilWizard.findStrength(saWRepo.findAll()).size());
+        assertEquals(2, UtilWizard.findWeaknesses(saWRepo.findAll()).size());
 
         List<Hint> hints = hintRepo.findAll();
         assertNotNull(hints);
