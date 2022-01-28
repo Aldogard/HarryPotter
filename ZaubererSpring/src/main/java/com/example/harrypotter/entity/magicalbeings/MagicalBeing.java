@@ -1,6 +1,7 @@
 package com.example.harrypotter.entity.magicalbeings;
 
 import com.example.harrypotter.entity.options.Animal;
+import com.example.harrypotter.entity.options.Melee;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -157,6 +158,10 @@ public abstract class MagicalBeing {
     @JsonManagedReference
     @OneToMany(mappedBy = "magicalBeing", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Hint> hints;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "magicalBeing", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Melee> melees;
 
 
     public MagicalBeing(String name, BigDecimal healthPoints, String description, String species) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HpSpell } from '../interfaces/hp-spell';
-import { HpWizard } from '../interfaces/hp-wizard';
 import { ExtraService } from '../services/extra.service';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 import { MagicalBeingService } from '../services/magical-being.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { MagicalBeingService } from '../services/magical-being.service';
   styleUrls: ['./spells.component.css'],
 })
 export class OverviewSpellComponent implements OnInit {
-  wizards: HpWizard[] = [];
+  wizards: HpMagicalBeing[] = [];
   spells: HpSpell[] = [];
 
   constructor(
@@ -23,7 +23,7 @@ export class OverviewSpellComponent implements OnInit {
       ws.forEach((w) =>
         w.spells.forEach((a: HpSpell) => {
           if (
-            this.spells.find((attack) => attack.name === a.name) === undefined
+            this.spells.find((spell) => spell.name === a.name) === undefined
           ) {
             this.spells.push(a);
           }

@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { MessageService } from '../services/message.service';
 import { ExtraService } from '../services/extra.service';
 import { MagicalBeingService } from '../services/magical-being.service';
-import { HpMagicalBeing } from '../services/hp-magical-being';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 
 @Component({
   selector: 'app-fight',

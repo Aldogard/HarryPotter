@@ -46,7 +46,7 @@ export class ExtraService {
     'Half Giant',
   ];
 
-  options: string[] = ['Spell', 'Potion', 'Animal'];
+  options: string[] = ['Spell', 'Potion', 'Animal', 'Melee'];
 
   environment: string[] = [
     'Main Gate',

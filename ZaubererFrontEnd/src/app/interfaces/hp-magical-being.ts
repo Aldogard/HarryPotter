@@ -1,10 +1,11 @@
-import { HpAnimal } from "../interfaces/hp-animal";
-import { HpComment } from "../interfaces/hp-comment";
-import { HpCondition } from "../interfaces/hp-condition";
-import { HpHint } from "../interfaces/hp-hint";
-import { HpPotion } from "../interfaces/hp-potion";
-import { HpSaw } from "../interfaces/hp-saw";
-import { HpSpell } from "../interfaces/hp-spell";
+import { HpAnimal } from "./hp-animal";
+import { HpComment } from "./hp-comment";
+import { HpCondition } from "./hp-condition";
+import { HpHint } from "./hp-hint";
+import { HpMelee } from "./hp-melee";
+import { HpPotion } from "./hp-potion";
+import { HpSaw } from "./hp-saw";
+import { HpSpell } from "./hp-spell";
 
 export interface HpMagicalBeing {
     id: number,
@@ -33,6 +34,7 @@ export interface HpMagicalBeing {
     comments: HpComment[],
     strengthAndWeaknesses: HpSaw[],
     hints: HpHint[],
+    melees: HpMelee[],
     rating: number,
     amount: number,
     victoriesChess: number,

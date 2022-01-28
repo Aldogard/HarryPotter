@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HpPotion } from '../interfaces/hp-potion';
-import { HpWizard } from '../interfaces/hp-wizard';
 import { ExtraService } from '../services/extra.service';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 import { MagicalBeingService } from '../services/magical-being.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { MagicalBeingService } from '../services/magical-being.service';
   styleUrls: ['./potions.component.css'],
 })
 export class OverviewPotionComponent implements OnInit {
-  wizards: HpWizard[] = [];
+  wizards: HpMagicalBeing[] = [];
   potions: HpPotion[] = [];
 
   constructor(

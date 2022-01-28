@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AdviceService } from '../services/advice.service';
 import { ExtraService } from '../services/extra.service';
-import { HpMagicalBeing } from '../services/hp-magical-being';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 import { MagicalBeingService } from '../services/magical-being.service';
 import { MessageService } from '../services/message.service';
 

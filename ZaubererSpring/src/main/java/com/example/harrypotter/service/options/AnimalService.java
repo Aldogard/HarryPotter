@@ -214,7 +214,7 @@ public class AnimalService {
     }
 
     // Weitere Tiere
-    // Acrumantula für Deatheater
+    // Acrumantula für Deatheater --> nur am egde of the forbidden forest
 
     // möglicherweise noch Wasserwesen, die nur an Wasserorten genutzt werden können
     // Grindelow
@@ -224,7 +224,7 @@ public class AnimalService {
     // Merpeople
     // Sea serpent
     // Selma
-    // 
+    //
 
 
 }

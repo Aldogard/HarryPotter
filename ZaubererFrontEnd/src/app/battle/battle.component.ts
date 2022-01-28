@@ -7,7 +7,7 @@ import { MagicalBeingService } from '../services/magical-being.service';
 import { HpPotion } from '../interfaces/hp-potion';
 import { HpSpell } from '../interfaces/hp-spell';
 import { HpAnimal } from '../interfaces/hp-animal';
-import { HpMagicalBeing } from '../services/hp-magical-being';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 
 @Component({
   selector: 'app-battle',

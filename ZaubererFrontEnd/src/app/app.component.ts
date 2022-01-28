@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { HpMagicalBeing } from './services/hp-magical-being';
+import { HpMagicalBeing } from './interfaces/hp-magical-being';
 
 @Component({
   selector: 'app-root',

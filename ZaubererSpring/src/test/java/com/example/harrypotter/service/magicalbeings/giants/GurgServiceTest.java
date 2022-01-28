@@ -6,6 +6,7 @@ import com.example.harrypotter.entity.magicalbeings.MagicalBeing;
 import com.example.harrypotter.entity.magicalbeings.giants.Giant;
 import com.example.harrypotter.entity.magicalbeings.giants.Gurg;
 import com.example.harrypotter.entity.options.Animal;
+import com.example.harrypotter.entity.options.Melee;
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.options.Spell;
 import com.example.harrypotter.repo.magicalbeings.ConditionRepo;
@@ -13,6 +14,7 @@ import com.example.harrypotter.repo.magicalbeings.HintRepo;
 import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.magicalbeings.wizards.StrengthAndWeaknessRepo;
 import com.example.harrypotter.repo.options.AnimalRepo;
+import com.example.harrypotter.repo.options.MeleeRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
 import com.example.harrypotter.repo.options.SpellRepo;
 import org.junit.jupiter.api.AfterEach;
@@ -56,6 +58,9 @@ public class GurgServiceTest {
     @Autowired
     private HintRepo hintRepo;
 
+    @Autowired
+    private MeleeRepo meleeRepo;
+
     @AfterEach
     public void deleteAll(){
         magicalBeingRepo.deleteAll();
@@ -98,6 +103,10 @@ public class GurgServiceTest {
         List<Hint> hints = hintRepo.findAll();
         assertNotNull(hints);
         assertEquals(8, hints.size());
+
+        List<Melee> melees = meleeRepo.findAll();
+        assertNotNull(melees);
+        assertEquals(2, melees.size());
 
 
     }

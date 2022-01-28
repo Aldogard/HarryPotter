@@ -2,8 +2,8 @@ package com.example.harrypotter.service.options;
 
 import com.example.harrypotter.entity.options.Potion;
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.options.PotionsRepo;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +20,14 @@ public class PotionServiceTest {
     private PotionService potionService;
 
     @Autowired
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
 
     @Autowired
     private PotionsRepo potionsRepo;
 
     @AfterEach
     public void deleteAll() {
-        wizardRepo.deleteAll();
+        magicalBeingRepo.deleteAll();
         potionsRepo.deleteAll();
     }
 
@@ -41,7 +41,7 @@ public class PotionServiceTest {
     @Test
     public void testCreateAntiParalysis() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         potionService.createAntiParalysis(alumni, storage);
 
         Potion potion = checkSavingOfPotion();
@@ -61,7 +61,7 @@ public class PotionServiceTest {
     @Test
     public void testCreateBrainElixier() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         potionService.createBrainElixir(alumni, storage);
 
         Potion potion = checkSavingOfPotion();
@@ -76,7 +76,7 @@ public class PotionServiceTest {
     @Test
     public void testCreateExplodingPotion() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         potionService.createExplodingPotion(alumni, storage);
 
         Potion potion = checkSavingOfPotion();
@@ -91,7 +91,7 @@ public class PotionServiceTest {
     @Test
     public void testCreateHealingPotion() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         potionService.createHealingPotion(alumni, storage);
 
         Potion potion = checkSavingOfPotion();
@@ -108,7 +108,7 @@ public class PotionServiceTest {
     @Test
     public void testCreateInvogiration() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         potionService.createInvogiration(alumni, storage);
 
         Potion potion = checkSavingOfPotion();
@@ -125,7 +125,7 @@ public class PotionServiceTest {
     @Test
     public void testCreateUnicornBlood() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         potionService.createUnicornBlood(alumni, storage);
 
         Potion potion = checkSavingOfPotion();
@@ -145,7 +145,7 @@ public class PotionServiceTest {
     @Test
     public void testCreateRegenrationPotion() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         potionService.createRegenerationPotion(alumni, storage);
 
         Potion potion = checkSavingOfPotion();
@@ -165,7 +165,7 @@ public class PotionServiceTest {
     @Test
     public void testCreateWitSharpeningPotion() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         potionService.createWitSharpeningPotion(alumni, storage);
 
         Potion potion = checkSavingOfPotion();
@@ -185,7 +185,7 @@ public class PotionServiceTest {
     @Test
     public void testCreateExtimuloPotion() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         potionService.createExtimuloPotion(alumni, storage);
 
         Potion potion = checkSavingOfPotion();

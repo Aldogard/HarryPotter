@@ -440,16 +440,22 @@
               >Please chose an Option for the Attack: &nbsp;</label
             >
             <a *ngFor="let option of options">
-              <input
-                class="link"
-                id="rate_{{ option }}"
-                value="{{ option }}"
-                type="radio"
-                name="radio"
-                [(ngModel)]="chosenOption"
-              />
-              <label for="rate_{{ option }}" class="link">{{ option }}</label
-              >&nbsp;&nbsp;
+              <ng-container
+                *ngIf="
+                  !(magicalBeing2.species !== 'Giant' && option === 'Melee')
+                "
+              >
+                <input
+                  class="link"
+                  id="rate_{{ option }}"
+                  value="{{ option }}"
+                  type="radio"
+                  name="radio"
+                  [(ngModel)]="chosenOption"
+                />
+                <label for="rate_{{ option }}" class="link">{{ option }}</label
+                >&nbsp;&nbsp;
+              </ng-container>
             </a>
           </div>
         </ng-container>
@@ -657,15 +663,23 @@
               >Please chose an Option for the Attack: &nbsp;</label
             >
             <a *ngFor="let option of options">
-              <input
-                class="link"
-                id="rate_{{ option }}"
-                value="{{ option }}"
-                type="radio"
-                name="radio"
-                [(ngModel)]="chosenOption"
-              /><label for="rate_{{ option }}" class="link">{{ option }}</label
-              >&nbsp;&nbsp;
+              <ng-container
+                *ngIf="
+                  !(magicalBeing1.species !== 'Giant' && option === 'Melee')
+                "
+              >
+                <input
+                  class="link"
+                  id="rate_{{ option }}"
+                  value="{{ option }}"
+                  type="radio"
+                  name="radio"
+                  [(ngModel)]="chosenOption"
+                /><label for="rate_{{ option }}" class="link">{{
+                  option
+                }}</label
+                >&nbsp;&nbsp;
+              </ng-container>
             </a>
           </div>
         </ng-container>

@@ -2,8 +2,8 @@ package com.example.harrypotter.service.options;
 
 import com.example.harrypotter.entity.options.Animal;
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.options.AnimalRepo;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +19,14 @@ public class AnimalServiceTest {
     private AnimalService animalService;
 
     @Autowired
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
 
     @Autowired
     private AnimalRepo animalRepo;
 
     @AfterEach
     public void deleteAll(){
-        wizardRepo.deleteAll();
+        magicalBeingRepo.deleteAll();
         animalRepo.deleteAll();
     }
 
@@ -39,7 +39,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreatePhoenix(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createPhoenix(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -57,7 +57,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreateFlobberworm(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createFlobberworm(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -75,7 +75,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreateBasilisk(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createBasilisk(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -93,7 +93,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreatePoisonousDuck(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createPoisonousDuck(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -111,7 +111,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreateBowtuckle(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createBowtuckle(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -129,7 +129,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreateHungarianHonrtail(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createHungarianHorntail(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -147,7 +147,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreateFireCrabs(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createFireCrabs(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -165,7 +165,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreateGriffin(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createGriffin(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -183,7 +183,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreateHippogriff(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createHippogriff(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -201,7 +201,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreateNiffler(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createNiffler(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -219,7 +219,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreateThreeHeadedDog(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createThreeHeadedDog(alumni);
 
         Animal animal = checkSavingOfAnimal();
@@ -237,7 +237,7 @@ public class AnimalServiceTest {
     @Test
     public void testCreateTroll(){
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         animalService.createTroll(alumni);
 
         Animal animal = checkSavingOfAnimal();

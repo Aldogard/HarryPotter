@@ -7,6 +7,7 @@ import com.example.harrypotter.service.magicalbeings.ConditionService;
 import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.magicalbeings.MagicalBeingService;
 import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.MeleeService;
 import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class GurgService {
     private PotionService potionService;
     private AnimalService animalService;
     private HintService hintService;
+    private MeleeService meleeService;
 
 
         public ResponseEntity<Giant> createGurg(Gurg gurg){
@@ -49,6 +51,9 @@ public class GurgService {
         animalService.createHungarianHorntail(gurgNew);
         animalService.createFireCrabs(gurgNew);
         animalService.createThreeHeadedDog(gurgNew);
+
+        meleeService.createGurgAttack(gurgNew);
+        meleeService.createPunch(gurgNew);
 
         hintService.createBasicHints(gurgNew);
 

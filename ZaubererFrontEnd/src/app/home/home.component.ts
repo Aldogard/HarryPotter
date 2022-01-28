@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HpPotion } from '../interfaces/hp-potion';
 import { HpSpell } from '../interfaces/hp-spell';
-import { HpMagicalBeing } from '../services/hp-magical-being';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 import { MagicalBeingService } from '../services/magical-being.service';
 
 
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
   }
 
   // Score berechnen
-  getMostPowerfulAttack(list: HpSpell[]) {
+  getMostPowerfulSpell(list: HpSpell[]) {
     let name = '';
     const maxDamage = Math.max.apply(
       Math,

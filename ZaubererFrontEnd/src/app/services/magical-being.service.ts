@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HpAnimal } from "../interfaces/hp-animal";
 import { HpPotion } from "../interfaces/hp-potion";
 import { HpSpell } from "../interfaces/hp-spell";
-import { HpMagicalBeing } from './hp-magical-being';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 
 const url: string = 'http://localhost:8080/mb';
 

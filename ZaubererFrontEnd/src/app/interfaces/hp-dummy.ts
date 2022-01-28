@@ -2,6 +2,7 @@ import { HpAnimal } from "./hp-animal";
 import { HpComment } from "./hp-comment";
 import { HpCondition } from "./hp-condition";
 import { HpHint } from "./hp-hint";
+import { HpMelee } from "./hp-melee";
 import { HpPotion } from "./hp-potion";
 import { HpSaw } from "./hp-saw";
 import { HpSpell } from "./hp-spell";
@@ -32,6 +33,7 @@ export interface HpDummy {
     animals: HpAnimal[],
     comments: HpComment[],
     strengthAndWeaknesses: HpSaw[],
+    melees: HpMelee[],
     hints: HpHint[],
     rating: number,
     amount: number,

@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { WizardService } from '../services/wizard.service';
 import { ExtraService } from '../services/extra.service';
 import { MagicalBeingService } from '../services/magical-being.service';
-import { HpMagicalBeing } from '../services/hp-magical-being';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 import { HpWizard } from '../interfaces/hp-wizard';
 
 @Component({

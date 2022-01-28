@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HpAnimal } from '../interfaces/hp-animal';
-import { HpWizard } from '../interfaces/hp-wizard';
 import { ExtraService } from '../services/extra.service';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 import { MagicalBeingService } from '../services/magical-being.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { MagicalBeingService } from '../services/magical-being.service';
   styleUrls: ['./overview-animal.component.css']
 })
 export class OverviewAnimalComponent implements OnInit {
-  wizards: HpWizard[] = [];
+  wizards: HpMagicalBeing[] = [];
   animals: HpAnimal[] = [];
 
   constructor(

@@ -2,8 +2,8 @@ package com.example.harrypotter.service.options;
 
 import com.example.harrypotter.entity.options.Spell;
 import com.example.harrypotter.entity.magicalbeings.wizards.Alumni;
+import com.example.harrypotter.repo.magicalbeings.MagicalBeingRepo;
 import com.example.harrypotter.repo.options.SpellRepo;
-import com.example.harrypotter.repo.magicalbeings.wizards.WizardRepo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +19,14 @@ class SpellServiceTest {
     private SpellService spellService;
 
     @Autowired
-    private WizardRepo wizardRepo;
+    private MagicalBeingRepo magicalBeingRepo;
 
     @Autowired
     private SpellRepo spellRepo;
 
     @AfterEach
     public void deleteAll(){
-        wizardRepo.deleteAll();
+        magicalBeingRepo.deleteAll();
         spellRepo.deleteAll();
     }
 
@@ -39,7 +39,7 @@ class SpellServiceTest {
     @Test
     public void testCreateExpelliarmus() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createExpelliarmus(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -55,7 +55,7 @@ class SpellServiceTest {
     @Test
     public void testCreateStupefy() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createStupefy(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -71,7 +71,7 @@ class SpellServiceTest {
     @Test
     public void testCreateLevicorpus() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createLevicorpus(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -87,7 +87,7 @@ class SpellServiceTest {
     @Test
     public void testCreateCalvorio() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createCalvorio(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -103,7 +103,7 @@ class SpellServiceTest {
     @Test
     public void testCreateImmobilus() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createImmobilus(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -119,7 +119,7 @@ class SpellServiceTest {
     @Test
     public void testCreateSectumssempra() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createSectumssempra(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -135,7 +135,7 @@ class SpellServiceTest {
     @Test
     public void testCreateConfundo() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createConfundo(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -151,7 +151,7 @@ class SpellServiceTest {
     @Test
     public void testCreateAvadaKedavra() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createAvadaKedavra(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -167,7 +167,7 @@ class SpellServiceTest {
     @Test
     public void testCreateImperio() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createImperio(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -189,7 +189,7 @@ class SpellServiceTest {
     @Test
     public void testCreateCrucio() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createCrucio(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -210,7 +210,7 @@ class SpellServiceTest {
     @Test
     public void testCreateProtego() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createProtego(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -232,7 +232,7 @@ class SpellServiceTest {
     @Test
     public void testCreateFiendfyre() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createFiendfyre(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -254,7 +254,7 @@ class SpellServiceTest {
     @Test
     public void testCreateAntiFiendfyre() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createAntiFiendfyre(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -276,7 +276,7 @@ class SpellServiceTest {
     @Test
     public void testCreateFirestorm() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createFirestorm(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -292,7 +292,7 @@ class SpellServiceTest {
     @Test
     public void testCreatePiertotumLocomotor() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createPiertotumLocomotor(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -308,7 +308,7 @@ class SpellServiceTest {
     @Test
     public void testCreateVulneraSanentur() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createVulneraSanentur(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -324,7 +324,7 @@ class SpellServiceTest {
     @Test
     public void testCreatePertrificusTotalus() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createPertrificusTotalus(alumni);
 
         Spell spell = checkSavingOfSpell();
@@ -340,7 +340,7 @@ class SpellServiceTest {
     @Test
     public void testCreateEpiskey() {
         Alumni alumni = UtilOptions.createTesti();
-        wizardRepo.save(alumni);
+        magicalBeingRepo.save(alumni);
         spellService.createEpiskey(alumni);
 
         Spell spell = checkSavingOfSpell();

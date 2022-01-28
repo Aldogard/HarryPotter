@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 
 import { MagicalBeingService } from '../services/magical-being.service';
-import { HpWizard } from '../interfaces/hp-wizard';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 
 @Component({
   selector: 'app-compare',
@@ -20,9 +20,9 @@ export class CompareComponent implements OnInit {
   show1 = new BehaviorSubject<boolean>(true);
   show2 = new BehaviorSubject<boolean>(true);
 
-  magicalBeings: HpWizard[] = [];
-  magicalBeingChoiceA?: HpWizard;
-  magicalBeingChoiceB?: HpWizard;
+  magicalBeings: HpMagicalBeing[] = [];
+  magicalBeingChoiceA?: HpMagicalBeing;
+  magicalBeingChoiceB?: HpMagicalBeing;
 
 
   constructor(

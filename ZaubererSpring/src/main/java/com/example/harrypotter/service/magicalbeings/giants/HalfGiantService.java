@@ -7,6 +7,7 @@ import com.example.harrypotter.service.magicalbeings.ConditionService;
 import com.example.harrypotter.service.magicalbeings.HintService;
 import com.example.harrypotter.service.magicalbeings.MagicalBeingService;
 import com.example.harrypotter.service.options.AnimalService;
+import com.example.harrypotter.service.options.MeleeService;
 import com.example.harrypotter.service.options.PotionService;
 import com.example.harrypotter.service.options.SpellService;
 import lombok.AllArgsConstructor;
@@ -25,6 +26,7 @@ public class HalfGiantService {
     private PotionService potionService;
     private AnimalService animalService;
     private HintService hintService;
+    private MeleeService meleeService;
 
 
     public ResponseEntity<Giant> createHalfGiant(HalfGiant halfGiant){
@@ -56,6 +58,7 @@ public class HalfGiantService {
         animalService.createHippogriff(hgNew);
         animalService.createThreeHeadedDog(hgNew);
 
+        meleeService.createPunch(hgNew);
 
         hintService.createBasicHints(hgNew);
         hintService.createKeepingABishop(hgNew);

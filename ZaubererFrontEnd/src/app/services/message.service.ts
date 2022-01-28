@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { HpMagicalBeing } from './hp-magical-being';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 
 @Injectable({
   providedIn: 'root'

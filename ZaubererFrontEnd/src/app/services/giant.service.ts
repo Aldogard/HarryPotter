@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HpMagicalBeing } from './hp-magical-being';
+import { HpMagicalBeing } from '../interfaces/hp-magical-being';
 
 const url: string = 'http://localhost:8080/giant';
 
