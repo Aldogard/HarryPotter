@@ -705,7 +705,9 @@ export class BattleComponent implements OnInit {
   }
 
   gotoMeleeDetail(meleeId: number){
-
+    this.ms.sendMeleeId(meleeId);
+    const url = 'meleedetail/' + meleeId;
+    window.open(url);
   }
 
   gotoRules() {

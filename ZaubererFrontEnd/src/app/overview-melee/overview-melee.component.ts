@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { HpSpell } from '../interfaces/hp-spell';
-import { ExtraService } from '../services/extra.service';
 import { HpMagicalBeing } from '../interfaces/hp-magical-being';
+import { HpMelee } from '../interfaces/hp-melee';
+import { ExtraService } from '../services/extra.service';
 import { MagicalBeingService } from '../services/magical-being.service';
 
 @Component({
-  selector: 'app-attacks',
-  templateUrl: './spells.component.html',
-  styleUrls: ['./spells.component.css'],
+  selector: 'app-overview-melee',
+  templateUrl: './overview-melee.component.html',
+  styleUrls: ['./overview-melee.component.css']
 })
-export class OverviewSpellComponent implements OnInit {
+export class OverviewMeleeComponent implements OnInit {
   wizards: HpMagicalBeing[] = [];
-  spells: HpSpell[] = [];
+  melees: HpMelee[] = [];
 
   constructor(
     private mbService: MagicalBeingService,
@@ -21,15 +21,19 @@ export class OverviewSpellComponent implements OnInit {
   ngOnInit(): void {
     this.mbService.getMagicalBeings().subscribe((ws) => {
       ws.forEach((w) =>
-        w.spells.forEach((a: HpSpell) => {
+        w.melees.forEach((m: HpMelee) => {
           if (
-            this.spells.find((spell) => spell.name === a.name) === undefined
+            this.melees.find((melee) => melee.name === m.name) === undefined
           ) {
-            this.spells.push(a);
+            this.melees.push(m);
           }
         })
       );
     });
+  }
+
+  gotoSpells(){
+    this.extraService.redirectTo('spells');
   }
 
   gotoPotions() {
@@ -44,7 +48,4 @@ export class OverviewSpellComponent implements OnInit {
     this.extraService.redirectTo('animals')
   }
 
-  gotoMelees(){
-    this.extraService.redirectTo('melees')
-  }
 }

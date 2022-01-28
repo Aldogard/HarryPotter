@@ -134,6 +134,10 @@ export class OverviewComponent implements OnInit {
     this.extraService.redirectTo('animals')
   }
 
+  gotoMelees(){
+    this.extraService.redirectTo('melees')
+  }
+
   showHideFilter(status: boolean){
     this.showFilter.next(status);
 

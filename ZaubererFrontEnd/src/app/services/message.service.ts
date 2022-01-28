@@ -13,6 +13,7 @@ export class MessageService  {
   potionId = new BehaviorSubject<number>(0);
   attackId = new BehaviorSubject<number>(0);
   animalId = new BehaviorSubject<number>(0);
+  meleeId = new BehaviorSubject<number>(0);
   show = new BehaviorSubject<boolean>(false);
   showChess = new BehaviorSubject<boolean>(false);
   environment = new BehaviorSubject<string>('');
@@ -45,6 +46,10 @@ export class MessageService  {
 
   sendAnimalId(id: number){
     this.animalId.next(id);
+  }
+
+  sendMeleeId(id: number){
+    this.meleeId.next(id);
   }
 
   sendShow(show: boolean){

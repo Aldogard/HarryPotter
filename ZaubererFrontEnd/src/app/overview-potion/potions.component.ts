@@ -43,4 +43,8 @@ export class OverviewPotionComponent implements OnInit {
   gotoAnimals(){
     this.extraService.redirectTo('animals')
   }
+
+  gotoMelees(){
+    this.extraService.redirectTo('melees')
+  }
 }

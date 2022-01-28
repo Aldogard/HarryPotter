@@ -4,6 +4,7 @@ import { HpAnimal } from "../interfaces/hp-animal";
 import { HpPotion } from "../interfaces/hp-potion";
 import { HpSpell } from "../interfaces/hp-spell";
 import { HpMagicalBeing } from '../interfaces/hp-magical-being';
+import { HpMelee } from '../interfaces/hp-melee';
 
 const url: string = 'http://localhost:8080/mb';
 
@@ -132,6 +133,11 @@ export class MagicalBeingService {
   getAnimalById(id: number){
     const urlAnimalId = url + '/animal/' + id;
     return this.http.get<HpAnimal>(urlAnimalId);
+  }
+
+  getMeleeById(id: number){
+    const urlMeleeId = url + '/melee/' + id;
+    return this.http.get<HpMelee>(urlMeleeId);
   }
  
 }

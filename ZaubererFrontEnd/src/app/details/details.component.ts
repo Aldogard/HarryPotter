@@ -24,6 +24,7 @@ export class DetailsComponent implements OnInit {
   showSpells = new BehaviorSubject<boolean>(true);
   showAnimals= new BehaviorSubject<boolean>(true);
   showComments = new BehaviorSubject<boolean>(true);
+  showMelees = new BehaviorSubject<boolean>(true);
 
 
   idForComment: number = 0;
@@ -119,6 +120,10 @@ export class DetailsComponent implements OnInit {
     this.showComments.next(status);
   }
 
+  showHideMelees(status: boolean){
+    this.showMelees.next(status);
+  }
+
 
   post() {
     const response = this.mbService.postComment(
@@ -209,6 +214,12 @@ export class DetailsComponent implements OnInit {
     const url = 'animaldetail/' + animalId;
     window.open(url);
     //this.zusatzService.redirectTo('attackdetail');
+  }
+
+  gotoMeleeDetail(meleeId: number){
+    this.ms.sendMeleeId(meleeId);
+    const url = 'meleedetail/' + meleeId;
+    window.open(url);
   }
 
   gotoRanks() {

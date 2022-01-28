@@ -1,0 +1,83 @@
+<div class="header gold pt-lg-3 sticky-top">
+    <h1 class="headermelees headertext">Overview Melees</h1>
+  </div>
+  <div class="container">
+    <div class="container-fluid padding mt-5">
+      <div class="row padding">
+        <div class="col-md-12 col-lg-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Energy Usage</th>
+                <th>Max Damage</th>
+                <th>Stunned</th>
+                <th>Confunded</th>
+                <th>Experience</th>
+              </tr>
+            </thead>
+            <tr>
+              <td></td>
+            </tr>
+            <tbody>
+              <tr *ngFor="let melee of melees">
+                <td>{{ melee.name }}</td>
+                <td>{{ melee.energyUsage }}</td>
+                <td>{{ melee.maxDamage }}</td>
+                <td>{{ melee.stunned }}</td>
+                <td>{{ melee.confunded }}</td>
+                <td>{{ melee.requiredExperience }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <div class="hints">
+          <h2 class="gold">Explanations</h2>
+          <ul>
+            <li>
+              Energy Usage indicates the required energy to perform the melee. A
+              melee can only be performed if the wizard has enough energy
+              remaining.
+            </li>
+            <li>
+              Most Melees are able to inflict damage on the opposing Wizard. Max
+              Damage indicates the maximum amount of damage that can be inflicted.
+            </li>
+            <li>
+              Stunned indicates whether the Melee can stun the opposing wizard or
+              not. The use of some Potions can protect against the stun effect.
+            </li>
+            <li>
+              Confunded indicates whether the Melee can confound the opposing
+              wizard or not. The use of some Potions can protect against the
+              confound effect.
+            </li>
+            <li>
+              Experience indicates the number of victories a wizards needs in
+              order to use the Melee.
+            </li>
+          </ul>
+        </div>
+        <div class="goto">
+          <p>
+            For a detailed view of all Potions, Animal, Spells or a return to Overview, please
+            click the respective Button
+          </p>
+          <button class="formButton" (click)="gotoPotions()">
+            Go to Potions
+          </button>
+          <button class="formButton" (click)="gotoSpells()">
+            Go to Spells
+          </button>
+          <button class="formButton" (click)="gotoAnimals()">
+            Go to Animals
+          </button>
+          <button class="formButton" (click)="gotoOverview()">
+            Go to Overview
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

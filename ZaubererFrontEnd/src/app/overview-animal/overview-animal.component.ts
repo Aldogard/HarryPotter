@@ -44,4 +44,8 @@ export class OverviewAnimalComponent implements OnInit {
     this.extraService.redirectTo('potions')
   }
 
+  gotoMelees(){
+    this.extraService.redirectTo('melees')
+  }
+
 }

@@ -1,0 +1,56 @@
+<div class="header gold pt-lg-3 sticky-top">
+    <h1 class="headermeleedetail headertext">Detail View</h1>
+  </div>
+  
+  <div class="container">
+    <ng-container *ngIf="melee !== undefined">
+      <br />
+      <table class="table" style="width: 100%">
+        <thead>
+          <tr>
+            <th style="width: 20%">Name</th>
+            <th style="width: 80%">{{ melee.name }}</th>
+          </tr>
+        </thead>
+        <tr>
+          <td></td>
+        </tr>
+        <tbody>
+          <tr>
+            <td>Energy</td>
+            <td>{{ melee.energyUsage }}</td>
+          </tr>
+          <tr>
+            <td>Max Damage</td>
+            <td>{{ melee.maxDamage }}</td>
+          </tr>
+          <tr>
+            <td>Paralysis</td>
+            <td>{{ melee.stunned }}</td>
+          </tr>
+          <tr>
+            <td>Confunded</td>
+            <td>{{ melee.confunded }}</td>
+          </tr>
+          <tr>
+            <td>Experience needed</td>
+            <td>{{ melee.requiredExperience }}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td>{{ melee.descriptionOption }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <br />
+      <h2 class="gold">Further Information</h2>
+      <ul></ul>
+    </ng-container>
+    <br />
+    <div class="link">
+      <a (click)="gotoWiki()" class="link"
+        >The description is taken from the wonderful Harry Potter Wiki!</a
+      >
+    </div>
+  </div>
+  

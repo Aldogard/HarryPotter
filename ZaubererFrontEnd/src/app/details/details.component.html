@@ -279,6 +279,45 @@
                 </td>
               </tr>
             </ng-container>
+
+            <tr>
+              <th colspan="3" class="columnOptionHeader">Melees</th>
+            </tr>
+            <tr>
+              <th>Name</th>
+              <th>Max Damage</th>
+              <th class="columnCenter">
+                <button
+                  class="formButtonColumn"
+                  (click)="showHideMelees(true)"
+                  *ngIf="!showMelees.value"
+                >
+                  Show
+                </button>
+                <button
+                  class="formButtonColumn"
+                  (click)="showHideMelees(false)"
+                  *ngIf="showMelees.value"
+                >
+                  Hide
+                </button>
+              </th>
+            </tr>
+            <ng-container *ngIf="showMelees.value">
+              <tr *ngFor="let melee of magicalBeingChoiceA.melees">
+                <td>{{ melee.name }}</td>
+                <td>{{ melee.maxDamage }}</td>
+                <td class="columnCenter">
+                  <button
+                    class="formButtonColumn"
+                    (click)="gotoMeleeDetail(melee.id)"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            </ng-container>
+
             <tr>
               <th colspan="3" class="columnOptionHeader">Comments</th>
             </tr>

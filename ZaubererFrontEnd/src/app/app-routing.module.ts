@@ -24,12 +24,15 @@ import { TrainingComponent } from './training/training.component';
 import { PreparationComponent } from './preparation/preparation.component';
 import { InformationComponent } from './information/information.component';
 import { SelectionComponent } from './selection/selection.component';
+import { DetailsMeleeComponent } from './details-melee/details-melee.component';
+import { OverviewMeleeComponent } from './overview-melee/overview-melee.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'spelldetail', redirectTo: 'overview', pathMatch: 'full' },
   { path: 'potiondetail', redirectTo: 'overview', pathMatch: 'full' },
   { path: 'animaldetail', redirectTo: 'overview', pathMatch: 'full' },
+  { path: 'meleedetail', redirectTo: 'overview', pathMatch: 'full' },
   { path: 'overview', component: OverviewComponent },
   { path: 'detail', component: DetailsComponent },
   { path: 'delete', component: DeleteComponent },
@@ -45,9 +48,11 @@ const routes: Routes = [
   { path: 'spelldetail/:id', component: DetailsSpellComponent },
   { path: 'potiondetail/:id', component: DetailsPotionComponent },
   { path: 'animaldetail/:id', component: DetailsAnimalComponent },
+  { path: 'meleedetail/:id', component: DetailsMeleeComponent },
   { path: 'rules', component: RulesComponent },
   { path: 'ranks', component: RanksComponent },
   { path: 'animals', component: OverviewAnimalComponent },
+  { path: 'melees', component: OverviewMeleeComponent },
   { path: 'compare', component: CompareComponent },
   { path: 'chess', component: ChessComponent },
   { path: 'training', component: TrainingComponent },
