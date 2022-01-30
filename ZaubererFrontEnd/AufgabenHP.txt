@@ -75,10 +75,12 @@ Weitere Ideen: --> Erledigt
 Weitere Aufgaben:
 	Weitere Aktionen bspw. Tiere agieren lassen. Basilisk, Phoenix etc. --> Erledigt
 	Effekte für Umgebungen
-	Weitere Kreaturen
+	Weitere Kreaturen --> Erledigt
 	Nummerierung des Schachbretts --> Erledigt
 	Sondereffekt für Riesen! --> Erledigt --> Immun gegen Spell Effekte 
 	Commtent und Rating Ansicht verbessern (Buttons)
+	Booleans für die Umgebungen einbauen
+	Hoover für hint anschauen
 	
 
 Angular Testing!

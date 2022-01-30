@@ -12,18 +12,20 @@ At the moment, the project includes:
   - Potions
   - Spells
   - Animals
+  - Melees
 - Comparison between Magical Beings
 - Detailview for
   - all Magical Beings
   - Potions
   - Spells
   - Animals
+  - Melees
 - Set up for the Battle
 - The Battle
 - Set up for the chess game
 - The chess game
 - Set up for training
-- Training including
+- Training, including
   - Spell training
   - Potion brewing
   - Animal training
@@ -35,3 +37,8 @@ At the moment, the project includes:
 Furthermore the site includes 
 - overview about the rules of the battle
 - possibility to delete wizards (hidden)
+
+Coming soon:
+- overview about the rules of the wizard chess game
+- overview about the rules of the training
+- Melee training
