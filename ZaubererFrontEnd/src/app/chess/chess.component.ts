@@ -128,10 +128,10 @@ export class ChessComponent implements OnInit {
       this.magicalBeing1 = mb[0];
       this.magicalBeing2 = mb[1];
     });
-    this.mbService.getMagicalBeings().subscribe((mb) => {
-      this.magicalBeing1 = mb[0];
-      this.magicalBeing2 = mb[1];
-    });
+    // this.mbService.getMagicalBeings().subscribe((mb) => {
+    //   this.magicalBeing1 = mb[0];
+    //   this.magicalBeing2 = mb[1];
+    // });
   }
 
   giveAdvice() {

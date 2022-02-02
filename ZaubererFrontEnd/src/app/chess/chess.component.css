@@ -98,4 +98,8 @@ li {
   list-style-type: none;
 }
 
+.goldhover:hover {
+  color: rgb(211, 166, 37);
+}
+
 
