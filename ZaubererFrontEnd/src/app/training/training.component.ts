@@ -10,6 +10,7 @@ import { MagicalBeingService } from '../services/magical-being.service';
 import { MessageService } from '../services/message.service';
 import { PotionService } from '../services/potion.service';
 import { WizardService } from '../services/wizard.service';
+import { HpMelee } from '../interfaces/hp-melee';
 
 @Component({
   selector: 'app-training',
@@ -20,11 +21,14 @@ export class TrainingComponent implements OnInit {
   show: boolean = true;
   dummy?: HpMagicalBeing;
   magicalBeing1?: HpMagicalBeing;
+
   chosenOption: string = '';
   validateSpell = new BehaviorSubject<boolean>(false);
   spell = new FormControl('');
   validateAnimal = new BehaviorSubject<boolean>(false);
   animal = new FormControl('');
+  validateMelee = new BehaviorSubject<boolean>(false);
+  melee = new FormControl('');
   showStart = new BehaviorSubject<boolean>(true);
   remainingMoves = 0;
   amountOfMoves = -1;
@@ -135,6 +139,11 @@ export class TrainingComponent implements OnInit {
     this.showFailureAndSuccess();
   }
 
+  showMelee() {
+    this.chosenOption = 'melee';
+    this.showFailureAndSuccess();
+  }
+
   getAmount() {
     if (this.magicalBeing1 !== undefined) {
       let startAmount = 7 - Math.floor(this.magicalBeing1.victories / 5);
@@ -156,6 +165,11 @@ export class TrainingComponent implements OnInit {
     this.validateAnimal.next(true);
   }
 
+  getMelee(melee: HpMelee){
+    this.melee = new FormControl(melee);
+    this.validateMelee.next(true);
+  }
+
   gotoSpellDetail(attackId: number) {
     this.ms.sendAttackId(attackId);
     const url = 'spelldetail/' + attackId;
@@ -171,6 +185,12 @@ export class TrainingComponent implements OnInit {
   gotoAnimalDetail(animalId: number) {
     this.ms.sendAnimalId(animalId);
     const url = 'animaldetail/' + animalId;
+    window.open(url);
+  }
+
+  gotoMeleeDetail(meleeId: number) {
+    this.ms.sendAnimalId(meleeId);
+    const url = 'meleedetail/' + meleeId;
     window.open(url);
   }
 
@@ -235,6 +255,36 @@ export class TrainingComponent implements OnInit {
 
     this.checkWinOrLoss(defendMagicalBeing);
     attackMagicalBeing.energy = Math.round(attackMagicalBeing.energy * 10) / 10;
+  }
+
+  executeMelee(
+    attackMagicalBeing: HpMagicalBeing,
+    defendMagicalBeing: HpMagicalBeing,
+    defender: boolean
+  ) {
+    this.preparation(attackMagicalBeing);
+    if (!attackMagicalBeing.conditions[1].condition) {
+      attackMagicalBeing.energy =
+        attackMagicalBeing.energy - this.melee.value.energyUsage;
+
+      this.getDamage(
+        attackMagicalBeing,
+        defendMagicalBeing,
+        this.melee.value.maxDamage,
+        false
+      );
+
+      this.formattingStunnedAndConfunded(defendMagicalBeing);
+      this.confunded(defendMagicalBeing);
+      this.stunned(defendMagicalBeing);
+    } else {
+      alert(
+        attackMagicalBeing.name +
+          ' has been stunned and cannot attack this round!'
+      );
+    }
+
+    this.checkWinOrLoss(defendMagicalBeing);
   }
 
   preparation(attackMagicalBeing: HpMagicalBeing) {
@@ -343,6 +393,8 @@ export class TrainingComponent implements OnInit {
       this.trainingVictories = this.trainingVictories + 1;
       this.chosenOption = '';
       this.spell = new FormControl('');
+      this.animal = new FormControl('');
+      this.melee = new FormControl('');
       this.showDetails.next(false);
       this.showSuccesDuell.next(true);
       this.beforeStart();
@@ -359,7 +411,7 @@ export class TrainingComponent implements OnInit {
   }
 
   stunned(defendMagicalBeing: HpMagicalBeing) {
-    if (Math.random() > 0.5 && this.spell.value.stunned) {
+    if (Math.random() > 0.5 && (this.spell.value.stunned || this.melee.value.stunned)) {
       if (defendMagicalBeing.stunnedProtection === 0) {
         defendMagicalBeing.conditions[1].condition = true;
         console.log('Stunned');
@@ -370,7 +422,7 @@ export class TrainingComponent implements OnInit {
   }
 
   confunded(defendMagicalBeing: HpMagicalBeing) {
-    if (Math.random() > 0.5 && this.spell.value.confunded) {
+    if (Math.random() > 0.5 && (this.spell.value.confunded || this.melee.value.confunded)) {
       if (defendMagicalBeing.confundedProtection === 0) {
         defendMagicalBeing.conditions[0].condition = true;
         console.log('Confunded');

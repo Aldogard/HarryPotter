@@ -78,8 +78,9 @@ Weitere Aufgaben:
 	Nummerierung des Schachbretts --> Erledigt
 	Sondereffekt für Riesen! --> Erledigt --> Immun gegen Spell Effekte 
 	Commtent und Rating Ansicht verbessern (Buttons)
-	Booleans für die Umgebungen einbauen
+	Booleans für die Umgebungen einbauen --> Erledigt
 	Effekte für Umgebungen
+	Melee Training
 	Hoover für hint anschauen --> Erledigt
 	
 

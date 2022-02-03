@@ -13,6 +13,7 @@
         <button class="formButton" (click)="showSpell()">Spells</button>
         <button class="formButton" (click)="showPotion()">Potions</button>
         <button class="formButton" (click)="showAnimal()">Animals</button>
+        <button class="formButton" (click)="showMelee()" *ngIf="magicalBeing1.species === 'Giant'">Melee</button>
       </div>
 
       <div
@@ -82,6 +83,16 @@
             {{ remainingMoves }}
             <a *ngIf="remainingMoves !== 1">Animal deployments </a>
             <a *ngIf="remainingMoves === 1">Animal deployment </a>
+            remaining to defeat the Dummy.
+          </h2>
+        </ng-container>
+        <ng-container *ngIf="chosenOption === 'melee'">
+          <br />
+          <h2 class="centered gold">
+            {{ magicalBeing1.name }} is fighting against the Dummy and has
+            {{ remainingMoves }}
+            <a *ngIf="remainingMoves !== 1">attacks </a>
+            <a *ngIf="remainingMoves === 1">attack </a>
             remaining to defeat the Dummy.
           </h2>
         </ng-container>
@@ -436,6 +447,70 @@
             <button
               class="formButton"
               (click)="useAnimal(magicalBeing1, dummy, true)"
+            >
+              Yes
+            </button>
+          </p>
+        </div>
+      </ng-container>
+
+      <br/>
+      <ng-container *ngIf="chosenOption === 'melee'">
+        <div class="col-md-12 col-lg-12">
+          <h2 class="gold">Please choose a melee:</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Energy Usage</th>
+                <th>Max Damage</th>
+                <th>Stunned</th>
+                <th>Confound</th>
+                <th>Experience</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tr>
+              <td></td>
+            </tr>
+            <tbody>
+              <tr *ngFor="let melee of magicalBeing1.melees">
+                <td>{{ melee.name }}</td>
+                <td>{{ melee.energyUsage }}</td>
+                <td>{{ melee.maxDamage }}</td>
+                <td>{{ melee.stunned }}</td>
+                <td>{{ melee.confunded }}</td>
+                <td>{{ melee.requiredExperience }}</td>
+                <td>
+                  <button
+                    class="formButtonColumn"
+                    (click)="getMelee(melee)"
+                    [disabled]="
+                      magicalBeing1.energy - melee.energyUsage < 0 ||
+                      magicalBeing1.victories < melee.requiredExperience
+                    "
+                  >
+                    Select
+                  </button>
+                  <button
+                    class="formButtonColumn"
+                    (click)="gotoMeleeDetail(melee.id)"
+                  >
+                    Details
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p
+            *ngIf="validateMelee.value && chosenOption === 'melee'"
+            class="centered"
+          >
+            Do you want to use {{ spell.value.name }} to attack
+            {{ dummy.name }}?
+            <button
+              class="formButton"
+              (click)="executeMelee(magicalBeing1, dummy, true)"
             >
               Yes
             </button>
