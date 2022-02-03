@@ -56,6 +56,9 @@ public class PotionServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), potion.getMaxDamage());
         assertEquals(BigDecimal.valueOf(1.0), potion.getAdditionalFactor());
         assertEquals(0, potion.getRequiredExperience());
+        assertFalse(potion.getWater());
+        assertFalse(potion.getForest());
+        assertFalse(potion.getCastle());
     }
 
     @Test
@@ -71,6 +74,9 @@ public class PotionServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), potion.getMaxDamage());
         assertEquals(BigDecimal.valueOf(1.5), potion.getAdditionalFactor());
         assertEquals(5, potion.getRequiredExperience());
+        assertFalse(potion.getWater());
+        assertFalse(potion.getForest());
+        assertFalse(potion.getCastle());
     }
 
     @Test
@@ -86,6 +92,9 @@ public class PotionServiceTest {
         assertEquals(BigDecimal.valueOf(10.0), potion.getMaxDamage());
         assertEquals(BigDecimal.valueOf(1.0), potion.getAdditionalFactor());
         assertEquals(5, potion.getRequiredExperience());
+        assertFalse(potion.getWater());
+        assertFalse(potion.getForest());
+        assertFalse(potion.getCastle());
     }
 
     @Test
@@ -103,6 +112,9 @@ public class PotionServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), potion.getMaxDamage());
         assertEquals(BigDecimal.valueOf(1.0), potion.getAdditionalFactor());
         assertEquals(0, potion.getRequiredExperience());
+        assertFalse(potion.getWater());
+        assertFalse(potion.getForest());
+        assertFalse(potion.getCastle());
     }
 
     @Test
@@ -120,6 +132,9 @@ public class PotionServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), potion.getMaxDamage());
         assertEquals(BigDecimal.valueOf(1.0), potion.getAdditionalFactor());
         assertEquals(0, potion.getRequiredExperience());
+        assertFalse(potion.getWater());
+        assertFalse(potion.getForest());
+        assertFalse(potion.getCastle());
     }
 
     @Test
@@ -140,6 +155,9 @@ public class PotionServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), potion.getMaxDamage());
         assertEquals(BigDecimal.valueOf(1.0), potion.getAdditionalFactor());
         assertEquals(10, potion.getRequiredExperience());
+        assertFalse(potion.getWater());
+        assertFalse(potion.getForest());
+        assertFalse(potion.getCastle());
     }
 
     @Test
@@ -160,6 +178,9 @@ public class PotionServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), potion.getMaxDamage());
         assertEquals(BigDecimal.valueOf(1.0), potion.getAdditionalFactor());
         assertEquals(15, potion.getRequiredExperience());
+        assertFalse(potion.getWater());
+        assertFalse(potion.getForest());
+        assertFalse(potion.getCastle());
     }
 
     @Test
@@ -180,6 +201,9 @@ public class PotionServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), potion.getMaxDamage());
         assertEquals(BigDecimal.valueOf(1.0), potion.getAdditionalFactor());
         assertEquals(3, potion.getRequiredExperience());
+        assertFalse(potion.getWater());
+        assertFalse(potion.getForest());
+        assertFalse(potion.getCastle());
     }
 
     @Test
@@ -195,6 +219,9 @@ public class PotionServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), potion.getMaxDamage());
         assertEquals(BigDecimal.valueOf(1.25), potion.getAdditionalFactor());
         assertEquals(0, potion.getRequiredExperience());
+        assertFalse(potion.getWater());
+        assertFalse(potion.getForest());
+        assertFalse(potion.getCastle());
     }
 
 

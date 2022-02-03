@@ -24,6 +24,9 @@ public class SpellTest {
                 false,
                 false,
                 false,
+                false,
+                false,
+                false,
                 2,
                 test,
                 "Powerful");
@@ -43,6 +46,9 @@ public class SpellTest {
         assertFalse(spell.getFiendfyre());
         assertFalse(spell.getAntiFiendfyre());
         assertEquals(test, spell.getMagicalBeing());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
 
     }
 }

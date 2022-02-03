@@ -300,6 +300,8 @@ public class AnimalServiceTest {
         assertFalse(animal.getNiffler());
         assertTrue(animal.getWater());
         assertFalse(animal.getForest());
+        assertFalse(animal.getCastle());
+
     }
 
     @Test
@@ -319,6 +321,8 @@ public class AnimalServiceTest {
         assertFalse(animal.getNiffler());
         assertTrue(animal.getWater());
         assertFalse(animal.getForest());
+        assertFalse(animal.getCastle());
+
     }
 
     @Test
@@ -338,6 +342,8 @@ public class AnimalServiceTest {
         assertFalse(animal.getNiffler());
         assertTrue(animal.getWater());
         assertFalse(animal.getForest());
+        assertFalse(animal.getCastle());
+
     }
 
     @Test
@@ -357,6 +363,8 @@ public class AnimalServiceTest {
         assertFalse(animal.getNiffler());
         assertTrue(animal.getWater());
         assertFalse(animal.getForest());
+        assertFalse(animal.getCastle());
+
     }
 
     @Test
@@ -376,5 +384,7 @@ public class AnimalServiceTest {
         assertFalse(animal.getNiffler());
         assertTrue(animal.getWater());
         assertFalse(animal.getForest());
+        assertFalse(animal.getCastle());
+
     }
 }

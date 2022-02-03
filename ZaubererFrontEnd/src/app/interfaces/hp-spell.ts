@@ -13,4 +13,7 @@ export interface HpSpell {
     fiendfyre: boolean,
     antiFiendfyre: boolean,
     requiredExperience: number,
+    water: boolean,
+    forest: boolean,
+    castle: boolean,
 }

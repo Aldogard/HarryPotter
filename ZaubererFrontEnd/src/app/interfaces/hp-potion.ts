@@ -12,6 +12,9 @@ export interface HpPotion {
     maxDamage: number,
     additionalFactor: number,
     requiredExperience: number,
+    water: boolean,
+    forest: boolean,
+    castle: boolean,
 
     
 }

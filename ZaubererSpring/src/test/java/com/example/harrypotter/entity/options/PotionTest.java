@@ -24,6 +24,9 @@ public class PotionTest {
                 false,
                 2.0,
                 1.5,
+                false,
+                false,
+                false,
                 3,
                 test,
                 "Rare");
@@ -43,6 +46,9 @@ public class PotionTest {
         assertFalse(potion.getUnicornBlood());
         assertEquals(BigDecimal.valueOf(1.5), potion.getAdditionalFactor());
         assertEquals(test, potion.getMagicalBeing());
+        assertFalse(potion.getWater());
+        assertFalse(potion.getForest());
+        assertFalse(potion.getCastle());
 
     }
 

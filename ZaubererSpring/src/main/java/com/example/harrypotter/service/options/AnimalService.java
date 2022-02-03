@@ -32,6 +32,7 @@ public class AnimalService {
                 false,
                 false,
                 false,
+                false,
                 magicalBeing,
                 "Fascinating creatures, phoenixes. They can carry immensely heavy loads, " +
                         "their tears have healing powers, and they make highly faithful pets."
@@ -46,6 +47,7 @@ public class AnimalService {
                 0,
                 0.0,
                 0.1,
+                false,
                 false,
                 false,
                 false,
@@ -67,6 +69,7 @@ public class AnimalService {
                 false,
                 false,
                 false,
+                false,
                 magicalBeing,
                 "Of the many fearsome beasts and monsters that roam our land, " +
                         "there is none more curious or more deadly than the Basilisk, " +
@@ -85,6 +88,7 @@ public class AnimalService {
                 false,
                 false,
                 false,
+                false,
                 magicalBeing,
                 "A poisonous duck is some sort of magical creature bred at the British Ministry of Magic."
         ));
@@ -98,6 +102,7 @@ public class AnimalService {
                 0,
                 0.0,
                 0.0,
+                false,
                 false,
                 false,
                 false,
@@ -118,6 +123,7 @@ public class AnimalService {
                 false,
                 false,
                 false,
+                false,
                 magicalBeing,
                 "Supposedly the most dangerous of all dragon breeds, " +
                         "the Hungarian Horntail has black scales and is lizard-like in appearance."
@@ -135,6 +141,7 @@ public class AnimalService {
                 false,
                 false,
                 false,
+                false,
                 magicalBeing,
                 "Despite its name, the Fire Crab greatly resembles a large tortoise with a heavily jewelled shell."
         ));
@@ -148,6 +155,7 @@ public class AnimalService {
                 10,
                 0.0,
                 0.0,
+                false,
                 false,
                 false,
                 false,
@@ -169,6 +177,7 @@ public class AnimalService {
                 false,
                 false,
                 false,
+                false,
                 magicalBeing,
                 "Half horse, half eagle creatures, immensely proud and extremely dangerous."
         ));
@@ -185,6 +194,7 @@ public class AnimalService {
                 true,
                 false,
                 false,
+                false,
                 magicalBeing,
                 "Long-snouted, burrowing creatures native to Britain with a penchant for anything shiny."
         ));
@@ -198,6 +208,7 @@ public class AnimalService {
                 20,
                 0.0,
                 0.0,
+                false,
                 false,
                 false,
                 false,
@@ -219,6 +230,7 @@ public class AnimalService {
                 false,
                 false,
                 false,
+                false,
                 magicalBeing,
                 "A troll is a magical beast of prodigious strength and immense stupidity. " +
                         "In fact, they are so synonymous with stupidity that they actually " +
@@ -237,6 +249,7 @@ public class AnimalService {
                 false,
                 false,
                 true,
+                false,
                 magicalBeing,
                 "Spiders. Not tiny spiders like those surging over the leaves below. " +
                         "Spiders the size of carthorses, eight-eyed, eight-legged, black, hairy, gigantic."
@@ -253,6 +266,7 @@ public class AnimalService {
                 0.0,
                 false,
                 true,
+                false,
                 false,
                 magicalBeing,
                 "A sickly green creature with sharp little horns had its face pressed against the glass, " +
@@ -272,6 +286,7 @@ public class AnimalService {
                 false,
                 true,
                 false,
+                false,
                 magicalBeing,
                 "Creepy water-dwellers that looked like scaly monkeys, " +
                         "with webbed hands itching to strangle unwitting waders in their ponds"
@@ -289,6 +304,7 @@ public class AnimalService {
                 0.0,
                 false,
                 true,
+                false,
                 false,
                 magicalBeing,
                 "Lurks in rivers and streams and will kneel in invitation for anyone to ride it across. " +
@@ -308,6 +324,7 @@ public class AnimalService {
                 false,
                 true,
                 false,
+                false,
                 magicalBeing,
                 "The oldest recorded merpeople were known as sirens (Greece) and " +
                         "it is in warmer waters that we find the beautiful mermaids " +
@@ -325,6 +342,7 @@ public class AnimalService {
                 0.0,
                 false,
                 true,
+                false,
                 false,
                 magicalBeing,
                 "The Selma is a gigantic serpent native to the icy freshwater lakes of Norway. " +

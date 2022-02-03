@@ -39,6 +39,15 @@ public class Potion extends Options{
     @Column(name = "additional_factor")
     private BigDecimal additionalFactor;
 
+    @Column(name = "water")
+    private Boolean water;
+
+    @Column(name = "forest")
+    private Boolean forest;
+
+    @Column(name = "castle")
+    private Boolean castle;
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "magicalBeing_id")
@@ -76,6 +85,9 @@ public class Potion extends Options{
             Boolean unicornBlood,
             Double maxDamage,
             Double additionalFactor,
+            Boolean water,
+            Boolean forest,
+            Boolean castle,
             Integer requiredExperience,
             MagicalBeing magicalBeing,
             String description) {
@@ -89,6 +101,9 @@ public class Potion extends Options{
         this.unicornBlood = unicornBlood;
         this.additionalFactor = BigDecimal.valueOf(additionalFactor);
         this.magicalBeing = magicalBeing;
+        this.water = water;
+        this.forest = forest;
+        this.castle = castle;
 
     }
 

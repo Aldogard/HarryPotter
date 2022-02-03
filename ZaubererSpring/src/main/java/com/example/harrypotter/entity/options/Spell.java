@@ -41,6 +41,15 @@ public class Spell extends Options {
     @Column(name = "anti_fiendfyre")
     private Boolean antiFiendfyre;
 
+    @Column(name = "water")
+    private Boolean water;
+
+    @Column(name = "forest")
+    private Boolean forest;
+
+    @Column(name = "castle")
+    private Boolean castle;
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "magicalBeing_id")
@@ -78,6 +87,9 @@ public class Spell extends Options {
             Boolean protego,
             Boolean fiendfyre,
             Boolean antiFiendfyre,
+            Boolean water,
+            Boolean forest,
+            Boolean castle,
             Integer requiredExperience,
             MagicalBeing magicalBeing,
             String description) {
@@ -92,6 +104,9 @@ public class Spell extends Options {
         this.fiendfyre = fiendfyre;
         this.antiFiendfyre = antiFiendfyre;
         this.magicalBeing = magicalBeing;
+        this.water = water;
+        this.forest = forest;
+        this.castle = castle;
     }
 
 

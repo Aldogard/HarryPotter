@@ -13,7 +13,7 @@ public class OptionsTest {
     @Test
     public void testOptions(){
         Dumbledore test = new Dumbledore("TestW", BigDecimal.valueOf(4), "Neutral");
-        Spell spell = new Spell("testO", 1.0, 1.0, 0.5, false, false, false, false, false, false, false, 1, test, "Strong");
+        Spell spell = new Spell("testO", 1.0, 1.0, 0.5, false, false, false, false, false, false, false, false, false, false, 1, test, "Strong");
         assertNotNull(spell);
         assertEquals("testO", spell.getName());
         assertEquals(BigDecimal.valueOf(1.0), spell.getEnergyUsage());

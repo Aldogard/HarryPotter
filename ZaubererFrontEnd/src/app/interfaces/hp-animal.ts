@@ -10,4 +10,5 @@ export interface HpAnimal {
     niffler: boolean,
     water: boolean,
     forest: boolean,
+    castle: boolean,
 }

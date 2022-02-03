@@ -26,6 +26,9 @@ public class PotionService {
                 false,
                 0.0,
                 1.0,
+                false,
+                false,
+                false,
                 0,
                 magicalBeing,
                 "A potion that heals paralysis."));
@@ -44,6 +47,9 @@ public class PotionService {
                 false,
                 0.0,
                 1.5,
+                false,
+                false,
+                false,
                 5,
                 magicalBeing,
                 "A potion that apparently increases the taker's brain power."));
@@ -61,6 +67,9 @@ public class PotionService {
                 false,
                 10.0,
                 1.0,
+                false,
+                false,
+                false,
                 5,
                 magicalBeing,
                 "A very volatile potion, and when completed, can be used to create explosions."));
@@ -78,6 +87,9 @@ public class PotionService {
                 false,
                 0.0,
                 1.0,
+                false,
+                false,
+                false,
                 0,
                 magicalBeing,
                 "This potion was extremely useful when duelling Dark MagicalBeings or dark creatures " +
@@ -96,6 +108,9 @@ public class PotionService {
                 false,
                 0.0,
                 1.0,
+                false,
+                false,
+                false,
                 0,
                 magicalBeing,
                 "A potion that is presumed to give the taker an energy boost."));
@@ -113,6 +128,9 @@ public class PotionService {
                 true,
                 0.0,
                 1.0,
+                false,
+                false,
+                false,
                 10,
                 magicalBeing,
                 "The blood of a unicorn could be drunk in order to keep a person alive. " +
@@ -133,6 +151,9 @@ public class PotionService {
                 false,
                 0.0,
                 1.0,
+                false,
+                false,
+                false,
                 15,
                 magicalBeing,
                 "Helps restore non-corporeal magicalBeings to their bodies. " +
@@ -152,6 +173,9 @@ public class PotionService {
                 false,
                 0.0,
                 1.0,
+                false,
+                false,
+                false,
                 3,
                 magicalBeing,
                 "Presumably enhances the clarity of thought of the drinker."
@@ -170,6 +194,9 @@ public class PotionService {
                 false,
                 0.0,
                 1.25,
+                false,
+                false,
+                false,
                 0,
                 magicalBeing,
                 "Boosts the spell power of the drinker."));

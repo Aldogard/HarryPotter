@@ -50,6 +50,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue(UtilOptions.allFalse(spell));
         assertEquals(0, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -66,6 +69,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue(UtilOptions.allFalseExceptStunned(spell));
         assertEquals(5, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -82,6 +88,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue(UtilOptions.allFalseExceptConfunded(spell));
         assertEquals(0, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -98,6 +107,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue(UtilOptions.allFalse(spell));
         assertEquals(0, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -114,6 +126,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue(UtilOptions.allFalseExceptStunned(spell));
         assertEquals(0, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -130,6 +145,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue(UtilOptions.allFalse(spell));
         assertEquals(10, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -146,6 +164,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue(UtilOptions.allFalseExceptConfunded(spell));
         assertEquals(3, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -162,6 +183,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue(UtilOptions.allFalse(spell));
         assertEquals(25, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -184,6 +208,9 @@ class SpellServiceTest {
                 !spell.getFiendfyre() &&
                 !spell.getAntiFiendfyre());
         assertEquals(15, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -206,6 +233,9 @@ class SpellServiceTest {
                 !spell.getFiendfyre() &&
                 !spell.getAntiFiendfyre());
         assertEquals(20, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
     @Test
     public void testCreateProtego() {
@@ -227,6 +257,9 @@ class SpellServiceTest {
                 !spell.getFiendfyre() &&
                 !spell.getAntiFiendfyre());
         assertEquals(5, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -249,6 +282,9 @@ class SpellServiceTest {
                 spell.getFiendfyre() &&
                 !spell.getAntiFiendfyre());
         assertEquals(20, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -271,6 +307,9 @@ class SpellServiceTest {
                 !spell.getFiendfyre() &&
                 spell.getAntiFiendfyre());
         assertEquals(25, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -287,6 +326,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue( UtilOptions.allFalse(spell));
         assertEquals(15, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -303,6 +345,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue( UtilOptions.allFalse(spell));
         assertEquals(15, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertTrue(spell.getCastle());
     }
 
     @Test
@@ -319,6 +364,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.8), spell.getHealing());
         assertTrue( UtilOptions.allFalse(spell));
         assertEquals(15, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -335,6 +383,9 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.0), spell.getHealing());
         assertTrue( UtilOptions.allFalseExceptStunned(spell));
         assertEquals(1, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 
     @Test
@@ -351,5 +402,8 @@ class SpellServiceTest {
         assertEquals(BigDecimal.valueOf(0.1), spell.getHealing());
         assertTrue( UtilOptions.allFalse(spell));
         assertEquals(1, spell.getRequiredExperience());
+        assertFalse(spell.getWater());
+        assertFalse(spell.getForest());
+        assertFalse(spell.getCastle());
     }
 }

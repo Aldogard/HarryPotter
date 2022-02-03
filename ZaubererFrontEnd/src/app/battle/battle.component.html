@@ -492,7 +492,7 @@
                         (click)="getSpell(spell)"
                         [disabled]="
                           magicalBeing2.energy - spell.energyUsage < 0 ||
-                          (spell.name === 'Piertotum Locomotor' &&
+                          (spell.castle &&
                             (environment !== 'Main Gate' ||
                               magicalBeing2.ptCounter > 0)) ||
                           magicalBeing2.victories < spell.requiredExperience
@@ -775,7 +775,7 @@
                         (click)="getSpell(spell)"
                         [disabled]="
                           magicalBeing1.energy - spell.energyUsage < 0 ||
-                          (spell.name === 'Piertotum Locomotor' &&
+                          (spell.castle &&
                             (environment !== 'Main Gate' ||
                               magicalBeing1.ptCounter > 0)) ||
                           magicalBeing1.victories < spell.requiredExperience
