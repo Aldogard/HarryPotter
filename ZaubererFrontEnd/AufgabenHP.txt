@@ -79,8 +79,8 @@ Weitere Aufgaben:
 	Sondereffekt für Riesen! --> Erledigt --> Immun gegen Spell Effekte 
 	Commtent und Rating Ansicht verbessern (Buttons)
 	Booleans für die Umgebungen einbauen --> Erledigt
-	Effekte für Umgebungen
-	Melee Training
+	Effekte für Umgebungen --> Spells etc anpassen
+	Melee Training --> Erledigt
 	Hoover für hint anschauen --> Erledigt
 	
 
@@ -97,7 +97,7 @@ Nice to have:
 	Anzahl von Verteidigern und Angreifern variabel halten --> Potenziell sehr aufwendig
 	updateVictories und updateRating nochmal angucken --> Erledigt --> aufpassen falls update erweitert wird
 	Tests für Controller
-	Wizard zu Magical Being umändern
+	Wizard zu Magical Being umändern --> Erledigt
 	Quiz
 	Login
 	Training: Gegner besiegen nur mit bestimmten Spells

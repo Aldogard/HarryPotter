@@ -32,6 +32,8 @@ import { InformationComponent } from './information/information.component';
 import { SelectionComponent } from './selection/selection.component';
 import { DetailsMeleeComponent } from './details-melee/details-melee.component';
 import { OverviewMeleeComponent } from './overview-melee/overview-melee.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { WarmupComponent } from './warmup/warmup.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { OverviewMeleeComponent } from './overview-melee/overview-melee.componen
     SelectionComponent,
     DetailsMeleeComponent,
     OverviewMeleeComponent,
+    QuizComponent,
+    WarmupComponent,
   ],
   imports: [
     BrowserModule,

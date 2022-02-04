@@ -26,6 +26,8 @@ import { InformationComponent } from './information/information.component';
 import { SelectionComponent } from './selection/selection.component';
 import { DetailsMeleeComponent } from './details-melee/details-melee.component';
 import { OverviewMeleeComponent } from './overview-melee/overview-melee.component';
+import { WarmupComponent } from './warmup/warmup.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -59,6 +61,8 @@ const routes: Routes = [
   { path: 'preparation', component: PreparationComponent },
   { path: 'information', component: InformationComponent },
   { path: 'selection', component: SelectionComponent },
+  { path: 'warmup', component: WarmupComponent },
+  { path: 'quiz', component: QuizComponent },
 
 ];
 
