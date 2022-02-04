@@ -18,7 +18,7 @@ public class AnswerTest {
 
         assertNotNull(answer);
         assertEquals("Sirius Black", answer.getAnswer());
-        assertTrue(answer.correct);
+        assertTrue(answer.getCorrect());
         assertEquals(question, answer.getQuestion());
     }
 }
