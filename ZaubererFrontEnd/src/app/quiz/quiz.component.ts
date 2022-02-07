@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from '../interfaces/hp-question';
+import { HpQuestion } from '../interfaces/hp-question';
+import { MessageService } from '../services/message.service';
 import { QuizService } from '../services/quiz.service';
 
 @Component({
@@ -8,9 +9,10 @@ import { QuizService } from '../services/quiz.service';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  questions: Question[] = [];
+  questions: HpQuestion[] = [];
+  show = this.ms.showQuiz.value;
 
-  constructor(private qs: QuizService) { }
+  constructor(private qs: QuizService, private ms: MessageService) { }
 
   ngOnInit(): void {
     this.qs.getQuestions().subscribe(q => {

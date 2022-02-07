@@ -7,13 +7,15 @@ import com.example.harrypotter.repo.quiz.QuestionRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class QuizService {
     private QuestionRepo questionRepo;
     private AnswerRepo answerRepo;
 
-    public void createAllQuestions(){
+    public List<Question> createAllQuestions(){
         createQuestionRonAndHermione();
         createTroll();
         createChristmasOP();
@@ -43,6 +45,8 @@ public class QuizService {
         createAttributeBlastEndedSkrewts();
         createWhatDidHagridTryToRaise();
         createThestralEyes();
+
+        return questionRepo.findAll();
 
     }
 

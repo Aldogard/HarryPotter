@@ -20,6 +20,7 @@ export class MessageService  {
   magicalBeing?: HpMagicalBeing;
   participants = new BehaviorSubject<HpMagicalBeing[]>([]);
   showTraining = new BehaviorSubject<boolean>(false);
+  showQuiz = new BehaviorSubject<boolean>(false);
   
 
   constructor() { }
@@ -76,6 +77,9 @@ export class MessageService  {
     this.showTraining.next(show);
   }
 
+  sendShowQuiz(show: boolean){
+    this.showQuiz.next(show);
+  }
 
 
 

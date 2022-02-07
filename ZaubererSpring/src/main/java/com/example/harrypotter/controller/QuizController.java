@@ -23,12 +23,15 @@ public class QuizController {
     private AnswerRepo answerRepo;
 
     @GetMapping("")
-    @ResponseBody
     public ResponseEntity<List<Question>> getAllQuestions() {
-        quizService.createAllQuestions();
         return new ResponseEntity<>(questionRepo.findAll(), HttpStatus.OK);
     }
 
+    @PostMapping("")
+    public ResponseEntity<List<Question>> postAllQuestions() {
+        return new ResponseEntity<>(quizService.createAllQuestions(), HttpStatus.OK);
+    }
+    
     @DeleteMapping("")
     public ResponseEntity<Void> deleteAllQuestions() {
         questionRepo.deleteAll();

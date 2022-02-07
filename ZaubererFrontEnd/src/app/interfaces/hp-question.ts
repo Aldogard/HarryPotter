@@ -1,7 +1,7 @@
-import { Answer } from "./hp-answer";
+import { HpAnswer } from "./hp-answer";
 
-export interface Question {
+export interface HpQuestion {
     id: number,
     question: string,
-    answers: Answer[],
+    answers: HpAnswer[],
 }

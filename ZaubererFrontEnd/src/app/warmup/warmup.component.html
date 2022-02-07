@@ -1,6 +1,76 @@
 <div class="header gold pt-lg-3 sticky-top">
   <h1 class="headerwarmup headertext">Warm Up</h1>
 </div>
-<ul>
-    <li *ngFor="let q of randomQuestions">{{q.question}}</li>
-</ul>
+
+<div class="middle">
+  <br />
+  In order to proceed to the Quiz, 2 out of 3 questions have to be answered
+  correctly.
+</div>
+<div class="container" *ngIf="question !== undefined">
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-9">
+        <ng-container *ngIf="questionsRemaining > 0">
+          <h2 class="gold middle">
+            {{ question.question }}
+          </h2>
+          <ng-container *ngIf="!correct.value && !notCorrect.value">
+            <a *ngFor="let answer of question.answers">
+              <input
+                class="link"
+                id="rate_{{ answer.answer }}"
+                value="{{ answer.answer }}"
+                type="radio"
+                name="radio"
+                [formControl]="chosenAnswer"
+              />
+              <label for="rate_{{ answer.answer }}" class="link">{{
+                answer.answer
+              }}</label
+              >&nbsp;&nbsp;
+              <br />
+            </a>
+            <br />
+            <div class="middle" *ngIf="chosenAnswer.value !== ''">
+              Do you want to choose '{{ chosenAnswer.value }}'?
+              <button class="formButton" (click)="checkAnswer()">Yes</button>
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="correct.value">
+          <br/>
+          <h2 class="middle">The Answer is correct!</h2>
+        </ng-container>
+        <ng-container *ngIf="notCorrect.value">
+          <br/>
+          <h2 class="middle">The Answer is not correct!</h2>
+        </ng-container>
+
+        <ng-container *ngIf="questionsRemaining === 0 && !correct.value && !notCorrect.value" >
+        <div *ngIf="correctAnswers > 1" class="middle">
+          <h2 class="gold">
+            Congratulations. You answered {{ correctAnswers }} questions
+            correctly. You may proceed to the Quiz.
+          </h2>
+          <button class="formButton" (click)="gotoQuiz()">Go to Quiz</button>
+        </div>
+        <div  *ngIf="correctAnswers < 2" class="middle">
+          <h2 class="gold">
+            You did not answer enough questions correctly. Please try again.
+          </h2>
+          <button class="formButton" (click)="gotoWarmup()">Try again</button>
+        </div>
+        </ng-container>
+      </div>
+
+      <div class="col-lg-3">
+        <br/>
+        <a>Correct answers: {{ correctAnswers }}</a>
+        <br/>
+        <a>Questions remaining: {{ questionsRemaining }}</a>
+      </div>
+    </div>
+  </div>
+</div>

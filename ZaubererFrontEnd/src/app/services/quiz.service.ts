@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Question } from '../interfaces/hp-question';
+import { HpQuestion } from '../interfaces/hp-question';
 
 const url: string = 'http://localhost:8080/quiz';
 
@@ -12,11 +12,15 @@ export class QuizService {
   constructor(private http: HttpClient) {}
 
   getQuestions(){
-    return this.http.get<Question[]>(url);
+    return this.http.get<HpQuestion[]>(url);
   }
 
   deleteQuestions(){
     return this.http.delete(url);
+  }
+
+  postQuestion(){
+    return this.http.post(url, null);
   }
 
 }

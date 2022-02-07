@@ -1,4 +1,4 @@
-export interface Answer {
+export interface HpAnswer {
     id: number,
     answer: string,
     correct: boolean,
