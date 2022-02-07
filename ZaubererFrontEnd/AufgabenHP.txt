@@ -77,15 +77,16 @@ Weitere Aufgaben:
 	Weitere Kreaturen --> Erledigt
 	Nummerierung des Schachbretts --> Erledigt
 	Sondereffekt für Riesen! --> Erledigt --> Immun gegen Spell Effekte 
-	Commtent und Rating Ansicht verbessern (Buttons)
 	Booleans für die Umgebungen einbauen --> Erledigt
-	Effekte für Umgebungen --> Spells etc anpassen
 	Melee Training --> Erledigt
 	Hoover für hint anschauen --> Erledigt
-	
 
-Angular Testing!
-Design Patterns!
+Weitere Aufgaben:
+	Effekte für Umgebungen --> Spells etc anpassen
+	Commtent und Rating Ansicht verbessern (Buttons)
+	Test für quizservice
+	Mehr (viel mehr) Fragen
+
 
 
 Nice to have:
@@ -102,6 +103,13 @@ Nice to have:
 	Login
 	Training: Gegner besiegen nur mit bestimmten Spells
 	Ansicht search button
+
+	Design Patterns!
+		Kurs
+		Implementierung
+	Angular Testing! 
+		Implementierung
+
 
 
  
