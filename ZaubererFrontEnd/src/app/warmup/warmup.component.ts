@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+import { HpAnswer } from '../interfaces/hp-answer';
 import { HpQuestion } from '../interfaces/hp-question';
 import { ExtraService } from '../services/extra.service';
 import { MessageService } from '../services/message.service';
@@ -14,11 +15,13 @@ import { QuizService } from '../services/quiz.service';
 export class WarmupComponent implements OnInit {
   question?: HpQuestion;
   randomQuestions: HpQuestion[] = [];
+  sendingQuestions: HpQuestion[] = [];
   chosenAnswer = new FormControl('');
   correct = new BehaviorSubject<boolean>(false);
   notCorrect = new BehaviorSubject<boolean>(false);
   correctAnswers: number = 0;
-  questionsRemaining: number = 3;
+  rounds: number = 3;
+  questionsRemaining = this.rounds;
 
   constructor(
     private qs: QuizService,
@@ -30,18 +33,19 @@ export class WarmupComponent implements OnInit {
     this.qs.postQuestion().subscribe((post) => {
       this.qs.getQuestions().subscribe((q) => {
         let sample = q;
-
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < this.rounds; i++) {
           let random = Math.floor(Math.random() * sample.length);
           this.randomQuestions.push(sample[random]);
+          this.sendingQuestions.push(sample[random]);
           sample.splice(random, 1);
         }
       });
     });
+
     setTimeout(() => {
       this.randomQuestion();
       this.qs.deleteQuestions().subscribe();
-    }, 700);
+    }, 2000);
   }
 
   randomQuestion() {
@@ -52,6 +56,7 @@ export class WarmupComponent implements OnInit {
     let random = Math.floor(Math.random() * this.randomQuestions.length);
     this.question = this.randomQuestions[random];
     this.randomQuestions.splice(random, 1);
+    this.question.answers = this.randomAnswers(this.question);
   }
 
   checkAnswer() {
@@ -83,8 +88,24 @@ export class WarmupComponent implements OnInit {
     }
   }
 
+  randomAnswers(question: HpQuestion) {
+    let randonAnswer: HpAnswer[] = [];
+    const length = question.answers.length;
+    for (var i = 0; i < length; i++) {
+      const random = Math.floor(Math.random() * question.answers.length);
+      randonAnswer.push(question.answers[random]);
+      question.answers.splice(random, 1);
+    }
+
+    return randonAnswer;
+  }
+
   gotoQuiz() {
     this.ms.sendShowQuiz(true);
+    this.ms.sendChosenQuestions(this.sendingQuestions);
+    console.log(this.sendingQuestions)
+    console.log(this.ms.chosenQuestions.value);
+    console.log("end")
     this.extraService.redirectTo('quiz');
   }
 

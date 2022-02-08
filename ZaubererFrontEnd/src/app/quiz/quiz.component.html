@@ -1,7 +1,112 @@
 <div class="header gold pt-lg-3 sticky-top">
-    <h1 class="headerquiz headertext">Quiz</h1>
-  </div>
+  <h1 class="headerquiz headertext">Quiz</h1>
+</div>
 
-  <ng-container *ngIf="show">
-    Test
-  </ng-container>
+<div class="middle">
+  <br />
+  <a>15 difficult questions are waiting to be answered. Good Luck!</a>
+</div>
+<div class="container" *ngIf="question !== undefined">
+  <div class="container-fluid padding mt-5">
+    <div class="row padding">
+      <div class="col-md-12 col-lg-9">
+        <ng-container *ngIf="questionsRemaining > 0">
+          <h2 class="gold middle">
+            {{ question.question }}
+          </h2>
+          <ng-container *ngIf="!correct.value && !notCorrect.value">
+            <a *ngFor="let answer of question.answers">
+              <input
+                class="link"
+                id="rate_{{ answer.answer }}"
+                value="{{ answer.answer }}"
+                type="radio"
+                name="radio"
+                [formControl]="chosenAnswer"
+              />
+              <label for="rate_{{ answer.answer }}" class="link">{{
+                answer.answer
+              }}</label
+              >&nbsp;&nbsp;
+              <br />
+            </a>
+            <br />
+            <div class="middle" *ngIf="chosenAnswer.value !== ''">
+              Do you want to choose '{{ chosenAnswer.value }}'?
+              <button class="formButton" (click)="checkAnswer()">Yes</button>
+            </div>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="correct.value">
+          <br />
+          <h2 class="middle">The Answer is correct!</h2>
+        </ng-container>
+        <ng-container *ngIf="notCorrect.value">
+          <br />
+          <h2 class="middle">The Answer is not correct!</h2>
+        </ng-container>
+
+        <ng-container
+          *ngIf="
+            questionsRemaining === 0 && !correct.value && !notCorrect.value
+          "
+        >
+          <h2 class="gold middle" *ngIf="correctAnswers === 15">
+            Congratulations. If your duelling skills equal your wisdom, the
+            opponents will stand no chance.
+          </h2>
+          <h2
+            class="gold middle"
+            *ngIf="correctAnswers < 15 && correctAnswers > 11"
+          >
+            Chapeau. You truly know a thing or two about magic.
+          </h2>
+          <h2
+            class="gold middle"
+            *ngIf="correctAnswers < 12 && correctAnswers > 8"
+          >
+            Not Bad. There is still some room for improvement, but you have
+            solid knowledge.
+          </h2>
+          <h2
+            class="gold middle"
+            *ngIf="correctAnswers < 9 && correctAnswers > 5"
+          >
+            (Barely) Acceptable. Some time in the library definitly will not
+            harm you.
+          </h2>
+          <h2
+            class="gold middle"
+            *ngIf="correctAnswers < 6 && correctAnswers > 2"
+          >
+            Poor. Luckily for you, there are more important issues than exams
+            right now.
+          </h2>
+          <h2
+            class="gold middle"
+            *ngIf="correctAnswers < 3 && correctAnswers > 0"
+          >
+            Embarrasing. Have you even read History of Magic?
+          </h2>
+          <h2 class="gold middle" *ngIf="correctAnswers === 0">
+            Troll. You just earned yourself a month of detention!
+          </h2>
+          <div class="middle">
+            <button class="gold formButton" (click)="gotoWarmup()">
+              Try again
+            </button>
+          </div>
+        </ng-container>
+      </div>
+
+      <div class="col-lg-3">
+        <a></a>
+        <br />
+        <a>Correct answers: {{ correctAnswers }}</a>
+        <br />
+        <a>Questions remaining: {{ questionsRemaining }}</a>
+      </div>
+    </div>
+  </div>
+</div>

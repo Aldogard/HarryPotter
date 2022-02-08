@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HpMagicalBeing } from '../interfaces/hp-magical-being';
+import { HpQuestion } from '../interfaces/hp-question';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class MessageService  {
   participants = new BehaviorSubject<HpMagicalBeing[]>([]);
   showTraining = new BehaviorSubject<boolean>(false);
   showQuiz = new BehaviorSubject<boolean>(false);
+  chosenQuestions = new BehaviorSubject<HpQuestion[]>([]);
   
 
   constructor() { }
@@ -80,6 +82,11 @@ export class MessageService  {
   sendShowQuiz(show: boolean){
     this.showQuiz.next(show);
   }
+
+  sendChosenQuestions(questions: HpQuestion[]){
+    this.chosenQuestions.next(questions);
+  }
+
 
 
 

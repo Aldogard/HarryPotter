@@ -45,7 +45,26 @@ public class QuizService {
         createAttributeBlastEndedSkrewts();
         createWhatDidHagridTryToRaise();
         createThestralEyes();
-
+        createFillingInForHagrid();
+        createThirdYearExam();
+        createFeedingBlastEndedSkrewts();
+        createNifflerCompetition();
+        createHarryMagicalCreaturesExam();
+        createFredRonChristmasDinner();
+        createChristmasBroadcast();
+        createMissingDuringChristmas();
+        createMrsWeaslesyPresentForHarry();
+        createKreachersPresent();
+        createPercyStormingOut();
+        createFleursDragon();
+        createSmallestDragon();
+        createChineseFireballEggs();
+        createHagridFeedingNorbert();
+        createColorsRomanianLonghorn();
+        createHarryEatingAtHalloween();
+        createFirstTriwizardChamp();
+        
+        System.out.println(questionRepo.findAll().size());
         return questionRepo.findAll();
 
     }
@@ -369,61 +388,204 @@ public class QuizService {
         answerRepo.save(new Answer("Yellow", false, question));
         answerRepo.save(new Answer("White", true, question));
     }
-//    public void create(){
-//        Question question = new Question(
-//                ""
-//        );
-//        questionRepo.save(question);
-//
-//        answerRepo.save(new Answer("", true, question));
-//        answerRepo.save(new Answer("", false, question));
-//        answerRepo.save(new Answer("", false, question));
-//        answerRepo.save(new Answer("", false, question));
-//    }
-//    public void create(){
-//        Question question = new Question(
-//                ""
-//        );
-//        questionRepo.save(question);
-//
-//        answerRepo.save(new Answer("", true, question));
-//        answerRepo.save(new Answer("", false, question));
-//        answerRepo.save(new Answer("", false, question));
-//        answerRepo.save(new Answer("", false, question));
-//    }
-//    public void create(){
-//        Question question = new Question(
-//                ""
-//        );
-//        questionRepo.save(question);
-//
-//        answerRepo.save(new Answer("", true, question));
-//        answerRepo.save(new Answer("", false, question));
-//        answerRepo.save(new Answer("", false, question));
-//        answerRepo.save(new Answer("", false, question));
-//    }
-//    public void create(){
-//        Question question = new Question(
-//                ""
-//        );
-//        questionRepo.save(question);
-//
-//        answerRepo.save(new Answer("", true, question));
-//        answerRepo.save(new Answer("", false, question));
-//        answerRepo.save(new Answer("", false, question));
-//        answerRepo.save(new Answer("", false, question));
-//    }
-//    public void create(){
-//        Question question = new Question(
-//                ""
-//        );
-//        questionRepo.save(question);
-//
-//        answerRepo.save(new Answer("", true, question));
-//        answerRepo.save(new Answer("", false, question));
-//        answerRepo.save(new Answer("", false, question));
-//        answerRepo.save(new Answer("", false, question));
-//    }
+    public void createFillingInForHagrid(){
+        Question question = new Question(
+                "When filling in for Hagrid in Goblet of Fire, what creature did Professor Grubbly-Plank show Harry’s class in the first lesson she led?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Mooncalf", false, question));
+        answerRepo.save(new Answer("Unicorn", true, question));
+        answerRepo.save(new Answer("Clabbert", false, question));
+        answerRepo.save(new Answer("Abraxan", false, question));
+    }
+    public void createThirdYearExam(){
+        Question question = new Question(
+                "What did Harry, Ron and Hermione’s third-year Care of Magical Creatures exam involve?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Keeping a Flobberworm alive for an hour", true, question));
+        answerRepo.save(new Answer("Being able to make a unicorn feed out of your hand", false, question));
+        answerRepo.save(new Answer("Shepherding Blast-Ended Skrewts", false, question));
+        answerRepo.save(new Answer("Demonstrating how to correctly approach a Hippogriff", false, question));
+    }
+    public void createFeedingBlastEndedSkrewts(){
+        Question question = new Question(
+                "When Harry’s class first met the Blast-Ended Skrewts, which of these was not something they tried to feed them?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Grass-snake", false, question));
+        answerRepo.save(new Answer("Toad eyeballs", true, question));
+        answerRepo.save(new Answer("Frog livers", false, question));
+        answerRepo.save(new Answer("Ant eggs", false, question));
+    }
+    public void createNifflerCompetition(){
+        Question question = new Question(
+                "In Hagrid’s lesson about Nifflers, whose Niffler won the competition to find the most Leprechaun gold?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Ron Weasley", true, question));
+        answerRepo.save(new Answer("Dean Thomas", false, question));
+        answerRepo.save(new Answer("Seamus Finnigan", false, question));
+        answerRepo.save(new Answer("Hermione Granger", false, question));
+    }
+    public void createHarryMagicalCreaturesExam(){
+        Question question = new Question(
+                "In Harry’s Care of Magical Creatures O.W.L., he had to demonstrate the correct handling of what creature?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Crup", false, question));
+        answerRepo.save(new Answer("Bowtruckle", true, question));
+        answerRepo.save(new Answer("Kneazle", false, question));
+        answerRepo.save(new Answer("Billywig", false, question));
+    }
+    public void createFredRonChristmasDinner(){
+        Question question = new Question(
+                "In Half-Blood Prince, when peeling sprouts in preparation for Christmas dinner, what did Ron throw at Fred?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("A turkey", false, question));
+        answerRepo.save(new Answer("A bowl of sprouts", false, question));
+        answerRepo.save(new Answer("A wooden spoon", false, question));
+        answerRepo.save(new Answer("A knife", true, question));
+    }
+    public void createChristmasBroadcast(){
+        Question question = new Question(
+                "In Half-Blood Prince on Christmas Eve, which singer was doing a Christmas broadcast that everyone at The Burrow was supposed to be listening to?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Cordelia Worcester", false, question));
+        answerRepo.save(new Answer("Celine Warton", false, question));
+        answerRepo.save(new Answer("Cherish Winterberry", false, question));
+        answerRepo.save(new Answer("Celestina Warbeck", true, question));
+    }
+    public void createMissingDuringChristmas(){
+        Question question = new Question(
+                "In Half-Blood Prince, who was not a guest at The Burrow during the Christmas season?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Harry Potter", false, question));
+        answerRepo.save(new Answer("Remus Lupin", false, question));
+        answerRepo.save(new Answer("Fleur Delacour", false, question));
+        answerRepo.save(new Answer("Hermione Granger", true, question));
+    }
+    public void createMrsWeaslesyPresentForHarry(){
+        Question question = new Question(
+                "In Half-Blood Prince, what was on the Christmas jumper that Mrs Weasley knitted for Harry that year?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("A large Golden Snitch", true, question));
+        answerRepo.save(new Answer("A Firebolt", false, question));
+        answerRepo.save(new Answer("Harry's face", false, question));
+        answerRepo.save(new Answer("A Hungarian Horntail", false, question));
+    }
+    public void createKreachersPresent(){
+        Question question = new Question(
+                "In Half-Blood Prince, what present did Harry unwrap from Kreacher on Christmas morning?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("A pile of Flobberworms", false, question));
+        answerRepo.save(new Answer("Rotten fish heads", false, question));
+        answerRepo.save(new Answer("Maggots", true, question));
+        answerRepo.save(new Answer("A mouldy slab of cheese", false, question));
+    }
+    public void createPercyStormingOut(){
+        Question question = new Question(
+                "In Half-Blood Prince, when Percy stormed out of the house on Christmas Day, what were his glasses covered in?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Mashed parsnip", true, question));
+        answerRepo.save(new Answer("Bread sauce", false, question));
+        answerRepo.save(new Answer("Pureed sprouts", false, question));
+        answerRepo.save(new Answer("Stuffing", false, question));
+    }
+    public void createFleursDragon(){
+        Question question = new Question(
+                "What dragon did Fleur Delacour face in the first task of the Triwizard tournament?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("A Hebridean Black", false, question));
+        answerRepo.save(new Answer("A Welsh Green", true, question));
+        answerRepo.save(new Answer("A Swedish Short-Snout", false, question));
+        answerRepo.save(new Answer("Chinese Fireball", false, question));
+    }
+    public void createSmallestDragon(){
+        Question question = new Question(
+                "What is the smallest of all known dragons?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Peruvian Vipertooth", true, question));
+        answerRepo.save(new Answer("Antipodean Opaleye", false, question));
+        answerRepo.save(new Answer("Welsh Green", false, question));
+        answerRepo.save(new Answer("Ukrainian Ironbelly", false, question));
+    }
+    public void createChineseFireballEggs(){
+        Question question = new Question(
+                "What colour are the eggs of a Chinese Fireball?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Crimson speckled with gold", true, question));
+        answerRepo.save(new Answer("Orange with maroon swirls", false, question));
+        answerRepo.save(new Answer("Pure gold", false, question));
+        answerRepo.save(new Answer("Silver with gold streaks", false, question));
+    }
+    public void createHagridFeedingNorbert(){
+        Question question = new Question(
+                "What did Hagrid feed Norbert when he hatched, based on the advice from the book Dragon-Breeding for Pleasure and Profit?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Three live mice and three dead rats every hour", false, question));
+        answerRepo.save(new Answer("A pint of Firewhisky mixed with duck livers every two hours", false, question));
+        answerRepo.save(new Answer("One bootle of rooster blood every twenty minutes", false, question));
+        answerRepo.save(new Answer("A bucket of brandy mixed with chicken blood every half hour", true, question));
+    }
+    public void createColorsRomanianLonghorn(){
+        Question question = new Question(
+                "What colour are the scales of a Romanian Longhorn?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Slate grey", false, question));
+        answerRepo.save(new Answer("Blood red", false, question));
+        answerRepo.save(new Answer("Deep blue", false, question));
+        answerRepo.save(new Answer("Dark green", true, question));
+    }
+    public void createHarryEatingAtHalloween(){
+        Question question = new Question(
+                "And in the Philosopher’s Stone book, what food was Harry helping himself to from the feast when Quirrell burst in?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Treacle tart", false, question));
+        answerRepo.save(new Answer("Pumpkin pie", false, question));
+        answerRepo.save(new Answer("A jacket potato", true, question));
+        answerRepo.save(new Answer("Roast chicken", false, question));
+    }
+    public void createFirstTriwizardChamp(){
+        Question question = new Question(
+                "On Hallowe’en night, who was the first Triwizard Champion to be announced?"
+        );
+        questionRepo.save(question);
+
+        answerRepo.save(new Answer("Harry Potter", false, question));
+        answerRepo.save(new Answer("Viktor Krum ", true, question));
+        answerRepo.save(new Answer("Cedric Diggory", false, question));
+        answerRepo.save(new Answer("Fleur Delacour", false, question));
+    }
 //    public void create(){
 //        Question question = new Question(
 //                ""
