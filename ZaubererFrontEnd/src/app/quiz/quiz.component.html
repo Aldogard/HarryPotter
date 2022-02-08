@@ -2,11 +2,12 @@
   <h1 class="headerquiz headertext">Quiz</h1>
 </div>
 
-<div class="middle">
-  <br />
-  <a>15 difficult questions are waiting to be answered. Good Luck!</a>
-</div>
+<ng-container *ngIf="show">
 <div class="container" *ngIf="question !== undefined">
+  <div class="middle">
+    <br />
+    <a>15 difficult questions are waiting to be answered. Good Luck!</a>
+  </div>
   <div class="container-fluid padding mt-5">
     <div class="row padding">
       <div class="col-md-12 col-lg-9">
@@ -110,3 +111,13 @@
     </div>
   </div>
 </div>
+</ng-container>
+<ng-container *ngIf="!show">
+  <br/>
+  <div class="container middle">
+    <a (click)="gotoWarmup()" class="link"
+    >
+    You did not complete the Warm Up! Please go to Warm Up in order to do so.
+  </a>
+  </div>
+</ng-container>

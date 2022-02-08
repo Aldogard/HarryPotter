@@ -14,8 +14,7 @@ import { QuizService } from '../services/quiz.service';
 })
 export class QuizComponent implements OnInit {
   questions: HpQuestion[] = [];
-  // show = this.ms.showQuiz.value;
-  show = true;
+  show = this.ms.showQuiz.value;
   chosenQuestions: HpQuestion[] = this.ms.chosenQuestions.value;
 
   question?: HpQuestion;

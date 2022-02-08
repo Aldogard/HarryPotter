@@ -63,7 +63,7 @@ public class QuizService {
         createColorsRomanianLonghorn();
         createHarryEatingAtHalloween();
         createFirstTriwizardChamp();
-        
+
         System.out.println(questionRepo.findAll().size());
         return questionRepo.findAll();
 

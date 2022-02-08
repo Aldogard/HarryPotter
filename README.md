@@ -30,6 +30,8 @@ At the moment, the project includes:
   - Potion brewing
   - Animal training
   - Melee training
+- Warm up for the Quiz
+- Quiz
 - Possibility to create a Magical Being
 - Possibility to update a Magical Being
 - Search bar
@@ -41,5 +43,4 @@ Furthermore the site includes
 
 Coming soon:
 - overview about the rules of the wizard chess game
-- overview about the rules of the training
-- Quiz 
+- overview about the rules of the training 
