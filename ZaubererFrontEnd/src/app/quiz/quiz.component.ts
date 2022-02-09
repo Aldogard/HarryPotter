@@ -25,6 +25,7 @@ export class QuizComponent implements OnInit {
   correctAnswers: number = 0;
   round: number = 15;
   questionsRemaining = this.round;
+  result = new BehaviorSubject<boolean>(false);
 
   constructor(
     private qs: QuizService,
@@ -92,6 +93,7 @@ export class QuizComponent implements OnInit {
           this.correct.next(false);
           this.notCorrect.next(false);
           this.chosenAnswer = new FormControl('');
+          this.result.next(true);
         }
       }, 1000);
     }

@@ -22,6 +22,7 @@ export class WarmupComponent implements OnInit {
   correctAnswers: number = 0;
   rounds: number = 3;
   questionsRemaining = this.rounds;
+  result = new BehaviorSubject<boolean>(false);
 
   constructor(
     private qs: QuizService,
@@ -82,6 +83,7 @@ export class WarmupComponent implements OnInit {
         } else {
           this.correct.next(false);
           this.notCorrect.next(false);
+          this.result.next(true);
           this.chosenAnswer = new FormControl('');
         }
       }, 1000);

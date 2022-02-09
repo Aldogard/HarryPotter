@@ -11,7 +11,7 @@
   <div class="container-fluid padding mt-5">
     <div class="row padding">
       <div class="col-md-12 col-lg-9">
-        <ng-container *ngIf="questionsRemaining > 0">
+        <ng-container *ngIf="!result.value">
           <h2 class="gold middle">
             {{ question.question }}
           </h2>
